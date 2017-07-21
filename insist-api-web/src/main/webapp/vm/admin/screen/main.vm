@@ -74,7 +74,7 @@
             <div class="modal-body">
                 <form id="newInterfaceHttpForm" role="form">
                     <!--项目ID-->
-                    <input type="hidden" name="appIdInput" value="">
+                    <input type="hidden" name="appIdInput" value="$!{appDO.appId}">
                     <!--接口ID-->
                     <input type="hidden" id="interfaceHttpIdInput" name="interfaceHttpIdInput" value="">
                     <div class="row">
@@ -246,7 +246,7 @@
             <div class="modal-body">
                 <form id="newInterfaceRpcForm" role="form">
                     <!--项目ID-->
-                    <input type="hidden" name="appIdInput" value="">
+                    <input type="hidden" name="appIdInput" value="$!{appDO.appId}">
                     <!--接口ID-->
                     <input type="hidden" id="interfaceRpcIdInput" name="interfaceRpcIdInput" value="">
                     <div class="row">
@@ -563,6 +563,64 @@
                 $(this).prev("input[name='jsontransformatsInput']").val("true");
             } else {
                 $(this).prev("input[name='jsontransformatsInput']").val("false");
+            }
+        });
+
+
+        //新增HTTP接口
+        $("#addHttpInterfaceBtn").click(function () {
+            $("#myHttpModalLabel").html("新增HTTP接口");
+            $("#myHttpModal").find("tbody").empty();
+            $("#interfaceHttpIdInput").val("");
+        });
+
+        //新增RPC接口
+        $("#addRpcInterfaceBtn").click(function () {
+            $("#myrpcmodallabel").html("新增RPC接口");
+            $("#myRpcModal").find("tbody").empty();
+            $("#interfaceRpcIdInput").val("");
+
+        });
+
+        //新增HTTP接口
+        $("#newInterfaceHttpBtn").click(function () {
+            if ($("#interfaceHttpIdInput").val() == null || $("#interfaceHttpIdInput").val() == "") {
+                $.post("${ctxPath}/rest/interfaceHttp/insertInterfaceHttp", $("#newInterfaceHttpForm").serialize(), function (data) {
+                    console.log(data);
+                    if (data.success) {
+                        $("#myHttpModal").modal("hide");
+                        window.location.reload();
+                    }
+                }, "json");
+            } else {
+                $.post("${ctxPath}/rest/interfaceHttp/updateInterfaceHttp", $("#newInterfaceHttpForm").serialize(), function (data) {
+                    console.log(data);
+                    if (data.success) {
+                        $("#myHttpModal").modal("hide");
+                        window.location.reload();
+                    }
+                }, "json");
+            }
+        });
+
+        //新增RPC接口
+        $("#newInterfaceRpcBtn").click(function () {
+            if ($("#interfaceRpcIdInput").val() == null || $("#interfaceRpcIdInput").val() == "") {
+                $.post("interfaceRpc/insertInterfaceRpc", $("#newInterfaceRpcForm").serialize(), function (data) {
+                    console.log(data);
+                    if (data.success) {
+                        $("#myRpcModal").modal("hide");
+                        window.location.reload();
+                    }
+                }, "json");
+            } else {
+                $.post("interfaceRpc/updateInterfaceRpc", $("#newInterfaceRpcForm").serialize(), function (data) {
+                    console.log(data);
+                    if (data.success) {
+                        $("#myRpcModal").modal("hide");
+                        window.location.reload();
+                    }
+                }, "json");
             }
         });
 
