@@ -102,102 +102,47 @@
                     </div>
                 </div>
 
-
-                <div class="panel panel-default">
-                    <div id="nav-bar-38" class="panel-heading" role="tab">
-                        <h4 class="panel-title">
-                            <a href="#nav-bar-list-38" data-parent="#nav-bar-left-list" data-toggle="collapse"
-                               aria-expanded="true" aria-controls="nav-bar-list-38"
-                               aria-controls="collapseOne">监控</a>
-                        </h4>
-                    </div>
-                    <div id="nav-bar-list-38"
-                         class="panel-collapse collapse #if($!{menu}=='DiagramView' ||
-                             $!{menu}=='TableView' || $!{menu}=='ManualView')
-                    in
-#end " role="tabpanel"
-                         aria-labelledby="nav-bar-38" aria-expanded="false">
-                        <div class="list-group">
-                            <a href="${ctxPath}/monitor/diagramView.htm" #if($!{menu}=='DiagramView') style="color:blue"
-                            #end class="list-group-item">
-                                图表化展示
-                            </a>
-                            <a href="${ctxPath}/monitor/tableView.htm" #if($!{menu}=='TableView') style="color:blue"
-                            #end class="list-group-item">
-                                列表化展示
-                            </a>
-                            <a href="${ctxPath}/monitor/manualView.htm" #if($!{menu}=='ManualView') style="color:blue"
-                            #end class="list-group-item">
-                                手动控制文档转换请求
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            #*具体应用列表*#
                 <div class="panel panel-default">
                     <div id="nav-bar-56" class="panel-heading" role="tab">
                         <h4 class="panel-title">
                             <a href="#nav-bar-list-56" data-parent="#nav-bar-left-list" data-toggle="collapse"
                                aria-expanded="true" aria-controls="nav-bar-list-56"
-                               aria-controls="collapseOne">应用</a>
+                               aria-controls="collapseOne">接口管理</a>
                         </h4>
                     </div>
                     <div id="nav-bar-list-56"
-                         class="panel-collapse collapse #if($menu=="AppStatistics" || $menu=="AppPie" || $menu==
-                             "AppServer")
-                    in
-#end " role="tabpanel"
+                         class="panel-collapse collapse in" role="tabpanel"
                          aria-labelledby="nav-bar-56" aria-expanded="false">
                         <div class="list-group">
-                            <a href="${ctxPath}/monitor/appPie.htm" #if($!{menu}=='AppPie') style="color:blue"
-                            #end class="list-group-item">
-                                应用直观统计图
-                            </a>
-                            <a href="${ctxPath}/monitor/appServer.htm" #if($!{menu}=='AppServer') style="color:blue"
-                            #end class="list-group-item">
-                                文档转换机器分布
-                            </a>
                             #foreach($app in $!appDOList)
-                                <a href="${ctxPath}/monitor/appStatistics.htm?appId=${app.appId}" #if($menu==
-                                    "AppStatistics" && ${app.mainSelectType})
-                                   style="color: blue;"
-                                #end class="list-group-item" data-appid="${app.appId}">${app.appName}</a>
+                                <a href="${ctxPath}/monitor/empty.htm?appId=${app.appId}" class="list-group-item"
+                                   data-appid="${app.appId}">${app.appName}</a>
                             #end
                         </div>
                     </div>
                 </div>
 
                 <div class="panel panel-default">
-                    <div id="nav-bar-72" class="panel-heading" role="tab">
+                    <div id="nav-bar-78" class="panel-heading" role="tab">
                         <h4 class="panel-title">
-                            <a href="#nav-bar-list-72" data-parent="#nav-bar-left-list" data-toggle="collapse"
-                               aria-expanded="true" aria-controls="nav-bar-list-72"
-                               aria-controls="collapseOne">操作</a>
+                            <a href="#nav-bar-list-78" data-parent="#nav-bar-left-list" data-toggle="collapse"
+                               aria-expanded="true" aria-controls="nav-bar-list-78"
+                               aria-controls="collapseOne">接口预览</a>
                         </h4>
                     </div>
-                    <div id="nav-bar-list-72"
-                         class="panel-collapse collapse #if($!{menu}=='AsyncPage' || $!{menu}=='SyncPage'
-                         || $!{menu}=='BatchAsyncPage' || $!{menu} == 'NoticePage')
-                         in
-#end " role="tabpanel"
-                         aria-labelledby="nav-bar-72" aria-expanded="false">
+                    <div id="nav-bar-list-78"
+                         class="panel-collapse collapse in" role="tabpanel"
+                         aria-labelledby="nav-bar-78" aria-expanded="false">
                         <div class="list-group">
-                            <a href="${ctxPath}/monitor/asyncPage.htm" #if($!{menu}=='AsyncPage')
-                               style="color:blue"
-                            #end class="list-group-item">异步文档转换请求</a>
-                            <a href="${ctxPath}/monitor/syncPage.htm" #if($!{menu}=='SyncPage')
-                               style="color:blue"
-                            #end class="list-group-item">同步文档转换请求</a>
-                            <a href="${ctxPath}/monitor/batchAsyncPage.htm" #if($!{menu}=='BatchAsyncPage')
-                               style="color:blue"
-                            #end class="list-group-item">异步文档转换请求(批量)</a>
-                            <a href="${ctxPath}/monitor/noticePage.htm" #if($!{menu}=='NoticePage')
-                               style="color:blue"
-                            #end class="list-group-item">网站公告</a>
+                            #foreach($app in $!appDOList)
+                                <a href="${ctxPath}/monitor/empty.htm?appId=${app.appId}" class="list-group-item"
+                                   data-appid="${app.appId}">${app.appName}</a>
+                            #end
                         </div>
                     </div>
                 </div>
+
+
             </div>
 
             <div class="row" id="ad_nav_left_bottom" style="display:none;">
