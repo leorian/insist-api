@@ -1,0 +1,9 @@
+<div class="col-md-12">
+    <ol class="breadcrumb">
+        <li class="active">接口预览</li>
+        <li class="active">$!{appDO.appName}</li>
+    </ol>
+</div>
+<div class="col-md-12">
+
+</div>

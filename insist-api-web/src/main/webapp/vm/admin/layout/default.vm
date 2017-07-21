@@ -119,6 +119,9 @@
                         <div class="list-group">
                             #foreach($app in $!appDOList)
                                 <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
+                                    #if($menu=="Main" && ${app.mainSelectType})
+                                   style="color: blue;"
+                                    #end
                                    data-appid="${app.appId}">${app.appName}</a>
                             #end
                         </div>
@@ -138,7 +141,10 @@
                          aria-labelledby="nav-bar-78" aria-expanded="false">
                         <div class="list-group">
                             #foreach($app in $!appDOList)
-                                <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
+                                <a href="${ctxPath}/admin/view.htm?appId=${app.appId}" class="list-group-item"
+                                    #if($menu=="View" && ${app.viewSelectType})
+                                   style="color: blue;"
+                                    #end
                                    data-appid="${app.appId}">${app.appName}</a>
                             #end
                         </div>

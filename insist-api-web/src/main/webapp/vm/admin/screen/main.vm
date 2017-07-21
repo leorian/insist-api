@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <ol class="breadcrumb">
         <li class="active">接口管理</li>
-        <li class="active">BOSS平台</li>
+        <li class="active">$!{appDO.appName}</li>
     </ol>
 </div>
 <div class="col-md-12">
