@@ -587,6 +587,68 @@
     {{/if}}
 </script>
 
+
+<!--RPC接口请求参数编辑模板-->
+<script id="rpcRequestParamEditTemplate" type="text/x-handlebars-template">
+{{# if interfaceParamEntities}}
+{{#interfaceParamEntities}}
+<tr>
+    <td><input name='paramNamesInput' type="text" value='{{paramName}}' class="form-control input-sm"
+               style='height: 25px;'></td>
+    <td>
+        <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
+            <option value="string">string</option>
+        </select>
+    </td>
+    <td>
+        <input name='paramDescribesInput' value='{{paramDescribe}}' type="text" class="form-control input-sm"
+               style='height: 25px;'>
+    </td>
+    {{# if required}}
+    <td>
+        <input name='requiredsInput' type='hidden' value='{{required}}'>
+        <input name='requiredsInputCheckBox' type="checkbox" checked='checked' class="form-control input-sm"
+               style='height: 18px;'>
+    </td>
+    {{else}}
+    <td>
+        <input name='requiredsInput' type='hidden' value='{{required}}'>
+        <input name='requiredsInputCheckBox' type="checkbox" class="form-control input-sm"
+               style='height: 18px;'>
+    </td>
+    {{/if}}
+
+    {{# if jsontransformat}}
+    <td>
+        <input name='jsontransformatsInput' type='hidden' value='{{jsontransformat}}'>
+        <input name='jsontransformatsInputCheckBox' checked='checked' type="checkbox"
+               class="form-control input-sm" style='height: 18px;'>
+    </td>
+    {{else}}
+    <td>
+        <input name='jsontransformatsInput' type='hidden' value='{{jsontransformat}}'>
+        <input name='jsontransformatsInputCheckBox' type="checkbox" class="form-control input-sm"
+               style='height: 18px;'>
+    </td>
+    {{/if}}
+    <td>
+        <input name='examplesInput' value='{{example}}' type="text"
+               class="form-control input-sm" style='height: 25px;'>
+    </td>
+    <td>
+        <input name='defaultValuesInput' value='{{defaultValue}}' type="text"
+               class="form-control input-sm" style='height: 25px;'>
+    </td>
+    <td>
+        <a href="#">
+            <span class="glyphicon glyphicon-trash"></span>
+        </a>
+    </td>
+</tr>
+{{/interfaceParamEntities}}
+{{/if}}
+</script>
+
 <!--HTTP接口预览模态框模板-->
 <script id="myHttpPreviewModalTemplate" type="text/x-handlebars-template">
     <div class="row">
@@ -939,7 +1001,7 @@
             $("#myHttpModalLabel").html("编辑HTTP接口");
             $("#interfaceHttpIdInput").val(interfaceId);
             $("#myHttpModal").find("tbody").empty();
-            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp/", {"interfaceId": interfaceId}, function (data) {
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
                 $("#myHttpModal").find("input[name='protocolInput']").val(data.protocol);
                 $("#myHttpModal").find("input[name='methodInput']").val(data.method);
                 $("#myHttpModal").find("input[name='transformatInput']").val(data.transformat);
@@ -959,6 +1021,38 @@
                         } else {
                             $("#myHttpModal").find("textarea[name='exceptionExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
                             $("#myHttpModal").find("textarea[name='exceptionAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        }
+                    }
+                }
+            }, "json");
+        });
+
+        //RPC接口编辑事件
+        $("#rpcTableTBody").delegate("button.btn-success", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $("#myRpcModalLabel").html("编辑RPC接口");
+            $("#interfaceRpcIdInput").val(interfaceId);
+            $("#myRpcModal").find("tbody").empty();
+            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
+                $("#myRpcModal").find("input[name='classNameInput']").val(data.className);
+                $("#myRpcModal").find("input[name='methodNameInput']").val(data.methodName);
+                $("#myRpcModal").find("input[name='nameInput']").val(data.name);
+                $("#myRpcModal").find("textarea[name='functionDescribeInput']").val(data.functionDescribe);
+                $("#myRpcModal").find("input[name='returnTypeInput']").val(data.returnType);
+                $("#myRpcModal").find("input[name='methodParamInput']").val(data.methodParam);
+
+                //请求参数
+                $("#myRpcModal").find("tbody").handlebars($("#rpcRequestParamEditTemplate"), data);
+
+                //结果示例
+                if (data.interfaceResultEntities != null && data.interfaceResultEntities.length > 0) {
+                    for (var i = 0; i < data.interfaceResultEntities.length; i++) {
+                        if (data.interfaceResultEntities[i].exampleType == "NORMAL") {
+                            $("#myRpcModal").find("textarea[name='returnExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myRpcModal").find("textarea[name='returnExampleAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        } else {
+                            $("#myRpcModal").find("textarea[name='exceptionExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myRpcModal").find("textarea[name='exceptionAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
                         }
                     }
                 }
