@@ -6,7 +6,6 @@ import com.bozhong.insistapi.entity.InterfaceParamEntity;
 import com.bozhong.insistapi.entity.InterfaceResultEntity;
 import com.bozhong.insistapi.enums.ExampleTypeEnum;
 import com.bozhong.insistapi.enums.InterfaceTypeEnum;
-import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

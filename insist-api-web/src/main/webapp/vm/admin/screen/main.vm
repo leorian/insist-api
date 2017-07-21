@@ -496,6 +496,37 @@
     {{/if}}
 </script>
 
+<!--RPC接口列表-->
+<script id="rpcInterfaceTemplate" type="text/x-handlebars-template">
+    {{# if this}}
+    {{#this}}
+    <tr>
+        <td class='text-center'>{{id}}</td>
+        <td class='text-center'>{{name}}</td>
+        <td class='text-center'>{{className}}</td>
+        <td class='text-center'>{{methodName}}</td>
+        <td class='text-center'>
+            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
+                    data-target='#myRpcModal'>编辑
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
+                    data-target='#deleteInterfaceModal'>删除
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
+                    data-target="#myRpcPreviewModal">预览
+            </button>
+        </td>
+    </tr>
+    {{/this}}
+    {{else}}
+    <tr>
+        <td colspan='5' class='text-center'>暂无信息！</td>
+    </tr>
+    {{/if}}
+</script>
+
 <!--HTTP接口请求参数编辑模板-->
 <script id="httpRequestParamEditTemplate" type="text/x-handlebars-template">
     {{# if interfaceParamEntities}}
@@ -874,7 +905,7 @@
         //新增RPC接口
         $("#newInterfaceRpcBtn").click(function () {
             if ($("#interfaceRpcIdInput").val() == null || $("#interfaceRpcIdInput").val() == "") {
-                $.post("interfaceRpc/insertInterfaceRpc", $("#newInterfaceRpcForm").serialize(), function (data) {
+                $.post("${ctxPath}/rest/interfaceRpc/insertInterfaceRpc", $("#newInterfaceRpcForm").serialize(), function (data) {
                     console.log(data);
                     if (data.success) {
                         $("#myRpcModal").modal("hide");
@@ -882,7 +913,7 @@
                     }
                 }, "json");
             } else {
-                $.post("interfaceRpc/updateInterfaceRpc", $("#newInterfaceRpcForm").serialize(), function (data) {
+                $.post("${ctxPath}/rest/interfaceRpc/updateInterfaceRpc", $("#newInterfaceRpcForm").serialize(), function (data) {
                     console.log(data);
                     if (data.success) {
                         $("#myRpcModal").modal("hide");
@@ -895,6 +926,11 @@
         //HTTP接口列表展示
         $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
+        }, "json");
+
+        //RPC接口列表展示
+        $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
+            $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
         }, "json");
 
         //HTTP接口编辑事件
@@ -974,7 +1010,7 @@
             var interfaceId = $(this).attr("data-interfaceid");
             $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
                 $("#myHttpPreviewModal").find(".modal-body").handlebars($("#myHttpPreviewModalTemplate"), data);
-            },"json");
+            }, "json");
         });
 
         //RPC接口预览
@@ -982,7 +1018,7 @@
             var interfaceId = $(this).attr("data-interfaceid");
             $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
                 $("#myRpcPreviewModal").find(".modal-body").handlebars($("#myRpcPreviewModalTemplate"), data);
-            },"json");
+            }, "json");
         });
 
 

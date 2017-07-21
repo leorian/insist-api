@@ -6,7 +6,6 @@ import com.bozhong.insistapi.entity.InterfaceResultEntity;
 import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.enums.ExampleTypeEnum;
 import com.bozhong.insistapi.enums.InterfaceTypeEnum;
-import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -28,13 +27,13 @@ public class InterfaceRpcDomain implements Serializable{
     private String methodParamInput;
 
     /*请求参数*/
-    private List<String> paramNamesInput;
-    private List<String> paramTypesInput;
-    private List<String> paramDescribesInput;
-    private List<Boolean> requiredsInput;
-    private List<Boolean> jsontransformatsInput;
-    private List<String> examplesInput;
-    private List<String> defaultValuesInput;
+    private String[]  paramNamesInput;
+    private String[] paramTypesInput;
+    private String[] paramDescribesInput;
+    private Boolean[] requiredsInput;
+    private Boolean[] jsontransformatsInput;
+    private String[] examplesInput;
+    private String[] defaultValuesInput;
 
 
     /*返回示例*/
@@ -101,59 +100,59 @@ public class InterfaceRpcDomain implements Serializable{
         this.methodParamInput = methodParamInput;
     }
 
-    public List<String> getParamNamesInput() {
+    public String[] getParamNamesInput() {
         return paramNamesInput;
     }
 
-    public void setParamNamesInput(List<String> paramNamesInput) {
+    public void setParamNamesInput(String[] paramNamesInput) {
         this.paramNamesInput = paramNamesInput;
     }
 
-    public List<String> getParamTypesInput() {
+    public String[] getParamTypesInput() {
         return paramTypesInput;
     }
 
-    public void setParamTypesInput(List<String> paramTypesInput) {
+    public void setParamTypesInput(String[] paramTypesInput) {
         this.paramTypesInput = paramTypesInput;
     }
 
-    public List<String> getParamDescribesInput() {
+    public String[] getParamDescribesInput() {
         return paramDescribesInput;
     }
 
-    public void setParamDescribesInput(List<String> paramDescribesInput) {
+    public void setParamDescribesInput(String[] paramDescribesInput) {
         this.paramDescribesInput = paramDescribesInput;
     }
 
-    public List<Boolean> getRequiredsInput() {
+    public Boolean[] getRequiredsInput() {
         return requiredsInput;
     }
 
-    public void setRequiredsInput(List<Boolean> requiredsInput) {
+    public void setRequiredsInput(Boolean[] requiredsInput) {
         this.requiredsInput = requiredsInput;
     }
 
-    public List<Boolean> getJsontransformatsInput() {
+    public Boolean[] getJsontransformatsInput() {
         return jsontransformatsInput;
     }
 
-    public void setJsontransformatsInput(List<Boolean> jsontransformatsInput) {
+    public void setJsontransformatsInput(Boolean[] jsontransformatsInput) {
         this.jsontransformatsInput = jsontransformatsInput;
     }
 
-    public List<String> getExamplesInput() {
+    public String[] getExamplesInput() {
         return examplesInput;
     }
 
-    public void setExamplesInput(List<String> examplesInput) {
+    public void setExamplesInput(String[] examplesInput) {
         this.examplesInput = examplesInput;
     }
 
-    public List<String> getDefaultValuesInput() {
+    public String[] getDefaultValuesInput() {
         return defaultValuesInput;
     }
 
-    public void setDefaultValuesInput(List<String> defaultValuesInput) {
+    public void setDefaultValuesInput(String[] defaultValuesInput) {
         this.defaultValuesInput = defaultValuesInput;
     }
 
@@ -207,12 +206,12 @@ public class InterfaceRpcDomain implements Serializable{
     }
 
     public List<InterfaceParamEntity> buildInterfaceParamEntities(String interfaceId) {
-        if (CollectionUtils.isEmpty(this.getParamNamesInput())) {
+        if (this.getParamNamesInput()==null || this.getParamNamesInput().length==0) {
             return null;
         }
 
-        List<InterfaceParamEntity> interfaceParamEntities = new ArrayList<>(this.getParamNamesInput().size());
-        for (int i = 0; i < this.getParamNamesInput().size(); i++) {
+        List<InterfaceParamEntity> interfaceParamEntities = new ArrayList<>(this.getParamNamesInput().length);
+        for (int i = 0; i < this.getParamNamesInput().length; i++) {
             InterfaceParamEntity interfaceParamEntity = new InterfaceParamEntity();
             try {
                 Thread.sleep(10l);
@@ -224,13 +223,13 @@ public class InterfaceRpcDomain implements Serializable{
             interfaceParamEntity.setId(simpleDateFormat.format(date));
             interfaceParamEntity.setInterfaceId(interfaceId);
             interfaceParamEntity.setInterfaceType(InterfaceTypeEnum.RPC.name());
-            interfaceParamEntity.setParamName(this.getParamNamesInput().get(i));
-            interfaceParamEntity.setParamType(this.getParamTypesInput().get(i));
-            interfaceParamEntity.setParamDescribe(this.getParamDescribesInput().get(i));
-            interfaceParamEntity.setRequired(this.getRequiredsInput().get(i));
-            interfaceParamEntity.setJsontransformat(this.getJsontransformatsInput().get(i));
-            interfaceParamEntity.setExample(this.getExamplesInput().get(i));
-            interfaceParamEntity.setDefaultValue(this.getDefaultValuesInput().get(i));
+            interfaceParamEntity.setParamName(this.getParamNamesInput()[i]);
+            interfaceParamEntity.setParamType(this.getParamTypesInput()[i]);
+            interfaceParamEntity.setParamDescribe(this.getParamDescribesInput()[i]);
+            interfaceParamEntity.setRequired(this.getRequiredsInput()[i]);
+            interfaceParamEntity.setJsontransformat(this.getJsontransformatsInput()[i]);
+            interfaceParamEntity.setExample(this.getExamplesInput()[i]);
+            interfaceParamEntity.setDefaultValue(this.getDefaultValuesInput()[i]);
             interfaceParamEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntities.add(interfaceParamEntity);
