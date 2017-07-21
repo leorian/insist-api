@@ -80,4 +80,16 @@ public class MongoDaoImpl implements MongoDao {
         }
         return tList;
     }
+
+    @Override
+    public <T> T getOneByInterfaceId(String interfaceId, Class<T> tClass) {
+        Gson gson = new Gson();
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Document document = mongoCollection.find(eq("id", interfaceId)).first();
+        if (document != null) {
+            return gson.fromJson(document.toJson(), tClass);
+        }
+
+        return null;
+    }
 }

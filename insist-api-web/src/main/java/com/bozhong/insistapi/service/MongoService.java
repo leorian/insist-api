@@ -47,5 +47,13 @@ public interface MongoService {
      */
     <T> List<T> getListByAppId(String appId, Class<T> tClass);
 
+    /**
+     * @param interfaceId
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> T getOneByInterfaceId(String interfaceId, Class<T> tClass);
+
 
 }

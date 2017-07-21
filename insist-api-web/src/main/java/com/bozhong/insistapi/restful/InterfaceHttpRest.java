@@ -65,4 +65,12 @@ public class InterfaceHttpRest {
         String appId = (String) param.get("appId");
         return JSON.toJSONString(mongoService.getListByAppId(appId, InterfaceHttpEntity.class));
     }
+
+    @POST
+    @Path("findInterfaceHttp")
+    public String findInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
+        String interfaceId = (String) param.get("interfaceId");
+        return JSON.toJSONString(mongoService.getOneByInterfaceId(interfaceId, InterfaceHttpEntity.class));
+    }
 }

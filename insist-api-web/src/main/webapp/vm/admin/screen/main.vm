@@ -466,33 +466,93 @@
 
 <!--HTTP接口列表-->
 <script id="httpInterfaceTemplate" type="text/x-handlebars-template">
-{{# if this}}
-{{#each this}}
+    {{# if this}}
+    {{#each this}}
+    <tr>
+        <td class='text-center'>{{id}}</td>
+        <td class='text-center'>{{name}}</td>
+        <td class='text-center'>{{protocol}}</td>
+        <td class='text-center'>{{method}}</td>
+        <td class='text-center'>{{address}}</td>
+        <td class='text-center'>
+            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
+                    data-target='#myHttpModal'>编辑
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
+                    data-target='#deleteInterfaceModal'>删除
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
+                    data-target="#myHttpPreviewModal">预览
+            </button>
+        </td>
+    </tr>
+    {{/each}}
+    {{else}}
+    <tr>
+        <td colspan='6' class='text-center'>暂无信息！</td>
+    </tr>
+    {{/if}}
+</script>
+
+<!--HTTP接口请求参数编辑模板-->
+<script id="httpRequestParamEditTemplate" type="text/x-handlebars-template">
+{{# if interfaceParamEntities}}
+{{#interfaceParamEntities}}
 <tr>
-    <td class='text-center'>{{id}}</td>
-    <td class='text-center'>{{name}}</td>
-    <td class='text-center'>{{protocol}}</td>
-    <td class='text-center'>{{method}}</td>
-    <td class='text-center'>{{address}}</td>
-    <td class='text-center'>
-        <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
-                data-target='#myHttpModal'>编辑
-        </button>
-        &nbsp;&nbsp;
-        <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
-                data-target='#deleteInterfaceModal'>删除
-        </button>
-        &nbsp;&nbsp;
-        <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
-                data-target="#myHttpPreviewModal">预览
-        </button>
+    <td><input name='paramNamesInput' type="text" value='{{paramName}}' class="form-control input-sm"
+               style='height: 25px;'></td>
+    <td>
+        <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
+            <option value="string">string</option>
+        </select>
+    </td>
+    <td>
+        <input name='paramDescribesInput' value='{{paramDescribe}}' type="text" class="form-control input-sm"
+               style='height: 25px;'>
+    </td>
+    {{# if required}}
+    <td>
+        <input name='requiredsInput' type='hidden' value='{{required}}'>
+        <input name='requiredsInputCheckBox' type="checkbox" checked='checked' class="form-control input-sm"
+               style='height: 18px;'>
+    </td>
+    {{else}}
+    <td>
+        <input name='requiredsInput' type='hidden' value='{{required}}'>
+        <input name='requiredsInputCheckBox' type="checkbox" class="form-control input-sm"
+               style='height: 18px;'>
+    </td>
+    {{/if}}
+    {{# if jsontransformat}}
+    <td>
+        <input name='jsontransformatsInput' type='hidden' value='{{jsontransformat}}'>
+        <input name='jsontransformatsInputCheckBox' checked='checked' type="checkbox" class="form-control
+                        input-sm" style='height: 18px;'>
+    </td>
+    {{else}}
+    <td>
+        <input name='jsontransformatsInput' type='hidden' value='{{jsontransformat}}'>
+        <input name='jsontransformatsInputCheckBox' type="checkbox" class="form-control input-sm"
+               style='height: 18px;'>
+    </td>
+    {{/if}}
+    <td>
+        <input name='examplesInput' value='{{example}}' type="text" class="form-control input-sm"
+               style='height: 25px;'>
+    </td>
+    <td>
+        <input name='defaultValuesInput' value='{{defaultValue}}' type="text" class="form-control input-sm"
+               style='height: 25px;'>
+    </td>
+    <td>
+        <a href="#">
+            <span class="glyphicon glyphicon-trash"></span>
+        </a>
     </td>
 </tr>
-{{/each}}
-{{else}}
-<tr>
-    <td colspan='6' class='text-center'>暂无信息！</td>
-</tr>
+{{/interfaceParamEntities}}
 {{/if}}
 </script>
 
@@ -658,9 +718,41 @@
         });
 
         //HTTP接口列表展示
-        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId":"$!{appDO.appId}"}, function (data) {
+        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
-        },"json");
+        }, "json");
+
+        //HTTP接口编辑事件
+        $("#httpTableTBody").delegate("button.btn-success", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $("#myHttpModalLabel").html("编辑HTTP接口");
+            $("#interfaceHttpIdInput").val(interfaceId);
+            $("#myHttpModal").find("tbody").empty();
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp/", {"interfaceId": interfaceId}, function (data) {
+                $("#myHttpModal").find("input[name='protocolInput']").val(data.protocol);
+                $("#myHttpModal").find("input[name='methodInput']").val(data.method);
+                $("#myHttpModal").find("input[name='transformatInput']").val(data.transformat);
+                $("#myHttpModal").find("input[name='addressInput']").val(data.address);
+                $("#myHttpModal").find("input[name='nameInput']").val(data.name);
+                $("#myHttpModal").find("textarea[name='descriptionInput']").val(data.description);
+
+                //请求参数
+                $("#myHttpModal").find("tbody").handlebars($("#httpRequestParamEditTemplate"), data);
+
+                //结果示例
+                if (data.interfaceResultEntities != null && data.interfaceResultEntities.length > 0) {
+                    for (var i = 0; i < data.interfaceResultEntities.length; i++) {
+                        if (data.interfaceResultEntities[i].exampleType == "NORMAL") {
+                            $("#myHttpModal").find("textarea[name='returnExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myHttpModal").find("textarea[name='returnExampleAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        } else {
+                            $("#myHttpModal").find("textarea[name='exceptionExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myHttpModal").find("textarea[name='exceptionAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        }
+                    }
+                }
+            }, "json");
+        });
 
 
     });
