@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eweb>
+    <pipeLines>
+        <pipeLine id="securityPipeLine"></pipeLine>
+    </pipeLines>
+    <ignores>
+        <ignore page="/error/timeOut.htm"></ignore>
+        <ignore page="/error/systemError.htm"></ignore>
+        <ignore page="/error/error.htm"></ignore>
+        <ignore page="/login/generatePublicKey"></ignore>
+        <ignore page="/login/checkLogin"></ignore>
+        <ignore page="/admin/login.htm"></ignore>
+    </ignores>
+    <notIgnores>
+        <notIgnore regular="^[\w\W]*/rest/[\w\W]*$"></notIgnore>
+    </notIgnores>
+    <errorPages>
+        <errorPage page="/error/error.htm" errorCode="default" default="true"></errorPage>
+        <errorPage page="/error/timeOut.htm" errorCode="SESSION_TIME_OUT"></errorPage>
+        <errorPage page="/error/systemError.htm" errorCode="SYSTEM_ERROR"></errorPage>
+    </errorPages>
+</eweb>

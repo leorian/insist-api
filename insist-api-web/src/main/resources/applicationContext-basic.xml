@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <bean class="com.bozhong.config.common.ConfigSetPropertyHolder" init-method="init">
+        <property name="appId" value="25"/>
+    </bean>
+
+    <bean class="com.bozhong.insistapi.common.SwitchLoad" init-method="init">
+        <property name="appId" value="25"/>
+        <property name="zkHosts" value="${switch.zkHosts}"/>
+    </bean>
+
+    <!-- extend -->
+    <bean id="springApplicationContextHolder" class="com.yx.eweb.handler.SpringApplicationContextHolder"
+          lazy-init="false" scope="singleton"/>
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+    </bean>
+
+    <bean id="unifiedLogAdvisorPointCut" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="patterns">
+            <list>
+                <value>com.bozhong.insistapi.service.*</value>  <!-- 业务实现方法名匹配 -->
+            </list>
+        </property>
+        <property name="advice">
+            <ref bean="unifiedLogAdvisor"/>
+        </property>
+    </bean>
+
+    <bean id="unifiedLogAdvisor" class="com.bozhong.unifiedLog.advisor.UnifiedLogAdvisor">
+        <property name="localAppName" value="document-web"/>
+        <property name="maxFileSize" value="14"/>
+    </bean>
+
+    <import resource="config/spring/config-spring.xml"/>
+    <import resource="config/spring/pipeline-spring.xml"/>
+    <import resource="config/spring/dao-config-spring.xml"/>
+    <import resource="config/spring/service-config-spring.xml"/>
+
+    <context:component-scan base-package="com.bozhong.insistapi.restful,com.bozhong.insistapi.view.*"/>
+</beans>
