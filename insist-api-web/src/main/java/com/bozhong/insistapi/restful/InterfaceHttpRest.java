@@ -19,7 +19,6 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,7 +34,7 @@ public class InterfaceHttpRest {
 
     @POST
     @Path("insertInterfaceHttp")
-    public String generatePublicKey(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+    public String insertInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         InterfaceHttpDomain httpDomain = new InterfaceHttpDomain();
         try {
@@ -57,5 +56,13 @@ public class InterfaceHttpRest {
         mongoService.insertOne(interfaceHttpEntity);
 
         return ResultMessageBuilder.build().toJSONString();
+    }
+
+    @POST
+    @Path("findInterfaceHttpList")
+    public String findInterfaceHttpList(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
+        String appId = (String) param.get("appId");
+        return JSON.toJSONString(mongoService.getListByAppId(appId, InterfaceHttpEntity.class));
     }
 }

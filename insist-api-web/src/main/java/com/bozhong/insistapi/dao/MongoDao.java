@@ -36,4 +36,12 @@ public interface MongoDao {
      * @return
      */
     <T> JqPage<T> getJqPage(JqPage<T> jqPage, Class<T> tClass);
+
+    /**
+     * @param appId
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> List<T> getListByAppId(String appId, Class<T> tClass);
 }

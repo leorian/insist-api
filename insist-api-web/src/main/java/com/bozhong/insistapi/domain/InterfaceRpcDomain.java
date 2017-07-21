@@ -201,8 +201,8 @@ public class InterfaceRpcDomain implements Serializable{
         interfaceRpcEntity.setFunctionDescribe(this.getFunctionDescribeInput());
         interfaceRpcEntity.setReturnType(this.getReturnTypeInput());
         interfaceRpcEntity.setMethodParam(this.getMethodParamInput());
-        interfaceRpcEntity.setCreateDateTime(date);
-        interfaceRpcEntity.setUpdateDateTime(date);
+        interfaceRpcEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceRpcEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
         return interfaceRpcEntity;
     }
 
@@ -231,8 +231,8 @@ public class InterfaceRpcDomain implements Serializable{
             interfaceParamEntity.setJsontransformat(this.getJsontransformatsInput().get(i));
             interfaceParamEntity.setExample(this.getExamplesInput().get(i));
             interfaceParamEntity.setDefaultValue(this.getDefaultValuesInput().get(i));
-            interfaceParamEntity.setCreateDateTime(date);
-            interfaceParamEntity.setUpdateDateTime(date);
+            interfaceParamEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntities.add(interfaceParamEntity);
         }
 
@@ -249,8 +249,8 @@ public class InterfaceRpcDomain implements Serializable{
         interfaceResultEntity1.setExampleType(ExampleTypeEnum.NORMAL.name());
         interfaceResultEntity1.setExampleContent(this.getReturnExampleContent());
         interfaceResultEntity1.setAttentionMatters(this.getReturnExampleAttentionMatters());
-        interfaceResultEntity1.setCreateDateTime(new Date());
-        interfaceResultEntity1.setUpdateDateTime(new Date());
+        interfaceResultEntity1.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceResultEntity1.setUpdateDateTime(simpleDateFormat.format(new Date()));
         interfaceResultEntities.add(interfaceResultEntity1);
         try {
             Thread.sleep(10L);
@@ -264,8 +264,8 @@ public class InterfaceRpcDomain implements Serializable{
         interfaceResultEntity2.setExampleType(ExampleTypeEnum.EXCEPTION.name());
         interfaceResultEntity2.setExampleContent(this.getExceptionExampleContent());
         interfaceResultEntity2.setAttentionMatters(this.getExceptionAttentionMatters());
-        interfaceResultEntity2.setCreateDateTime(new Date());
-        interfaceResultEntity2.setUpdateDateTime(new Date());
+        interfaceResultEntity2.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceResultEntity2.setUpdateDateTime(simpleDateFormat.format(new Date()));
         interfaceResultEntities.add(interfaceResultEntity2);
         return interfaceResultEntities;
     }

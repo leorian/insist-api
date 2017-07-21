@@ -9,12 +9,14 @@ import com.google.gson.GsonBuilder;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import java.util.*;
 
 import static com.mongodb.client.model.Sorts.descending;
-
+import static com.mongodb.client.model.Filters.eq;
 
 /**
  * Created by xiezg@317hu.com on 2017/4/14 0014.
@@ -61,5 +63,21 @@ public class MongoDaoImpl implements MongoDao {
         jqPage.setRecords((int) mongoCollection.count());
         jqPage.setRows(rows);
         return jqPage;
+    }
+
+    @Override
+    public <T> List<T> getListByAppId(String appId, Class<T> tClass) {
+        Assert.notNull(appId, "appId can't be null!");
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Bson filter = eq("appId", appId);
+        FindIterable<Document> findIterable = mongoCollection.find(filter);
+        Iterator<Document> iterator = findIterable.iterator();
+        List<T> tList = new ArrayList<T>();
+        Gson gson = new Gson();
+        while (iterator.hasNext()) {
+            Document document = iterator.next();
+            tList.add(gson.fromJson(document.toJson(), tClass));
+        }
+        return tList;
     }
 }

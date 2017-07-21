@@ -202,8 +202,8 @@ public class InterfaceHttpDomain implements Serializable {
         interfaceHttpEntity.setAddress(this.getAddressInput());
         interfaceHttpEntity.setName(this.getNameInput());
         interfaceHttpEntity.setDescription(this.getDescriptionInput());
-        interfaceHttpEntity.setCreateDateTime(date);
-        interfaceHttpEntity.setUpdateDateTime(date);
+        interfaceHttpEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceHttpEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
         return interfaceHttpEntity;
     }
 
@@ -232,8 +232,8 @@ public class InterfaceHttpDomain implements Serializable {
             interfaceParamEntity.setJsontransformat(this.getJsontransformatsInput()[i]);
             interfaceParamEntity.setExample(this.getExamplesInput()[i]);
             interfaceParamEntity.setDefaultValue(this.getDefaultValuesInput()[i]);
-            interfaceParamEntity.setCreateDateTime(date);
-            interfaceParamEntity.setUpdateDateTime(date);
+            interfaceParamEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntities.add(interfaceParamEntity);
         }
 
@@ -250,8 +250,8 @@ public class InterfaceHttpDomain implements Serializable {
         interfaceResultEntity1.setExampleType(ExampleTypeEnum.NORMAL.name());
         interfaceResultEntity1.setExampleContent(this.getReturnExampleContent());
         interfaceResultEntity1.setAttentionMatters(this.getReturnExampleAttentionMatters());
-        interfaceResultEntity1.setCreateDateTime(new Date());
-        interfaceResultEntity1.setUpdateDateTime(new Date());
+        interfaceResultEntity1.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceResultEntity1.setUpdateDateTime(simpleDateFormat.format(new Date()));
         interfaceResultEntities.add(interfaceResultEntity1);
         try {
             Thread.sleep(10L);
@@ -265,8 +265,8 @@ public class InterfaceHttpDomain implements Serializable {
         interfaceResultEntity2.setExampleType(ExampleTypeEnum.EXCEPTION.name());
         interfaceResultEntity2.setExampleContent(this.getExceptionExampleContent());
         interfaceResultEntity2.setAttentionMatters(this.getExceptionAttentionMatters());
-        interfaceResultEntity2.setCreateDateTime(new Date());
-        interfaceResultEntity2.setUpdateDateTime(new Date());
+        interfaceResultEntity2.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceResultEntity2.setUpdateDateTime(simpleDateFormat.format(new Date()));
         interfaceResultEntities.add(interfaceResultEntity2);
         return interfaceResultEntities;
     }

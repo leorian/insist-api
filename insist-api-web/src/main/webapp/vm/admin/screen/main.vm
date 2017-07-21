@@ -464,6 +464,39 @@
     </tr>
 </script>
 
+<!--HTTP接口列表-->
+<script id="httpInterfaceTemplate" type="text/x-handlebars-template">
+##{{#if this}}
+{{#each this}}
+<tr>
+    <td class='text-center'>{{id}}</td>
+    <td class='text-center'>{{name}}</td>
+    <td class='text-center'>{{protocol}}</td>
+    <td class='text-center'>{{method}}</td>
+    <td class='text-center'>{{address}}</td>
+    <td class='text-center'>
+        <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
+                data-target='#myHttpModal'>编辑
+        </button>
+        &nbsp;&nbsp;
+        <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
+                data-target='#deleteInterfaceModal'>删除
+        </button>
+        &nbsp;&nbsp;
+        <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
+                data-target="#myHttpPreviewModal">预览
+        </button>
+    </td>
+</tr>
+{{/each}}
+##{{else}}
+##<tr>
+##    <td colspan='6' class='text-center'>暂无信息！</td>
+##</tr>
+##{{/if}}
+</script>
+
+
 <script type="text/javascript">
     $(function () {
         //HTTP接口添加参数
@@ -623,6 +656,11 @@
                 }, "json");
             }
         });
+
+        //HTTP接口列表展示
+        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId":"$!{appDO.appId}"}, function (data) {
+            $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
+        },"json");
 
 
     });
