@@ -13,13 +13,23 @@
     </div>
     <br/>
     <table class="table table-bordered">
-        <th class="text-center">接口ID</th>
-        <th class="text-center">接口名称</th>
-        <th class="text-center">请求协议</th>
-        <th class="text-center">请求方法</th>
-        <th class="text-center">接口地址</th>
-        <th class="text-center">操作</th>
-        <tbody id="httpTableTBody"></tbody>
+        <thead style="background-color: #9acfea">
+            <tr>
+                <th class="text-center">接口ID</th>
+                <th class="text-center">接口名称</th>
+                <th class="text-center">请求协议</th>
+                <th class="text-center">请求方法</th>
+                <th class="text-center">接口地址</th>
+                <th class="text-center">操作</th>
+            </tr>
+        </thead>
+        <tbody id="httpTableTBody">
+            <tr>
+                <td colspan="6" class="text-center">
+                    暂无信息！
+                </td>
+            </tr>
+        </tbody>
     </table>
     <br/>
     <div class="text-right">
@@ -29,11 +39,21 @@
     </div>
     <br/>
     <table class="table table-bordered">
-        <th class="text-center">接口ID</th>
-        <th class="text-center">接口名称</th>
-        <th class="text-center">接口类名</th>
-        <th class="text-center">方法名称</th>
-        <th class="text-center">操作</th>
-        <tbody id="rpcTableTBody"></tbody>
+        <thead>
+            <tr style="background-color: #9acfea">
+                <th class="text-center">接口ID</th>
+                <th class="text-center">接口名称</th>
+                <th class="text-center">接口类名</th>
+                <th class="text-center">方法名称</th>
+                <th class="text-center">操作</th>
+            </tr>
+        </thead>
+        <tbody id="rpcTableTBody">
+        <tr>
+            <td colspan="5" class="text-center">
+                暂无信息！
+            </td>
+        </tr>
+        </tbody>
     </table>
 </div>
