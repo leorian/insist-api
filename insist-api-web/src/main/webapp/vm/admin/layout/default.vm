@@ -71,7 +71,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="button button-little bg-red" href="${ctxPath}/monitor/login.htm">
+                    <a class="button button-little bg-red" href="${ctxPath}/admin/login.htm">
                         <span class="icon-power-off"></span>
                         退出登录
                     </a>
