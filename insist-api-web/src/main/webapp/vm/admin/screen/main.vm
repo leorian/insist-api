@@ -466,7 +466,7 @@
 
 <!--HTTP接口列表-->
 <script id="httpInterfaceTemplate" type="text/x-handlebars-template">
-##{{#if this}}
+{{# if this}}
 {{#each this}}
 <tr>
     <td class='text-center'>{{id}}</td>
@@ -489,11 +489,11 @@
     </td>
 </tr>
 {{/each}}
-##{{else}}
-##<tr>
-##    <td colspan='6' class='text-center'>暂无信息！</td>
-##</tr>
-##{{/if}}
+{{else}}
+<tr>
+    <td colspan='6' class='text-center'>暂无信息！</td>
+</tr>
+{{/if}}
 </script>
 
 
