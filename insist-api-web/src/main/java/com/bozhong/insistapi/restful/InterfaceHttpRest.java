@@ -101,4 +101,13 @@ public class InterfaceHttpRest {
 
         return ResultMessageBuilder.build().toJSONString();
     }
+
+    @POST
+    @Path("deleteInterfaceHttp")
+    public String deleteInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
+        String interfaceId = (String) param.get("interfaceId");
+        mongoService.deleteOneByKey(interfaceId, InterfaceHttpEntity.class);
+        return ResultMessageBuilder.build().toJSONString();
+    }
 }

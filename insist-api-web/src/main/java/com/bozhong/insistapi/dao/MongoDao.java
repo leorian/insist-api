@@ -59,4 +59,11 @@ public interface MongoDao {
      * @param <T>
      */
     <T> void updateOneByKey(String interfaceId, T t);
+
+    /**
+     * @param interfaceId
+     * @param tClass
+     * @param <T>
+     */
+    <T> void deleteOneByKey(String interfaceId,  Class<T> tClass);
 }

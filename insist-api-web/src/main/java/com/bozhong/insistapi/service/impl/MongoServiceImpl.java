@@ -47,6 +47,11 @@ public class MongoServiceImpl implements MongoService {
         mongoDao.updateOneByKey(interfaceId, t);
     }
 
+    @Override
+    public <T> void deleteOneByKey(String interfaceId, Class<T> tClass) {
+        mongoDao.deleteOneByKey(interfaceId, tClass);
+    }
+
     public void setMongoDao(MongoDao mongoDao) {
         this.mongoDao = mongoDao;
     }

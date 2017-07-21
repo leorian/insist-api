@@ -100,4 +100,10 @@ public class MongoDaoImpl implements MongoDao {
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(t.getClass());
         mongoCollection.updateOne(eq("id", interfaceId), new Document("$set", document));
     }
+
+    @Override
+    public <T> void deleteOneByKey(String interfaceId,  Class<T> tClass) {
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        mongoCollection.deleteOne(eq("id", interfaceId));
+    }
 }
