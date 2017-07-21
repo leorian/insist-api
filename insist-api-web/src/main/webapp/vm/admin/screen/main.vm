@@ -556,6 +556,181 @@
     {{/if}}
 </script>
 
+<!--HTTP接口预览模态框模板-->
+<script id="myHttpPreviewModalTemplate" type="text/x-handlebars-template">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <h3 id="interfaceNameView">
+                    {{name}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                接口描述：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="interfaceDescribeView">
+                {{description}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                数据格式：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="dataFormatView">
+                {{transformat}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                请求方式：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="requestMethodView">
+                {{protocol}} + {{method}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                接口地址：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="interfaceAddressView">
+                {{address}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <table class="table table-bordered">
+                    <caption>参数说明</caption>
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                        <th>是否必填</th>
+                        <th>JSON格式化传输</th>
+                        <th>示例</th>
+                        <th>默认值</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myHttpPreviewTBody">
+                    {{# if interfaceParamEntities}}
+                    {{#interfaceParamEntities}}
+                    <tr>
+                        <td>{{paramName}}</td>
+                        <td>{{paramType}}</td>
+                        <td>{{paramDescribe}}</td>
+                        <td>{{required}}</td>
+                        <td>{{jsontransformat}}</td>
+                        <td>{{example}}</td>
+                        <td>{{defaultValue}}</td>
+                    </tr>
+                    {{/interfaceParamEntities}}
+                    {{else}}
+                    <tr>
+                        <td class='text-center' colspan='7'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <ul id="myHttpPreviewTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#returnExampleHttpPreview" data-toggle="tab">
+                            返回示例
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#exceptionExampleHttpPreview" data-toggle="tab">
+                            异常示例
+                        </a>
+                    </li>
+                </ul>
+                <div id="myHttpPreviewTabContent" class="tab-content">
+                    {{# if interfaceResultEntities}}
+                    {{#interfaceResultEntities}}
+                    {{#compareExampleType exampleType "NORMAL" }}
+                    <div class="tab-pane fade in active" id="returnExampleHttpPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>返回示例</h6>
+                            <pre id="httpReturnExampleView">
+    {{# if exampleContent}}
+                                        {{exampleContent}}
+                                    {{else}}
+                                        暂无返回示例！
+                                    {{/if}}
+</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="httpReturnAttentionMattersView">
+    {{# if attentionMatters}}
+                                        {{attentionMatters}}
+                                    {{else}}
+                                        暂无注意事项！
+                                    {{/if}}
+</pre>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="tab-pane fade" id="exceptionExampleHttpPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>异常示例</h6>
+                            <pre id="httpExceptionExampleView">
+    {{# if exampleContent}}
+                                        {{exampleContent}}
+                                    {{else}}
+                                        暂无返回示例！
+                                    {{/if}}
+</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="httpExceptionAttentionMattersView">
+    {{# if attentionMatters}}
+                                        {{attentionMatters}}
+                                    {{else}}
+                                        暂无注意事项！
+                                    {{/if}}
+</pre>
+                        </div>
+                    </div>
+                    {{/compareExampleType}}
+                    {{/interfaceResultEntities}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
 
 <script type="text/javascript">
     $(function () {
@@ -794,6 +969,22 @@
 
         });
 
+        //HTTP接口预览
+        $("#httpTableTBody").delegate("button.btn-warning", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
+                $("#myHttpPreviewModal").find(".modal-body").handlebars($("#myHttpPreviewModalTemplate"), data);
+            },"json");
+        });
+
+        //RPC接口预览
+        $("#rpcTableTBody").delegate("button.btn-warning", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
+                $("#myRpcPreviewModal").find(".modal-body").handlebars($("#myRpcPreviewModalTemplate"), data);
+            },"json");
+        });
+
 
     });
 </script>
@@ -820,6 +1011,171 @@
                 <button type="button" class="btn btn-primary">
                     提交更改
                 </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- HTTP接口预览模态框（Modal） -->
+<div class="modal fade" id="myHttpPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myHttpPreviewModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myHttpPreviewModalLabel">
+                    HTTP接口预览
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <h3 id="interfaceNameView">
+                                <!--接口名称占位符-->
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group text-right">
+                            接口描述：
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group" id="interfaceDescribeView">
+                            <!--接口描述占位符-->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group text-right">
+                            数据格式：
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group" id="dataFormatView">
+                            <!--数据格式占位符（如：JSON）-->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group text-right">
+                            请求方式：
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group" id="requestMethodView">
+                            <!--请求方式占位符（如：HTTP+GET）-->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group text-right">
+                            接口地址：
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group" id="interfaceAddressView">
+                            <!--接口地址占位符-->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <table class="table table-bordered">
+                                <caption>参数说明</caption>
+                                <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>类型</th>
+                                    <th>说明</th>
+                                    <th>是否必填</th>
+                                    <th>JSON格式化传输</th>
+                                    <th>示例</th>
+                                    <th>默认值</th>
+                                </tr>
+                                </thead>
+                                <tbody id="myHttpPreviewTBody">
+                                <!--<tr>-->
+                                <!--<td>userId</td>-->
+                                <!--<td>string</td>-->
+                                <!--<td>用户ID</td>-->
+                                <!--<td>是</td>-->
+                                <!--<td>userId=hello</td>-->
+                                <!--<td>放大发送</td>-->
+                                <!--</tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <ul id="myHttpPreviewTab" class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#returnExampleHttpPreview" data-toggle="tab">
+                                        返回示例
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#exceptionExampleHttpPreview" data-toggle="tab">
+                                        异常示例
+                                    </a>
+                                </li>
+                            </ul>
+                            <div id="myHttpPreviewTabContent" class="tab-content">
+                                <div class="tab-pane fade in active" id="returnExampleHttpPreview">
+                                    <br/>
+                                    <div class="form-group">
+                                        <h6>返回示例</h6>
+                                        <pre id="httpReturnExampleView">
+                                            <!--返回示例占位符-->
+                                        </pre>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <h6>注意事项</h6>
+                                        <pre id="httpReturnAttentionMattersView">
+                                            <!--注意事项占位符-->
+                                        </pre>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="exceptionExampleHttpPreview">
+                                    <br/>
+                                    <div class="form-group">
+                                        <h6>异常示例</h6>
+                                        <pre id="httpExceptionExampleView">
+                                            <!--异常示例占位符-->
+                                        </pre>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <h6>注意事项</h6>
+                                        <pre id="httpExceptionAttentionMattersView">
+                                            <!--注意事项占位符-->
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <!--<button type="button" class="btn btn-primary">-->
+                <!--提交更改-->
+                <!--</button>-->
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
