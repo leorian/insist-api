@@ -115,7 +115,7 @@
                          aria-labelledby="nav-bar-56" aria-expanded="false">
                         <div class="list-group">
                             #foreach($app in $!appDOList)
-                                <a href="${ctxPath}/monitor/empty.htm?appId=${app.appId}" class="list-group-item"
+                                <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
                                    data-appid="${app.appId}">${app.appName}</a>
                             #end
                         </div>
@@ -135,7 +135,7 @@
                          aria-labelledby="nav-bar-78" aria-expanded="false">
                         <div class="list-group">
                             #foreach($app in $!appDOList)
-                                <a href="${ctxPath}/monitor/empty.htm?appId=${app.appId}" class="list-group-item"
+                                <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
                                    data-appid="${app.appId}">${app.appName}</a>
                             #end
                         </div>

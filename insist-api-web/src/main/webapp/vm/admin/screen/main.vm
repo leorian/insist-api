@@ -1,0 +1,39 @@
+<div class="col-md-12">
+    <ol class="breadcrumb">
+        <li class="active">接口管理</li>
+        <li class="active">BOSS平台</li>
+    </ol>
+</div>
+<div class="col-md-12">
+    <br/>
+    <div class="text-right">
+        <button type="button" id="addHttpInterfaceBtn" class="btn btn-info" data-toggle="modal"
+                data-target="#myHttpModal">新增HTTP接口
+        </button>
+    </div>
+    <br/>
+    <table class="table table-bordered">
+        <th class="text-center">接口ID</th>
+        <th class="text-center">接口名称</th>
+        <th class="text-center">请求协议</th>
+        <th class="text-center">请求方法</th>
+        <th class="text-center">接口地址</th>
+        <th class="text-center">操作</th>
+        <tbody id="httpTableTBody"></tbody>
+    </table>
+    <br/>
+    <div class="text-right">
+        <button type="button" id="addRpcInterfaceBtn" class="btn btn-info" data-toggle="modal"
+                data-target="#myRpcModal">新增 RPC 接口
+        </button>
+    </div>
+    <br/>
+    <table class="table table-bordered">
+        <th class="text-center">接口ID</th>
+        <th class="text-center">接口名称</th>
+        <th class="text-center">接口类名</th>
+        <th class="text-center">方法名称</th>
+        <th class="text-center">操作</th>
+        <tbody id="rpcTableTBody"></tbody>
+    </table>
+</div>
