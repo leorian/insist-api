@@ -47,7 +47,7 @@ public class SecurityPipeLine implements PipeLineInter {
         }
 
         String token = tokenCookie.getValue();
-        String uId = myRedisClusterForHessian.getForStr(InsistApiConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
+        String uId = myRedisClusterForHessian.getForStr(InsistApiConstants.INSIST_CENTER_USERNAME_PREFIX + token);
         if (StringUtil.isNotBlank(uId)) {
             httpServletRequest.setAttribute("uId", uId);
             try {

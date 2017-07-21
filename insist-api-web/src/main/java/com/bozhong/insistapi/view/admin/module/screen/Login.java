@@ -37,7 +37,7 @@ public class Login implements ScreenInter {
             tokenCookie.setPath("/");
             tokenCookie.setMaxAge(0);
             response.addCookie(tokenCookie);
-            myRedisClusterForHessian.delForStr(InsistApiConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
+            myRedisClusterForHessian.delForStr(InsistApiConstants.INSIST_CENTER_USERNAME_PREFIX + token);
         }
 
     }
