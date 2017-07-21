@@ -42,6 +42,11 @@ public class MongoServiceImpl implements MongoService {
         return mongoDao.getOneByInterfaceId(interfaceId, tClass);
     }
 
+    @Override
+    public <T> void updateOneByKey(String interfaceId, T t) {
+        mongoDao.updateOneByKey(interfaceId, t);
+    }
+
     public void setMongoDao(MongoDao mongoDao) {
         this.mongoDao = mongoDao;
     }

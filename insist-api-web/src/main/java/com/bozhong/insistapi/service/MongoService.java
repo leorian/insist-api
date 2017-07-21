@@ -55,5 +55,12 @@ public interface MongoService {
      */
     <T> T getOneByInterfaceId(String interfaceId, Class<T> tClass);
 
+    /**
+     * @param interfaceId
+     * @param t
+     * @param <T>
+     */
+    <T> void updateOneByKey(String interfaceId, T t);
+
 
 }

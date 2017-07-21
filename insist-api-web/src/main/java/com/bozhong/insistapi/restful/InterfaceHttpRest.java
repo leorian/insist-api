@@ -73,4 +73,32 @@ public class InterfaceHttpRest {
         String interfaceId = (String) param.get("interfaceId");
         return JSON.toJSONString(mongoService.getOneByInterfaceId(interfaceId, InterfaceHttpEntity.class));
     }
+
+    @POST
+    @Path("updateInterfaceHttp")
+    public String updateInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
+        String interfaceId = (String) param.get("interfaceHttpIdInput");
+        InterfaceHttpDomain httpDomain = new InterfaceHttpDomain();
+        try {
+            BeanUtils.copyProperties(httpDomain, param);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(JSON.toJSONString(httpDomain));
+
+        InterfaceHttpEntity interfaceHttpEntity = httpDomain.buildInterfaceHttpEntity();
+        interfaceHttpEntity.setId(interfaceId);
+        interfaceHttpEntity.setInterfaceParamEntities(httpDomain.
+                buildInterfaceParamEntities(interfaceHttpEntity.getId()));
+        interfaceHttpEntity.setInterfaceResultEntities(httpDomain.
+                buildInterfaceResultEntities(interfaceHttpEntity.getId()));
+
+        mongoService.updateOneByKey(interfaceId, interfaceHttpEntity);
+
+        return ResultMessageBuilder.build().toJSONString();
+    }
 }

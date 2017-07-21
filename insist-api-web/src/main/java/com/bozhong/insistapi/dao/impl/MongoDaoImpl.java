@@ -92,4 +92,12 @@ public class MongoDaoImpl implements MongoDao {
 
         return null;
     }
+
+    @Override
+    public <T> void updateOneByKey(String interfaceId, T t) {
+        Gson gson = new Gson();
+        Document document = gson.fromJson(t.toString(), Document.class);
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(t.getClass());
+        mongoCollection.updateOne(eq("id", interfaceId), new Document("$set", document));
+    }
 }
