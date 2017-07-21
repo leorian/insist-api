@@ -2,7 +2,7 @@ package com.bozhong.insistapi.filter;
 
 
 import com.bozhong.common.util.ResultMessageBuilder;
-import com.bozhong.insistapi.common.DocumentLogger;
+import com.bozhong.insistapi.common.InsistApiLogger;
 import com.bozhong.insistapi.util.DocumentException;
 
 import javax.servlet.*;
@@ -23,7 +23,7 @@ public class ExceptionFilter implements Filter {
         try {
             chain.doFilter(sReq, sRes);
         } catch (Exception e) {
-            DocumentLogger.getSysLogger().error(e.getMessage());
+            InsistApiLogger.getSysLogger().error(e.getMessage());
             if (e instanceof DocumentException) {
                 DocumentException documentException = (DocumentException) e;
                 PrintWriter writer = response.getWriter();

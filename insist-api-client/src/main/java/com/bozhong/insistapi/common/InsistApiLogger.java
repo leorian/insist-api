@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 /**
  * Created by xiezg@317hu.com on 2017/4/25 0025.
  */
-public class DocumentLogger {
+public class InsistApiLogger {
 
     public static Logger getLogger() {
         return Logger.getRootLogger();

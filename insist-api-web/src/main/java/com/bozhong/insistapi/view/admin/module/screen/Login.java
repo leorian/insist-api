@@ -1,7 +1,7 @@
 package com.bozhong.insistapi.view.admin.module.screen;
 
 import com.bozhong.config.util.CookiesUtil;
-import com.bozhong.insistapi.common.DocumentConstants;
+import com.bozhong.insistapi.common.InsistApiConstants;
 import com.bozhong.insistapi.common.WebSettingParam;
 import com.bozhong.myredis.MyRedisClusterForHessian;
 import com.yx.eweb.main.EWebContext;
@@ -37,7 +37,7 @@ public class Login implements ScreenInter {
             tokenCookie.setPath("/");
             tokenCookie.setMaxAge(0);
             response.addCookie(tokenCookie);
-            myRedisClusterForHessian.delForStr(DocumentConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
+            myRedisClusterForHessian.delForStr(InsistApiConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
         }
 
     }

@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 /**
  * Created by xiezg@317hu.com on 2017/4/25 0025.
  */
-public enum DocumentErrorEnum {
+public enum InsistApiErrorEnum {
 
     E10001("E10001", "Parameter Not Defined", "参数未定义！"),
     E10011("E10011", "QiNiu Upload Error", "七牛上传失败"),
@@ -21,7 +21,7 @@ public enum DocumentErrorEnum {
 
     private String cnMsg;
 
-    DocumentErrorEnum(String error, String msg, String cnMsg) {
+    InsistApiErrorEnum(String error, String msg, String cnMsg) {
         this.error = error;
         this.msg = msg;
         this.cnMsg = cnMsg;

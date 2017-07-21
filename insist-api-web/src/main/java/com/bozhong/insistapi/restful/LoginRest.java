@@ -4,8 +4,8 @@ import com.bozhong.common.util.ResultMessageBuilder;
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.config.common.LDAPConnectionConfig;
 import com.bozhong.config.exception.ConfigCenterLoginCodeEnum;
-import com.bozhong.insistapi.common.DocumentConstants;
-import com.bozhong.insistapi.common.DocumentErrorEnum;
+import com.bozhong.insistapi.common.InsistApiConstants;
+import com.bozhong.insistapi.common.InsistApiErrorEnum;
 import com.bozhong.insistapi.util.RSAHelper;
 import com.bozhong.myredis.MyRedisClusterForHessian;
 import com.google.gson.Gson;
@@ -51,22 +51,22 @@ public class LoginRest {
     @POST
     @Path("generatePublicKey")
     public String generatePublicKey(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
-        if (!myRedisClusterForHessian.hasKey(DocumentConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY)) {
+        if (!myRedisClusterForHessian.hasKey(InsistApiConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY)) {
             try {
                 KeyPair keyPair = RSAHelper.generateKeyPair();
                 Map<String, String> map = new HashMap<>();
-                map.put(DocumentConstants.PUBLIC_KEY, RSAHelper.getKeyString(keyPair.getPublic()));
-                map.put(DocumentConstants.PRIVATE_KEY, RSAHelper.getKeyString(keyPair.getPrivate()));
-                myRedisClusterForHessian.put(DocumentConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, map);
+                map.put(InsistApiConstants.PUBLIC_KEY, RSAHelper.getKeyString(keyPair.getPublic()));
+                map.put(InsistApiConstants.PRIVATE_KEY, RSAHelper.getKeyString(keyPair.getPrivate()));
+                myRedisClusterForHessian.put(InsistApiConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, map);
             } catch (Throwable e) {
                 e.printStackTrace();
                 logger.error(e.getMessage());
             }
         }
 
-        Map keyMap = myRedisClusterForHessian.get(DocumentConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
+        Map keyMap = myRedisClusterForHessian.get(InsistApiConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
 
-        return ResultMessageBuilder.build(keyMap.get(DocumentConstants.PUBLIC_KEY)).toJSONString();
+        return ResultMessageBuilder.build(keyMap.get(InsistApiConstants.PUBLIC_KEY)).toJSONString();
     }
 
     @POST
@@ -85,13 +85,13 @@ public class LoginRest {
             return gson.toJson(ConfigCenterLoginCodeEnum.LOGIN_FAIL_NO_PASSWORD.toString());
         }
 
-        Map keyMap = myRedisClusterForHessian.get(DocumentConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
+        Map keyMap = myRedisClusterForHessian.get(InsistApiConstants.DOCUMENT_CENTER_PUBLIC_PRIVATE_KEY, HashMap.class);
         if (keyMap == null) {
-            return gson.toJson(DocumentErrorEnum.E10018.toString());
+            return gson.toJson(InsistApiErrorEnum.E10018.toString());
         }
 
         try {
-            PrivateKey privateKey = RSAHelper.getPrivateKey((String) keyMap.get(DocumentConstants.PRIVATE_KEY));
+            PrivateKey privateKey = RSAHelper.getPrivateKey((String) keyMap.get(InsistApiConstants.PRIVATE_KEY));
             password = RSAHelper.decrypt(privateKey, (new BASE64Decoder()).decodeBuffer(password));
         } catch (Throwable e) {
             logger.error(e.getMessage());
@@ -111,7 +111,7 @@ public class LoginRest {
             String token = MD5.sign(userName + password);
             int expireTimeSecond = 2 * 60 * 60;
             long expireTimeMilSecond = expireTimeSecond * 1000;
-            myRedisClusterForHessian.putForStr(DocumentConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token,
+            myRedisClusterForHessian.putForStr(InsistApiConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token,
                     userName, expireTimeMilSecond);
             Cookie cookie = new Cookie("document_token", token);
             cookie.setMaxAge(expireTimeSecond);

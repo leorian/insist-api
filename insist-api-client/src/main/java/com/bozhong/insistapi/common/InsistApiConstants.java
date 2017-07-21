@@ -3,7 +3,7 @@ package com.bozhong.insistapi.common;
 /**
  * Created by xiezg@317hu.com on 2017/4/25 0025.
  */
-public class DocumentConstants {
+public class InsistApiConstants {
     /**
      * 公钥 秘钥
      */

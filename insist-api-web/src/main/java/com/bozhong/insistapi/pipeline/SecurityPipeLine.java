@@ -3,7 +3,7 @@ package com.bozhong.insistapi.pipeline;
 import com.bozhong.common.util.CollectionUtil;
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.config.util.CookiesUtil;
-import com.bozhong.insistapi.common.DocumentConstants;
+import com.bozhong.insistapi.common.InsistApiConstants;
 import com.bozhong.insistapi.common.WebSettingParam;
 import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.task.DocHttpUtil;
@@ -47,7 +47,7 @@ public class SecurityPipeLine implements PipeLineInter {
         }
 
         String token = tokenCookie.getValue();
-        String uId = myRedisClusterForHessian.getForStr(DocumentConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
+        String uId = myRedisClusterForHessian.getForStr(InsistApiConstants.DOCUMENT_CENTER_USERNAME_PREFIX + token);
         if (StringUtil.isNotBlank(uId)) {
             httpServletRequest.setAttribute("uId", uId);
             try {
