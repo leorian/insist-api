@@ -770,24 +770,12 @@
                         <br/>
                         <div class="form-group">
                             <h6>返回示例</h6>
-                            <pre id="httpReturnExampleView">
-    {{# if exampleContent}}
-                                        {{exampleContent}}
-                                    {{else}}
-                                        暂无返回示例！
-                                    {{/if}}
-</pre>
+                            <pre id="httpReturnExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
                         </div>
                         <br/>
                         <div class="form-group">
                             <h6>注意事项</h6>
-                            <pre id="httpReturnAttentionMattersView">
-    {{# if attentionMatters}}
-                                        {{attentionMatters}}
-                                    {{else}}
-                                        暂无注意事项！
-                                    {{/if}}
-</pre>
+                            <pre id="httpReturnAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                         </div>
                     </div>
                     {{else}}
@@ -795,24 +783,12 @@
                         <br/>
                         <div class="form-group">
                             <h6>异常示例</h6>
-                            <pre id="httpExceptionExampleView">
-    {{# if exampleContent}}
-                                        {{exampleContent}}
-                                    {{else}}
-                                        暂无返回示例！
-                                    {{/if}}
-</pre>
+                            <pre id="httpExceptionExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
                         </div>
                         <br/>
                         <div class="form-group">
                             <h6>注意事项</h6>
-                            <pre id="httpExceptionAttentionMattersView">
-    {{# if attentionMatters}}
-                                        {{attentionMatters}}
-                                    {{else}}
-                                        暂无注意事项！
-                                    {{/if}}
-</pre>
+                            <pre id="httpExceptionAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                         </div>
                     </div>
                     {{/compareExampleType}}
@@ -826,189 +802,165 @@
 
 <!--RPC接口预览-->
 <script id="myRpcPreviewModalTemplate" type="text/x-handlebars-template">
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-            <h3 id="rpcInterfaceNameView">
-                {{name}}
-            </h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <h3 id="rpcInterfaceNameView">
+                    {{name}}
+                </h3>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-2">
-        <div class="form-group text-right">
-            类全路径名称：
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                类全路径名称：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="rpcClassNameView">
+                {{className}}
+            </div>
         </div>
     </div>
-    <div class="col-sm-10">
-        <div class="form-group" id="rpcClassNameView">
-            {{className}}
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                方法名称：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="rpcMethodNameView">
+                {{methodName}}
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-2">
-        <div class="form-group text-right">
-            方法名称：
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                功能描述：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="rpcFunctionDescribeView">
+                {{functionDescribe}}
+            </div>
         </div>
     </div>
-    <div class="col-sm-10">
-        <div class="form-group" id="rpcMethodNameView">
-            {{methodName}}
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                返回值类型：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="rpcReturnTypeView">
+                {{returnType}}
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-2">
-        <div class="form-group text-right">
-            功能描述：
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group text-right">
+                方法参数：
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group" id="rpcMethodParamView">
+                {{methodParam}}
+            </div>
         </div>
     </div>
-    <div class="col-sm-10">
-        <div class="form-group" id="rpcFunctionDescribeView">
-            {{functionDescribe}}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <table class="table table-bordered">
+                    <caption>参数说明</caption>
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                        <th>是否必填</th>
+                        <th>JSON格式化传输</th>
+                        <th>示例</th>
+                        <th>默认值</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myRpcPreviewTBody">
+                    {{# if interfaceParamEntities}}
+                    {{#interfaceParamEntities}}
+                    <tr>
+                        <td>{{paramName}}</td>
+                        <td>{{paramType}}</td>
+                        <td>{{paramDescribe}}</td>
+                        <td>{{required}}</td>
+                        <td>{{jsontransformat}}</td>
+                        <td>{{example}}</td>
+                        <td>{{defaultValue}}</td>
+                    </tr>
+                    {{/interfaceParamEntities}}
+                    {{else}}
+                    <tr>
+                        <td class='text-center' colspan='7'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-2">
-        <div class="form-group text-right">
-            返回值类型：
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <ul id="myRpcPreviewTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#returnExampleRpcPreview" data-toggle="tab">
+                            返回示例
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#exceptionExampleRpcPreview" data-toggle="tab">
+                            异常示例
+                        </a>
+                    </li>
+                </ul>
+                <div id="myRpcPreviewTabContent" class="tab-content">
+                    {{# if interfaceResultEntities}}
+                    {{#interfaceResultEntities}}
+                    {{#compareExampleType exampleType "NORMAL" }}
+                    <div class="tab-pane fade in active" id="returnExampleRpcPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>返回示例</h6>
+                            <pre id="rpcReturnExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="rpcReturnAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="tab-pane fade" id="exceptionExampleRpcPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>异常示例</h6>
+                            <pre id="rpcExceptionExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="rpcExceptionAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                        </div>
+                    </div>
+                    {{/compareExampleType}}
+                    {{/interfaceResultEntities}}
+                    {{/if}}
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-sm-10">
-        <div class="form-group" id="rpcReturnTypeView">
-            {{returnType}}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-2">
-        <div class="form-group text-right">
-            方法参数：
-        </div>
-    </div>
-    <div class="col-sm-10">
-        <div class="form-group" id="rpcMethodParamView">
-            {{methodParam}}
-        </div>
-    </div>
-</div>
-<div class="row">
-<div class="col-sm-12">
-<div class="form-group">
-<table class="table table-bordered">
-    <caption>参数说明</caption>
-    <thead>
-    <tr>
-        <th>名称</th>
-        <th>类型</th>
-        <th>说明</th>
-        <th>是否必填</th>
-        <th>JSON格式化传输</th>
-        <th>示例</th>
-        <th>默认值</th>
-    </tr>
-    </thead>
-<tbody id="myRpcPreviewTBody">
-{{# if interfaceParamEntities}}
-{{#interfaceParamEntities}}
-<tr>
-    <td>{{paramName}}</td>
-    <td>{{paramType}}</td>
-    <td>{{paramDescribe}}</td>
-    <td>{{required}}</td>
-    <td>{{jsontransformat}}</td>
-    <td>{{example}}</td>
-    <td>{{defaultValue}}</td>
-</tr>
-{{/interfaceParamEntities}}
-{{else}}
-<tr>
-    <td class='text-center' colspan='7'>暂无信息！</td>
-</tr>
-{{/if}}
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-12">
-<div class="form-group">
-    <ul id="myRpcPreviewTab" class="nav nav-tabs">
-        <li class="active">
-            <a href="#returnExampleRpcPreview" data-toggle="tab">
-                返回示例
-            </a>
-        </li>
-        <li>
-            <a href="#exceptionExampleRpcPreview" data-toggle="tab">
-                异常示例
-            </a>
-        </li>
-    </ul>
-<div id="myRpcPreviewTabContent" class="tab-content">
-    {{# if interfaceResultEntities}}
-    {{#interfaceResultEntities}}
-    {{#compareExampleType exampleType "NORMAL" }}
-<div class="tab-pane fade in active" id="returnExampleRpcPreview">
-    <br/>
-<div class="form-group">
-    <h6>返回示例</h6>
-<pre id="rpcReturnExampleView">
-    {{# if exampleContent}}
-                                        {{exampleContent}}
-                                    {{else}}
-                                        暂无返回示例！
-                                    {{/if}}
-</pre>
-</div>
-    <br/>
-<div class="form-group">
-    <h6>注意事项</h6>
-<pre id="rpcReturnAttentionMattersView">
-    {{# if attentionMatters}}
-                                        {{attentionMatters}}
-                                    {{else}}
-                                        暂无注意事项！
-                                    {{/if}}
-</pre>
-</div>
-</div>
-    {{else}}
-<div class="tab-pane fade" id="exceptionExampleRpcPreview">
-    <br/>
-<div class="form-group">
-    <h6>异常示例</h6>
-<pre id="rpcExceptionExampleView">
-    {{# if exampleContent}}
-                                        {{exampleContent}}
-                                    {{else}}
-                                        暂无返回示例！
-                                    {{/if}}
-</pre>
-</div>
-    <br/>
-<div class="form-group">
-    <h6>注意事项</h6>
-<pre id="rpcExceptionAttentionMattersView">
-    {{# if attentionMatters}}
-                                        {{attentionMatters}}
-                                    {{else}}
-                                        暂无注意事项！
-                                    {{/if}}
-</pre>
-</div>
-</div>
-    {{/compareExampleType}}
-    {{/interfaceResultEntities}}
-    {{/if}}
-</div>
-</div>
-</div>
-</div>
 </script>
 
 
