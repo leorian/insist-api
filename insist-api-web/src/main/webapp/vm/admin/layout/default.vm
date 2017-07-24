@@ -100,7 +100,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab">
                         <h4 class="panel-title">
-                            <a href="javascript:void(0);">${html_title}</a>
+                            <a href="${ctxPath}/admin/empty.htm">${html_title}</a>
                         </h4>
                     </div>
                 </div>
