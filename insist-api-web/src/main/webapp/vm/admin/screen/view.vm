@@ -2,6 +2,8 @@
     <ol class="breadcrumb">
         <li class="active">接口预览</li>
         <li class="active">$!{appDO.appName}</li>
+        <div style="display:inline;float:right"><a href="${ctxPath}/admin/empty.htm"><span
+                class="glyphicon glyphicon-home" style="color: rgb(212, 106, 64);"></span></a></div>
     </ol>
 </div>
 <div class="col-md-12">
