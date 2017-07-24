@@ -25,6 +25,10 @@ public class Pdf implements ScreenInter {
                     break;
                 }
             }
+        } else {
+            AppDO appDO = new AppDO();
+            appDO.setAppId(appId);
+            eWebContext.put("appDO", appDO);
         }
     }
 }
