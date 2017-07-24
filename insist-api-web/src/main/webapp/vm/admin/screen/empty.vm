@@ -9,7 +9,8 @@
                     #foreach($appDO in $!appDOList)
                         <div class="col-sm-3">
                             <div class="thumbnail text-center">
-                                <h5>$!{appDO.appName}</h5>
+                                <h5><a href="${ctxPath}/admin/main.htm?appId=$!{appDO.appId}"> $!{appDO.appName}</a>
+                                </h5>
                                 <br/>
                                 <br/>
                                 <a href="${ctxPath}/admin/pdf.htm?appId=$!{appDO.appId}&uId=$!{uId}" target="_blank"
