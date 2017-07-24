@@ -177,7 +177,136 @@
 </script>
 #*RPC接口描述文档模板*#
 <script id="interfaceRpcViewTemplate" type="text/x-handlebars-template">
+    {{# if this}}
+    {{# each this}}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-10" style="border-bottom: 2px solid #b2dba1">
+                <h4>{{addOne @index}}.{{name}}</h4>
+            </div>
+            <div class="col-sm-2" style="border-bottom: 2px solid #b2dba1"><h4>RPC</h4></div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 5px;">
+        <div class="col-sm-12">
+            <span>1.类全路径名称 :</span><span>&nbsp;&nbsp;</span><span>{{className}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>2.方法名称 :</span><span>&nbsp;&nbsp;</span><span>{{methodName}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>3.返回值类型 :</span><span>&nbsp;&nbsp;</span><span>{{returnType}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>4.方法参数 :</span><span>&nbsp;&nbsp;</span><span>{{methodParam}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>5.功能描述</span><span>&nbsp;&nbsp;</span><span>{{functionDescribe}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(6).请求参数 :</span><span>&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>类型</th>
+                    <th>说明</th>
+                    <th>是否必填</th>
+                    <th style="width: 20%">JSON格式化传输</th>
+                    <th>示例</th>
+                    <th>默认值</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{# if interfaceParamEntities}}
+                {{#interfaceParamEntities}}
+                <tr>
+                    <td title="{{paramName}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                        {{paramName}}
+                    </td>
+                    <td title="{{paramType}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                        {{paramType}}
+                    </td>
+                    <td title="{{paramDescribe}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                        {{paramDescribe}}
+                    </td>
+                    <td title="{{required}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                        {{required}}
+                    </td>
+                    <td title="{{jsontransformat}}"
+                        style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{jsontransformat}}
+                    </td>
+                    <td title="{{example}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                        {{example}}
+                    </td>
+                    <td title="{{defaultValue}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                        {{defaultValue}}
+                    </td>
+                </tr>
+                {{/interfaceParamEntities}}
+                {{else}}
+                <tr>
+                    <td class='text-center' colspan='7'>暂无信息！</td>
+                </tr>
+                {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(6).返回示例及注意事项 :</span><span>&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
+        <div class="col-sm-12">
+            {{# if interfaceResultEntities}}
+            {{#interfaceResultEntities}}
+            {{#compareExampleType exampleType "NORMAL" }}
+            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+            {{/compareExampleType}}
+            {{/interfaceResultEntities}}
+            {{/if}}
 
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(7).异常示例及注意事项 :</span><span>&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
+        <div class="col-sm-12">
+            {{# if interfaceResultEntities}}
+            {{#interfaceResultEntities}}
+            {{#compareExampleType exampleType "EXCEPTION" }}
+            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+            {{/compareExampleType}}
+            {{/interfaceResultEntities}}
+            {{/if}}
+        </div>
+    </div>
+    <br/>
+    {{/each}}
+    {{else}}
+    <h3 class="text-center">暂无 RPC 相关接口列表信息！</h3>
+    {{/if}}
 </script>
 <script type="text/javascript">
     $(function () {
