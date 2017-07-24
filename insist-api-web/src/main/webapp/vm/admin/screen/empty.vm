@@ -5,7 +5,6 @@
                 <h3 class="panel-title">项目概览</h3>
             </div>
             <div class="panel-body">
-            ##                对不起，您没有任何应用的管理权限，请联系运维管理员进行授权！
                 <div class="row">
                     #foreach($appDO in $!appDOList)
                         <div class="col-sm-3">
