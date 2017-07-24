@@ -6,4 +6,120 @@
 </div>
 <div class="col-md-12">
 
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>1.注册接口</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <span>(1).接口地址 :</span><span>&nbsp;&nbsp;</span><span>http://wwww.51qingyuan.com/register.php</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(2).支持格式 :</span><span>&nbsp;&nbsp;</span><span>json</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(3).请求方式 :</span><span>&nbsp;&nbsp;</span><span>post</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(4).请求参数 :</span><span>&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>必填</th>
+                    <th>类型</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>invitation_code</td>
+                    <td>是</td>
+                    <td>string</td>
+                    <td>单位邀请码</td>
+                </tr>
+                <tr>
+                    <td>phone_number</td>
+                    <td>是</td>
+                    <td>string</td>
+                    <td>手机号</td>
+                </tr>
+                <tr>
+                    <td>verification_code</td>
+                    <td>是</td>
+                    <td>string</td>
+                    <td>短信验证码</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(5).返回字段说明 :</span><span>&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+        <div class="col-sm-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>类型</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>error_code</td>
+                    <td>int</td>
+                    <td>返回码</td>
+                </tr>
+                <tr>
+                    <td>result</td>
+                    <td>string</td>
+                    <td>返回说明</td>
+                </tr>
+                <tr>
+                    <td>company</td>
+                    <td>string</td>
+                    <td>所在单位</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(6).返回示例及注意事项 :</span><span>&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+        <div class="col-sm-12">
+            <pre>暂无返回示例！</pre>
+            <pre>暂无返回示例注意事项！</pre>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(7).异常示例及注意事项 :</span><span>&nbsp;&nbsp;</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+        <div class="col-sm-12">
+            <pre>暂无异常示例！</pre>
+            <pre>暂无异常示例注意事项！</pre>
+        </div>
+    </div>
 </div>
