@@ -15,21 +15,27 @@
     <div class="row">
         <div class="col-sm-12">
             <h4>{{addOne @index}}.{{name}}</h4>
+            <hr/>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <span>(1).接口地址 :</span><span>&nbsp;&nbsp;</span><span>http://wwww.51qingyuan.com/register.php</span>
+            <span>(1).接口地址 :</span><span>&nbsp;&nbsp;</span><span>{{address}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>(2).支持格式 :</span><span>&nbsp;&nbsp;</span><span>json</span>
+            <span>(2).接口描述 :</span><span>&nbsp;&nbsp;</span><span>{{description}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>(3).请求方式 :</span><span>&nbsp;&nbsp;</span><span>post</span>
+            <span>(3).数据格式 :</span><span>&nbsp;&nbsp;</span><span>{{transformat}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <span>(4).请求方式 :</span><span>&nbsp;&nbsp;</span><span>{{protocol}} + {{method}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
@@ -128,6 +134,7 @@
             <pre>暂无异常示例注意事项！</pre>
         </div>
     </div>
+    <br/>
     {{/each}}
     {{/if}}
 </script>
