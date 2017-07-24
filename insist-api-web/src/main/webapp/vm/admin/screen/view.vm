@@ -14,11 +14,13 @@
     {{# each this}}
     <div class="row">
         <div class="col-sm-12">
-            <h4>{{addOne @index}}.{{name}}</h4>
-            <hr/>
+            <div class="col-sm-10" style="border-bottom: 3px solid #b2dba1">
+                <h4>{{addOne @index}}.{{name}}</h4>
+            </div>
+            <div class="col-sm-2" style="border-bottom: 3px solid #b2dba1"><h4>HTTP</h4></div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 5px;">
         <div class="col-sm-12">
             <span>(1).接口地址 :</span><span>&nbsp;&nbsp;</span><span>{{address}}</span>
         </div>
