@@ -31,7 +31,7 @@
             <span>(4).请求参数 :</span><span>&nbsp;&nbsp;</span>
         </div>
     </div>
-    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed">
                 <thead>
@@ -70,7 +70,7 @@
             <span>(5).返回字段说明 :</span><span>&nbsp;&nbsp;</span>
         </div>
     </div>
-    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
         <div class="col-sm-12">
             <table class="table table-bordered">
                 <thead>
@@ -105,7 +105,7 @@
             <span>(6).返回示例及注意事项 :</span><span>&nbsp;&nbsp;</span>
         </div>
     </div>
-    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
         <div class="col-sm-12">
             <pre>暂无返回示例！</pre>
             <pre>暂无返回示例注意事项！</pre>
@@ -116,7 +116,7 @@
             <span>(7).异常示例及注意事项 :</span><span>&nbsp;&nbsp;</span>
         </div>
     </div>
-    <div class="row" style="margin-top: 6px; padding-left: 12px;">
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
         <div class="col-sm-12">
             <pre>暂无异常示例！</pre>
             <pre>暂无异常示例注意事项！</pre>
