@@ -5,12 +5,16 @@
     </ol>
 </div>
 <div class="col-md-12">
-    <div id="interfaceHttpViewPanel">
-    #*HTTP接口描述文档显示区域*#
+    <div class="panel panel-primary">
+        <div class="panel-body" id="interfaceHttpViewPanel">
+        #*HTTP接口描述文档显示区域*#
+        </div>
     </div>
-    <div id="interfaceRpcViewPanel">
-    #*RPC接口描述文档显示区域*#
-    </div>
+   <div class="panel panel-primary">
+       <div class="panel-body" id="interfaceRpcViewPanel">
+       #*RPC接口描述文档显示区域*#
+       </div>
+   </div>
 </div>
 #*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
