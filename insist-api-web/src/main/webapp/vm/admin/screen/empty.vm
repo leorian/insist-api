@@ -5,7 +5,23 @@
                 <h3 class="panel-title">系统公告</h3>
             </div>
             <div class="panel-body">
-                对不起，您没有任何应用的管理权限，请联系运维管理员进行授权！
+            ##                对不起，您没有任何应用的管理权限，请联系运维管理员进行授权！
+                <div class="row">
+                    #foreach($appDO in $!appDOList)
+                        <div class="col-sm-3">
+                            <div class="thumbnail text-center">
+                                <h5>$!{appDO.appName}</h5>
+                                <br/>
+                                <br/>
+                                <a href="${ctxPath}/admin/pdf.htm?appId=$!{appDO.appId}" target="_blank"
+                                   class="btn btn-info btn-xs">在线预览</a>
+                                <a class="btn btn-success btn-xs">导出PDF</a>
+                                <br/>
+                                <br/>
+                            </div>
+                        </div>
+                    #end
+                </div>
             </div>
         </div>
     </div>
