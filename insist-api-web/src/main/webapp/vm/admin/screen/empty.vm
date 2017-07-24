@@ -13,7 +13,7 @@
                                 <h5>$!{appDO.appName}</h5>
                                 <br/>
                                 <br/>
-                                <a href="${ctxPath}/admin/pdf.htm?appId=$!{appDO.appId}" target="_blank"
+                                <a href="${ctxPath}/admin/pdf.htm?appId=$!{appDO.appId}&uId=$!{uId}" target="_blank"
                                    class="btn btn-info btn-xs">在线预览</a>
                                 <a href="${ctxPath}/rest/download/exportApi.pdf?appId=$!{appDO.appId}" target="_blank"
                                    class="btn btn-success btn-xs">导出PDF</a>

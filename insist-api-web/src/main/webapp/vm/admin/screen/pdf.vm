@@ -1,4 +1,6 @@
 <div class="col-md-12">
+    <div class="text-center"><h1>$!{appDO.appName}-API接口说明文档</h1></div>
+    <hr/>
 ##    <div class="panel panel-primary">
     <div class="panel-body" id="interfaceHttpViewPanel">
     #*HTTP接口描述文档显示区域*#

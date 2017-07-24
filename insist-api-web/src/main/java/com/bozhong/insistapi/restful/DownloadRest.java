@@ -33,14 +33,16 @@ public class DownloadRest {
     public void findInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         String appId = (String) EWebServletContext.getEWebContext().get("appId");
         String requestUrl = EWebServletContext.getRequest().getRequestURL().toString();
+        String uId = (String) EWebServletContext.getRequest().getAttribute("uId");
         requestUrl = requestUrl.replaceAll("rest/download/exportApi.pdf", "admin/pdf.htm?appId=" + appId);
+        requestUrl += ("&uId=" + uId);
         String filePath = System.getProperty("openOffice.storage") + File.separator + UUID.randomUUID().toString() + ".pdf";
         if (!new File(filePath).exists()) {
             new File(filePath).getParentFile().mkdirs();
         }
-        DownUtil.wkHtmlToPdf(requestUrl,filePath);
+        DownUtil.wkHtmlToPdf(requestUrl, filePath);
         try {
-            DownUtil.downLoad(filePath,EWebServletContext.getResponse(), true);
+            DownUtil.downLoad(filePath, EWebServletContext.getResponse(), true);
         } catch (Exception e) {
             e.printStackTrace();
         }

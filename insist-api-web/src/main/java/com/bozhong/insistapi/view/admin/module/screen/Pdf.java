@@ -2,11 +2,13 @@ package com.bozhong.insistapi.view.admin.module.screen;
 
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.entity.AppDO;
+import com.bozhong.insistapi.task.DocHttpUtil;
 import com.yx.eweb.main.EWebContext;
 import com.yx.eweb.main.ScreenInter;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -17,7 +19,15 @@ public class Pdf implements ScreenInter {
     @Override
     public void excute(EWebContext eWebContext) {
         String appId = eWebContext.getRequest().getParameter("appId");
+        String uId = eWebContext.getRequest().getParameter("uId");
         List<AppDO> appDOList = (List<AppDO>) eWebContext.getRequest().getAttribute("appDOList");
+        if (CollectionUtils.isEmpty(appDOList)) {
+            try {
+                appDOList = DocHttpUtil.getAppDOList(uId);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         if (!CollectionUtils.isEmpty(appDOList) && StringUtil.isNotBlank(appId)) {
             for (AppDO appDO : appDOList) {
                 if (appDO.getAppId().equals(appId)) {
