@@ -43,4 +43,8 @@
         }
     });
 
+    Handlebars.registerHelper("addOne", function (index, options) {
+        return parseInt(index) + 1;
+    });
+
 })(jQuery);

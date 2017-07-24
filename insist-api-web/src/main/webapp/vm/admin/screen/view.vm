@@ -5,10 +5,16 @@
     </ol>
 </div>
 <div class="col-md-12">
-
+    <div id="interfaceHttpViewPanel">
+    #*HTTP接口描述文档显示区域*#
+    </div>
+</div>
+<script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
+    {{# if this}}
+    {{# each this}}
     <div class="row">
         <div class="col-sm-12">
-            <h4>1.注册接口</h4>
+            <h4>{{addOne @index}}.{{name}}</h4>
         </div>
     </div>
     <div class="row">
@@ -122,4 +128,14 @@
             <pre>暂无异常示例注意事项！</pre>
         </div>
     </div>
-</div>
+    {{/each}}
+    {{/if}}
+</script>
+<script type="text/javascript">
+    $(function () {
+        //HTTP接口列表展示
+        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
+            $("#interfaceHttpViewPanel").handlebars($("#interfaceHttpViewTemplate"), data);
+        }, "json");
+    });
+</script>
