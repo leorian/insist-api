@@ -1,10 +1,4 @@
 <div class="col-md-12">
-    <ol class="breadcrumb">
-        <li class="active">接口预览</li>
-        <li class="active">$!{appDO.appName}</li>
-    </ol>
-</div>
-<div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-body" id="interfaceHttpViewPanel">
         #*HTTP接口描述文档显示区域*#
@@ -103,41 +97,6 @@
             </table>
         </div>
     </div>
-    ##    <div class="row" style="margin-top: 3px;">
-    ##        <div class="col-sm-12">
-    ##            <span>(5).返回字段说明 :</span><span>&nbsp;&nbsp;</span>
-    ##        </div>
-    ##    </div>
-    ##    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
-    ##        <div class="col-sm-12">
-    ##            <table class="table table-bordered">
-    ##                <thead>
-    ##                <tr>
-    ##                    <th>名称</th>
-    ##                    <th>类型</th>
-    ##                    <th>说明</th>
-    ##                </tr>
-    ##                </thead>
-    ##                <tbody>
-    ##                <tr>
-    ##                    <td>error_code</td>
-    ##                    <td>int</td>
-    ##                    <td>返回码</td>
-    ##                </tr>
-    ##                <tr>
-    ##                    <td>result</td>
-    ##                    <td>string</td>
-    ##                    <td>返回说明</td>
-    ##                </tr>
-    ##                <tr>
-    ##                    <td>company</td>
-    ##                    <td>string</td>
-    ##                    <td>所在单位</td>
-    ##                </tr>
-    ##                </tbody>
-    ##            </table>
-    ##        </div>
-    ##    </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
             <span>(6).返回示例及注意事项 :</span><span>&nbsp;&nbsp;</span>

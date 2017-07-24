@@ -10,6 +10,9 @@
         <ignore page="/login/generatePublicKey"></ignore>
         <ignore page="/login/checkLogin"></ignore>
         <ignore page="/admin/login.htm"></ignore>
+        <ignore page="/admin/pdf.htm"></ignore>
+        <ignore page="/interfaceHttp/findInterfaceHttpList"></ignore>
+        <ignore page="/interfaceRpc/findInterfaceRpcList"></ignore>
     </ignores>
     <notIgnores>
         <notIgnore regular="^[\w\W]*/rest/[\w\W]*$"></notIgnore>

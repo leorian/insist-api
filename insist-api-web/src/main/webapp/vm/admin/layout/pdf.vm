@@ -5,7 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <title>${html_title}</title>
+    <title>API接口描述文档</title>
     <link rel="Shortcut Icon" href="${ctxPath}/webFrame/bootstrap-3.3.5/bootstrap/images/logo.ico">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="${ctxPath}/webFrame/bootstrap-3.3.5/bootstrap/css/bootstrap.min.css">
@@ -62,24 +62,6 @@
     </script>
 </head>
 <body>
-<!-- 头部 -->
-<header id="header" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-collapse collapse header-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="javascript:void(0);"> 登录者：$!{uId}</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="button button-little bg-red" href="${ctxPath}/admin/login.htm">
-                        <span class="icon-power-off"></span>
-                        退出登录
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</header>
 <br/>
 <br/>
 <br/>
@@ -94,73 +76,6 @@
     </div>
 
     <div class="row">
-##        <div class="col-md-3" style="min-height: 1024px;">
-##            <div id="nav-bar-left-list" class="panel-group" role="tablist"
-##                 aria-multiselectable="true">
-##                <div class="panel panel-default">
-##                    <div class="panel-heading" role="tab">
-##                        <h4 class="panel-title">
-##                            <a href="javascript:void(0);">${html_title}</a>
-##                        </h4>
-##                    </div>
-##                </div>
-##
-##                <div class="panel panel-default">
-##                    <div id="nav-bar-56" class="panel-heading" role="tab">
-##                        <h4 class="panel-title">
-##                            <a href="#nav-bar-list-56" data-parent="#nav-bar-left-list" data-toggle="collapse"
-##                               aria-expanded="true" aria-controls="nav-bar-list-56"
-##                               aria-controls="collapseOne">接口管理</a>
-##                        </h4>
-##                    </div>
-##                    <div id="nav-bar-list-56"
-##                         class="panel-collapse collapse in" role="tabpanel"
-##                         aria-labelledby="nav-bar-56" aria-expanded="false">
-##                        <div class="list-group">
-##                            #foreach($app in $!appDOList)
-##                                <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
-##                                    #if($menu=="Main" && ${app.mainSelectType})
-##                                   style="color: blue;"
-##                                    #end
-##                                   data-appid="${app.appId}">${app.appName}</a>
-##                            #end
-##                        </div>
-##                    </div>
-##                </div>
-##
-##                <div class="panel panel-default">
-##                    <div id="nav-bar-78" class="panel-heading" role="tab">
-##                        <h4 class="panel-title">
-##                            <a href="#nav-bar-list-78" data-parent="#nav-bar-left-list" data-toggle="collapse"
-##                               aria-expanded="true" aria-controls="nav-bar-list-78"
-##                               aria-controls="collapseOne">接口预览</a>
-##                        </h4>
-##                    </div>
-##                    <div id="nav-bar-list-78"
-##                         class="panel-collapse collapse in" role="tabpanel"
-##                         aria-labelledby="nav-bar-78" aria-expanded="false">
-##                        <div class="list-group">
-##                            #foreach($app in $!appDOList)
-##                                <a href="${ctxPath}/admin/view.htm?appId=${app.appId}" class="list-group-item"
-##                                    #if($menu=="View" && ${app.viewSelectType})
-##                                   style="color: blue;"
-##                                    #end
-##                                   data-appid="${app.appId}">${app.appName}</a>
-##                            #end
-##                        </div>
-##                    </div>
-##                </div>
-##
-##
-##            </div>
-##
-##            <div class="row" id="ad_nav_left_bottom" style="display:none;">
-##                <div class="col-md-12">
-##                    <div class="bs-callout bs-callout-danger script"></div>
-##                </div>
-##            </div>
-##        </div>
-        <!-- 导航 -->
         <div class="col-md-12">
 
             <div class="row" id="ad_page_top" style="display:none;">
@@ -192,28 +107,5 @@
 <br/>
 <br/>
 <br/>
-<!-- 尾部 -->
-<footer class="footer navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="navbar-collapse collapse header-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="javascript:void(0);"><img src="${ctxPath}/webFrame/timg.jpg" width="50px" height="30px"/>&nbsp;&nbsp;317护</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="button button-little bg-red" href="javascript:void(0);">
-                        <span class="icon-power-off"></span>
-                        ${switch_crop}<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        ${switch_department}
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</footer>
-
 </body>
 </html>
