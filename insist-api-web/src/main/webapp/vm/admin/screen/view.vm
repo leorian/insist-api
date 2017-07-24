@@ -14,10 +14,10 @@
     {{# each this}}
     <div class="row">
         <div class="col-sm-12">
-            <div class="col-sm-10" style="border-bottom: 3px solid #b2dba1">
+            <div class="col-sm-10" style="border-bottom: 2px solid #b2dba1">
                 <h4>{{addOne @index}}.{{name}}</h4>
             </div>
-            <div class="col-sm-2" style="border-bottom: 3px solid #b2dba1"><h4>HTTP</h4></div>
+            <div class="col-sm-2" style="border-bottom: 2px solid #b2dba1"><h4>HTTP</h4></div>
         </div>
     </div>
     <div class="row" style="margin-top: 5px;">
@@ -42,7 +42,7 @@
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>(4).请求参数 :</span><span>&nbsp;&nbsp;</span>
+            <span>(5).请求参数 :</span><span>&nbsp;&nbsp;</span>
         </div>
     </div>
     <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
@@ -51,69 +51,71 @@
                 <thead>
                 <tr>
                     <th>名称</th>
-                    <th>必填</th>
                     <th>类型</th>
                     <th>说明</th>
+                    <th>是否必填</th>
+                    <th style="width: 20%">JSON格式化传输</th>
+                    <th>示例</th>
+                    <th>默认值</th>
                 </tr>
                 </thead>
                 <tbody>
+                {{# if interfaceParamEntities}}
+                {{#interfaceParamEntities}}
                 <tr>
-                    <td>invitation_code</td>
-                    <td>是</td>
-                    <td>string</td>
-                    <td>单位邀请码</td>
+                    <td title="{{paramName}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{paramName}}</td>
+                    <td title="{{paramType}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{paramType}}</td>
+                    <td title="{{paramDescribe}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{paramDescribe}}</td>
+                    <td title="{{required}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{required}}</td>
+                    <td title="{{jsontransformat}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{jsontransformat}}</td>
+                    <td title="{{example}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{example}}</td>
+                    <td title="{{defaultValue}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{defaultValue}}</td>
                 </tr>
+                {{/interfaceParamEntities}}
+                {{else}}
                 <tr>
-                    <td>phone_number</td>
-                    <td>是</td>
-                    <td>string</td>
-                    <td>手机号</td>
+                    <td class='text-center' colspan='7'>暂无信息！</td>
                 </tr>
-                <tr>
-                    <td>verification_code</td>
-                    <td>是</td>
-                    <td>string</td>
-                    <td>短信验证码</td>
-                </tr>
+                {{/if}}
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="row" style="margin-top: 3px;">
-        <div class="col-sm-12">
-            <span>(5).返回字段说明 :</span><span>&nbsp;&nbsp;</span>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
-        <div class="col-sm-12">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>名称</th>
-                    <th>类型</th>
-                    <th>说明</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>error_code</td>
-                    <td>int</td>
-                    <td>返回码</td>
-                </tr>
-                <tr>
-                    <td>result</td>
-                    <td>string</td>
-                    <td>返回说明</td>
-                </tr>
-                <tr>
-                    <td>company</td>
-                    <td>string</td>
-                    <td>所在单位</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+##    <div class="row" style="margin-top: 3px;">
+##        <div class="col-sm-12">
+##            <span>(5).返回字段说明 :</span><span>&nbsp;&nbsp;</span>
+##        </div>
+##    </div>
+##    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
+##        <div class="col-sm-12">
+##            <table class="table table-bordered">
+##                <thead>
+##                <tr>
+##                    <th>名称</th>
+##                    <th>类型</th>
+##                    <th>说明</th>
+##                </tr>
+##                </thead>
+##                <tbody>
+##                <tr>
+##                    <td>error_code</td>
+##                    <td>int</td>
+##                    <td>返回码</td>
+##                </tr>
+##                <tr>
+##                    <td>result</td>
+##                    <td>string</td>
+##                    <td>返回说明</td>
+##                </tr>
+##                <tr>
+##                    <td>company</td>
+##                    <td>string</td>
+##                    <td>所在单位</td>
+##                </tr>
+##                </tbody>
+##            </table>
+##        </div>
+##    </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
             <span>(6).返回示例及注意事项 :</span><span>&nbsp;&nbsp;</span>
