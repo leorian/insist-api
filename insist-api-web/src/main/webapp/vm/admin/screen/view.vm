@@ -167,6 +167,8 @@
     </div>
     <br/>
     {{/each}}
+    {{else}}
+    <h3 class="text-center">暂无相关接口列表信息！</h3>
     {{/if}}
 </script>
 <script type="text/javascript">
