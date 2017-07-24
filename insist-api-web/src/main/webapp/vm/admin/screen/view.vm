@@ -8,7 +8,11 @@
     <div id="interfaceHttpViewPanel">
     #*HTTP接口描述文档显示区域*#
     </div>
+    <div id="interfaceRpcViewPanel">
+    #*RPC接口描述文档显示区域*#
+    </div>
 </div>
+#*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{# each this}}
@@ -171,11 +175,20 @@
     <h3 class="text-center">暂无相关接口列表信息！</h3>
     {{/if}}
 </script>
+#*RPC接口描述文档模板*#
+<script id="interfaceRpcViewTemplate" type="text/x-handlebars-template">
+
+</script>
 <script type="text/javascript">
     $(function () {
         //HTTP接口列表展示
         $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#interfaceHttpViewPanel").handlebars($("#interfaceHttpViewTemplate"), data);
+        }, "json");
+
+        //RPC接口列表展示
+        $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
+            $("#interfaceRpcViewPanel").handlebars($("#interfaceRpcViewTemplate"), data);
         }, "json");
     });
 </script>
