@@ -45,6 +45,13 @@ public class InterfaceHttpDomain implements Serializable {
     private String exceptionExampleContent;
     private String exceptionAttentionMatters;
 
+
+    private String devAddressInput;
+    private String sitAddressInput;
+    private String uatAddressInput;
+    private String prdAddressInput;
+
+
     public String getAppIdInput() {
         return appIdInput;
     }
@@ -189,6 +196,38 @@ public class InterfaceHttpDomain implements Serializable {
         this.exceptionAttentionMatters = exceptionAttentionMatters;
     }
 
+    public String getDevAddressInput() {
+        return devAddressInput;
+    }
+
+    public void setDevAddressInput(String devAddressInput) {
+        this.devAddressInput = devAddressInput;
+    }
+
+    public String getSitAddressInput() {
+        return sitAddressInput;
+    }
+
+    public void setSitAddressInput(String sitAddressInput) {
+        this.sitAddressInput = sitAddressInput;
+    }
+
+    public String getUatAddressInput() {
+        return uatAddressInput;
+    }
+
+    public void setUatAddressInput(String uatAddressInput) {
+        this.uatAddressInput = uatAddressInput;
+    }
+
+    public String getPrdAddressInput() {
+        return prdAddressInput;
+    }
+
+    public void setPrdAddressInput(String prdAddressInput) {
+        this.prdAddressInput = prdAddressInput;
+    }
+
     public InterfaceHttpEntity buildInterfaceHttpEntity() {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
@@ -203,6 +242,10 @@ public class InterfaceHttpDomain implements Serializable {
         interfaceHttpEntity.setDescription(this.getDescriptionInput());
         interfaceHttpEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
         interfaceHttpEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
+        interfaceHttpEntity.setDevAddress(this.getDevAddressInput());
+        interfaceHttpEntity.setSitAddress(this.getSitAddressInput());
+        interfaceHttpEntity.setUatAddress(this.getUatAddressInput());
+        interfaceHttpEntity.setPrdAddress(this.getPrdAddressInput());
         return interfaceHttpEntity;
     }
 

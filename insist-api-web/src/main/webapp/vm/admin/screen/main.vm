@@ -123,6 +123,34 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
+                                <input type="text" name="devAddressInput" class="form-control" placeholder="开发环境接口地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="sitAddressInput" class="form-control" placeholder="测试环境接口地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="uatAddressInput" class="form-control" placeholder="UAT环境接口地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="prdAddressInput" class="form-control" placeholder="线上环境接口地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
                                 <input type="text" name="nameInput" class="form-control" value="" placeholder="接口名称"/>
                             </div>
                         </div>
@@ -545,7 +573,8 @@
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
                 #foreach($item in $!{paramTypeEnumList})
-                    <option {{#compareParamType paramType "$item" }} selected="selected" {{/compareParamType}}
+                    <option {{#compareParamType paramType
+                    "$item" }} selected="selected" {{/compareParamType}}
                     value="$item">$item</option>
                 #end
             </select>
@@ -675,50 +704,98 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div class="form-group text-right">
                 接口描述：
             </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="form-group" id="interfaceDescribeView">
                 {{description}}
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div class="form-group text-right">
                 数据格式：
             </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="form-group" id="dataFormatView">
                 {{transformat}}
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div class="form-group text-right">
                 请求方式：
             </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="form-group" id="requestMethodView">
                 {{protocol}} + {{method}}
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <div class="form-group text-right">
                 接口地址：
             </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="form-group" id="interfaceAddressView">
                 {{address}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group text-right">
+                开发环境接口地址：
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-group" id="devAddressView">
+                {{devAddress}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group text-right">
+                测试环境接口地址：
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-group" id="sitAddressView">
+                {{sitAddress}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group text-right">
+                UAT环境接口地址：
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-group" id="uatAddressView">
+                {{uatAddress}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group text-right">
+                线上环境接口地址：
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-group" id="prdAddressView">
+                {{prdAddress}}
             </div>
         </div>
     </div>
@@ -1161,6 +1238,10 @@
                 $("#myHttpModal").find("input[name='addressInput']").val(data.address);
                 $("#myHttpModal").find("input[name='nameInput']").val(data.name);
                 $("#myHttpModal").find("textarea[name='descriptionInput']").val(data.description);
+                $("#myHttpModal").find("input[name='devAddressInput']").val(data.devAddress);
+                $("#myHttpModal").find("input[name='sitAddressInput']").val(data.sitAddress);
+                $("#myHttpModal").find("input[name='uatAddressInput']").val(data.uatAddress);
+                $("#myHttpModal").find("input[name='prdAddressInput']").val(data.prdAddress);
 
                 //请求参数
                 $("#myHttpModal").find("tbody").handlebars($("#httpRequestParamEditTemplate"), data);

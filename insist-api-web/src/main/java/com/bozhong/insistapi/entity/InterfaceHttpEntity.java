@@ -73,6 +73,26 @@ public class InterfaceHttpEntity extends BaseEntity {
      */
     private List<InterfaceResultEntity> interfaceResultEntities;
 
+    /**
+     * 开发环境地址
+     */
+    private String devAddress;
+
+    /**
+     * 测试环境地址
+     */
+    private String sitAddress;
+
+    /**
+     * UAT环境地址
+     */
+    private String uatAddress;
+
+    /**
+     * PRD环境地址
+     */
+    private String prdAddress;
+
     public String getId() {
         return id;
     }
@@ -80,7 +100,6 @@ public class InterfaceHttpEntity extends BaseEntity {
     public void setId(String id) {
         this.id = id;
     }
-
 
 
     public String getAppId() {
@@ -153,6 +172,38 @@ public class InterfaceHttpEntity extends BaseEntity {
 
     public void setInterfaceResultEntities(List<InterfaceResultEntity> interfaceResultEntities) {
         this.interfaceResultEntities = interfaceResultEntities;
+    }
+
+    public String getDevAddress() {
+        return devAddress;
+    }
+
+    public void setDevAddress(String devAddress) {
+        this.devAddress = devAddress;
+    }
+
+    public String getSitAddress() {
+        return sitAddress;
+    }
+
+    public void setSitAddress(String sitAddress) {
+        this.sitAddress = sitAddress;
+    }
+
+    public String getUatAddress() {
+        return uatAddress;
+    }
+
+    public void setUatAddress(String uatAddress) {
+        this.uatAddress = uatAddress;
+    }
+
+    public String getPrdAddress() {
+        return prdAddress;
+    }
+
+    public void setPrdAddress(String prdAddress) {
+        this.prdAddress = prdAddress;
     }
 
     @Override
