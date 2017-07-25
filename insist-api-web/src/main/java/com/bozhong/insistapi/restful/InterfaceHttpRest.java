@@ -37,7 +37,7 @@ public class InterfaceHttpRest {
     public String insertInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         InterfaceHttpDomain httpDomain = new InterfaceHttpDomain();
         try {
-            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest());
+            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest().getParameterMap());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

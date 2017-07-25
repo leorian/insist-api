@@ -37,7 +37,7 @@ public class InterfaceRpcRest {
     public String insertInterfaceRpc(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         InterfaceRpcDomain httpDomain = new InterfaceRpcDomain();
         try {
-            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest());
+            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest().getParameterMap());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -80,7 +80,7 @@ public class InterfaceRpcRest {
         String interfaceId = (String) param.get("interfaceRpcIdInput");
         InterfaceRpcDomain httpDomain = new InterfaceRpcDomain();
         try {
-            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest());
+            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest().getParameterMap());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
