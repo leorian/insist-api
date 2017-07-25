@@ -2,6 +2,7 @@ package com.bozhong.insistapi.view.admin.module.screen;
 
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.entity.AppDO;
+import com.bozhong.insistapi.enums.ParamTypeEnum;
 import com.yx.eweb.main.EWebContext;
 import com.yx.eweb.main.ScreenInter;
 import org.springframework.stereotype.Controller;
@@ -30,5 +31,7 @@ public class Main implements ScreenInter {
         }
 
         eWebContext.getRequest().setAttribute("appDOList", appDOList);
+
+        eWebContext.put("paramTypeEnumList", ParamTypeEnum.LIST);
     }
 }

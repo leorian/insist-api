@@ -401,7 +401,9 @@
         <td><input name='paramNamesInput' type="text" class="form-control input-sm" style='height: 25px;'></td>
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
-                <option value="string">string</option>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option value="$item">$item</option>
+                #end
             </select>
         </td>
         <td>
@@ -437,7 +439,9 @@
         <td><input name='paramNamesInput' type="text" class="form-control input-sm" style='height: 25px;'></td>
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
-                <option value="string">string</option>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option value="$item">$item</option>
+                #end
             </select>
         </td>
         <td>
@@ -539,7 +543,9 @@
                    style='height: 25px;'></td>
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
-                <option value="string">string</option>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option value="$item">$item</option>
+                #end
             </select>
         </td>
         <td>
@@ -600,7 +606,9 @@
                    style='height: 25px;'></td>
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
-                <option value="string">string</option>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option value="$item">$item</option>
+                #end
             </select>
         </td>
         <td>
