@@ -1163,6 +1163,7 @@
             $("#myHttpModalLabel").html("新增HTTP接口");
             $("#myHttpModal").find("tbody").empty();
             $("#interfaceHttpIdInput").val("");
+            document.getElementById('newInterfaceHttpForm').reset();
         });
 
         //新增RPC接口
@@ -1170,7 +1171,7 @@
             $("#myrpcmodallabel").html("新增RPC接口");
             $("#myRpcModal").find("tbody").empty();
             $("#interfaceRpcIdInput").val("");
-
+            document.getElementById('newInterfaceRpcForm').reset();
         });
 
         //新增HTTP接口
