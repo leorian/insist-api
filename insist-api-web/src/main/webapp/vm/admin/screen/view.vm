@@ -35,6 +35,28 @@
             <span>(1).接口地址 :</span><span>&nbsp;&nbsp;</span><span>{{address}}</span>
         </div>
     </div>
+    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <tr>
+                    <th width="20%" class="text-right">开发环境访问地址:</th>
+                    <td width="80%">{{devAddress}}</td>
+                </tr>
+                <tr>
+                    <th width="20%" class="text-right">测试环境访问地址:</th>
+                    <td width="80%">{{sitAddress}}</td>
+                </tr>
+                <tr>
+                    <th width="20%" class="text-right">UAT环境访问地址:</th>
+                    <td width="80%">{{uatAddress}}</td>
+                </tr>
+                <tr>
+                    <th width="20%" class="text-right">线上环境访问地址:</th>
+                    <td width="80%">{{prdAddress}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
             <span>(2).接口描述 :</span><span>&nbsp;&nbsp;</span><span>{{description}}</span>
