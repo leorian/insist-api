@@ -544,7 +544,8 @@
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
                 #foreach($item in $!{paramTypeEnumList})
-                    <option value="$item">$item</option>
+                    <option {{#compareParamType paramType "$item" }} selected="selected" {{/compareParamType}}
+                    value="$item">$item</option>
                 #end
             </select>
         </td>
@@ -607,7 +608,8 @@
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
                 #foreach($item in $!{paramTypeEnumList})
-                    <option value="$item">$item</option>
+                    <option {{#compareParamType paramType
+                    "$item" }} selected="selected" {{/compareParamType}} value="$item">$item</option>
                 #end
             </select>
         </td>
