@@ -101,6 +101,7 @@
                                 <select class="form-control" name="methodInput">
                                     <option value="GET">GET</option>
                                     <option value="POST">POST</option>
+                                    <option value="GET/POST">GET/POST</option>
                                 </select>
                             </div>
                         </div>
@@ -1154,9 +1155,9 @@
             $("#interfaceHttpIdInput").val(interfaceId);
             $("#myHttpModal").find("tbody").empty();
             $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
-                $("#myHttpModal").find("input[name='protocolInput']").val(data.protocol);
-                $("#myHttpModal").find("input[name='methodInput']").val(data.method);
-                $("#myHttpModal").find("input[name='transformatInput']").val(data.transformat);
+                $("#myHttpModal").find("select[name='protocolInput']").val(data.protocol);
+                $("#myHttpModal").find("select[name='methodInput']").val(data.method);
+                $("#myHttpModal").find("select[name='transformatInput']").val(data.transformat);
                 $("#myHttpModal").find("input[name='addressInput']").val(data.address);
                 $("#myHttpModal").find("input[name='nameInput']").val(data.name);
                 $("#myHttpModal").find("textarea[name='descriptionInput']").val(data.description);
