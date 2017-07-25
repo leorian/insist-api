@@ -35,10 +35,9 @@ public class InterfaceHttpRest {
     @POST
     @Path("insertInterfaceHttp")
     public String insertInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
-        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         InterfaceHttpDomain httpDomain = new InterfaceHttpDomain();
         try {
-            BeanUtils.copyProperties(httpDomain, param);
+            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -81,7 +80,7 @@ public class InterfaceHttpRest {
         String interfaceId = (String) param.get("interfaceHttpIdInput");
         InterfaceHttpDomain httpDomain = new InterfaceHttpDomain();
         try {
-            BeanUtils.copyProperties(httpDomain, param);
+            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest().getParameterMap());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

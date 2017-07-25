@@ -35,10 +35,9 @@ public class InterfaceRpcRest {
     @POST
     @Path("insertInterfaceRpc")
     public String insertInterfaceRpc(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
-        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         InterfaceRpcDomain httpDomain = new InterfaceRpcDomain();
         try {
-            BeanUtils.copyProperties(httpDomain, param);
+            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -81,7 +80,7 @@ public class InterfaceRpcRest {
         String interfaceId = (String) param.get("interfaceRpcIdInput");
         InterfaceRpcDomain httpDomain = new InterfaceRpcDomain();
         try {
-            BeanUtils.copyProperties(httpDomain, param);
+            BeanUtils.copyProperties(httpDomain, EWebServletContext.getRequest());
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
