@@ -121,30 +121,67 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-2">
+                            <div class="form-group text-right">
+                                <label class="control-label" for="mockAddressInput">Mock服务调试地址：</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-10 text-left" style="padding-left: 0px;">
                             <div class="form-group">
-                                <input type="text" name="devAddressInput" class="form-control" placeholder="开发环境接口地址">
+                                <input type="text" class="form-control" name="mockAddressInput" id="mockAddressInput" value=""
+                                       placeholder="Mock服务调试地址">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-2">
+                            <div class="form-group  text-right">
+                                <label class="control-label" for="devAddressInput">开发环境接口地址：</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-10" style="padding-left: 0px;">
                             <div class="form-group">
-                                <input type="text" name="sitAddressInput" class="form-control" placeholder="测试环境接口地址">
+                                <input type="text" name="devAddressInput" id="devAddressInput" class="form-control"
+                                       placeholder="开发环境接口地址">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-2">
+                            <div class="form-group text-right">
+                                <label class="control-label" for="sitAddressInput">测试环境接口地址：</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-10" style="padding-left: 0px;">
                             <div class="form-group">
-                                <input type="text" name="uatAddressInput" class="form-control" placeholder="UAT环境接口地址">
+                                <input type="text" name="sitAddressInput" id="sitAddressInput" class="form-control"
+                                       placeholder="测试环境接口地址">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-2">
+                            <div class="form-group text-right">
+                                <label class="control-label" for="uatAddressInput">UAT环境接口地址：</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-10" style="padding-left: 0px;">
                             <div class="form-group">
-                                <input type="text" name="prdAddressInput" class="form-control" placeholder="线上环境接口地址">
+                                <input type="text" name="uatAddressInput" id="uatAddressInput" class="form-control"
+                                       placeholder="UAT环境接口地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group text-right">
+                                <label class="control-label" for="prdAddressInput">线上环境接口地址：</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-10" style="padding-left: 0px;">
+                            <div class="form-group">
+                                <input type="text" name="prdAddressInput" id="prdAddressInput" class="form-control"
+                                       placeholder="线上环境接口地址">
                             </div>
                         </div>
                     </div>
