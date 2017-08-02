@@ -63,9 +63,13 @@ public class MockRest {
     }
 
     private String mockService(Request request, UriInfo uriInfo, HttpHeaders httpHeaders, String mockAddress, ExampleTypeEnum exampleTypeEnum) {
+        String urlPath = uriInfo.getAbsolutePath().toString();
+        if (exampleTypeEnum.name().equals(ExampleTypeEnum.EXCEPTION.name())) {
+            urlPath = urlPath.replace(InsistApiConstants.HTTP_MOCK + "/exception", InsistApiConstants.HTTP_MOCK + "/normal");
+        }
 
         //默认请求路径
-        InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByMockAddress(uriInfo.getAbsolutePath().toString(),
+        InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByMockAddress(urlPath,
                 InterfaceHttpEntity.class);
 
         //其次，mockAddress短路径
