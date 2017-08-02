@@ -735,7 +735,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
-                <h3 id="interfaceNameView">
+                <h3 id="interfaceNameView" style="word-wrap: break-word">
                     {{name}}
                 </h3>
             </div>
@@ -748,7 +748,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="form-group" id="interfaceDescribeView">
+            <div class="form-group" id="interfaceDescribeView" style="word-wrap: break-word">
                 {{description}}
             </div>
         </div>
