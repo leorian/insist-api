@@ -15,15 +15,15 @@
         </button>
     </div>
     <br/>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="table-layout: fixed">
         <thead style="background-color: #9acfea">
         <tr>
-            <th class="text-center">接口ID</th>
+            <th class="text-center" width="20%">接口ID</th>
             <th class="text-center">接口名称</th>
-            <th class="text-center">请求协议</th>
-            <th class="text-center">请求方法</th>
+            <th class="text-center" width="8%">请求协议</th>
+            <th class="text-center" width="8%">请求方法</th>
             <th class="text-center">接口地址</th>
-            <th class="text-center">操作</th>
+            <th class="text-center" width="20%">操作</th>
         </tr>
         </thead>
         <tbody id="httpTableTBody">
@@ -544,10 +544,10 @@
     {{#each this}}
     <tr>
         <td class='text-center'>{{id}}</td>
-        <td class='text-center'>{{name}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{name}}</td>
         <td class='text-center'>{{protocol}}</td>
         <td class='text-center'>{{method}}</td>
-        <td class='text-center'>{{address}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{address}}</td>
         <td class='text-center'>
             <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
                     data-target='#myHttpModal'>编辑
@@ -576,9 +576,9 @@
     {{#this}}
     <tr>
         <td class='text-center'>{{id}}</td>
-        <td class='text-center'>{{name}}</td>
-        <td class='text-center'>{{className}}</td>
-        <td class='text-center'>{{methodName}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{name}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{className}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{methodName}}</td>
         <td class='text-center'>
             <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
                     data-target='#myRpcModal'>编辑
@@ -796,7 +796,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="form-group" id="mockAddressView">
+            <div class="form-group" id="mockAddressView" style="word-wrap: break-word">
                 {{mockAddress}}
             </div>
         </div>
@@ -808,7 +808,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="form-group" id="devAddressView">
+            <div class="form-group" id="devAddressView" style="word-wrap:break-word ;">
                 {{devAddress}}
             </div>
         </div>
@@ -820,7 +820,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="form-group" id="sitAddressView">
+            <div class="form-group" id="sitAddressView" style="word-wrap:break-word ;">
                 {{sitAddress}}
             </div>
         </div>
@@ -832,7 +832,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="form-group" id="uatAddressView">
+            <div class="form-group" id="uatAddressView" style="word-wrap:break-word ;">
                 {{uatAddress}}
             </div>
         </div>
@@ -844,7 +844,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="form-group" id="prdAddressView">
+            <div class="form-group" id="prdAddressView" style="word-wrap:break-word ;">
                 {{prdAddress}}
             </div>
         </div>
