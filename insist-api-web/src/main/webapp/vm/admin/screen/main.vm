@@ -123,14 +123,14 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="form-group text-right">
-                                <label class="control-label" for="mockAddressInput">Mock服务调试地址：</label>
+                                <label class="control-label" for="mockAddressInput">mock服务调试地址：</label>
                             </div>
                         </div>
                         <div class="col-sm-10 text-left" style="padding-left: 0px;">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="mockAddressInput" id="mockAddressInput"
                                        value=""
-                                       placeholder="Mock服务调试地址">
+                                       placeholder="mock服务调试地址">
                             </div>
                         </div>
                     </div>
@@ -792,7 +792,7 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="form-group text-right">
-                Mock服务调试地址：
+                mock服务调试地址：
             </div>
         </div>
         <div class="col-sm-9">

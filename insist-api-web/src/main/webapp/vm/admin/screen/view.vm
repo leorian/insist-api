@@ -25,8 +25,9 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
+                <h4 class="text-right">HTTP</h4>
                 <h4 style="word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
-           <h4 class="text-right">HTTP</h4></div>
+            </div>
         </div>
     </div>
     <div class="row" style="margin-top: 5px;">
@@ -39,7 +40,7 @@
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed;">
                 <tr>
-                    <th width="20%" class="text-right">Mock服务调试地址:</th>
+                    <th width="20%" class="text-right">mock服务调试地址:</th>
                     <td width="80%" style="word-wrap: break-word">{{mockAddress}}</td>
                 </tr>
                 <tr>
@@ -215,8 +216,8 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
-                <h4 style="word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
                 <h4 class="text-right">RPC</h4>
+                <h4 style="word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
             </div>
         </div>
     </div>

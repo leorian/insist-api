@@ -27,7 +27,7 @@
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed;">
                 <tr>
-                    <th width="20%" class="text-right">Mock服务调试地址:</th>
+                    <th width="20%" class="text-right">mock服务调试地址:</th>
                     <td width="80%" style="word-wrap: break-word">{{mockAddress}}</td>
                 </tr>
                 <tr>
