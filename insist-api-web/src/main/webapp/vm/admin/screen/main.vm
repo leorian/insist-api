@@ -792,6 +792,18 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="form-group text-right">
+                Mock服务调试地址：
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-group" id="mockAddressView">
+                {{mockAddress}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group text-right">
                 开发环境接口地址：
             </div>
         </div>
