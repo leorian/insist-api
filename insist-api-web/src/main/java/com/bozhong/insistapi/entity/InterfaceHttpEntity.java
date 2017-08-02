@@ -74,6 +74,11 @@ public class InterfaceHttpEntity extends BaseEntity {
     private List<InterfaceResultEntity> interfaceResultEntities;
 
     /**
+     * mock服务调试地址
+     */
+    private String mockAddress;
+
+    /**
      * 开发环境地址
      */
     private String devAddress;
@@ -204,6 +209,14 @@ public class InterfaceHttpEntity extends BaseEntity {
 
     public void setPrdAddress(String prdAddress) {
         this.prdAddress = prdAddress;
+    }
+
+    public String getMockAddress() {
+        return mockAddress;
+    }
+
+    public void setMockAddress(String mockAddress) {
+        this.mockAddress = mockAddress;
     }
 
     @Override

@@ -46,6 +46,7 @@ public class InterfaceHttpDomain implements Serializable {
     private String exceptionAttentionMatters;
 
 
+    private String mockAddressInput;
     private String devAddressInput;
     private String sitAddressInput;
     private String uatAddressInput;
@@ -196,6 +197,14 @@ public class InterfaceHttpDomain implements Serializable {
         this.exceptionAttentionMatters = exceptionAttentionMatters;
     }
 
+    public String getMockAddressInput() {
+        return mockAddressInput;
+    }
+
+    public void setMockAddressInput(String mockAddressInput) {
+        this.mockAddressInput = mockAddressInput;
+    }
+
     public String getDevAddressInput() {
         return devAddressInput;
     }
@@ -242,6 +251,7 @@ public class InterfaceHttpDomain implements Serializable {
         interfaceHttpEntity.setDescription(this.getDescriptionInput());
         interfaceHttpEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
         interfaceHttpEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
+        interfaceHttpEntity.setMockAddress(this.getMockAddressInput());
         interfaceHttpEntity.setDevAddress(this.getDevAddressInput());
         interfaceHttpEntity.setSitAddress(this.getSitAddressInput());
         interfaceHttpEntity.setUatAddress(this.getUatAddressInput());

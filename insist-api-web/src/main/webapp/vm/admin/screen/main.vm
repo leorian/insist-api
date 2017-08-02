@@ -128,7 +128,8 @@
                         </div>
                         <div class="col-sm-10 text-left" style="padding-left: 0px;">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="mockAddressInput" id="mockAddressInput" value=""
+                                <input type="text" class="form-control" name="mockAddressInput" id="mockAddressInput"
+                                       value=""
                                        placeholder="Mock服务调试地址">
                             </div>
                         </div>
@@ -1276,6 +1277,7 @@
                 $("#myHttpModal").find("input[name='addressInput']").val(data.address);
                 $("#myHttpModal").find("input[name='nameInput']").val(data.name);
                 $("#myHttpModal").find("textarea[name='descriptionInput']").val(data.description);
+                $("#myHttpModal").find("input[name='mockAddressInput']").val(data.mockAddress);
                 $("#myHttpModal").find("input[name='devAddressInput']").val(data.devAddress);
                 $("#myHttpModal").find("input[name='sitAddressInput']").val(data.sitAddress);
                 $("#myHttpModal").find("input[name='uatAddressInput']").val(data.uatAddress);
