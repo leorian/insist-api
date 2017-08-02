@@ -43,6 +43,11 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> T getOneByMockAddress(String mockAddress, Class<T> tClass) {
+        return mongoDao.getOneByMockAddress(mockAddress, tClass);
+    }
+
+    @Override
     public <T> void updateOneByKey(String interfaceId, T t) {
         mongoDao.updateOneByKey(interfaceId, t);
     }

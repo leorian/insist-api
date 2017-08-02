@@ -54,6 +54,14 @@ public interface MongoDao {
     <T> T getOneByInterfaceId(String interfaceId, Class<T> tClass);
 
     /**
+     * @param mockAddress
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> T getOneByMockAddress(String mockAddress, Class<T> tClass);
+
+    /**
      * @param interfaceId
      * @param t
      * @param <T>
@@ -65,5 +73,5 @@ public interface MongoDao {
      * @param tClass
      * @param <T>
      */
-    <T> void deleteOneByKey(String interfaceId,  Class<T> tClass);
+    <T> void deleteOneByKey(String interfaceId, Class<T> tClass);
 }

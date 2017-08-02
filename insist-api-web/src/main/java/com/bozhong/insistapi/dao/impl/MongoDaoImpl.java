@@ -94,6 +94,18 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
+    public <T> T getOneByMockAddress(String mockAddress, Class<T> tClass) {
+        Gson gson = new Gson();
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Document document = mongoCollection.find(eq("mockAddress", mockAddress)).first();
+        if (document != null) {
+            return gson.fromJson(document.toJson(), tClass);
+        }
+
+        return null;
+    }
+
+    @Override
     public <T> void updateOneByKey(String interfaceId, T t) {
         Gson gson = new Gson();
         Document document = gson.fromJson(t.toString(), Document.class);

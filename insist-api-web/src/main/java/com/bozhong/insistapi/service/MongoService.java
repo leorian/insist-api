@@ -56,6 +56,14 @@ public interface MongoService {
     <T> T getOneByInterfaceId(String interfaceId, Class<T> tClass);
 
     /**
+     * @param mockAddress
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> T getOneByMockAddress(String mockAddress, Class<T> tClass);
+
+    /**
      * @param interfaceId
      * @param t
      * @param <T>
