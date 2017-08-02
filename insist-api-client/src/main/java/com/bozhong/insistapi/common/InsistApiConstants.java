@@ -13,4 +13,6 @@ public class InsistApiConstants {
 
     public static final String INSIST_CENTER_USERNAME_PREFIX = "INSIST_CENTER_USERNAME_PREFIX_";
 
+    public static final String MOCK = "mock";
+
 }

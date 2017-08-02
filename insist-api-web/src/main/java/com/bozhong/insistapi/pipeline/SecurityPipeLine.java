@@ -18,11 +18,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Created by xiezg@317hu.com on 2017/4/25 0025.
  */
 public class SecurityPipeLine implements PipeLineInter {
+
+    public static final String pattern = "^[\\w\\W]*/rest/mock/[\\w\\W]*$";
 
     private MyRedisClusterForHessian myRedisClusterForHessian;
 
@@ -37,6 +40,12 @@ public class SecurityPipeLine implements PipeLineInter {
         Cookie tokenCookie = CookiesUtil.getCookieByName(httpServletRequest, "document_token");
         if (tokenCookie == null) {
             try {
+                //动态链接调用过滤
+                boolean isMatch = Pattern.matches(pattern, httpServletRequest.getRequestURL());
+                if (isMatch) {
+                    return true;
+                }
+
                 httpServletResponse.sendRedirect(httpServletRequest.getContextPath() +
                         "/admin/login.htm");
             } catch (IOException e) {
