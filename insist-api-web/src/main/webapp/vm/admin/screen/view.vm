@@ -273,25 +273,25 @@
                 {{# if interfaceParamEntities}}
                 {{#interfaceParamEntities}}
                 <tr>
-                    <td title="{{paramName}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{paramName}}" style="word-wrap: break-word">
                         {{paramName}}
                     </td>
-                    <td title="{{paramType}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{paramType}}" style="word-wrap: break-word">
                         {{paramType}}
                     </td>
-                    <td title="{{paramDescribe}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{paramDescribe}}" style="word-wrap: break-word">
                         {{paramDescribe}}
                     </td>
-                    <td title="{{required}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{required}}" style="word-wrap: break-word">
                         {{required}}
                     </td>
                     <td title="{{jsontransformat}}"
-                        style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{jsontransformat}}
+                        style="word-wrap: break-word">{{jsontransformat}}
                     </td>
-                    <td title="{{example}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{example}}" style="word-wrap: break-word">
                         {{example}}
                     </td>
-                    <td title="{{defaultValue}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{defaultValue}}" style="word-wrap: break-word;">
                         {{defaultValue}}
                     </td>
                 </tr>
