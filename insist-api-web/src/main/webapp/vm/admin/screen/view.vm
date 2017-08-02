@@ -63,7 +63,8 @@
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>(2).接口描述 :</span><span>&nbsp;&nbsp;</span><span style="word-wrap: break-word">{{description}}</span>
+            <span>(2).接口描述 :</span><span>&nbsp;&nbsp;</span>
+            <span style="word-wrap: break-word">{{description}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
@@ -213,35 +214,40 @@
     {{# each this}}
     <div class="row">
         <div class="col-sm-12">
-            <div class="col-sm-10" style="border-bottom: 2px solid #b2dba1">
-                <h4>{{addOne @index}}.{{name}}</h4>
+            <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
+                <h4 style="word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
+                <h4 class="text-right">RPC</h4>
             </div>
-            <div class="col-sm-2" style="border-bottom: 2px solid #b2dba1"><h4>RPC</h4></div>
         </div>
     </div>
     <div class="row" style="margin-top: 5px;">
         <div class="col-sm-12">
-            <span>1.类全路径名称 :</span><span>&nbsp;&nbsp;</span><span>{{className}}</span>
+            <span>1.类全路径名称 :</span><span>&nbsp;&nbsp;</span>
+            <span style="word-wrap: break-word">{{className}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>2.方法名称 :</span><span>&nbsp;&nbsp;</span><span>{{methodName}}</span>
+            <span>2.方法名称 :</span><span>&nbsp;&nbsp;</span>
+            <span style="word-wrap: break-word">{{methodName}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>3.返回值类型 :</span><span>&nbsp;&nbsp;</span><span>{{returnType}}</span>
+            <span>3.返回值类型 :</span><span>&nbsp;&nbsp;</span>
+            <span style="word-wrap: break-word">{{returnType}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>4.方法参数 :</span><span>&nbsp;&nbsp;</span><span>{{methodParam}}</span>
+            <span>4.方法参数 :</span><span>&nbsp;&nbsp;</span>
+            <span style="word-wrap: break-word">{{methodParam}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>5.功能描述</span><span>&nbsp;&nbsp;</span><span>{{functionDescribe}}</span>
+            <span>5.功能描述 :</span><span>&nbsp;&nbsp;</span>
+            <span style="word-wrap: break-word">{{functionDescribe}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
