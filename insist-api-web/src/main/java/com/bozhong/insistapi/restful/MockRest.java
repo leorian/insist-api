@@ -50,6 +50,11 @@ public class MockRest {
 
     private String mockService(Request request, UriInfo uriInfo, HttpHeaders httpHeaders, String mockAddress) {
         InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByMockAddress(mockAddress, InterfaceHttpEntity.class);
+        if (interfaceHttpEntity == null && !mockAddress.startsWith("/")) {
+            interfaceHttpEntity = mongoService.getOneByMockAddress("/" + mockAddress,
+                    InterfaceHttpEntity.class);
+        }
+
         if (interfaceHttpEntity == null) {
             return ResultMessageBuilder.build(false, InsistApiErrorEnum.E10001.getError(),
                     InsistApiErrorEnum.E10001.getCnMsg()).toJSONString();
