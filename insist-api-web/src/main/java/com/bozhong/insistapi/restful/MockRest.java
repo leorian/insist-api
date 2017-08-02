@@ -34,21 +34,35 @@ public class MockRest {
     private MongoService mongoService;
 
 
-    @Path("{mockAddress:[\\w\\W]*$}")
+    @Path("normal/{mockAddress:[\\w\\W]*$}")
     @GET
-    public String mockGet(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+    public String mockGetNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("mockAddress") String mockAddress) {
-        return mockService(request, uriInfo, httpHeaders, mockAddress);
+        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.NORMAL);
     }
 
-    @Path("{mockAddress:[\\w\\W]*$}")
+    @Path("normal/{mockAddress:[\\w\\W]*$}")
     @POST
-    public String mockPost(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+    public String mockPostNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("mockAddress") String mockAddress) {
-        return mockService(request, uriInfo, httpHeaders, mockAddress);
+        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.NORMAL);
     }
 
-    private String mockService(Request request, UriInfo uriInfo, HttpHeaders httpHeaders, String mockAddress) {
+    @Path("exception/{mockAddress:[\\w\\W]*$}")
+    @GET
+    public String mockGetException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.EXCEPTION);
+    }
+
+    @Path("exception/{mockAddress:[\\w\\W]*$}")
+    @POST
+    public String mockPostException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.EXCEPTION);
+    }
+
+    private String mockService(Request request, UriInfo uriInfo, HttpHeaders httpHeaders, String mockAddress, ExampleTypeEnum exampleTypeEnum) {
         InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByMockAddress(mockAddress, InterfaceHttpEntity.class);
         if (interfaceHttpEntity == null && !mockAddress.startsWith("/")) {
             interfaceHttpEntity = mongoService.getOneByMockAddress("/" + mockAddress,
@@ -68,7 +82,7 @@ public class MockRest {
 
         //正常的返回示例
         for (InterfaceResultEntity interfaceResultEntity : interfaceResultEntities) {
-            if (ExampleTypeEnum.NORMAL.name().equals(interfaceResultEntity.getExampleType())) {
+            if (exampleTypeEnum.name().equals(interfaceResultEntity.getExampleType())) {
                 return interfaceResultEntity.getExampleContent();
             }
         }
