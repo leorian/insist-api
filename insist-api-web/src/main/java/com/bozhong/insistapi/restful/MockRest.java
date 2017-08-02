@@ -12,14 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.Request;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
 import java.util.List;
 
 /**
@@ -36,6 +30,7 @@ public class MockRest {
 
     @Path("normal/{mockAddress:[\\w\\W]*$}")
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public String mockGetNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("mockAddress") String mockAddress) {
         return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.NORMAL);
@@ -43,6 +38,7 @@ public class MockRest {
 
     @Path("normal/{mockAddress:[\\w\\W]*$}")
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
     public String mockPostNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("mockAddress") String mockAddress) {
         return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.NORMAL);
@@ -50,6 +46,7 @@ public class MockRest {
 
     @Path("exception/{mockAddress:[\\w\\W]*$}")
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public String mockGetException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("mockAddress") String mockAddress) {
         return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.EXCEPTION);
@@ -57,6 +54,7 @@ public class MockRest {
 
     @Path("exception/{mockAddress:[\\w\\W]*$}")
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
     public String mockPostException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("mockAddress") String mockAddress) {
         return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.EXCEPTION);
