@@ -1015,7 +1015,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="table-layout: fixed">
                     <caption>参数说明</caption>
                     <thead>
                     <tr>
@@ -1023,7 +1023,7 @@
                         <th>类型</th>
                         <th>说明</th>
                         <th>是否必填</th>
-                        <th>JSON格式化传输</th>
+                        <th width="18%">JSON格式化传输</th>
                         <th>示例</th>
                         <th>默认值</th>
                     </tr>
@@ -1032,13 +1032,13 @@
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
                     <tr>
-                        <td>{{paramName}}</td>
+                        <td style="word-wrap: break-word">{{paramName}}</td>
                         <td>{{paramType}}</td>
-                        <td>{{paramDescribe}}</td>
+                        <td style="word-wrap: break-word">{{paramDescribe}}</td>
                         <td>{{required}}</td>
                         <td>{{jsontransformat}}</td>
-                        <td>{{example}}</td>
-                        <td>{{defaultValue}}</td>
+                        <td style="word-wrap: break-word">{{example}}</td>
+                        <td style="word-wrap: break-word">{{defaultValue}}</td>
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
