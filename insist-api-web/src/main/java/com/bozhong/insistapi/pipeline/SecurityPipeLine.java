@@ -37,7 +37,7 @@ public class SecurityPipeLine implements PipeLineInter {
         httpServletRequest.setAttribute("html_title", WebSettingParam.HTML_TITLE);
         httpServletRequest.setAttribute("switch_crop", WebSettingParam.CORP);
         httpServletRequest.setAttribute("switch_department", WebSettingParam.DEPARTMENT);
-        Cookie tokenCookie = CookiesUtil.getCookieByName(httpServletRequest, "document_token");
+        Cookie tokenCookie = CookiesUtil.getCookieByName(httpServletRequest, "insist_api_token");
         if (tokenCookie == null) {
             try {
                 //动态链接调用过滤
