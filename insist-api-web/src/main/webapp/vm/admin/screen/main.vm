@@ -15,7 +15,7 @@
         </button>
     </div>
     <br/>
-    <table class="table table-bordered" style="table-layout: fixed">
+    <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
         <thead style="background-color: #9acfea">
         <tr>
             <th class="text-center" width="20%">接口ID</th>
@@ -41,7 +41,7 @@
         </button>
     </div>
     <br/>
-    <table class="table table-bordered" style="table-layout: fixed">
+    <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
         <thead>
         <tr style="background-color: #9acfea">
             <th class="text-center">接口ID</th>
