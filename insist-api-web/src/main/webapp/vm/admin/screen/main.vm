@@ -784,7 +784,7 @@
             </div>
         </div>
         <div class="col-sm-9">
-            <div class="form-group" id="interfaceAddressView">
+            <div class="form-group" id="interfaceAddressView" style="word-wrap: break-word">
                 {{address}}
             </div>
         </div>
