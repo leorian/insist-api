@@ -35,8 +35,8 @@ public class SecurityPipeLine implements PipeLineInter {
     public boolean run(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         logger.warn("SecurityPipeLine has execute ! ");
         httpServletRequest.setAttribute("html_title", WebSettingParam.HTML_TITLE);
-        httpServletRequest.setAttribute("switch_crop", WebSettingParam.CORP);
-        httpServletRequest.setAttribute("switch_department", WebSettingParam.DEPARTMENT);
+        httpServletRequest.setAttribute("insist_api_crop", WebSettingParam.CORP);
+        httpServletRequest.setAttribute("insist_api_department", WebSettingParam.DEPARTMENT);
         Cookie tokenCookie = CookiesUtil.getCookieByName(httpServletRequest, "insist_api_token");
         if (tokenCookie == null) {
             try {

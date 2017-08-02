@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <div class="navbar-header navbar-right" style="vertical-align: middle">
             <a class="navbar-brand text-center" style="padding: 5px 15px;"  href="#">
-                <h5>${switch_crop}</h5>
-                <h6>${switch_department}</h6>
+                <h5>${insist_api_crop}</h5>
+                <h6>${insist_api_department}</h6>
             </a>
         </div>
     </div>

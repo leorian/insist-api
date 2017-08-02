@@ -204,10 +204,10 @@
                 <li>
                     <a class="button button-little bg-red" href="javascript:void(0);">
                         <span class="icon-power-off"></span>
-                        ${switch_crop}<br/>
+                        ${insist_api_crop}<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        ${switch_department}
+                        ${insist_api_department}
                     </a>
                 </li>
             </ul>
