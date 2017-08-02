@@ -26,6 +26,10 @@
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed;">
                 <tr>
+                    <th width="20%" class="text-right">Mock服务调试地址:</th>
+                    <td width="80%">{{mockAddress}}</td>
+                </tr>
+                <tr>
                     <th width="20%" class="text-right">开发环境访问地址:</th>
                     <td width="80%">{{devAddress}}</td>
                 </tr>
