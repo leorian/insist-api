@@ -41,7 +41,7 @@
         </button>
     </div>
     <br/>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="table-layout: fixed">
         <thead>
         <tr style="background-color: #9acfea">
             <th class="text-center">接口ID</th>
@@ -946,7 +946,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
-                <h3 id="rpcInterfaceNameView">
+                <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
                     {{name}}
                 </h3>
             </div>
@@ -959,7 +959,7 @@
             </div>
         </div>
         <div class="col-sm-10">
-            <div class="form-group" id="rpcClassNameView">
+            <div class="form-group" id="rpcClassNameView" style="word-wrap: break-word">
                 {{className}}
             </div>
         </div>
@@ -971,7 +971,7 @@
             </div>
         </div>
         <div class="col-sm-10">
-            <div class="form-group" id="rpcMethodNameView">
+            <div class="form-group" id="rpcMethodNameView" style="word-wrap: break-word">
                 {{methodName}}
             </div>
         </div>
@@ -983,7 +983,7 @@
             </div>
         </div>
         <div class="col-sm-10">
-            <div class="form-group" id="rpcFunctionDescribeView">
+            <div class="form-group" id="rpcFunctionDescribeView" style="word-wrap: break-word">
                 {{functionDescribe}}
             </div>
         </div>
@@ -995,7 +995,7 @@
             </div>
         </div>
         <div class="col-sm-10">
-            <div class="form-group" id="rpcReturnTypeView">
+            <div class="form-group" id="rpcReturnTypeView" style="word-wrap: break-word">
                 {{returnType}}
             </div>
         </div>
@@ -1007,7 +1007,7 @@
             </div>
         </div>
         <div class="col-sm-10">
-            <div class="form-group" id="rpcMethodParamView">
+            <div class="form-group" id="rpcMethodParamView" style="word-wrap: break-word">
                 {{methodParam}}
             </div>
         </div>
