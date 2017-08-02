@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
  */
 public class SecurityPipeLine implements PipeLineInter {
 
-    public static final String pattern = "^[\\w\\W]*/rest/mock/[\\w\\W]*$";
+    public static final String pattern = "^[\\w\\W]*/rest/httpMock/[\\w\\W]*$";
 
     private MyRedisClusterForHessian myRedisClusterForHessian;
 
