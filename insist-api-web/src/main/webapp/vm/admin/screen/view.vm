@@ -24,15 +24,15 @@
     {{# each this}}
     <div class="row">
         <div class="col-sm-12">
-            <div class="col-sm-10" style="border-bottom: 2px solid #b2dba1">
-                <h4>{{addOne @index}}.{{name}}</h4>
-            </div>
-            <div class="col-sm-2" style="border-bottom: 2px solid #b2dba1"><h4>HTTP</h4></div>
+            <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
+                <h4 style="word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
+           <h4 class="text-right">HTTP</h4></div>
         </div>
     </div>
     <div class="row" style="margin-top: 5px;">
         <div class="col-sm-12">
-            <span>(1).接口地址 :</span><span>&nbsp;&nbsp;</span><span>{{address}}</span>
+            <span>(1).接口地址 :</span><span>&nbsp;&nbsp;</span>
+            <span  style="word-wrap: break-word">{{address}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
@@ -40,30 +40,30 @@
             <table class="table table-bordered" style="table-layout: fixed;">
                 <tr>
                     <th width="20%" class="text-right">Mock服务调试地址:</th>
-                    <td width="80%">{{mockAddress}}</td>
+                    <td width="80%" style="word-wrap: break-word">{{mockAddress}}</td>
                 </tr>
                 <tr>
                     <th width="20%" class="text-right">开发环境访问地址:</th>
-                    <td width="80%">{{devAddress}}</td>
+                    <td width="80%" style="word-wrap: break-word">{{devAddress}}</td>
                 </tr>
                 <tr>
                     <th width="20%" class="text-right">测试环境访问地址:</th>
-                    <td width="80%">{{sitAddress}}</td>
+                    <td width="80%" style="word-wrap: break-word">{{sitAddress}}</td>
                 </tr>
                 <tr>
                     <th width="20%" class="text-right">UAT环境访问地址:</th>
-                    <td width="80%">{{uatAddress}}</td>
+                    <td width="80%" style="word-wrap: break-word">{{uatAddress}}</td>
                 </tr>
                 <tr>
                     <th width="20%" class="text-right">线上环境访问地址:</th>
-                    <td width="80%">{{prdAddress}}</td>
+                    <td width="80%" style="word-wrap: break-word">{{prdAddress}}</td>
                 </tr>
             </table>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span>(2).接口描述 :</span><span>&nbsp;&nbsp;</span><span>{{description}}</span>
+            <span>(2).接口描述 :</span><span>&nbsp;&nbsp;</span><span style="word-wrap: break-word">{{description}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
@@ -99,25 +99,25 @@
                 {{# if interfaceParamEntities}}
                 {{#interfaceParamEntities}}
                 <tr>
-                    <td title="{{paramName}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{paramName}}" style="word-wrap: break-word">
                         {{paramName}}
                     </td>
-                    <td title="{{paramType}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{paramType}}" style="word-wrap: break-word">
                         {{paramType}}
                     </td>
-                    <td title="{{paramDescribe}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{paramDescribe}}" style="word-wrap: break-word">
                         {{paramDescribe}}
                     </td>
-                    <td title="{{required}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{required}}" style="word-wrap: break-word">
                         {{required}}
                     </td>
                     <td title="{{jsontransformat}}"
-                        style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{jsontransformat}}
+                        style="word-wrap: break-word">{{jsontransformat}}
                     </td>
-                    <td title="{{example}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{example}}" style="word-wrap: break-word">
                         {{example}}
                     </td>
-                    <td title="{{defaultValue}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <td title="{{defaultValue}}" style="word-wrap: break-word">
                         {{defaultValue}}
                     </td>
                 </tr>
