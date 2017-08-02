@@ -38,7 +38,7 @@
     </div>
     <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
         <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed;">
+            <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed;">
                 <tr>
                     <th width="20%" class="text-right">mock服务调试地址:</th>
                     <td width="80%" style="word-wrap: break-word">{{mockAddress}}</td>
@@ -85,7 +85,7 @@
     </div>
     <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
         <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
+            <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
                 <thead>
                 <tr>
                     <th>名称</th>
@@ -258,7 +258,7 @@
     </div>
     <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
         <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
+            <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
                 <thead>
                 <tr>
                     <th>名称</th>
