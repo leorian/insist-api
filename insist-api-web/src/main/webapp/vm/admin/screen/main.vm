@@ -20,8 +20,8 @@
         <tr>
             <th class="text-center" width="20%">接口ID</th>
             <th class="text-center">接口名称</th>
-            <th class="text-center" width="8%">请求协议</th>
-            <th class="text-center" width="8%">请求方法</th>
+            <th class="text-center" width="12%">请求协议</th>
+            <th class="text-center" width="12%">请求方法</th>
             <th class="text-center">接口地址</th>
             <th class="text-center" width="20%">操作</th>
         </tr>
