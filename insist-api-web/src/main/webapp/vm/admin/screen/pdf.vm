@@ -63,6 +63,10 @@
     {{# if this}}
     {{# each this}}
     <div id="httpNav{{addOne @index}}"></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="row">
         <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1;padding-bottom: 3px;">
             <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}(HTTP)</h4>
@@ -327,6 +331,10 @@
     {{# if this}}
     {{# each this}}
     <div id="rpcNav{{addOne @index}}"></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="row">
         <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
             <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}(RPC)</h4>

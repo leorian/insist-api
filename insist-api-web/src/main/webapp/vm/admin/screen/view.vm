@@ -18,10 +18,65 @@
         </div>
     </div>
 </div>
+<div class="guide">
+    <hr style="border: solid 1px #fff;"/>
+    <div class="guide-wrap" id="httpTitleMenu">
+    </div>
+    <hr style="border: solid 1px #fff;"/>
+    <div class="guide-wrap" id="rpcTitleMenu">
+    </div>
+    <hr style="border: solid 1px #fff;"/>
+    <div class="guide-wrap" id="topMenu">
+        <a href="javascript:window.scrollTo(0,0)" class="edit" style="padding-right: 0px" title="回顶部">回顶部</a>
+    </div>
+    <hr style="border: solid 1px #fff;"/>
+</div>
+<style type="text/css">
+    .guide {
+        width: 250px;
+        position: fixed;
+        display: block;
+        vertical-align: 100%;
+        right: 25px;
+        background-color: #EEEEEE;
+    }
+
+    .guide a {
+        display: block;
+        width: 250px;
+        height: 30px;
+        max-height: 30px;
+        text-decoration: none;
+        font: 8px/8px "Microsoft YaHei";
+        text-align: left;
+        color: #000;
+        padding: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .guide a:hover {
+        text-decoration: none;
+        background-color: #39F;
+        color: #fff;
+    }
+
+    .menu_select {
+        text-decoration: none;
+        background-color: #39F;
+        color: #fff;
+    }
+</style>
 #*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{# each this}}
+    <div id="httpNav{{addOne @index}}"></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1; padding-bottom: 3px;">
@@ -29,6 +84,7 @@
                 <div style="display:inline;float:right"><a href="javascript:void(0);"><span
                         class="glyphicon glyphicon-minus" style="color: dodgerblue;"></span></a></div>
             </div>
+
         </div>
     </div>
     <div class="httpContentPanel">
@@ -327,6 +383,11 @@
 <script id="interfaceRpcViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{# each this}}
+    <div id="rpcNav{{addOne @index}}"></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
@@ -558,6 +619,13 @@
         //HTTP接口列表展示
         $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#interfaceHttpViewPanel").handlebars($("#interfaceHttpViewTemplate"), data);
+            if (data != null && data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#httpTitleMenu").append('<a href="#httpNav' + (i + 1)
+                            + '" class="edit" title="' + data[i].name + '">'
+                            + (i + 1) + '、' + data[i].name + '</a>');
+                }
+            }
         }, "json");
 
         //HTTP加减号事件
@@ -570,6 +638,12 @@
             $(this).parent().parent().parent().parent().parent().next().show();
             $(this).removeClass("glyphicon-plus");
             $(this).addClass("glyphicon-minus");
+        });
+
+        //接口标题导航
+        $(".guide").delegate("a.edit", "click", function () {
+            $(".guide").find("a.edit").removeClass("menu_select");
+            $(this).addClass("menu_select");
         });
 
         $("#interfaceHttpViewPanel").delegate(".glyphicon-chevron-down", "click", function () {
@@ -587,6 +661,13 @@
         //RPC接口列表展示
         $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#interfaceRpcViewPanel").handlebars($("#interfaceRpcViewTemplate"), data);
+            if (data != null && data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#rpcTitleMenu").append('<a href="#rpcNav' + (i + 1)
+                            + '" class="edit" title="' + data[i].name + '">'
+                            + (i + 1) + '、' + data[i].name + '</a>');
+                }
+            }
         }, "json");
 
         //RPC加减号事件
