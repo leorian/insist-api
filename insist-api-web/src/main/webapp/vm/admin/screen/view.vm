@@ -178,6 +178,16 @@
                         {{defaultValue}}
                     </td>
                 </tr>
+                <tr {{#compareParamType paramType
+                'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
+                'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                {{/compareParamType}} >
+                    <td colspan="7">
+                        <pre>{{exampleDetail}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetail}}</pre>
+                    </td>
+                </tr>
                 {{/interfaceParamEntities}}
                 {{else}}
                 <tr>
