@@ -75,7 +75,7 @@
                 </tr>
                 </tbody>
             </table>
-##            <span><b style="color: #03b6fd">(3).数据格式 :</b></span><span>&nbsp;&nbsp;</span><span>{{transformat}}</span>
+        ##            <span><b style="color: #03b6fd">(3).数据格式 :</b></span><span>&nbsp;&nbsp;</span><span>{{transformat}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
@@ -90,12 +90,24 @@
                 </tr>
                 </tbody>
             </table>
-##            <span><b style="color: #03b6fd">(4).请求方式 :</b></span><span>&nbsp;&nbsp;</span><span>{{protocol}} + {{method}}</span>
+        ##            <span><b style="color: #03b6fd">(4).请求方式 :</b></span><span>&nbsp;&nbsp;</span><span>{{protocol}} + {{method}}</span>
         </div>
     </div>
-    <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
+    <div class="row">
         <div class="col-sm-12">
-            <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed;">
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <caption>访问地址</caption>
+                <thead>
+                <tr class="bg-primary">
+                    <th width="20%">
+                        应用环境
+                    </th>
+                    <th>
+                        URL地址
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <th width="20%" class="text-right">mock服务调试地址:</th>
                     <td width="80%" style="word-wrap: break-word">{{mockAddress}}</td>
@@ -116,6 +128,7 @@
                     <th width="20%" class="text-right">线上环境访问地址:</th>
                     <td width="80%" style="word-wrap: break-word">{{prdAddress}}</td>
                 </tr>
+                </tbody>
             </table>
         </div>
     </div>
