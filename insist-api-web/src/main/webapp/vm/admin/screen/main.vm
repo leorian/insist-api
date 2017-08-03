@@ -1159,75 +1159,158 @@
 
 <!--RPC接口预览-->
 <script id="myRpcPreviewModalTemplate" type="text/x-handlebars-template">
+    <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
+        {{name}}
+    </h3>
+##    <div class="row">
+##        <div class="col-sm-12">
+##            <div class="form-group">
+##                <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
+##                    {{name}}
+##                </h3>
+##            </div>
+##        </div>
+##    </div>
     <div class="row">
         <div class="col-sm-12">
-            <div class="form-group">
-                <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
-                    {{name}}
-                </h3>
-            </div>
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <caption>类全路径名称</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcClassNameView" style="word-wrap: break-word">
+                            {{className}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+##    <div class="row">
+##        <div class="col-sm-2">
+##            <div class="form-group text-right">
+##                类全路径名称：
+##            </div>
+##        </div>
+##        <div class="col-sm-10">
+##            <div class="form-group" id="rpcClassNameView" style="word-wrap: break-word">
+##                {{className}}
+##            </div>
+##        </div>
+##    </div>
     <div class="row">
-        <div class="col-sm-2">
-            <div class="form-group text-right">
-                类全路径名称：
-            </div>
-        </div>
-        <div class="col-sm-10">
-            <div class="form-group" id="rpcClassNameView" style="word-wrap: break-word">
-                {{className}}
-            </div>
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>方法名称</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcMethodNameView" style="word-wrap: break-word">
+                            {{methodName}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+##    <div class="row">
+##        <div class="col-sm-2">
+##            <div class="form-group text-right">
+##                方法名称：
+##            </div>
+##        </div>
+##        <div class="col-sm-10">
+##            <div class="form-group" id="rpcMethodNameView" style="word-wrap: break-word">
+##                {{methodName}}
+##            </div>
+##        </div>
+##    </div>
     <div class="row">
-        <div class="col-sm-2">
-            <div class="form-group text-right">
-                方法名称：
-            </div>
-        </div>
-        <div class="col-sm-10">
-            <div class="form-group" id="rpcMethodNameView" style="word-wrap: break-word">
-                {{methodName}}
-            </div>
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>功能描述</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcFunctionDescribeView" style="word-wrap: break-word">
+                            {{functionDescribe}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+##    <div class="row">
+##        <div class="col-sm-2">
+##            <div class="form-group text-right">
+##                功能描述：
+##            </div>
+##        </div>
+##        <div class="col-sm-10">
+##            <div class="form-group" id="rpcFunctionDescribeView" style="word-wrap: break-word">
+##                {{functionDescribe}}
+##            </div>
+##        </div>
+##    </div>
     <div class="row">
-        <div class="col-sm-2">
-            <div class="form-group text-right">
-                功能描述：
-            </div>
-        </div>
-        <div class="col-sm-10">
-            <div class="form-group" id="rpcFunctionDescribeView" style="word-wrap: break-word">
-                {{functionDescribe}}
-            </div>
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>返回值类型</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcReturnTypeView" style="word-wrap: break-word">
+                            {{returnType}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+##    <div class="row">
+##        <div class="col-sm-2">
+##            <div class="form-group text-right">
+##                返回值类型：
+##            </div>
+##        </div>
+##        <div class="col-sm-10">
+##            <div class="form-group" id="rpcReturnTypeView" style="word-wrap: break-word">
+##                {{returnType}}
+##            </div>
+##        </div>
+##    </div>
     <div class="row">
-        <div class="col-sm-2">
-            <div class="form-group text-right">
-                返回值类型：
-            </div>
-        </div>
-        <div class="col-sm-10">
-            <div class="form-group" id="rpcReturnTypeView" style="word-wrap: break-word">
-                {{returnType}}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="form-group text-right">
-                方法参数：
-            </div>
-        </div>
-        <div class="col-sm-10">
-            <div class="form-group" id="rpcMethodParamView" style="word-wrap: break-word">
-                {{methodParam}}
-            </div>
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>方法参数</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcMethodParamView" style="word-wrap: break-word">
+                            {{methodParam}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+##    <div class="row">
+##        <div class="col-sm-2">
+##            <div class="form-group text-right">
+##                方法参数：
+##            </div>
+##        </div>
+##        <div class="col-sm-10">
+##            <div class="form-group" id="rpcMethodParamView" style="word-wrap: break-word">
+##                {{methodParam}}
+##            </div>
+##        </div>
+##    </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
