@@ -875,7 +875,7 @@
             ##                    </div>
             ##                </td>
             ##            </tr>
-            <tr class="bg-info">
+            <tr style="background-color: #F0F0F0">
                 <td>
                     <div class="form-group-sm text-right">
                         <b>mock服务调试地址</b>
@@ -887,7 +887,7 @@
                     </div>
                 </td>
             </tr>
-            <tr class="bg-info">
+            <tr style="background-color: #F0F0F0">
                 <td>
                     <div class="form-group-sm text-right">
                         <b>开发环境接口地址</b>
@@ -899,7 +899,7 @@
                     </div>
                 </td>
             </tr>
-            <tr class="bg-info">
+            <tr style="background-color: #F0F0F0">
                 <td>
                     <div class="form-group-sm text-right">
                         <b>测试环境接口地址</b>
@@ -911,7 +911,7 @@
                     </div>
                 </td>
             </tr>
-            <tr class="bg-info">
+            <tr style="background-color: #F0F0F0">
                 <td>
                     <div class="form-group-sm text-right">
                         <b>UAT环境接口地址</b>
@@ -923,7 +923,7 @@
                     </div>
                 </td>
             </tr>
-            <tr class="bg-info">
+            <tr style="background-color: #F0F0F0">
                 <td>
                     <div class="form-group-sm text-right">
                         <b>线上环境接口地址</b>
@@ -1074,7 +1074,7 @@
                     <tbody id="myHttpPreviewTBody">
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td style="word-wrap: break-word">{{paramName}}</td>
                         <td>{{paramType}}</td>
                         <td style="word-wrap: break-word">{{paramDescribe}}</td>
@@ -1095,7 +1095,7 @@
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
-                    <tr>
+                    <tr style="background-color: #F0F0F0">
                         <td class='text-center' colspan='7'>暂无信息！</td>
                     </tr>
                     {{/if}}
@@ -1330,7 +1330,7 @@
                     <tbody id="myRpcPreviewTBody">
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td style="word-wrap: break-word">{{paramName}}</td>
                         <td>{{paramType}}</td>
                         <td style="word-wrap: break-word">{{paramDescribe}}</td>
@@ -1341,7 +1341,7 @@
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
-                    <tr>
+                    <tr style="background-color: #F0F0F0">
                         <td class='text-center' colspan='7'>暂无信息！</td>
                     </tr>
                     {{/if}}

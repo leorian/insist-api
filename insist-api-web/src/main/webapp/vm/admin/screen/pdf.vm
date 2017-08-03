@@ -148,23 +148,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td width="20%" class="text-right">mock服务调试地址</td>
                         <td width="80%" style="word-wrap: break-word">{{mockAddress}}</td>
                     </tr>
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td width="20%" class="text-right">开发环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{devAddress}}</td>
                     </tr>
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td width="20%" class="text-right">测试环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{sitAddress}}</td>
                     </tr>
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td width="20%" class="text-right">UAT环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{uatAddress}}</td>
                     </tr>
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td width="20%" class="text-right">线上环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{prdAddress}}</td>
                     </tr>
@@ -196,7 +196,7 @@
                     <tbody>
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td title="{{paramName}}" style="word-wrap: break-word">
                             {{paramName}}
                         </td>
@@ -242,7 +242,7 @@
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
-                    <tr>
+                    <tr style="background-color: #F0F0F0">
                         <td class='text-center' colspan='8'>暂无信息！</td>
                     </tr>
                     {{/if}}
@@ -448,7 +448,7 @@
                     <tbody>
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr class="bg-info">
+                    <tr style="background-color: #F0F0F0">
                         <td title="{{paramName}}" style="word-wrap: break-word">
                             {{paramName}}
                         </td>
@@ -474,7 +474,7 @@
 
                     {{/interfaceParamEntities}}
                     {{else}}
-                    <tr>
+                    <tr style="background-color: #F0F0F0">
                         <td class='text-center' colspan='7'>暂无信息！</td>
                     </tr>
                     {{/if}}
