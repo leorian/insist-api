@@ -12,11 +12,11 @@
         #*HTTP接口描述文档显示区域*#
         </div>
     </div>
-   <div class="panel panel-primary">
-       <div class="panel-body" id="interfaceRpcViewPanel">
-       #*RPC接口描述文档显示区域*#
-       </div>
-   </div>
+    <div class="panel panel-primary">
+        <div class="panel-body" id="interfaceRpcViewPanel">
+        #*RPC接口描述文档显示区域*#
+        </div>
+    </div>
 </div>
 #*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
@@ -32,8 +32,65 @@
     </div>
     <div class="row" style="margin-top: 5px;">
         <div class="col-sm-12">
-            <span><b style="color: #03b6fd">(1).接口地址 :</b></span><span>&nbsp;&nbsp;</span>
-            <span  style="word-wrap: break-word">{{address}}</span>
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>接口地址</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <span style="word-wrap: break-word">{{address}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        ##            <span><b style="color: #03b6fd">(1).接口地址 :</b></span><span>&nbsp;&nbsp;</span>
+        ##            <span  style="word-wrap: break-word">{{address}}</span>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>接口描述</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <span style="word-wrap: break-word">{{description}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        ##            <span><b style="color: #03b6fd">(2).接口描述 :</b></span><span>&nbsp;&nbsp;</span>
+        ##            <span style="word-wrap: break-word">{{description}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>数据格式</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <span>{{transformat}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+##            <span><b style="color: #03b6fd">(3).数据格式 :</b></span><span>&nbsp;&nbsp;</span><span>{{transformat}}</span>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 3px;">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>请求方式</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <span>{{protocol}} + {{method}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+##            <span><b style="color: #03b6fd">(4).请求方式 :</b></span><span>&nbsp;&nbsp;</span><span>{{protocol}} + {{method}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
@@ -60,22 +117,6 @@
                     <td width="80%" style="word-wrap: break-word">{{prdAddress}}</td>
                 </tr>
             </table>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 3px;">
-        <div class="col-sm-12">
-            <span><b style="color: #03b6fd">(2).接口描述 :</b></span><span>&nbsp;&nbsp;</span>
-            <span style="word-wrap: break-word">{{description}}</span>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 3px;">
-        <div class="col-sm-12">
-            <span><b style="color: #03b6fd">(3).数据格式 :</b></span><span>&nbsp;&nbsp;</span><span>{{transformat}}</span>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 3px;">
-        <div class="col-sm-12">
-            <span><b style="color: #03b6fd">(4).请求方式 :</b></span><span>&nbsp;&nbsp;</span><span>{{protocol}} + {{method}}</span>
         </div>
     </div>
     <div class="row" style="margin-top: 3px;">
@@ -326,7 +367,7 @@
     </div>
     <div class="row" style="margin-top: 3px;">
         <div class="col-sm-12">
-            <span><b style="color: #03b6fd" >(8).异常示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
+            <span><b style="color: #03b6fd">(8).异常示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
         </div>
     </div>
     <div class="row" style="margin-top: 6px; padding-left: 15px; padding-right: 15px;">
