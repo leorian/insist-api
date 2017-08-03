@@ -750,68 +750,131 @@
 
 <!--HTTP接口预览模态框模板-->
 <script id="myHttpPreviewModalTemplate" type="text/x-handlebars-template">
+    <h3 id="interfaceNameView" style="word-wrap: break-word">
+        {{name}}
+    </h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <caption>接口描述</caption>
+                <tbody>
+                <tr>
+                    <th>
+                        <div class="form-group-sm" id="interfaceDescribeView" style="word-wrap: break-word">
+                            {{description}}
+                        </div>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <caption>数据格式</caption>
+                <tbody>
+                <tr>
+                    <th>
+                        <div class="form-group-sm" id="dataFormatView">
+                            {{transformat}}
+                        </div>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>请求方式</caption>
+                <tbody>
+                <tr>
+                    <th>
+                        <div class="form-group-sm" id="requestMethodView">
+                            {{protocol}} + {{method}}
+                        </div>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>接口地址</caption>
+                <tbody>
+                <tr>
+                    <th>
+                        <div class="form-group-sm" id="interfaceAddressView" style="word-wrap: break-word">
+                            {{address}}
+                        </div>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <table class="table table-bordered" style="table-layout: fixed;">
-        <caption>
-            <h3 id="interfaceNameView" style="word-wrap: break-word">
-                {{name}}
-            </h3>
-        </caption>
+        <caption>在线访问地址</caption>
         <tr>
             <thead>
             <tr class="bg-primary">
-                <th width="20%">环境变量</th>
-                <th>环境配置</th>
+                <th width="20%">应用环境</th>
+                <th>URL地址</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="bg-info">
-                <td>
-                    <div class="form-group-sm text-right">
-                        <b>接口描述</b>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group-sm" id="interfaceDescribeView" style="word-wrap: break-word">
-                        {{description}}
-                    </div>
-                </td>
-            </tr>
-            <tr class="bg-info">
-                <td>
-                    <div class="form-group-sm text-right">
-                        <b>数据格式</b>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group-sm" id="dataFormatView">
-                        {{transformat}}
-                    </div>
-                </td>
-            </tr>
-            <tr class="bg-info">
-                <td>
-                    <div class="form-group-sm text-right">
-                        <b>请求方式</b>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group-sm" id="requestMethodView">
-                        {{protocol}} + {{method}}
-                    </div>
-                </td>
-            </tr>
-            <tr class="bg-info">
-                <td>
-                    <div class="form-group-sm text-right">
-                        <b>接口地址</b>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group-sm" id="interfaceAddressView" style="word-wrap: break-word">
-                        {{address}}
-                    </div>
-                </td>
-            </tr>
+            ##            <tr class="bg-info">
+            ##                <td>
+            ##                    <div class="form-group-sm text-right">
+            ##                        <b>接口描述</b>
+            ##                    </div>
+            ##                </td>
+            ##                <td>
+            ##                    <div class="form-group-sm" id="interfaceDescribeView" style="word-wrap: break-word">
+            ##                        {{description}}
+            ##                    </div>
+            ##                </td>
+            ##            </tr>
+            ##            <tr class="bg-info">
+            ##                <td>
+            ##                    <div class="form-group-sm text-right">
+            ##                        <b>数据格式</b>
+            ##                    </div>
+            ##                </td>
+            ##                <td>
+            ##                    <div class="form-group-sm" id="dataFormatView">
+            ##                        {{transformat}}
+            ##                    </div>
+            ##                </td>
+            ##            </tr>
+            ##            <tr class="bg-info">
+            ##                <td>
+            ##                    <div class="form-group-sm text-right">
+            ##                        <b>请求方式</b>
+            ##                    </div>
+            ##                </td>
+            ##                <td>
+            ##                    <div class="form-group-sm" id="requestMethodView">
+            ##                        {{protocol}} + {{method}}
+            ##                    </div>
+            ##                </td>
+            ##            </tr>
+            ##            <tr class="bg-info">
+            ##                <td>
+            ##                    <div class="form-group-sm text-right">
+            ##                        <b>接口地址</b>
+            ##                    </div>
+            ##                </td>
+            ##                <td>
+            ##                    <div class="form-group-sm" id="interfaceAddressView" style="word-wrap: break-word">
+            ##                        {{address}}
+            ##                    </div>
+            ##                </td>
+            ##            </tr>
             <tr class="bg-info">
                 <td>
                     <div class="form-group-sm text-right">
@@ -875,123 +938,123 @@
             </tbody>
         </tr>
     </table>
-##    <div class="row">
-##        <div class="col-sm-12">
-##            <div class="form-group">
-##                <h3 id="interfaceNameView" style="word-wrap: break-word">
-##                    {{name}}
-##                </h3>
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                接口描述：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="interfaceDescribeView" style="word-wrap: break-word">
-##                {{description}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                数据格式：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="dataFormatView">
-##                {{transformat}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                请求方式：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="requestMethodView">
-##                {{protocol}} + {{method}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                接口地址：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="interfaceAddressView" style="word-wrap: break-word">
-##                {{address}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                mock服务调试地址：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="mockAddressView" style="word-wrap: break-word">
-##                {{mockAddress}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                开发环境接口地址：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="devAddressView" style="word-wrap:break-word ;">
-##                {{devAddress}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                测试环境接口地址：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="sitAddressView" style="word-wrap:break-word ;">
-##                {{sitAddress}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                UAT环境接口地址：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="uatAddressView" style="word-wrap:break-word ;">
-##                {{uatAddress}}
-##            </div>
-##        </div>
-##    </div>
-##    <div class="row">
-##        <div class="col-sm-3">
-##            <div class="form-group text-right">
-##                线上环境接口地址：
-##            </div>
-##        </div>
-##        <div class="col-sm-9">
-##            <div class="form-group" id="prdAddressView" style="word-wrap:break-word ;">
-##                {{prdAddress}}
-##            </div>
-##        </div>
-##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-12">
+    ##            <div class="form-group">
+    ##                <h3 id="interfaceNameView" style="word-wrap: break-word">
+    ##                    {{name}}
+    ##                </h3>
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                接口描述：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="interfaceDescribeView" style="word-wrap: break-word">
+    ##                {{description}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                数据格式：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="dataFormatView">
+    ##                {{transformat}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                请求方式：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="requestMethodView">
+    ##                {{protocol}} + {{method}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                接口地址：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="interfaceAddressView" style="word-wrap: break-word">
+    ##                {{address}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                mock服务调试地址：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="mockAddressView" style="word-wrap: break-word">
+    ##                {{mockAddress}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                开发环境接口地址：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="devAddressView" style="word-wrap:break-word ;">
+    ##                {{devAddress}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                测试环境接口地址：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="sitAddressView" style="word-wrap:break-word ;">
+    ##                {{sitAddress}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                UAT环境接口地址：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="uatAddressView" style="word-wrap:break-word ;">
+    ##                {{uatAddress}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-3">
+    ##            <div class="form-group text-right">
+    ##                线上环境接口地址：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-9">
+    ##            <div class="form-group" id="prdAddressView" style="word-wrap:break-word ;">
+    ##                {{prdAddress}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
