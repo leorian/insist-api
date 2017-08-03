@@ -821,7 +821,7 @@
         <caption>在线访问地址</caption>
         <tr>
             <thead>
-            <tr class="bg-primary">
+            <tr style="background-color: #B0B0B0">
                 <th width="20%">应用环境</th>
                 <th>URL地址</th>
             </tr>
@@ -1061,7 +1061,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>参数说明</caption>
                     <thead>
-                    <tr class="bg-primary">
+                    <tr style="background-color: #B0B0B0">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -1317,7 +1317,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>参数说明</caption>
                     <thead>
-                    <tr class="bg-primary">
+                    <tr style="background-color: #B0B0B0">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
