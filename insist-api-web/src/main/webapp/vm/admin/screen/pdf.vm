@@ -9,18 +9,17 @@
     </div>
 </div>
 <div class="guide">
+    <hr style="border: solid 1px #fff;"/>
     <div class="guide-wrap" id="httpTitleMenu">
-    ##        <a href="#" class="edit" title="发新帖"><span>发新帖</span></a>
-##        <a href="#" class="find" title="找论坛"><span>找论坛</span></a>
-##        <a href="#" class="report" title="反馈"><span>反馈</span></a>
-##        <a href="javascript:window.scrollTo(0,0)" class="top" title="回顶部"><span>回顶部</span></a>
     </div>
+    <hr style="border: solid 1px #fff;"/>
     <div class="guide-wrap" id="rpcTitleMenu">
-    ##        <a href="#" class="edit" title="发新帖"><span>发新帖</span></a>
-##        <a href="#" class="find" title="找论坛"><span>找论坛</span></a>
-##        <a href="#" class="report" title="反馈"><span>反馈</span></a>
-##        <a href="javascript:window.scrollTo(0,0)" class="top" title="回顶部"><span>回顶部</span></a>
     </div>
+    <hr style="border: solid 1px #fff;"/>
+    <div class="guide-wrap" id="topMenu">
+        <a href="javascript:window.scrollTo(0,0)" class="top" style="padding-right: 0px" title="回顶部">回顶部</a>
+    </div>
+    <hr style="border: solid 1px #fff;"/>
 </div>
 <style type="text/css">
     .guide {
@@ -57,7 +56,8 @@
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{# each this}}
-    <div class="row" id="httpNav{{addOne @index}}">
+    <br  id="httpNav{{addOne @index}}" />
+    <div class="row">
         <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1;padding-bottom: 3px;">
             <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}(HTTP)</h4>
             <div style="display:inline;float:right"><a href="javascript:void(0);"><span
@@ -320,7 +320,8 @@
 <script id="interfaceRpcViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{# each this}}
-    <div class="row">
+    <br id="rpcNav{{addOne @index}}" />
+    <div class="row" >
         <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
             <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}(RPC)</h4>
             <div style="display:inline;float:right"><a href="javascript:void(0);"><span
@@ -586,6 +587,13 @@
         //RPC接口列表展示
         $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#interfaceRpcViewPanel").handlebars($("#interfaceRpcViewTemplate"), data);
+            if (data != null && data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#rpcTitleMenu").append('<a href="#rpcNav' + (i + 1)
+                            + '" class="edit" title="' + data[i].name + '">'
+                            + (i + 1) + '、' + data[i].name + '</a>');
+                }
+            }
         }, "json");
 
         //RPC加减号事件
