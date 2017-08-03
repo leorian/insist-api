@@ -759,11 +759,11 @@
                 <caption>接口描述</caption>
                 <tbody>
                 <tr>
-                    <th>
+                    <td>
                         <div class="form-group-sm" id="interfaceDescribeView" style="word-wrap: break-word">
                             {{description}}
                         </div>
-                    </th>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -775,11 +775,11 @@
                 <caption>数据格式</caption>
                 <tbody>
                 <tr>
-                    <th>
+                    <td>
                         <div class="form-group-sm" id="dataFormatView">
                             {{transformat}}
                         </div>
-                    </th>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -791,11 +791,11 @@
                 <caption>请求方式</caption>
                 <tbody>
                 <tr>
-                    <th>
+                    <td>
                         <div class="form-group-sm" id="requestMethodView">
                             {{protocol}} + {{method}}
                         </div>
-                    </th>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -807,11 +807,11 @@
                 <caption>接口地址</caption>
                 <tbody>
                 <tr>
-                    <th>
+                    <td>
                         <div class="form-group-sm" id="interfaceAddressView" style="word-wrap: break-word">
                             {{address}}
                         </div>
-                    </th>
+                    </td>
                 </tr>
                 </tbody>
             </table>
