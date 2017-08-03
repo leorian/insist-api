@@ -863,7 +863,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>参数说明</caption>
                     <thead>
-                    <tr>
+                    <tr class="bg-primary">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -876,7 +876,7 @@
                     <tbody id="myHttpPreviewTBody">
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr>
+                    <tr class="bg-info">
                         <td style="word-wrap: break-word">{{paramName}}</td>
                         <td>{{paramType}}</td>
                         <td style="word-wrap: break-word">{{paramDescribe}}</td>
@@ -885,12 +885,14 @@
                         <td style="word-wrap: break-word">{{example}}</td>
                         <td style="word-wrap: break-word">{{defaultValue}}</td>
                     </tr>
-                    <tr>
-                        <td colspan="7">
-                            <pre>{{exampleDetail}}</pre>
-                            <br/>
-                            <pre>{{defaultValueDetail}}</pre>
-                        </td>
+                    <tr {{#compareParamType paramType
+                    'object'}} style="display:table-row" {{else}}  {{#compareParamType paramType
+                    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}  {{/compareParamType}}>
+                    <td colspan="7">
+                        <pre>{{exampleDetail}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetail}}</pre>
+                    </td>
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
