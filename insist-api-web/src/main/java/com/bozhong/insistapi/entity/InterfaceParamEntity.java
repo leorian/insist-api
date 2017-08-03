@@ -56,6 +56,16 @@ public class InterfaceParamEntity extends BaseEntity {
      */
     private String defaultValue;
 
+    /**
+     * 示例详情
+     */
+    private String exampleDetail;
+
+    /**
+     * 默认值详情
+     */
+    private String defaultValueDetail;
+
     public InterfaceParamEntity() {
     }
 
@@ -152,6 +162,22 @@ public class InterfaceParamEntity extends BaseEntity {
 
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue;
+    }
+
+    public String getExampleDetail() {
+        return exampleDetail;
+    }
+
+    public void setExampleDetail(String exampleDetail) {
+        this.exampleDetail = exampleDetail;
+    }
+
+    public String getDefaultValueDetail() {
+        return defaultValueDetail;
+    }
+
+    public void setDefaultValueDetail(String defaultValueDetail) {
+        this.defaultValueDetail = defaultValueDetail;
     }
 
     @Override

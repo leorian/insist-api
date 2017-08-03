@@ -211,7 +211,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="requestParamTable">
                                     <thead>
                                     <tr>
                                         <th style="width: 120px;">参数名称</th>
@@ -496,6 +496,14 @@
             <a href="#">
                 <span class="glyphicon glyphicon-trash"></span>
             </a>
+        </td>
+    </tr>
+    <tr style="display: none">
+        <td colspan="8">
+            <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）"></textarea>
+            <br/>
+            <textarea class="form-control" name="defaultValueDetailsInput"
+                      placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）"></textarea>
         </td>
     </tr>
 </script>
@@ -877,6 +885,13 @@
                         <td style="word-wrap: break-word">{{example}}</td>
                         <td style="word-wrap: break-word">{{defaultValue}}</td>
                     </tr>
+                    <tr>
+                        <td colspan="7">
+                            <pre>{{exampleDetail}}</pre>
+                            <br/>
+                            <pre>{{defaultValueDetail}}</pre>
+                        </td>
+                    </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
                     <tr>
@@ -1107,6 +1122,16 @@
 
 <script type="text/javascript">
     $(function () {
+
+        //参数类型选择事件
+        $("#myHttpModal").find("#requestParamTable>tbody").delegate("select[name='paramTypesInput']", "change", function () {
+            if ($(this).val() == "object" || $(this).val() == "json") {
+                $(this).parent().parent().next().css("display", "table-row");
+            } else {
+                $(this).parent().parent().next().css("display", "none");
+            }
+        });
+
         //HTTP接口添加参数
         $("#httpAddRequestParam").click(function () {
             $("#myHttpModal").find("tbody").append($("#httpAddRequestParamTemplate").html());

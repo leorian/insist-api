@@ -35,6 +35,8 @@ public class InterfaceHttpDomain implements Serializable {
     private Boolean[] jsontransformatsInput;
     private String[] examplesInput;
     private String[] defaultValuesInput;
+    private String[] exampleDetailsInput;
+    private String[] defaultValueDetailsInput;
 
 
     /*返回示例*/
@@ -165,6 +167,22 @@ public class InterfaceHttpDomain implements Serializable {
         this.defaultValuesInput = defaultValuesInput;
     }
 
+    public String[] getExampleDetailsInput() {
+        return exampleDetailsInput;
+    }
+
+    public void setExampleDetailsInput(String[] exampleDetailsInput) {
+        this.exampleDetailsInput = exampleDetailsInput;
+    }
+
+    public String[] getDefaultValueDetailsInput() {
+        return defaultValueDetailsInput;
+    }
+
+    public void setDefaultValueDetailsInput(String[] defaultValueDetailsInput) {
+        this.defaultValueDetailsInput = defaultValueDetailsInput;
+    }
+
     public String getReturnExampleContent() {
         return returnExampleContent;
     }
@@ -284,6 +302,8 @@ public class InterfaceHttpDomain implements Serializable {
             interfaceParamEntity.setJsontransformat(this.getJsontransformatsInput()[i]);
             interfaceParamEntity.setExample(this.getExamplesInput()[i]);
             interfaceParamEntity.setDefaultValue(this.getDefaultValuesInput()[i]);
+            interfaceParamEntity.setExampleDetail(this.getExampleDetailsInput()[i]);
+            interfaceParamEntity.setDefaultValueDetail(this.getDefaultValueDetailsInput()[i]);
             interfaceParamEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntities.add(interfaceParamEntity);
