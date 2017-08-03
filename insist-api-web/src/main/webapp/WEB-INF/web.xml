@@ -2,14 +2,14 @@
         "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
-    <display-name>document-web</display-name>
+    <display-name>insist-api-web</display-name>
     <context-param>
-        <param-name>document</param-name>
-        <param-value>document-web</param-value>
+        <param-name>insist-api</param-name>
+        <param-value>insist-api-web</param-value>
     </context-param>
     <context-param>
         <param-name>appId</param-name>
-        <param-value>25</param-value>
+        <param-value>42</param-value>
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
