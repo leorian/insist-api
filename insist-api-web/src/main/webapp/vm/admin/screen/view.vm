@@ -41,7 +41,7 @@
         background-color: #EEEEEE;
         overflow-y: auto;
         overflow-x: hidden;
-        max-height: 768px;
+        max-height: 500px;
     }
 
     .guide a {
