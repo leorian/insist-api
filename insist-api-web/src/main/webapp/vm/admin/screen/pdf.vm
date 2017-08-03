@@ -17,7 +17,7 @@
     </div>
     <hr style="border: solid 1px #fff;"/>
     <div class="guide-wrap" id="topMenu">
-        <a href="javascript:window.scrollTo(0,0)" class="top" style="padding-right: 0px" title="回顶部">回顶部</a>
+        <a href="javascript:window.scrollTo(0,0)" class="edit" style="padding-right: 0px" title="回顶部">回顶部</a>
     </div>
     <hr style="border: solid 1px #fff;"/>
 </div>
@@ -51,12 +51,18 @@
         background-color: #39F;
         color: #fff;
     }
+
+    .menu_select {
+        text-decoration: none;
+        background-color: #39F;
+        color: #fff;
+    }
 </style>
 #*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{# each this}}
-    <br  id="httpNav{{addOne @index}}" />
+    <div id="httpNav{{addOne @index}}"></div>
     <div class="row">
         <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1;padding-bottom: 3px;">
             <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}(HTTP)</h4>
@@ -320,8 +326,8 @@
 <script id="interfaceRpcViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{# each this}}
-    <br id="rpcNav{{addOne @index}}" />
-    <div class="row" >
+    <div id="rpcNav{{addOne @index}}"></div>
+    <div class="row">
         <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
             <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}(RPC)</h4>
             <div style="display:inline;float:right"><a href="javascript:void(0);"><span
@@ -559,6 +565,12 @@
                 }
             }
         }, "json");
+
+        //接口标题导航
+        $(".guide").delegate("a.edit", "click", function () {
+            $(".guide").find("a.edit").removeClass("menu_select");
+            $(this).addClass("menu_select");
+        });
 
         //HTTP加减号事件
         $("#interfaceHttpViewPanel").delegate(".glyphicon-minus", "click", function () {
