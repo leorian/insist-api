@@ -152,6 +152,7 @@
                         <th style="width: 20%">JSON格式化传输</th>
                         <th>示例</th>
                         <th>默认值</th>
+                        <th width="6%">操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -179,12 +180,23 @@
                         <td title="{{defaultValue}}" style="word-wrap: break-word">
                             {{defaultValue}}
                         </td>
+                        <td class="text-center">
+                            {{#compareParamType paramType
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramType
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}  {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
                     </tr>
                     <tr {{#compareParamType paramType
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
                     'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
                     {{/compareParamType}} >
-                    <td colspan="7">
+                    <td colspan="8">
                         <pre>{{exampleDetail}}</pre>
                         <br/>
                         <pre>{{defaultValueDetail}}</pre>
@@ -193,7 +205,7 @@
                     {{/interfaceParamEntities}}
                     {{else}}
                     <tr>
-                        <td class='text-center' colspan='7'>暂无信息！</td>
+                        <td class='text-center' colspan='8'>暂无信息！</td>
                     </tr>
                     {{/if}}
                     </tbody>
