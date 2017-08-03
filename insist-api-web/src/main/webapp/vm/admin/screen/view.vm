@@ -572,6 +572,18 @@
             $(this).addClass("glyphicon-minus");
         });
 
+        $("#interfaceHttpViewPanel").delegate(".glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#interfaceHttpViewPanel").delegate(".glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
+
         //RPC接口列表展示
         $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#interfaceRpcViewPanel").handlebars($("#interfaceRpcViewTemplate"), data);
