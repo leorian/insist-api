@@ -318,216 +318,221 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
-                <h4 class="text-right">RPC</h4>
-                <h4 style="word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
+                <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
+                <div style="display:inline;float:right"><a href="javascript:void(0);"><span
+                        class="glyphicon glyphicon-minus" style="color: dodgerblue;"></span></a></div>
+            ##                <h4 class="text-right">RPC</h4>
+            ##                <h4 style="word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
-                <caption>类全路径名称</caption>
-                <tbody>
-                <tr>
-                    <td>
-                        <span style="word-wrap: break-word">{{className}}</span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        ##            <span><b style="color: #03b6fd">(1).类全路径名称 :</b></span><span>&nbsp;&nbsp;</span>
-        ##            <span style="word-wrap: break-word">{{className}}</span>
+    <div class="rpcContentPanel">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>类全路径名称</caption>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span style="word-wrap: break-word">{{className}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            ##            <span><b style="color: #03b6fd">(1).类全路径名称 :</b></span><span>&nbsp;&nbsp;</span>
+            ##            <span style="word-wrap: break-word">{{className}}</span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
-                <caption>方法名称</caption>
-                <tbody>
-                <tr>
-                    <td>
-                        <span style="word-wrap: break-word">{{methodName}}</span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        ##            <span><b style="color: #03b6fd">(2).方法名称 :</b></span><span>&nbsp;&nbsp;</span>
-        ##            <span style="word-wrap: break-word">{{methodName}}</span>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>方法名称</caption>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span style="word-wrap: break-word">{{methodName}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            ##            <span><b style="color: #03b6fd">(2).方法名称 :</b></span><span>&nbsp;&nbsp;</span>
+            ##            <span style="word-wrap: break-word">{{methodName}}</span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
-                <caption>返回值类型</caption>
-                <tbody>
-                <tr>
-                    <td>
-                        <span style="word-wrap: break-word">{{returnType}}</span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        ##            <span><b style="color: #03b6fd">(3).返回值类型 :</b></span><span>&nbsp;&nbsp;</span>
-        ##            <span style="word-wrap: break-word">{{returnType}}</span>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>返回值类型</caption>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span style="word-wrap: break-word">{{returnType}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            ##            <span><b style="color: #03b6fd">(3).返回值类型 :</b></span><span>&nbsp;&nbsp;</span>
+            ##            <span style="word-wrap: break-word">{{returnType}}</span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
-                <caption>方法参数</caption>
-                <tbody>
-                <tr>
-                    <td>
-                        <span style="word-wrap: break-word">{{methodParam}}</span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        ##            <span><b style="color: #03b6fd">(4).方法参数 :</b></span><span>&nbsp;&nbsp;</span>
-        ##            <span style="word-wrap: break-word">{{methodParam}}</span>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>方法参数</caption>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span style="word-wrap: break-word">{{methodParam}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            ##            <span><b style="color: #03b6fd">(4).方法参数 :</b></span><span>&nbsp;&nbsp;</span>
+            ##            <span style="word-wrap: break-word">{{methodParam}}</span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
-                <caption>功能描述</caption>
-                <tbody>
-                <tr>
-                    <td>
-                        <span style="word-wrap: break-word">{{functionDescribe}}</span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        ##            <span><b style="color: #03b6fd">(5).功能描述 :</b></span><span>&nbsp;&nbsp;</span>
-        ##            <span style="word-wrap: break-word">{{functionDescribe}}</span>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>功能描述</caption>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span style="word-wrap: break-word">{{functionDescribe}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            ##            <span><b style="color: #03b6fd">(5).功能描述 :</b></span><span>&nbsp;&nbsp;</span>
+            ##            <span style="word-wrap: break-word">{{functionDescribe}}</span>
+            </div>
         </div>
-    </div>
     ##    <div class="row" style="margin-top: 3px;">
     ##        <div class="col-sm-12">
     ##            <span><b style="color: #03b6fd">(6).请求参数 :</b></span><span>&nbsp;&nbsp;</span>
     ##        </div>
     ##    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table table-bordered" style="table-layout: fixed">
-                <caption>请求参数</caption>
-                <thead>
-                <tr class="bg-primary">
-                    <th>名称</th>
-                    <th>类型</th>
-                    <th>说明</th>
-                    <th>是否必填</th>
-                    <th style="width: 20%">JSON格式化传输</th>
-                    <th>示例</th>
-                    <th>默认值</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{# if interfaceParamEntities}}
-                {{#interfaceParamEntities}}
-                <tr class="bg-info">
-                    <td title="{{paramName}}" style="word-wrap: break-word">
-                        {{paramName}}
-                    </td>
-                    <td title="{{paramType}}" style="word-wrap: break-word">
-                        {{paramType}}
-                    </td>
-                    <td title="{{paramDescribe}}" style="word-wrap: break-word">
-                        {{paramDescribe}}
-                    </td>
-                    <td title="{{required}}" style="word-wrap: break-word">
-                        {{required}}
-                    </td>
-                    <td title="{{jsontransformat}}"
-                        style="word-wrap: break-word">{{jsontransformat}}
-                    </td>
-                    <td title="{{example}}" style="word-wrap: break-word">
-                        {{example}}
-                    </td>
-                    <td title="{{defaultValue}}" style="word-wrap: break-word;">
-                        {{defaultValue}}
-                    </td>
-                </tr>
-                {{/interfaceParamEntities}}
-                {{else}}
-                <tr>
-                    <td class='text-center' colspan='7'>暂无信息！</td>
-                </tr>
-                {{/if}}
-                </tbody>
-            </table>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>请求参数</caption>
+                    <thead>
+                    <tr class="bg-primary">
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                        <th>是否必填</th>
+                        <th style="width: 20%">JSON格式化传输</th>
+                        <th>示例</th>
+                        <th>默认值</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{# if interfaceParamEntities}}
+                    {{#interfaceParamEntities}}
+                    <tr class="bg-info">
+                        <td title="{{paramName}}" style="word-wrap: break-word">
+                            {{paramName}}
+                        </td>
+                        <td title="{{paramType}}" style="word-wrap: break-word">
+                            {{paramType}}
+                        </td>
+                        <td title="{{paramDescribe}}" style="word-wrap: break-word">
+                            {{paramDescribe}}
+                        </td>
+                        <td title="{{required}}" style="word-wrap: break-word">
+                            {{required}}
+                        </td>
+                        <td title="{{jsontransformat}}"
+                            style="word-wrap: break-word">{{jsontransformat}}
+                        </td>
+                        <td title="{{example}}" style="word-wrap: break-word">
+                            {{example}}
+                        </td>
+                        <td title="{{defaultValue}}" style="word-wrap: break-word;">
+                            {{defaultValue}}
+                        </td>
+                    </tr>
+                    {{/interfaceParamEntities}}
+                    {{else}}
+                    <tr>
+                        <td class='text-center' colspan='7'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     ##    <div class="row" style="margin-top: 3px;">
     ##        <div class="col-sm-12">
     ##            <span><b style="color: #03b6fd">(7).返回示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
     ##        </div>
     ##    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table" style="table-layout: fixed">
-                <caption>
-                    返回示例及注意事项
-                </caption>
-                <tbody>
-                <tr>
-                    <td style="border-top: none">
-                        {{# if interfaceResultEntities}}
-                        {{#interfaceResultEntities}}
-                        {{#compareExampleType exampleType "NORMAL" }}
-                        <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                        <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-                        {{/compareExampleType}}
-                        {{/interfaceResultEntities}}
-                        {{/if}}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        ##            {{# if interfaceResultEntities}}
-        ##            {{#interfaceResultEntities}}
-        ##            {{#compareExampleType exampleType "NORMAL" }}
-        ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-        ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-        ##            {{/compareExampleType}}
-        ##            {{/interfaceResultEntities}}
-        ##            {{/if}}
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table" style="table-layout: fixed">
+                    <caption>
+                        返回示例及注意事项
+                    </caption>
+                    <tbody>
+                    <tr>
+                        <td style="border-top: none">
+                            {{# if interfaceResultEntities}}
+                            {{#interfaceResultEntities}}
+                            {{#compareExampleType exampleType "NORMAL" }}
+                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            {{/compareExampleType}}
+                            {{/interfaceResultEntities}}
+                            {{/if}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            ##            {{# if interfaceResultEntities}}
+            ##            {{#interfaceResultEntities}}
+            ##            {{#compareExampleType exampleType "NORMAL" }}
+            ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+            ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+            ##            {{/compareExampleType}}
+            ##            {{/interfaceResultEntities}}
+            ##            {{/if}}
 
+            </div>
         </div>
-    </div>
     ##    <div class="row" style="margin-top: 3px;">
     ##        <div class="col-sm-12">
     ##            <span><b style="color: #03b6fd">(8).异常示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
     ##        </div>
     ##    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <table class="table" style="table-layout: fixed">
-                <caption>异常示例及注意事项</caption>
-                <tbody>
-                <tr>
-                    <td style="border-top: none">
-                        {{# if interfaceResultEntities}}
-                        {{#interfaceResultEntities}}
-                        {{#compareExampleType exampleType "EXCEPTION" }}
-                        <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                        <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-                        {{/compareExampleType}}
-                        {{/interfaceResultEntities}}
-                        {{/if}}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        ##            {{# if interfaceResultEntities}}
-        ##            {{#interfaceResultEntities}}
-        ##            {{#compareExampleType exampleType "EXCEPTION" }}
-        ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-        ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-        ##            {{/compareExampleType}}
-        ##            {{/interfaceResultEntities}}
-        ##            {{/if}}
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table" style="table-layout: fixed">
+                    <caption>异常示例及注意事项</caption>
+                    <tbody>
+                    <tr>
+                        <td style="border-top: none">
+                            {{# if interfaceResultEntities}}
+                            {{#interfaceResultEntities}}
+                            {{#compareExampleType exampleType "EXCEPTION" }}
+                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            {{/compareExampleType}}
+                            {{/interfaceResultEntities}}
+                            {{/if}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            ##            {{# if interfaceResultEntities}}
+            ##            {{#interfaceResultEntities}}
+            ##            {{#compareExampleType exampleType "EXCEPTION" }}
+            ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+            ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+            ##            {{/compareExampleType}}
+            ##            {{/interfaceResultEntities}}
+            ##            {{/if}}
+            </div>
         </div>
     </div>
     <br/>
@@ -543,13 +548,13 @@
             $("#interfaceHttpViewPanel").handlebars($("#interfaceHttpViewTemplate"), data);
         }, "json");
 
-        //加减号时间
+        //HTTP加减号事件
         $("#interfaceHttpViewPanel").delegate(".glyphicon-minus", "click", function () {
             $(this).parent().parent().parent().parent().parent().next().hide();
             $(this).removeClass("glyphicon-minus");
             $(this).addClass("glyphicon-plus");
         });
-        $("#interfaceHttpViewPanel").delegate(".glyphicon-plus","click", function () {
+        $("#interfaceHttpViewPanel").delegate(".glyphicon-plus", "click", function () {
             $(this).parent().parent().parent().parent().parent().next().show();
             $(this).removeClass("glyphicon-plus");
             $(this).addClass("glyphicon-minus");
@@ -559,5 +564,18 @@
         $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
             $("#interfaceRpcViewPanel").handlebars($("#interfaceRpcViewTemplate"), data);
         }, "json");
+
+        //RPC加减号事件
+        $("#interfaceRpcViewPanel").delegate(".glyphicon-minus", "click", function () {
+            $(this).parent().parent().parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-minus");
+            $(this).addClass("glyphicon-plus");
+        });
+
+        $("#interfaceRpcViewPanel").delegate(".glyphicon-plus", "click", function () {
+            $(this).parent().parent().parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-plus");
+            $(this).addClass("glyphicon-minus");
+        });
     });
 </script>
