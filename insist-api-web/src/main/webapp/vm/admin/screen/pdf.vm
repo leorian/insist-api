@@ -27,8 +27,11 @@
         position: fixed;
         display: block;
         vertical-align: 100%;
-        right: 25px;
+        right: 10px;
         background-color: #EEEEEE;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 768px;
     }
 
     .guide a {
