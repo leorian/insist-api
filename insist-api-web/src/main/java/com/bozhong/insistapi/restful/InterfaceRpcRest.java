@@ -49,6 +49,8 @@ public class InterfaceRpcRest {
         InterfaceRpcEntity interfaceRpcEntity = httpDomain.buildInterfaceRpcEntity();
         interfaceRpcEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceRpcEntity.getId()));
+        interfaceRpcEntity.setInterfaceParamResponseEntities(httpDomain.
+                buildInterfaceParamResponseEntities(interfaceRpcEntity.getId()));
         interfaceRpcEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceRpcEntity.getId()));
 
@@ -93,6 +95,8 @@ public class InterfaceRpcRest {
         interfaceRpcEntity.setId(interfaceId);
         interfaceRpcEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceRpcEntity.getId()));
+        interfaceRpcEntity.setInterfaceParamResponseEntities(httpDomain.
+                buildInterfaceParamResponseEntities(interfaceRpcEntity.getId()));
         interfaceRpcEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceRpcEntity.getId()));
 

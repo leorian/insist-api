@@ -456,6 +456,56 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <h5>响应参数</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>
+                                <table class="table table-bordered" style="table-layout: fixed"
+                                       id="rmiResponseParamTable">
+                                    <thead>
+                                    <tr style="background-color: #888888">
+                                        <th style="width:135px;">
+                                            参数名称
+                                        </th>
+                                        <th style="width:135px;">
+                                            参数类型
+                                        </th>
+                                        <th style="width:135px;">
+                                            参数说明
+                                        </th>
+                                        <th>
+                                            示例
+                                        </th>
+                                        <th style="width:45px;">
+                                            操作
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--RPC接口响应参数详情输入表格-->
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th colspan="5">
+                                            <a href="javascript:;" id="rpcAddResponseParam"><span
+                                                    class="glyphicon glyphicon-plus-sign"></span> 添加属性</a>
+                                            <a href="javascript:;" id="rpcParupResponse"
+                                               class="btn btn-sm btn-default glyphicon glyphicon-arrow-up">上移</a>
+                                            <a href="javascript:;" id="rpcPardownResponse"
+                                               class="btn btn-sm btn-default glyphicon glyphicon-arrow-down">下移</a>
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <br/>
                     <br/>
                     <div class="row">
@@ -639,6 +689,42 @@
     </tr>
 </script>
 
+<!--RPC接口响应参数详情添加一行参数-->
+<script id="rpcAddResponseParamTemplate" type="text/x-handlebars-template">
+    <tr class="outerTr">
+        <td>
+            <input name='paramNamesResponseInput' type="text" class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <select name='paramTypesResponseInput' class="form-control input-sm" style='height: 25px;'>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option value="$item">$item</option>
+                #end
+            </select>
+        </td>
+        <td>
+            <input name='paramDescribesResponseInput' type="text" class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <input name='examplesResponseInput' type="text" class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <a href="#">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+        </td>
+    </tr>
+    <tr style="display: none" class="innerTr">
+        <td colspan="5">
+            <textarea class="form-control" name="exampleDetailsResponseInput"
+                      placeholder="示例（格式：application/json）"></textarea>
+            <br/>
+            <textarea class="form-control" name="defaultValueDetailsResponseInput"
+                      placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）"></textarea>
+        </td>
+    </tr>
+</script>
+
 <!--HTTP接口列表-->
 <script id="httpInterfaceTemplate" type="text/x-handlebars-template">
     {{# if this}}
@@ -779,7 +865,7 @@
     {{/if}}
 </script>
 
-<!--HTTP接口请求参数编辑模板-->
+<!--HTTP接口响应参数编辑模板-->
 <script id="httpResponseParamEditTemplate" type="text/x-handlebars-template">
     {{# if interfaceParamResponseEntities}}
     {{#interfaceParamResponseEntities}}
@@ -901,6 +987,55 @@
     </td>
     </tr>
     {{/interfaceParamEntities}}
+    {{/if}}
+</script>
+
+<!--RPC接口响应参数编辑模板-->
+<script id="rpcResponseParamEditTemplate" type="text/x-handlebars-template">
+    {{# if interfaceParamResponseEntities}}
+    {{#interfaceParamResponseEntities}}
+    <tr class="outerTr">
+        <td><input name='paramNamesResponseInput' type="text" value='{{paramNameResponse}}'
+                   class="form-control input-sm"
+                   style='height: 25px;'></td>
+        <td>
+            <select name='paramTypesResponseInput' class="form-control input-sm" style='height: 25px;'>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option {{#compareParamType paramTypeResponse
+                    "$item" }} selected="selected" {{/compareParamType}}
+                    value="$item">$item</option>
+                #end
+            </select>
+        </td>
+        <td>
+            <input name='paramDescribesResponseInput' value='{{paramDescribeResponse}}' type="text"
+                   class="form-control input-sm"
+                   style='height: 25px;'>
+        </td>
+        <td>
+            <input name='examplesResponseInput' value='{{exampleResponse}}' type="text" class="form-control input-sm"
+                   style='height: 25px;'>
+        </td>
+        <td>
+            <a href="#">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+        </td>
+    </tr>
+    <tr class="innerTr" {{#compareParamType paramTypeResponse
+    'object'}} style="display:table-row" {{else}}  {{#compareParamType paramTypeResponse
+    'json'}} style="display:table-row" {{else}}
+    {{#compareParamType paramTypeResponse
+    'array'}} style="display:table-row" {{else}}
+    style="display:none"{{/compareParamType}} {{/compareParamType}}  {{/compareParamType}}>
+    <td colspan="5">
+        <textarea class="form-control" name="exampleDetailsResponseInput" placeholder="示例（格式：application/json）">{{exampleDetailResponse}}</textarea>
+        <br/>
+        <textarea class="form-control" name="defaultValueDetailsResponseInput"
+                  placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）">{{defaultValueDetailResponse}}</textarea>
+    </td>
+    </tr>
+    {{/interfaceParamResponseEntities}}
     {{/if}}
 </script>
 
@@ -1391,6 +1526,70 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>响应参数</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th width="150px;">名称</th>
+                        <th width="150px;">类型</th>
+                        <th width="150px;">说明</th>
+                        <th width="150px;">示例</th>
+                        <th width="55px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myRpcPreviewResponseTBody">
+                    {{# if interfaceParamResponseEntities}}
+                    {{#interfaceParamResponseEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td style="word-wrap: break-word">{{paramNameResponse}}</td>
+                        <td>{{paramTypeResponse}}</td>
+                        <td style="word-wrap: break-word">{{paramDescribeResponse}}</td>
+                        <td style="word-wrap: break-word">{{exampleResponse}}</td>
+                        <td class="text-center">
+                            {{#compareParamType paramTypeResponse
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeResponse
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{#compareParamType paramTypeResponse
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramTypeResponse
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramTypeResponse
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}}>
+                    <td colspan="5">
+                        <pre>{{exampleDetailResponse}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetailResponse}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamResponseEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='5'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
                 <ul id="myRpcPreviewTab" class="nav nav-tabs">
                     <li class="active">
                         <a href="#returnExampleRpcPreview" data-toggle="tab">
@@ -1472,6 +1671,16 @@
             }
         });
 
+        //RPC响应参数类型选择事件
+        $("#myRpcModal").find("#rmiResponseParamTable>tbody").delegate("select[name='paramTypesResponseInput']", "change", function () {
+            if ($(this).val() == "object" || $(this).val() == "json" || $(this).val() == "array") {
+                $(this).parent().parent().next().css("display", "table-row");
+            } else {
+                $(this).parent().parent().next().css("display", "none");
+            }
+        });
+
+
         //HTTP接口添加请求参数
         $("#httpAddRequestParam").click(function () {
             $("#myHttpModal").find("#requestParamTable>tbody").append($("#httpAddRequestParamTemplate").html());
@@ -1482,9 +1691,14 @@
             $("#myHttpModal").find("#responseParamTable>tbody").append($("#httpAddResponseParamTemplate").html());
         });
 
-        //Rpc接口添加参数
+        //Rpc接口添加请求参数
         $("#rpcAddRequestParam").click(function () {
             $("#myRpcModal").find("#rmiParamTable>tbody").append($("#rpcAddRequestParamTemplate").html());
+        });
+
+        //RPC接口添加响应参数
+        $("#rpcAddResponseParam").click(function () {
+            $("#myRpcModal").find("#rmiResponseParamTable>tbody").append($("#rpcAddResponseParamTemplate").html());
         });
 
         //HTTP接口请求参数行选中事件
@@ -1499,9 +1713,15 @@
             $(this).addClass("bg-success");
         });
 
-        //RPC接口行选中事件
+        //RPC接口请求参数行选中事件
         $("#myRpcModal").delegate("#rmiParamTable > tbody > tr.outerTr", "click", function () {
             $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr").removeClass("bg-success");
+            $(this).addClass("bg-success");
+        });
+
+        //RPC接口响应参数行选中事件
+        $("#myRpcModal").delegate("#rmiResponseParamTable > tbody > tr.outerTr", "click", function () {
+            $("#myRpcModal").find("#rmiResponseParamTable > tbody > tr.outerTr").removeClass("bg-success");
             $(this).addClass("bg-success");
         });
 
@@ -1517,8 +1737,14 @@
             $(this).parent().parent().parent().remove();
         });
 
-        //RPC接口删除行事件
+        //RPC接口请求参数删除行事件
         $("#myRpcModal").delegate("#rmiParamTable .glyphicon-trash", "click", function () {
+            $(this).parent().parent().parent().next().remove();
+            $(this).parent().parent().parent().remove();
+        });
+
+        //RPC接口响应参数删除行事件
+        $("#myRpcModal").delegate("#rmiResponseParamTable .glyphicon-trash", "click", function () {
             $(this).parent().parent().parent().next().remove();
             $(this).parent().parent().parent().remove();
         });
@@ -1553,6 +1779,15 @@
             }
         });
 
+        $("#rpcParupResponse").click(function () {
+            var currentElement = $("#myRpcModal").find("#rmiResponseParamTable > tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.prev().prev().length > 0) {
+                nextElement.insertBefore(currentElement.prev().prev());
+                currentElement.insertBefore(nextElement);
+            }
+        });
+
         //HTTP接口请求参数下移事件
         $("#httpPardown").click(function () {
             var currentElement = $("#myHttpModal").find("#requestParamTable > tbody > tr.outerTr.bg-success");
@@ -1573,9 +1808,19 @@
             }
         });
 
-        //RPC接口下移事件
+        //RPC接口请求参数下移事件
         $("#rpcPardown").click(function () {
             var currentElement = $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.next().next().next().length > 0) {
+                currentElement.insertAfter(currentElement.next().next().next());
+                nextElement.insertAfter(currentElement);
+            }
+        });
+
+        //RPC接口响应参数下移事件
+        $("#rpcPardownResponse").click(function () {
+            var currentElement = $("#myRpcModal").find("#rmiResponseParamTable > tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.next().next().next().length > 0) {
                 currentElement.insertAfter(currentElement.next().next().next());
@@ -1745,6 +1990,9 @@
                 //请求参数
                 $("#myRpcModal").find("#rmiParamTable > tbody").handlebars($("#rpcRequestParamEditTemplate"), data);
 
+                //响应参数
+                $("#myRpcModal").find("#rmiResponseParamTable > tbody").handlebars($("#rpcResponseParamEditTemplate"), data);
+
                 //结果示例
                 if (data.interfaceResultEntities != null && data.interfaceResultEntities.length > 0) {
                     for (var i = 0; i < data.interfaceResultEntities.length; i++) {
@@ -1856,6 +2104,18 @@
             $(this).addClass("glyphicon-chevron-down");
         });
 
+        //RPC响应参数预览复杂类型是否展示详情控制事件
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewResponseTBody .glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewResponseTBody .glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
 
     });
 </script>

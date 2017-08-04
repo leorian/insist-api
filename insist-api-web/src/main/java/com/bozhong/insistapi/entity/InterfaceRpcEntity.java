@@ -72,6 +72,11 @@ public class InterfaceRpcEntity extends BaseEntity {
     /**
      *
      */
+    private List<InterfaceParamResponseEntity> interfaceParamResponseEntities;
+
+    /**
+     *
+     */
     private List<InterfaceResultEntity> interfaceResultEntities;
 
     public String getId() {
@@ -152,6 +157,14 @@ public class InterfaceRpcEntity extends BaseEntity {
 
     public void setInterfaceResultEntities(List<InterfaceResultEntity> interfaceResultEntities) {
         this.interfaceResultEntities = interfaceResultEntities;
+    }
+
+    public List<InterfaceParamResponseEntity> getInterfaceParamResponseEntities() {
+        return interfaceParamResponseEntities;
+    }
+
+    public void setInterfaceParamResponseEntities(List<InterfaceParamResponseEntity> interfaceParamResponseEntities) {
+        this.interfaceParamResponseEntities = interfaceParamResponseEntities;
     }
 
     @Override
