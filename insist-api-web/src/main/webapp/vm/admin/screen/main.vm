@@ -679,7 +679,10 @@
     </tr>
     <tr class="innerTr" {{#compareParamType paramType
     'object'}} style="display:table-row" {{else}}  {{#compareParamType paramType
-    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}  {{/compareParamType}}>
+    'json'}} style="display:table-row" {{else}}
+    {{#compareParamType paramType
+    'array'}} style="display:table-row" {{else}}
+    style="display:none"{{/compareParamType}} {{/compareParamType}}  {{/compareParamType}}>
     <td colspan="8">
         <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）">{{exampleDetail}}</textarea>
         <br/>
@@ -754,7 +757,8 @@
     </tr>
     <tr class="innerTr" {{#compareParamType paramType
     'object'}} style="display:table-row" {{else}}  {{#compareParamType paramType
-    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}  {{/compareParamType}}>
+    'json'}} style="display:table-row" {{else}} {{#compareParamType paramType
+    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}} {{/compareParamType}}  {{/compareParamType}}>
     <td colspan="8">
         <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）">{{exampleDetail}}</textarea>
         <br/>
@@ -943,14 +947,23 @@
                         </a> {{else}} {{#compareParamType paramType
                             'json'}} <a href="javascript:void(0);">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a> {{else}} {{/compareParamType}}
+                        </a> {{else}}
+                            {{#compareParamType paramType
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
                             {{/compareParamType}}
 
                         </td>
                     </tr>
                     <tr {{#compareParamType paramType
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
-                    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramType
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
                     {{/compareParamType}}>
                     <td colspan="8">
                         <pre>{{exampleDetail}}</pre>
@@ -1142,14 +1155,23 @@
                         </a> {{else}} {{#compareParamType paramType
                             'json'}} <a href="javascript:void(0);">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a> {{else}} {{/compareParamType}}
+                        </a> {{else}}
+                            {{#compareParamType paramType
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
                             {{/compareParamType}}
 
                         </td>
                     </tr>
                     <tr {{#compareParamType paramType
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
-                    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramType
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="8">
                         <pre>{{exampleDetail}}</pre>
@@ -1227,7 +1249,7 @@
 
         //HTTP请求参数类型选择事件
         $("#myHttpModal").find("#requestParamTable>tbody").delegate("select[name='paramTypesInput']", "change", function () {
-            if ($(this).val() == "object" || $(this).val() == "json") {
+            if ($(this).val() == "object" || $(this).val() == "json" || $(this).val() == "array") {
                 $(this).parent().parent().next().css("display", "table-row");
             } else {
                 $(this).parent().parent().next().css("display", "none");
@@ -1236,7 +1258,7 @@
 
         //RPC请求参数类型选择事件
         $("#myRpcModal").find("#rmiParamTable>tbody").delegate("select[name='paramTypesInput']", "change", function () {
-            if ($(this).val() == "object" || $(this).val() == "json") {
+            if ($(this).val() == "object" || $(this).val() == "json" || $(this).val() == "array") {
                 $(this).parent().parent().next().css("display", "table-row");
             } else {
                 $(this).parent().parent().next().css("display", "none");
