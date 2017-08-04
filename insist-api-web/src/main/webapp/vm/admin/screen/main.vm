@@ -375,7 +375,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="rmiParamTable">
                                     <thead>
                                     <tr>
                                         <th style="width: 120px;">参数名称</th>
@@ -542,6 +542,14 @@
             <a href="#">
                 <span class="glyphicon glyphicon-trash"></span>
             </a>
+        </td>
+    </tr>
+    <tr style="display: none">
+        <td colspan="8">
+            <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）"></textarea>
+            <br/>
+            <textarea class="form-control" name="defaultValueDetailsInput"
+                      placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）"></textarea>
         </td>
     </tr>
 </script>
@@ -1162,15 +1170,15 @@
     <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
         {{name}}
     </h3>
-##    <div class="row">
-##        <div class="col-sm-12">
-##            <div class="form-group">
-##                <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
-##                    {{name}}
-##                </h3>
-##            </div>
-##        </div>
-##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-12">
+    ##            <div class="form-group">
+    ##                <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
+    ##                    {{name}}
+    ##                </h3>
+    ##            </div>
+    ##        </div>
+    ##    </div>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed;">
@@ -1187,18 +1195,18 @@
             </table>
         </div>
     </div>
-##    <div class="row">
-##        <div class="col-sm-2">
-##            <div class="form-group text-right">
-##                类全路径名称：
-##            </div>
-##        </div>
-##        <div class="col-sm-10">
-##            <div class="form-group" id="rpcClassNameView" style="word-wrap: break-word">
-##                {{className}}
-##            </div>
-##        </div>
-##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-2">
+    ##            <div class="form-group text-right">
+    ##                类全路径名称：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-10">
+    ##            <div class="form-group" id="rpcClassNameView" style="word-wrap: break-word">
+    ##                {{className}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed">
@@ -1215,18 +1223,18 @@
             </table>
         </div>
     </div>
-##    <div class="row">
-##        <div class="col-sm-2">
-##            <div class="form-group text-right">
-##                方法名称：
-##            </div>
-##        </div>
-##        <div class="col-sm-10">
-##            <div class="form-group" id="rpcMethodNameView" style="word-wrap: break-word">
-##                {{methodName}}
-##            </div>
-##        </div>
-##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-2">
+    ##            <div class="form-group text-right">
+    ##                方法名称：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-10">
+    ##            <div class="form-group" id="rpcMethodNameView" style="word-wrap: break-word">
+    ##                {{methodName}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed">
@@ -1243,18 +1251,18 @@
             </table>
         </div>
     </div>
-##    <div class="row">
-##        <div class="col-sm-2">
-##            <div class="form-group text-right">
-##                功能描述：
-##            </div>
-##        </div>
-##        <div class="col-sm-10">
-##            <div class="form-group" id="rpcFunctionDescribeView" style="word-wrap: break-word">
-##                {{functionDescribe}}
-##            </div>
-##        </div>
-##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-2">
+    ##            <div class="form-group text-right">
+    ##                功能描述：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-10">
+    ##            <div class="form-group" id="rpcFunctionDescribeView" style="word-wrap: break-word">
+    ##                {{functionDescribe}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed">
@@ -1271,18 +1279,18 @@
             </table>
         </div>
     </div>
-##    <div class="row">
-##        <div class="col-sm-2">
-##            <div class="form-group text-right">
-##                返回值类型：
-##            </div>
-##        </div>
-##        <div class="col-sm-10">
-##            <div class="form-group" id="rpcReturnTypeView" style="word-wrap: break-word">
-##                {{returnType}}
-##            </div>
-##        </div>
-##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-2">
+    ##            <div class="form-group text-right">
+    ##                返回值类型：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-10">
+    ##            <div class="form-group" id="rpcReturnTypeView" style="word-wrap: break-word">
+    ##                {{returnType}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-bordered" style="table-layout: fixed">
@@ -1299,18 +1307,18 @@
             </table>
         </div>
     </div>
-##    <div class="row">
-##        <div class="col-sm-2">
-##            <div class="form-group text-right">
-##                方法参数：
-##            </div>
-##        </div>
-##        <div class="col-sm-10">
-##            <div class="form-group" id="rpcMethodParamView" style="word-wrap: break-word">
-##                {{methodParam}}
-##            </div>
-##        </div>
-##    </div>
+    ##    <div class="row">
+    ##        <div class="col-sm-2">
+    ##            <div class="form-group text-right">
+    ##                方法参数：
+    ##            </div>
+    ##        </div>
+    ##        <div class="col-sm-10">
+    ##            <div class="form-group" id="rpcMethodParamView" style="word-wrap: break-word">
+    ##                {{methodParam}}
+    ##            </div>
+    ##        </div>
+    ##    </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
@@ -1407,8 +1415,17 @@
 <script type="text/javascript">
     $(function () {
 
-        //参数类型选择事件
+        //HTTP请求参数类型选择事件
         $("#myHttpModal").find("#requestParamTable>tbody").delegate("select[name='paramTypesInput']", "change", function () {
+            if ($(this).val() == "object" || $(this).val() == "json") {
+                $(this).parent().parent().next().css("display", "table-row");
+            } else {
+                $(this).parent().parent().next().css("display", "none");
+            }
+        });
+
+        //RPC请求参数类型选择事件
+        $("#myRpcModal").find("#rmiParamTable>tbody").delegate("select[name='paramTypesInput']", "change", function () {
             if ($(this).val() == "object" || $(this).val() == "json") {
                 $(this).parent().parent().next().css("display", "table-row");
             } else {
