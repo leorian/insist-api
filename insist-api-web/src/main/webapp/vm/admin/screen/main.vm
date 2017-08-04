@@ -1267,11 +1267,13 @@
 
         //Http接口删除行事件
         $("#myHttpModal").delegate(".glyphicon-trash", "click", function () {
+            $(this).parent().parent().parent().next().remove();
             $(this).parent().parent().parent().remove();
         });
 
         //RPC接口删除行事件
         $("#myRpcModal").delegate(".glyphicon-trash", "click", function () {
+            $(this).parent().parent().parent().next().remove();
             $(this).parent().parent().parent().remove();
         });
 
