@@ -752,6 +752,16 @@
             </a>
         </td>
     </tr>
+    <tr {{#compareParamType paramType
+    'object'}} style="display:table-row" {{else}}  {{#compareParamType paramType
+    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}  {{/compareParamType}}>
+    <td colspan="8">
+        <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）">{{exampleDetail}}</textarea>
+        <br/>
+        <textarea class="form-control" name="defaultValueDetailsInput"
+                  placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）">{{defaultValueDetail}}</textarea>
+    </td>
+    </tr>
     {{/interfaceParamEntities}}
     {{/if}}
 </script>
@@ -1346,6 +1356,16 @@
                         <td>{{jsontransformat}}</td>
                         <td style="word-wrap: break-word">{{example}}</td>
                         <td style="word-wrap: break-word">{{defaultValue}}</td>
+                    </tr>
+                    <tr {{#compareParamType paramType
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
+                    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    {{/compareParamType}}>
+                    <td colspan="7">
+                        <pre>{{exampleDetail}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetail}}</pre>
+                    </td>
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}

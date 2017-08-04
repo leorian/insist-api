@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by xiezhonggui on 2017/7/15.
  */
-public class InterfaceRpcDomain implements Serializable{
+public class InterfaceRpcDomain implements Serializable {
     /*接口详情*/
     private String appIdInput;
     private String classNameInput;
@@ -27,13 +27,15 @@ public class InterfaceRpcDomain implements Serializable{
     private String methodParamInput;
 
     /*请求参数*/
-    private String[]  paramNamesInput;
+    private String[] paramNamesInput;
     private String[] paramTypesInput;
     private String[] paramDescribesInput;
     private Boolean[] requiredsInput;
     private Boolean[] jsontransformatsInput;
     private String[] examplesInput;
     private String[] defaultValuesInput;
+    private String[] exampleDetailsInput;
+    private String[] defaultValueDetailsInput;
 
 
     /*返回示例*/
@@ -156,6 +158,22 @@ public class InterfaceRpcDomain implements Serializable{
         this.defaultValuesInput = defaultValuesInput;
     }
 
+    public String[] getExampleDetailsInput() {
+        return exampleDetailsInput;
+    }
+
+    public void setExampleDetailsInput(String[] exampleDetailsInput) {
+        this.exampleDetailsInput = exampleDetailsInput;
+    }
+
+    public String[] getDefaultValueDetailsInput() {
+        return defaultValueDetailsInput;
+    }
+
+    public void setDefaultValueDetailsInput(String[] defaultValueDetailsInput) {
+        this.defaultValueDetailsInput = defaultValueDetailsInput;
+    }
+
     public String getReturnExampleContent() {
         return returnExampleContent;
     }
@@ -206,7 +224,7 @@ public class InterfaceRpcDomain implements Serializable{
     }
 
     public List<InterfaceParamEntity> buildInterfaceParamEntities(String interfaceId) {
-        if (this.getParamNamesInput()==null || this.getParamNamesInput().length==0) {
+        if (this.getParamNamesInput() == null || this.getParamNamesInput().length == 0) {
             return null;
         }
 
@@ -230,6 +248,8 @@ public class InterfaceRpcDomain implements Serializable{
             interfaceParamEntity.setJsontransformat(this.getJsontransformatsInput()[i]);
             interfaceParamEntity.setExample(this.getExamplesInput()[i]);
             interfaceParamEntity.setDefaultValue(this.getDefaultValuesInput()[i]);
+            interfaceParamEntity.setExampleDetail(this.getExampleDetailsInput()[i]);
+            interfaceParamEntity.setDefaultValueDetail(this.getDefaultValueDetailsInput()[i]);
             interfaceParamEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntities.add(interfaceParamEntity);
