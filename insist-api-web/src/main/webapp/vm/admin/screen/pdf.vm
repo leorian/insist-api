@@ -90,8 +90,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(1).接口地址 :</b></span><span>&nbsp;&nbsp;</span>
-            ##            <span style="word-wrap: break-word">{{address}}</span>
             </div>
         </div>
         <div class="row" style="margin-top: 3px;">
@@ -106,8 +104,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(2).接口描述 :</b></span><span>&nbsp;&nbsp;</span>
-            ##            <span style="word-wrap: break-word">{{description}}</span>
             </div>
         </div>
         <div class="row" style="margin-top: 3px;">
@@ -122,7 +118,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(3).数据格式 :</b></span><span>&nbsp;&nbsp;</span><span>{{transformat}}</span>
             </div>
         </div>
         <div class="row" style="margin-top: 3px;">
@@ -137,7 +132,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(4).请求方式 :</b></span><span>&nbsp;&nbsp;</span><span>{{protocol}} + {{method}}</span>
             </div>
         </div>
         <div class="row">
@@ -175,11 +169,6 @@
                 </table>
             </div>
         </div>
-    ##    <div class="row" style="margin-top: 3px;">
-    ##        <div class="col-sm-12">
-    ##            <span><b style="color: #03b6fd">(5).请求参数 :</b></span><span>&nbsp;&nbsp;</span>
-    ##        </div>
-    ##    </div>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
@@ -257,11 +246,6 @@
                 </table>
             </div>
         </div>
-    ##    <div class="row" style="margin-top: 3px;">
-    ##        <div class="col-sm-12">
-    ##            <span><b style="color: #03b6fd">(6).返回示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
-    ##        </div>
-    ##    </div>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
@@ -281,22 +265,8 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            {{# if interfaceResultEntities}}
-            ##            {{#interfaceResultEntities}}
-            ##            {{#compareExampleType exampleType "NORMAL" }}
-            ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-            ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-            ##            {{/compareExampleType}}
-            ##            {{/interfaceResultEntities}}
-            ##            {{/if}}
-
             </div>
         </div>
-    ##    <div class="row" style="margin-top: 3px;">
-    ##        <div class="col-sm-12">
-    ##            <span><b style="color: #03b6fd">(7).异常示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
-    ##        </div>
-    ##    </div>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
@@ -316,14 +286,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            {{# if interfaceResultEntities}}
-            ##            {{#interfaceResultEntities}}
-            ##            {{#compareExampleType exampleType "EXCEPTION" }}
-            ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-            ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-            ##            {{/compareExampleType}}
-            ##            {{/interfaceResultEntities}}
-            ##            {{/if}}
             </div>
         </div>
     </div>
@@ -362,8 +324,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(1).类全路径名称 :</b></span><span>&nbsp;&nbsp;</span>
-            ##            <span style="word-wrap: break-word">{{className}}</span>
             </div>
         </div>
         <div class="row" style="margin-top: 3px;">
@@ -378,8 +338,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(2).方法名称 :</b></span><span>&nbsp;&nbsp;</span>
-            ##            <span style="word-wrap: break-word">{{methodName}}</span>
             </div>
         </div>
         <div class="row" style="margin-top: 3px;">
@@ -396,8 +354,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(3).返回值类型 :</b></span><span>&nbsp;&nbsp;</span>
-            ##            <span style="word-wrap: break-word">{{returnType}}</span>
             </div>
         </div>
         <div class="row" style="margin-top: 3px;">
@@ -412,8 +368,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            <span><b style="color: #03b6fd">(4).方法参数 :</b></span><span>&nbsp;&nbsp;</span>
-            ##            <span style="word-wrap: break-word">{{methodParam}}</span>
             </div>
         </div>
         <div class="row" style="margin-top: 3px;">
@@ -428,15 +382,8 @@
                     </tr>
                     </tbody>
                 </table>
-            ##        <span><b style="color: #03b6fd">(5).功能描述</b></span><span>&nbsp;&nbsp;</span>
-            ##        <span style="word-wrap: break-word">{{functionDescribe}}</span>
             </div>
         </div>
-    ##    <div class="row" style="margin-top: 3px;">
-    ##        <div class="col-sm-12">
-    ##            <span><b style="color: #03b6fd">(6).请求参数 :</b></span><span>&nbsp;&nbsp;</span>
-    ##        </div>
-    ##    </div>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
@@ -514,11 +461,6 @@
                 </table>
             </div>
         </div>
-    ##    <div class="row" style="margin-top: 3px;">
-    ##        <div class="col-sm-12">
-    ##            <span><b style="color: #03b6fd">(7).返回示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
-    ##        </div>
-    ##    </div>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
@@ -538,22 +480,8 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            {{# if interfaceResultEntities}}
-            ##            {{#interfaceResultEntities}}
-            ##            {{#compareExampleType exampleType "NORMAL" }}
-            ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-            ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-            ##            {{/compareExampleType}}
-            ##            {{/interfaceResultEntities}}
-            ##            {{/if}}
-
             </div>
         </div>
-    ##    <div class="row" style="margin-top: 3px;">
-    ##        <div class="col-sm-12">
-    ##            <span><b style="color: #03b6fd">(8).异常示例及注意事项 :</b></span><span>&nbsp;&nbsp;</span>
-    ##        </div>
-    ##    </div>
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="border-top: none">
@@ -575,14 +503,6 @@
                     </tr>
                     </tbody>
                 </table>
-            ##            {{# if interfaceResultEntities}}
-            ##            {{#interfaceResultEntities}}
-            ##            {{#compareExampleType exampleType "EXCEPTION" }}
-            ##            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-            ##            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
-            ##            {{/compareExampleType}}
-            ##            {{/interfaceResultEntities}}
-            ##            {{/if}}
             </div>
         </div>
     </div>
