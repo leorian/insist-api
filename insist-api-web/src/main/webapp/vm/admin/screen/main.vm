@@ -1267,41 +1267,41 @@
 
         //HTTP接口添加参数
         $("#httpAddRequestParam").click(function () {
-            $("#myHttpModal").find("tbody").append($("#httpAddRequestParamTemplate").html());
+            $("#myHttpModal").find("#requestParamTable>tbody").append($("#httpAddRequestParamTemplate").html());
         });
 
         //Rpc接口添加参数
         $("#rpcAddRequestParam").click(function () {
-            $("#myRpcModal").find("tbody").append($("#rpcAddRequestParamTemplate").html());
+            $("#myRpcModal").find("#rmiParamTable>tbody").append($("#rpcAddRequestParamTemplate").html());
         });
 
         //HTTP接口行选中事件
-        $("#myHttpModal").delegate("tbody > tr.outerTr", "click", function () {
-            $("#myHttpModal").find("tbody > tr.outerTr").removeClass("bg-success");
+        $("#myHttpModal").delegate("#requestParamTable > tbody > tr.outerTr", "click", function () {
+            $("#myHttpModal").find("#requestParamTable > tbody > tr.outerTr").removeClass("bg-success");
             $(this).addClass("bg-success");
         });
 
         //RPC接口行选中事件
-        $("#myRpcModal").delegate("tbody > tr.outerTr", "click", function () {
-            $("#myRpcModal").find("tbody > tr.outerTr").removeClass("bg-success");
+        $("#myRpcModal").delegate("#rmiParamTable > tbody > tr.outerTr", "click", function () {
+            $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr").removeClass("bg-success");
             $(this).addClass("bg-success");
         });
 
         //Http接口删除行事件
-        $("#myHttpModal").delegate(".glyphicon-trash", "click", function () {
+        $("#myHttpModal").delegate("#requestParamTable .glyphicon-trash", "click", function () {
             $(this).parent().parent().parent().next().remove();
             $(this).parent().parent().parent().remove();
         });
 
         //RPC接口删除行事件
-        $("#myRpcModal").delegate(".glyphicon-trash", "click", function () {
+        $("#myRpcModal").delegate("#rmiParamTable .glyphicon-trash", "click", function () {
             $(this).parent().parent().parent().next().remove();
             $(this).parent().parent().parent().remove();
         });
 
         //Http接口上移事件
         $("#httpParup").click(function () {
-            var currentElement = $("#myHttpModal").find("tbody > tr.outerTr.bg-success");
+            var currentElement = $("#myHttpModal").find("#requestParamTable > tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.prev().prev().length > 0) {
                 nextElement.insertBefore(currentElement.prev().prev());
@@ -1311,7 +1311,7 @@
 
         //RPC接口上移事件
         $("#rpcParup").click(function () {
-            var currentElement = $("#myRpcModal").find("tbody > tr.outerTr.bg-success");
+            var currentElement = $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.prev().prev().length > 0) {
                 nextElement.insertBefore(currentElement.prev().prev());
@@ -1321,7 +1321,7 @@
 
         //Http接口下移事件
         $("#httpPardown").click(function () {
-            var currentElement = $("#myHttpModal").find("tbody > tr.outerTr.bg-success");
+            var currentElement = $("#myHttpModal").find("#requestParamTable > tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.next().next().next().length > 0) {
                 currentElement.insertAfter(currentElement.next().next().next());
@@ -1331,7 +1331,7 @@
 
         //RPC接口下移事件
         $("#rpcPardown").click(function () {
-            var currentElement = $("#myRpcModal").find("tbody > tr.outerTr.bg-success");
+            var currentElement = $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.next().next().next().length > 0) {
                 currentElement.insertAfter(currentElement.next().next().next());
@@ -1464,7 +1464,7 @@
                 $("#myHttpModal").find("input[name='prdAddressInput']").val(data.prdAddress);
 
                 //请求参数
-                $("#myHttpModal").find("tbody").handlebars($("#httpRequestParamEditTemplate"), data);
+                $("#myHttpModal").find("#requestParamTable > tbody").handlebars($("#httpRequestParamEditTemplate"), data);
 
                 //结果示例
                 if (data.interfaceResultEntities != null && data.interfaceResultEntities.length > 0) {
@@ -1496,7 +1496,7 @@
                 $("#myRpcModal").find("input[name='methodParamInput']").val(data.methodParam);
 
                 //请求参数
-                $("#myRpcModal").find("tbody").handlebars($("#rpcRequestParamEditTemplate"), data);
+                $("#myRpcModal").find("#rmiParamTable > tbody").handlebars($("#rpcRequestParamEditTemplate"), data);
 
                 //结果示例
                 if (data.interfaceResultEntities != null && data.interfaceResultEntities.length > 0) {
@@ -1561,13 +1561,13 @@
             }, "json");
         });
 
-        $("#myHttpPreviewModal").delegate(".glyphicon-chevron-down", "click", function () {
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewTBody .glyphicon-chevron-down", "click", function () {
             $(this).parent().parent().parent().next().hide();
             $(this).removeClass("glyphicon-chevron-down");
             $(this).addClass("glyphicon-chevron-up");
         });
 
-        $("#myHttpPreviewModal").delegate(".glyphicon-chevron-up", "click", function () {
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewTBody .glyphicon-chevron-up", "click", function () {
             $(this).parent().parent().parent().next().show();
             $(this).removeClass("glyphicon-chevron-up");
             $(this).addClass("glyphicon-chevron-down");
@@ -1583,13 +1583,13 @@
         });
 
 
-        $("#myRpcPreviewModal").delegate(".glyphicon-chevron-down", "click", function () {
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewTBody .glyphicon-chevron-down", "click", function () {
             $(this).parent().parent().parent().next().hide();
             $(this).removeClass("glyphicon-chevron-down");
             $(this).addClass("glyphicon-chevron-up");
         });
 
-        $("#myRpcPreviewModal").delegate(".glyphicon-chevron-up", "click", function () {
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewTBody .glyphicon-chevron-up", "click", function () {
             $(this).parent().parent().parent().next().show();
             $(this).removeClass("glyphicon-chevron-up");
             $(this).addClass("glyphicon-chevron-down");
