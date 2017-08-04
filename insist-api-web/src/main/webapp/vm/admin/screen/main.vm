@@ -211,7 +211,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <table class="table table-bordered" id="requestParamTable">
+                                <table class="table table-bordered" style="table-layout: fixed" id="requestParamTable">
                                     <thead>
                                     <tr style="background-color: #888888">
                                         <th style="width: 120px;">参数名称</th>
@@ -235,6 +235,55 @@
                                             <a href="javascript:;" id="httpParup"
                                                class="btn btn-sm btn-default glyphicon glyphicon-arrow-up">上移</a>
                                             <a href="javascript:;" id="httpPardown"
+                                               class="btn btn-sm btn-default glyphicon glyphicon-arrow-down">下移</a>
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <h5>响应参数</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>
+                                <table class="table table-bordered" style="table-layout: fixed" id="responseParamTable">
+                                    <thead>
+                                    <tr style="background-color: #888888">
+                                        <th style="width:135px;">
+                                            参数名称
+                                        </th>
+                                        <th style="width:135px;">
+                                            参数类型
+                                        </th>
+                                        <th style="width:135px;">
+                                            参数说明
+                                        </th>
+                                        <th>
+                                            示例
+                                        </th>
+                                        <th style="width:45px;">
+                                            操作
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--HTTP接口响应参数详情输入表格-->
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th colspan="5">
+                                            <a href="javascript:;" id="httpAddResponseParam"><span
+                                                    class="glyphicon glyphicon-plus-sign"></span> 添加属性</a>
+                                            <a href="javascript:;" id="httpParupResponse"
+                                               class="btn btn-sm btn-default glyphicon glyphicon-arrow-up">上移</a>
+                                            <a href="javascript:;" id="httpPardownResponse"
                                                class="btn btn-sm btn-default glyphicon glyphicon-arrow-down">下移</a>
                                         </th>
                                     </tr>
@@ -503,6 +552,42 @@
             <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）"></textarea>
             <br/>
             <textarea class="form-control" name="defaultValueDetailsInput"
+                      placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）"></textarea>
+        </td>
+    </tr>
+</script>
+
+<!--HTTP接口响应参数详情添加一行参数-->
+<script id="httpAddResponseParamTemplate" type="text/x-handlebars-template">
+    <tr class="outerTr">
+        <td>
+            <input name='paramNamesResponseInput' type="text" class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <select name='paramTypesResponseInput' class="form-control input-sm" style='height: 25px;'>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option value="$item">$item</option>
+                #end
+            </select>
+        </td>
+        <td>
+            <input name='paramDescribesResponseInput' type="text" class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <input name='examplesResponseInput' type="text" class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <a href="#">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+        </td>
+    </tr>
+    <tr style="display: none" class="innerTr">
+        <td colspan="5">
+            <textarea class="form-control" name="exampleDetailsResponseInput"
+                      placeholder="示例（格式：application/json）"></textarea>
+            <br/>
+            <textarea class="form-control" name="defaultValueDetailsResponseInput"
                       placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）"></textarea>
         </td>
     </tr>
@@ -1256,6 +1341,15 @@
             }
         });
 
+        //HTTP响应参数类型选择事件
+        $("#myHttpModal").find("#responseParamTable>tbody").delegate("select[name='paramTypesResponseInput']", "change", function () {
+            if ($(this).val() == "object" || $(this).val() == "json" || $(this).val() == "array") {
+                $(this).parent().parent().next().css("display", "table-row");
+            } else {
+                $(this).parent().parent().next().css("display", "none");
+            }
+        });
+
         //RPC请求参数类型选择事件
         $("#myRpcModal").find("#rmiParamTable>tbody").delegate("select[name='paramTypesInput']", "change", function () {
             if ($(this).val() == "object" || $(this).val() == "json" || $(this).val() == "array") {
@@ -1265,9 +1359,14 @@
             }
         });
 
-        //HTTP接口添加参数
+        //HTTP接口添加请求参数
         $("#httpAddRequestParam").click(function () {
             $("#myHttpModal").find("#requestParamTable>tbody").append($("#httpAddRequestParamTemplate").html());
+        });
+
+        //HTTP接口添加响应参数
+        $("#httpAddResponseParam").click(function () {
+            $("#myHttpModal").find("#responseParamTable>tbody").append($("#httpAddResponseParamTemplate").html());
         });
 
         //Rpc接口添加参数
@@ -1275,9 +1374,15 @@
             $("#myRpcModal").find("#rmiParamTable>tbody").append($("#rpcAddRequestParamTemplate").html());
         });
 
-        //HTTP接口行选中事件
+        //HTTP接口请求参数行选中事件
         $("#myHttpModal").delegate("#requestParamTable > tbody > tr.outerTr", "click", function () {
             $("#myHttpModal").find("#requestParamTable > tbody > tr.outerTr").removeClass("bg-success");
+            $(this).addClass("bg-success");
+        });
+
+        //HTTP接口响应参数行选中事件
+        $("#myHttpModal").delegate("#responseParamTable > tbody > tr.outerTr", "click", function () {
+            $("#myHttpModal").find("#responseParamTable > tbody > tr.outerTr").removeClass("bg-success");
             $(this).addClass("bg-success");
         });
 
@@ -1287,8 +1392,14 @@
             $(this).addClass("bg-success");
         });
 
-        //Http接口删除行事件
+        //HTTP接口请求参数删除行事件
         $("#myHttpModal").delegate("#requestParamTable .glyphicon-trash", "click", function () {
+            $(this).parent().parent().parent().next().remove();
+            $(this).parent().parent().parent().remove();
+        });
+
+        //HTTP接口响应参数删除行事件
+        $("#myHttpModal").delegate("#responseParamTable .glyphicon-trash", "click", function () {
             $(this).parent().parent().parent().next().remove();
             $(this).parent().parent().parent().remove();
         });
@@ -1299,9 +1410,19 @@
             $(this).parent().parent().parent().remove();
         });
 
-        //Http接口上移事件
+        //HTTP接口请求参数上移事件
         $("#httpParup").click(function () {
             var currentElement = $("#myHttpModal").find("#requestParamTable > tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.prev().prev().length > 0) {
+                nextElement.insertBefore(currentElement.prev().prev());
+                currentElement.insertBefore(nextElement);
+            }
+        });
+
+        //HTTP接口响应参数上移事件
+        $("#httpParupResponse").click(function () {
+            var currentElement = $("#myHttpModal").find("#responseParamTable > tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.prev().prev().length > 0) {
                 nextElement.insertBefore(currentElement.prev().prev());
@@ -1319,9 +1440,19 @@
             }
         });
 
-        //Http接口下移事件
+        //HTTP接口请求参数下移事件
         $("#httpPardown").click(function () {
             var currentElement = $("#myHttpModal").find("#requestParamTable > tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.next().next().next().length > 0) {
+                currentElement.insertAfter(currentElement.next().next().next());
+                nextElement.insertAfter(currentElement);
+            }
+        });
+
+        //HTTP接口响应参数下移事件
+        $("#httpPardownResponse").click(function () {
+            var currentElement = $("#myHttpModal").find("#responseParamTable > tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.next().next().next().length > 0) {
                 currentElement.insertAfter(currentElement.next().next().next());
@@ -1561,6 +1692,7 @@
             }, "json");
         });
 
+        //HTTP请求参数预览复杂类型是否展示详情控制事件
         $("#myHttpPreviewModal").delegate("#myHttpPreviewTBody .glyphicon-chevron-down", "click", function () {
             $(this).parent().parent().parent().next().hide();
             $(this).removeClass("glyphicon-chevron-down");
@@ -1582,7 +1714,7 @@
             }, "json");
         });
 
-
+        //RPC请求参数预览复杂类型是否展示详情控制事件
         $("#myRpcPreviewModal").delegate("#myRpcPreviewTBody .glyphicon-chevron-down", "click", function () {
             $(this).parent().parent().parent().next().hide();
             $(this).removeClass("glyphicon-chevron-down");
