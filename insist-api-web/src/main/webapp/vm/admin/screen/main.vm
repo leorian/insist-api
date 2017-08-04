@@ -464,7 +464,7 @@
 
 <!--HTTP接口参数详情添加一行参数-->
 <script id="httpAddRequestParamTemplate" type="text/x-handlebars-template">
-    <tr>
+    <tr class="outerTr">
         <td><input name='paramNamesInput' type="text" class="form-control input-sm" style='height: 25px;'></td>
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
@@ -498,7 +498,7 @@
             </a>
         </td>
     </tr>
-    <tr style="display: none">
+    <tr style="display: none" class="innerTr">
         <td colspan="8">
             <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）"></textarea>
             <br/>
@@ -510,7 +510,7 @@
 
 <!--RPC接口参数详情添加一行参数-->
 <script id="rpcAddRequestParamTemplate" type="text/x-handlebars-template">
-    <tr>
+    <tr class="outerTr">
         <td><input name='paramNamesInput' type="text" class="form-control input-sm" style='height: 25px;'></td>
         <td>
             <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
@@ -544,7 +544,7 @@
             </a>
         </td>
     </tr>
-    <tr style="display: none">
+    <tr style="display: none" class="innerTr">
         <td colspan="8">
             <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）"></textarea>
             <br/>
@@ -621,7 +621,7 @@
 <script id="httpRequestParamEditTemplate" type="text/x-handlebars-template">
     {{# if interfaceParamEntities}}
     {{#interfaceParamEntities}}
-    <tr>
+    <tr class="outerTr">
         <td><input name='paramNamesInput' type="text" value='{{paramName}}' class="form-control input-sm"
                    style='height: 25px;'></td>
         <td>
@@ -677,7 +677,7 @@
             </a>
         </td>
     </tr>
-    <tr {{#compareParamType paramType
+    <tr class="innerTr" {{#compareParamType paramType
     'object'}} style="display:table-row" {{else}}  {{#compareParamType paramType
     'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}  {{/compareParamType}}>
     <td colspan="8">
@@ -696,7 +696,7 @@
 <script id="rpcRequestParamEditTemplate" type="text/x-handlebars-template">
     {{# if interfaceParamEntities}}
     {{#interfaceParamEntities}}
-    <tr>
+    <tr class="outerTr">
         <td><input name='paramNamesInput' type="text" value='{{paramName}}' class="form-control input-sm"
                    style='height: 25px;'></td>
         <td>
@@ -752,7 +752,7 @@
             </a>
         </td>
     </tr>
-    <tr {{#compareParamType paramType
+    <tr class="innerTr" {{#compareParamType paramType
     'object'}} style="display:table-row" {{else}}  {{#compareParamType paramType
     'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}  {{/compareParamType}}>
     <td colspan="8">
@@ -1254,14 +1254,14 @@
         });
 
         //HTTP接口行选中事件
-        $("#myHttpModal").delegate("tbody > tr", "click", function () {
-            $("#myHttpModal").find("tbody > tr").removeClass("bg-success");
+        $("#myHttpModal").delegate("tbody > tr.outerTr", "click", function () {
+            $("#myHttpModal").find("tbody > tr.outerTr").removeClass("bg-success");
             $(this).addClass("bg-success");
         });
 
         //RPC接口行选中事件
-        $("#myRpcModal").delegate("tbody > tr", "click", function () {
-            $("#myRpcModal").find("tbody > tr").removeClass("bg-success");
+        $("#myRpcModal").delegate("tbody > tr.outerTr", "click", function () {
+            $("#myRpcModal").find("tbody > tr.outerTr").removeClass("bg-success");
             $(this).addClass("bg-success");
         });
 
@@ -1277,17 +1277,21 @@
 
         //Http接口上移事件
         $("#httpParup").click(function () {
-            var currentElement = $("#myHttpModal").find("tbody > tr.bg-success");
-            if (currentElement.prev().length > 0) {
-                currentElement.prev().insertAfter(currentElement);
+            var currentElement = $("#myHttpModal").find("tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.prev().prev().length > 0) {
+                nextElement.insertBefore( currentElement.prev().prev());
+                currentElement.insertBefore(nextElement);
             }
         });
 
         //RPC接口上移事件
         $("#rpcParup").click(function () {
-            var currentElement = $("#myRpcModal").find("tbody > tr.bg-success");
-            if (currentElement.prev().length > 0) {
-                currentElement.prev().insertAfter(currentElement);
+            var currentElement = $("#myRpcModal").find("tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.prev().prev().length > 0) {
+                nextElement.insertBefore( currentElement.prev().prev());
+                currentElement.insertBefore(nextElement);
             }
         });
 
