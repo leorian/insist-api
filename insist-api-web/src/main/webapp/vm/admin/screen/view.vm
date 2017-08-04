@@ -266,6 +266,71 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>响应参数</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                        <th>示例</th>
+                        <th width="6%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{# if interfaceParamResponseEntities}}
+                    {{#interfaceParamResponseEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td title="{{paramNameResponse}}" style="word-wrap: break-word">
+                            {{paramNameResponse}}
+                        </td>
+                        <td title="{{paramTypeResponse}}" style="word-wrap: break-word">
+                            {{paramTypeResponse}}
+                        </td>
+                        <td title="{{paramDescribeResponse}}" style="word-wrap: break-word">
+                            {{paramDescribeResponseResponse}}
+                        </td>
+                        <td title="{{exampleResponse}}" style="word-wrap: break-word">
+                            {{exampleResponse}}
+                        </td>
+                        <td class="text-center">
+                            {{#compareParamType paramTypeResponse
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeResponse
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeResponse
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{/compareParamType}}   {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramTypeResponse
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
+                    'json'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
+                    'array'}} style="display:table-row" {{else}} style="display:none"  {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}} >
+                    <td colspan="5">
+                        <pre>{{exampleDetailResponse}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetailResponse}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamResponseEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='5'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
                     <caption>返回示例及注意事项</caption>
                     <tbody>
