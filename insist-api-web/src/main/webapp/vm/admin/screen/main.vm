@@ -213,7 +213,7 @@
                             <div class="form-group">
                                 <table class="table table-bordered" id="requestParamTable">
                                     <thead>
-                                    <tr>
+                                    <tr style="background-color: #888888">
                                         <th style="width: 120px;">参数名称</th>
                                         <th style="width: 120px">参数类型</th>
                                         <th style="width: 120px">参数说明</th>
@@ -377,7 +377,7 @@
                             <div class="form-group">
                                 <table class="table table-bordered" id="rmiParamTable">
                                     <thead>
-                                    <tr>
+                                    <tr style="background-color: #888888">
                                         <th style="width: 120px;">参数名称</th>
                                         <th style="width: 120px">参数类型</th>
                                         <th style="width: 120px">参数说明</th>
@@ -1386,7 +1386,7 @@
 
         //新增RPC接口
         $("#addRpcInterfaceBtn").click(function () {
-            $("#myrpcmodallabel").html("新增RPC接口");
+            $("#myRpcModalLabel").html("新增RPC接口");
             $("#myRpcModal").find("tbody").empty();
             $("#interfaceRpcIdInput").val("");
             document.getElementById('newInterfaceRpcForm').reset();
