@@ -49,6 +49,8 @@ public class InterfaceHttpRest {
         InterfaceHttpEntity interfaceHttpEntity = httpDomain.buildInterfaceHttpEntity();
         interfaceHttpEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceHttpEntity.getId()));
+        interfaceHttpEntity.setInterfaceParamResponseEntities(httpDomain.
+                buildInterfaceParamResponseEntities(interfaceHttpEntity.getId()));
         interfaceHttpEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceHttpEntity.getId()));
 
@@ -93,6 +95,8 @@ public class InterfaceHttpRest {
         interfaceHttpEntity.setId(interfaceId);
         interfaceHttpEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceHttpEntity.getId()));
+        interfaceHttpEntity.setInterfaceParamResponseEntities(httpDomain.
+                buildInterfaceParamResponseEntities(interfaceHttpEntity.getId()));
         interfaceHttpEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceHttpEntity.getId()));
 

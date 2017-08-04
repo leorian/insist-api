@@ -71,6 +71,11 @@ public class InterfaceHttpEntity extends BaseEntity {
     /**
      *
      */
+    private List<InterfaceParamResponseEntity> interfaceParamResponseEntities;
+
+    /**
+     *
+     */
     private List<InterfaceResultEntity> interfaceResultEntities;
 
     /**
@@ -169,6 +174,14 @@ public class InterfaceHttpEntity extends BaseEntity {
 
     public void setInterfaceParamEntities(List<InterfaceParamEntity> interfaceParamEntities) {
         this.interfaceParamEntities = interfaceParamEntities;
+    }
+
+    public List<InterfaceParamResponseEntity> getInterfaceParamResponseEntities() {
+        return interfaceParamResponseEntities;
+    }
+
+    public void setInterfaceParamResponseEntities(List<InterfaceParamResponseEntity> interfaceParamResponseEntities) {
+        this.interfaceParamResponseEntities = interfaceParamResponseEntities;
     }
 
     public List<InterfaceResultEntity> getInterfaceResultEntities() {

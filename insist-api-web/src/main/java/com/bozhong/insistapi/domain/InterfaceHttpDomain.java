@@ -3,6 +3,7 @@ package com.bozhong.insistapi.domain;
 import com.alibaba.fastjson.JSON;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
 import com.bozhong.insistapi.entity.InterfaceParamEntity;
+import com.bozhong.insistapi.entity.InterfaceParamResponseEntity;
 import com.bozhong.insistapi.entity.InterfaceResultEntity;
 import com.bozhong.insistapi.enums.ExampleTypeEnum;
 import com.bozhong.insistapi.enums.InterfaceTypeEnum;
@@ -37,6 +38,14 @@ public class InterfaceHttpDomain implements Serializable {
     private String[] defaultValuesInput;
     private String[] exampleDetailsInput;
     private String[] defaultValueDetailsInput;
+
+    /*响应参数*/
+    private String[] paramNamesResponseInput;
+    private String[] paramTypesResponseInput;
+    private String[] paramDescribesResponseInput;
+    private String[] examplesResponseInput;
+    private String[] exampleDetailsResponseInput;
+    private String[] defaultValueDetailsResponseInput;
 
 
     /*返回示例*/
@@ -179,6 +188,54 @@ public class InterfaceHttpDomain implements Serializable {
         return defaultValueDetailsInput;
     }
 
+    public String[] getParamNamesResponseInput() {
+        return paramNamesResponseInput;
+    }
+
+    public void setParamNamesResponseInput(String[] paramNamesResponseInput) {
+        this.paramNamesResponseInput = paramNamesResponseInput;
+    }
+
+    public String[] getParamTypesResponseInput() {
+        return paramTypesResponseInput;
+    }
+
+    public void setParamTypesResponseInput(String[] paramTypesResponseInput) {
+        this.paramTypesResponseInput = paramTypesResponseInput;
+    }
+
+    public String[] getParamDescribesResponseInput() {
+        return paramDescribesResponseInput;
+    }
+
+    public void setParamDescribesResponseInput(String[] paramDescribesResponseInput) {
+        this.paramDescribesResponseInput = paramDescribesResponseInput;
+    }
+
+    public String[] getExamplesResponseInput() {
+        return examplesResponseInput;
+    }
+
+    public void setExamplesResponseInput(String[] examplesResponseInput) {
+        this.examplesResponseInput = examplesResponseInput;
+    }
+
+    public String[] getExampleDetailsResponseInput() {
+        return exampleDetailsResponseInput;
+    }
+
+    public void setExampleDetailsResponseInput(String[] exampleDetailsResponseInput) {
+        this.exampleDetailsResponseInput = exampleDetailsResponseInput;
+    }
+
+    public String[] getDefaultValueDetailsResponseInput() {
+        return defaultValueDetailsResponseInput;
+    }
+
+    public void setDefaultValueDetailsResponseInput(String[] defaultValueDetailsResponseInput) {
+        this.defaultValueDetailsResponseInput = defaultValueDetailsResponseInput;
+    }
+
     public void setDefaultValueDetailsInput(String[] defaultValueDetailsInput) {
         this.defaultValueDetailsInput = defaultValueDetailsInput;
     }
@@ -310,6 +367,38 @@ public class InterfaceHttpDomain implements Serializable {
         }
 
         return interfaceParamEntities;
+    }
+
+    public List<InterfaceParamResponseEntity> buildInterfaceParamResponseEntities(String interfaceId) {
+        if (this.getParamNamesResponseInput() == null || this.getParamNamesResponseInput().length == 0) {
+            return null;
+        }
+
+        List<InterfaceParamResponseEntity> interfaceParamResponseEntities = new ArrayList<>(this.getParamNamesResponseInput().length);
+        for (int i = 0; i < this.getParamNamesResponseInput().length; i++) {
+            InterfaceParamResponseEntity interfaceParamResponseEntity = new InterfaceParamResponseEntity();
+            try {
+                Thread.sleep(10l);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            interfaceParamResponseEntity.setId(simpleDateFormat.format(date));
+            interfaceParamResponseEntity.setInterfaceId(interfaceId);
+            interfaceParamResponseEntity.setInterfaceType(InterfaceTypeEnum.HTTP.name());
+            interfaceParamResponseEntity.setParamNameResponse(this.getParamNamesResponseInput()[i]);
+            interfaceParamResponseEntity.setParamTypeResponse(this.getParamTypesResponseInput()[i]);
+            interfaceParamResponseEntity.setParamDescribeResponse(this.getParamDescribesResponseInput()[i]);
+            interfaceParamResponseEntity.setExampleResponse(this.getExamplesResponseInput()[i]);
+            interfaceParamResponseEntity.setExampleDetailResponse(this.getExampleDetailsResponseInput()[i]);
+            interfaceParamResponseEntity.setDefaultValueDetailResponse(this.getDefaultValueDetailsResponseInput()[i]);
+            interfaceParamResponseEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamResponseEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamResponseEntities.add(interfaceParamResponseEntity);
+        }
+
+        return interfaceParamResponseEntities;
     }
 
     public List<InterfaceResultEntity> buildInterfaceResultEntities(String interfaceId) {
