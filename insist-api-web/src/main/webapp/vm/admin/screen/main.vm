@@ -1280,7 +1280,7 @@
             var currentElement = $("#myHttpModal").find("tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.prev().prev().length > 0) {
-                nextElement.insertBefore( currentElement.prev().prev());
+                nextElement.insertBefore(currentElement.prev().prev());
                 currentElement.insertBefore(nextElement);
             }
         });
@@ -1290,24 +1290,28 @@
             var currentElement = $("#myRpcModal").find("tbody > tr.outerTr.bg-success");
             var nextElement = currentElement.next();
             if (currentElement.prev().prev().length > 0) {
-                nextElement.insertBefore( currentElement.prev().prev());
+                nextElement.insertBefore(currentElement.prev().prev());
                 currentElement.insertBefore(nextElement);
             }
         });
 
         //Http接口下移事件
         $("#httpPardown").click(function () {
-            var currentElement = $("#myHttpModal").find("tbody > tr.bg-success");
-            if (currentElement.next().length > 0) {
-                currentElement.insertAfter(currentElement.next());
+            var currentElement = $("#myHttpModal").find("tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.next().next().next().length > 0) {
+                currentElement.insertAfter(currentElement.next().next().next());
+                nextElement.insertAfter(currentElement);
             }
         });
 
         //RPC接口下移事件
         $("#rpcPardown").click(function () {
-            var currentElement = $("#myRpcModal").find("tbody > tr.bg-success");
-            if (currentElement.next().length > 0) {
-                currentElement.insertAfter(currentElement.next());
+            var currentElement = $("#myRpcModal").find("tbody > tr.outerTr.bg-success");
+            var nextElement = currentElement.next();
+            if (currentElement.next().next().next().length > 0) {
+                currentElement.insertAfter(currentElement.next().next().next());
+                nextElement.insertAfter(currentElement);
             }
         });
 
