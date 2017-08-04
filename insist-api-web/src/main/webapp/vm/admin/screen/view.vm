@@ -501,6 +501,7 @@
                         <th style="width: 20%">JSON格式化传输</th>
                         <th>示例</th>
                         <th>默认值</th>
+                        <th width="6%">操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -528,11 +529,32 @@
                         <td title="{{defaultValue}}" style="word-wrap: break-word;">
                             {{defaultValue}}
                         </td>
+                        <td class="text-center">
+                            {{#compareParamType paramType
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramType
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}  {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramType
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
+                    'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    {{/compareParamType}} >
+                    <td colspan="8">
+                        <pre>{{exampleDetail}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetail}}</pre>
+                    </td>
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
                     <tr>
-                        <td class='text-center' colspan='7'>暂无信息！</td>
+                        <td class='text-center' colspan='8'>暂无信息！</td>
                     </tr>
                     {{/if}}
                     </tbody>
@@ -684,6 +706,18 @@
             $(this).parent().parent().parent().parent().parent().next().show();
             $(this).removeClass("glyphicon-plus");
             $(this).addClass("glyphicon-minus");
+        });
+
+        $("#interfaceRpcViewPanel").delegate(".glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#interfaceRpcViewPanel").delegate(".glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
         });
     });
 </script>
