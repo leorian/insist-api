@@ -1087,6 +1087,7 @@
                         <th width="18%">JSON格式化传输</th>
                         <th>示例</th>
                         <th>默认值</th>
+                        <th width="6%">操作</th>
                     </tr>
                     </thead>
                     <tbody id="myHttpPreviewTBody">
@@ -1100,12 +1101,23 @@
                         <td>{{jsontransformat}}</td>
                         <td style="word-wrap: break-word">{{example}}</td>
                         <td style="word-wrap: break-word">{{defaultValue}}</td>
+                        <td class="text-center">
+                            {{#compareParamType paramType
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramType
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}  {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
                     </tr>
                     <tr {{#compareParamType paramType
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
                     'json'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
                     {{/compareParamType}}>
-                    <td colspan="7">
+                    <td colspan="8">
                         <pre>{{exampleDetail}}</pre>
                         <br/>
                         <pre>{{defaultValueDetail}}</pre>
@@ -1114,7 +1126,7 @@
                     {{/interfaceParamEntities}}
                     {{else}}
                     <tr style="background-color: #F0F0F0">
-                        <td class='text-center' colspan='7'>暂无信息！</td>
+                        <td class='text-center' colspan='8'>暂无信息！</td>
                     </tr>
                     {{/if}}
                     </tbody>
@@ -1738,6 +1750,19 @@
                 $("#myHttpPreviewModal").find(".modal-body").handlebars($("#myHttpPreviewModalTemplate"), data);
             }, "json");
         });
+
+        $("#myHttpPreviewModal").delegate(".glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#myHttpPreviewModal").delegate(".glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
+
 
         //RPC接口预览
         $("#rpcTableTBody").delegate("button.btn-warning", "click", function () {
