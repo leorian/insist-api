@@ -288,7 +288,7 @@
                             {{paramTypeResponse}}
                         </td>
                         <td title="{{paramDescribeResponse}}" style="word-wrap: break-word">
-                            {{paramDescribeResponseResponse}}
+                            {{paramDescribeResponse}}
                         </td>
                         <td title="{{exampleResponse}}" style="word-wrap: break-word">
                             {{exampleResponse}}
@@ -568,7 +568,7 @@
                             {{paramTypeResponse}}
                         </td>
                         <td title="{{paramDescribeResponse}}" style="word-wrap: break-word">
-                            {{paramDescribeResponseResponse}}
+                            {{paramDescribeResponse}}
                         </td>
                         <td title="{{exampleResponse}}" style="word-wrap: break-word">
                             {{exampleResponse}}
