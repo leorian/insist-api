@@ -2,6 +2,7 @@ package com.bozhong.insistapi.restful;
 
 import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.ResultMessageBuilder;
+import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.domain.HttpAddressDomain;
 import com.bozhong.insistapi.domain.InterfaceHttpDomain;
 import com.bozhong.insistapi.entity.HttpAddressEntity;
@@ -13,8 +14,8 @@ import com.yx.eweb.main.EWebServletContext;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -22,6 +23,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -102,7 +104,14 @@ public class InterfaceHttpRest {
     public String findInterfaceHttpList(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         String appId = (String) param.get("appId");
-        return JSON.toJSONString(mongoService.getListByAppId(appId, InterfaceHttpEntity.class));
+        List<InterfaceHttpEntity> interfaceHttpEntities = mongoService.getListByAppId(appId, InterfaceHttpEntity.class);
+        HttpAddressEntity httpAddressEntity = mongoService.findOneByAppId(appId, HttpAddressEntity.class);
+        if (!CollectionUtils.isEmpty(interfaceHttpEntities)) {
+            for (InterfaceHttpEntity interfaceHttpEntity : interfaceHttpEntities) {
+                addressTranslate(interfaceHttpEntity, httpAddressEntity);
+            }
+        }
+        return JSON.toJSONString(interfaceHttpEntities);
     }
 
     @POST
@@ -110,7 +119,11 @@ public class InterfaceHttpRest {
     public String findInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         String interfaceId = (String) param.get("interfaceId");
-        return JSON.toJSONString(mongoService.getOneByInterfaceId(interfaceId, InterfaceHttpEntity.class));
+        InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByInterfaceId(interfaceId, InterfaceHttpEntity.class);
+        String appId = interfaceHttpEntity.getAppId();
+        HttpAddressEntity httpAddressEntity = mongoService.findOneByAppId(appId, HttpAddressEntity.class);
+        addressTranslate(interfaceHttpEntity, httpAddressEntity);
+        return JSON.toJSONString(interfaceHttpEntity);
     }
 
     @POST
@@ -150,5 +163,52 @@ public class InterfaceHttpRest {
         String interfaceId = (String) param.get("interfaceId");
         mongoService.deleteOneByKey(interfaceId, InterfaceHttpEntity.class);
         return ResultMessageBuilder.build().toJSONString();
+    }
+
+    /**
+     * 地址变换
+     *
+     * @param interfaceHttpEntity
+     */
+    private void addressTranslate(InterfaceHttpEntity interfaceHttpEntity, HttpAddressEntity httpAddressEntity) {
+        if (interfaceHttpEntity != null) {
+
+            //mock地址
+            if (StringUtil.isBlank(interfaceHttpEntity.getMockAddress())
+                    && StringUtil.isNotBlank(httpAddressEntity.getMockAddress()) &&
+                    StringUtil.isNotBlank(interfaceHttpEntity.getAddress())) {
+                interfaceHttpEntity.setMockAddress(httpAddressEntity.getMockAddress() + interfaceHttpEntity.getAddress());
+            }
+
+            //dev地址
+            if (StringUtil.isBlank(interfaceHttpEntity.getDevAddress())
+                    && StringUtil.isNotBlank(httpAddressEntity.getDevAddress()) &&
+                    StringUtil.isNotBlank(interfaceHttpEntity.getAddress())) {
+                interfaceHttpEntity.setDevAddress(httpAddressEntity.getDevAddress() + interfaceHttpEntity.getAddress());
+            }
+
+            //sit地址
+            if (StringUtil.isBlank(interfaceHttpEntity.getSitAddress())
+                    && StringUtil.isNotBlank(httpAddressEntity.getSitAddress()) &&
+                    StringUtil.isNotBlank(interfaceHttpEntity.getAddress())) {
+                interfaceHttpEntity.setSitAddress(httpAddressEntity.getSitAddress() + interfaceHttpEntity.getAddress());
+            }
+
+            //uat地址
+            if (StringUtil.isBlank(interfaceHttpEntity.getUatAddress())
+                    && StringUtil.isNotBlank(httpAddressEntity.getUatAddress()) &&
+                    StringUtil.isNotBlank(interfaceHttpEntity.getAddress())) {
+                interfaceHttpEntity.setUatAddress(httpAddressEntity.getUatAddress() + interfaceHttpEntity.getAddress());
+            }
+
+            //prd地址
+            if (StringUtil.isBlank(interfaceHttpEntity.getPrdAddress())
+                    && StringUtil.isNotBlank(httpAddressEntity.getPrdAddress()) &&
+                    StringUtil.isNotBlank(interfaceHttpEntity.getAddress())) {
+                interfaceHttpEntity.setPrdAddress(httpAddressEntity.getPrdAddress() + interfaceHttpEntity.getAddress());
+            }
+
+
+        }
     }
 }
