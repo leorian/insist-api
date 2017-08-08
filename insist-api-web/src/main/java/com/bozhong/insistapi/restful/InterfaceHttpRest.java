@@ -171,7 +171,7 @@ public class InterfaceHttpRest {
      * @param interfaceHttpEntity
      */
     private void addressTranslate(InterfaceHttpEntity interfaceHttpEntity, HttpAddressEntity httpAddressEntity) {
-        if (interfaceHttpEntity != null) {
+        if (interfaceHttpEntity != null && httpAddressEntity != null) {
 
             //mock地址
             if (StringUtil.isBlank(interfaceHttpEntity.getMockAddress())
