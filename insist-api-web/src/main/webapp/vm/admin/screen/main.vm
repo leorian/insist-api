@@ -1,3 +1,66 @@
+<!-- 域名地址管理模态框（Modal） -->
+<div class="modal fade" id="myHttpDomainModal" tabindex="-1" role="dialog" aria-labelledby="myHttpDomainModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myHttpDomainModalLabel">
+                    域名地址管理
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="control-label" for="httpMockAddressInput">mock服务访问地址：</label>
+                            <input type="text" class="form-control" id="httpMockAddressInput" name="httpMockAddressInput"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="control-label" for="httpDevAddressInput">开发环境访问地址：</label>
+                            <input type="text" class="form-control" id="httpDevAddressInput" name="httpDevAddressInput" />
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="control-label" for="httpDevAddressInput">测试环境访问地址：</label>
+                            <input type="text" class="form-control" id="httpSitAddressInput" name="httpSitAddressInput"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="control-label" for="httpUatAddressInput">UAT环境访问地址：</label>
+                            <input type="text" class="form-control" id="httpUatAddressInput" name="httpUatAddressInput"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="control-label">线上环境访问地址：</label>
+                            <input type="text" class="form-control" id="httpPrdAddressInput" name="httpPrdAddressInput"/>
+                        </div>
+                    </div>
+                    <br/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
 <div class="col-md-12">
     <ol class="breadcrumb">
         <li class="active">接口管理</li>
@@ -9,14 +72,18 @@
 </div>
 <div class="col-md-12">
     <br/>
-    <div class="text-right">
+    <div class="text-left">
         <button type="button" id="addHttpInterfaceBtn" class="btn btn-info" data-toggle="modal"
                 data-target="#myHttpModal">新增HTTP接口
+        </button>
+        <button type="button" id="addHttpDomainBtn" class="btn btn-default" data-toggle="modal"
+                data-target="#myHttpDomainModal">
+            域名地址管理
         </button>
     </div>
     <br/>
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
-        <thead style="background-color: #9acfea">
+        <thead class="bg-primary">
         <tr>
             <th class="text-center" width="20%">接口ID</th>
             <th class="text-center">接口名称</th>
@@ -36,7 +103,7 @@
         </tbody>
     </table>
     <br/>
-    <div class="text-right">
+    <div class="text-left">
         <button type="button" id="addRpcInterfaceBtn" class="btn btn-info" data-toggle="modal"
                 data-target="#myRpcModal">新增 RPC 接口
         </button>
@@ -44,7 +111,7 @@
     <br/>
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
         <thead>
-        <tr style="background-color: #9acfea">
+        <tr class="bg-primary">
             <th class="text-center">接口ID</th>
             <th class="text-center">接口名称</th>
             <th class="text-center">接口类名</th>
