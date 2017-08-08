@@ -15,42 +15,97 @@
                 <form role="form" id="myHttpDomainForm" name="myHttpDomainForm">
                     <input type="hidden" name="httpAppIdInput" id="httpAppIdInput" value="$!{appDO.appId}"/>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <label class="control-label" for="httpMockAddressInput">mock服务访问地址：</label>
-                            <input type="text" class="form-control" id="httpMockAddressInput"
-                                   name="httpMockAddressInput"/>
+                        <div class="col-xs-12" >
+##                            <label class="control-label" for="httpMockAddressInput">mock服务访问地址：</label>
+##                            <input type="text" class="form-control" id="httpMockAddressInput"
+##                                   name="httpMockAddressInput"/>
+                            <table class="table"  style="margin-bottom: 0px!important;">
+                                <caption>mock服务访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpMockAddressInput"
+                                               name="httpMockAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <label class="control-label" for="httpDevAddressInput">开发环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpDevAddressInput"
-                                   name="httpDevAddressInput"/>
+                        <div class="col-xs-12" >
+##                            <label class="control-label" for="httpDevAddressInput">开发环境访问地址：</label>
+##                            <input type="text" class="form-control" id="httpDevAddressInput"
+##                                   name="httpDevAddressInput"/>
+                            <table class="table"  style="margin-bottom: 0px!important;">
+                                <caption>开发环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none;">
+                                        <input type="text" class="form-control" id="httpDevAddressInput"
+                                               name="httpDevAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <label class="control-label" for="httpDevAddressInput">测试环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpSitAddressInput"
-                                   name="httpSitAddressInput"/>
+                        <div class="col-xs-12"  >
+##                            <label class="control-label" for="httpDevAddressInput">测试环境访问地址：</label>
+##                            <input type="text" class="form-control" id="httpSitAddressInput"
+##                                   name="httpSitAddressInput"/>
+                            <table class="table"  style="margin-bottom: 0px!important;">
+                                <caption>测试环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpSitAddressInput"
+                                               name="httpSitAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <label class="control-label" for="httpUatAddressInput">UAT环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpUatAddressInput"
-                                   name="httpUatAddressInput"/>
+                        <div class="col-xs-12" >
+##                            <label class="control-label" for="httpUatAddressInput">UAT环境访问地址：</label>
+##                            <input type="text" class="form-control" id="httpUatAddressInput"
+##                                   name="httpUatAddressInput"/>
+                            <table class="table" style="margin-bottom: 0px!important;">
+                                <caption>UAT环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpUatAddressInput"
+                                               name="httpUatAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <label class="control-label">线上环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpPrdAddressInput"
-                                   name="httpPrdAddressInput"/>
+                        <div class="col-xs-12" >
+##                            <label class="control-label">线上环境访问地址：</label>
+##                            <input type="text" class="form-control" id="httpPrdAddressInput"
+##                                   name="httpPrdAddressInput"/>
+                            <table class="table"  style="margin-bottom: 0px!important;">
+                                <caption>线上环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpPrdAddressInput"
+                                               name="httpPrdAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <br/>
