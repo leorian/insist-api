@@ -12,39 +12,44 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <form role="form">
+                <form role="form" id="myHttpDomainForm" name="myHttpDomainForm">
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="control-label" for="httpMockAddressInput">mock服务访问地址：</label>
-                            <input type="text" class="form-control" id="httpMockAddressInput" name="httpMockAddressInput"/>
+                            <input type="text" class="form-control" id="httpMockAddressInput"
+                                   name="httpMockAddressInput"/>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="control-label" for="httpDevAddressInput">开发环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpDevAddressInput" name="httpDevAddressInput" />
+                            <input type="text" class="form-control" id="httpDevAddressInput"
+                                   name="httpDevAddressInput"/>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="control-label" for="httpDevAddressInput">测试环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpSitAddressInput" name="httpSitAddressInput"/>
+                            <input type="text" class="form-control" id="httpSitAddressInput"
+                                   name="httpSitAddressInput"/>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="control-label" for="httpUatAddressInput">UAT环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpUatAddressInput" name="httpUatAddressInput"/>
+                            <input type="text" class="form-control" id="httpUatAddressInput"
+                                   name="httpUatAddressInput"/>
                         </div>
                     </div>
                     <br/>
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="control-label">线上环境访问地址：</label>
-                            <input type="text" class="form-control" id="httpPrdAddressInput" name="httpPrdAddressInput"/>
+                            <input type="text" class="form-control" id="httpPrdAddressInput"
+                                   name="httpPrdAddressInput"/>
                         </div>
                     </div>
                     <br/>
