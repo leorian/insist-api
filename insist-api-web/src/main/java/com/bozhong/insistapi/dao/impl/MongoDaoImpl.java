@@ -34,6 +34,26 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
+    public <T> T findOneByAppId(String appId, Class<T> tClass) {
+        Gson gson = new Gson();
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Document document = mongoCollection.find(eq("appId", appId)).first();
+        if (document != null) {
+            return gson.fromJson(document.toJson(), tClass);
+        }
+
+        return null;
+    }
+
+    @Override
+    public <T> void updateOneByAppId(String appId, T t) {
+        Gson gson = new Gson();
+        Document document = gson.fromJson(t.toString(), Document.class);
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(t.getClass());
+        mongoCollection.updateOne(eq("appId", appId), new Document("$set", document));
+    }
+
+    @Override
     public <T> void insertMany(List<T> tlist, Class<T> tClass) {
         Gson gson = new Gson();
         List<Document> documentList = gson.fromJson(gson.toJson(tlist), new TypeToken<List<Document>>() {

@@ -2,7 +2,9 @@ package com.bozhong.insistapi.restful;
 
 import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.ResultMessageBuilder;
+import com.bozhong.insistapi.domain.HttpAddressDomain;
 import com.bozhong.insistapi.domain.InterfaceHttpDomain;
+import com.bozhong.insistapi.entity.HttpAddressEntity;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
 import com.bozhong.insistapi.service.MongoService;
 import com.sun.jersey.spi.resource.Singleton;
@@ -12,6 +14,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -31,6 +34,41 @@ public class InterfaceHttpRest {
 
     @Autowired
     private MongoService mongoService;
+
+    @POST
+    @Path("findHttpAddressDomain")
+    public String findHttpAddressDomain(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
+        String appId = (String) param.get("appId");
+        HttpAddressEntity httpAddressEntity = mongoService.findOneByAppId(appId, HttpAddressEntity.class);
+        if (httpAddressEntity == null) {
+            httpAddressEntity = new HttpAddressEntity();
+            httpAddressEntity.setAppId(appId);
+        }
+        return ResultMessageBuilder.build(httpAddressEntity).toJSONString();
+    }
+
+    @POST
+    @Path("saveOrUpdateHttpAddressDomain")
+    public String saveOrUpdateHttpAddressDomain(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+        HttpAddressDomain httpAddressDomain = new HttpAddressDomain();
+        try {
+            BeanUtils.copyProperties(httpAddressDomain, EWebServletContext.getRequest().getParameterMap());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        System.out.println(JSON.toJSONString(httpAddressDomain));
+        HttpAddressEntity httpAddressEntity = httpAddressDomain.buildHttpAddressEntity();
+        if (mongoService.findOneByAppId(httpAddressEntity.getAppId(), HttpAddressEntity.class) != null) {
+            mongoService.updateOneByAppId(httpAddressEntity.getAppId(), httpAddressEntity);
+        } else {
+            mongoService.insertOne(httpAddressEntity);
+        }
+
+        return ResultMessageBuilder.build().toJSONString();
+    }
 
     @POST
     @Path("insertInterfaceHttp")

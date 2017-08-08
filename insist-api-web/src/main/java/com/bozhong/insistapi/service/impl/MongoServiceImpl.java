@@ -18,6 +18,16 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> T findOneByAppId(String appId, Class<T> tClass) {
+        return mongoDao.findOneByAppId(appId, tClass);
+    }
+
+    @Override
+    public <T> void updateOneByAppId(String appId, T t) {
+        mongoDao.updateOneByAppId(appId, t);
+    }
+
+    @Override
     public <T> void insertMany(List<T> list, Class<T> tClass) {
         mongoDao.insertMany(list, tClass);
     }

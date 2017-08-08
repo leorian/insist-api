@@ -1,8 +1,12 @@
 package com.bozhong.insistapi.domain;
 
 import com.alibaba.fastjson.JSON;
+import com.bozhong.insistapi.entity.HttpAddressEntity;
+import com.yx.eweb.main.EWebServletContext;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by xiezg@317hu.com on 2017/8/8 0008.
@@ -66,6 +70,22 @@ public class HttpAddressDomain implements Serializable {
     @Override
     public String toString() {
         return JSON.toJSONString(this);
+    }
+
+    public HttpAddressEntity buildHttpAddressEntity() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        HttpAddressEntity httpAddressEntity = new HttpAddressEntity();
+        httpAddressEntity.setAppId(this.getHttpAppIdInput());
+        httpAddressEntity.setMockAddress(this.getHttpMockAddressInput());
+        httpAddressEntity.setDevAddress(this.getHttpDevAddressInput());
+        httpAddressEntity.setSitAddress(this.getHttpSitAddressInput());
+        httpAddressEntity.setUatAddress(this.getHttpUatAddressInput());
+        httpAddressEntity.setPrdAddress(this.getHttpPrdAddressInput());
+        httpAddressEntity.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
+        httpAddressEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+        httpAddressEntity.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
+        httpAddressEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
+        return httpAddressEntity;
     }
 
 

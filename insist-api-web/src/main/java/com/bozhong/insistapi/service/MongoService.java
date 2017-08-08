@@ -16,6 +16,21 @@ public interface MongoService {
     <T> void insertOne(T t);
 
     /**
+     * @param appId
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> T findOneByAppId(String appId, Class<T> tClass);
+
+    /**
+     * @param appId
+     * @param t
+     * @param <T>
+     */
+    <T> void updateOneByAppId(String appId, T t);
+
+    /**
      * @param tList
      * @param tClass
      * @param <T>
