@@ -23,6 +23,7 @@
             <th class="text-center" width="12%">请求协议</th>
             <th class="text-center" width="12%">请求方法</th>
             <th class="text-center">接口地址</th>
+            <th class="text-center">创建人</th>
             <th class="text-center" width="20%">操作</th>
         </tr>
         </thead>
@@ -48,6 +49,7 @@
             <th class="text-center">接口名称</th>
             <th class="text-center">接口类名</th>
             <th class="text-center">方法名称</th>
+            <th class="text-center">创建人</th>
             <th class="text-center">操作</th>
         </tr>
         </thead>
@@ -735,6 +737,7 @@
         <td class='text-center'>{{protocol}}</td>
         <td class='text-center'>{{method}}</td>
         <td class='text-center' style="word-wrap: break-word">{{address}}</td>
+        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
         <td class='text-center'>
             <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
                     data-target='#myHttpModal'>编辑
@@ -752,7 +755,7 @@
     {{/each}}
     {{else}}
     <tr>
-        <td colspan='6' class='text-center'>暂无信息！</td>
+        <td colspan='7' class='text-center'>暂无信息！</td>
     </tr>
     {{/if}}
 </script>
@@ -766,6 +769,7 @@
         <td class='text-center' style="word-wrap: break-word">{{name}}</td>
         <td class='text-center' style="word-wrap: break-word">{{className}}</td>
         <td class='text-center' style="word-wrap: break-word">{{methodName}}</td>
+        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
         <td class='text-center'>
             <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
                     data-target='#myRpcModal'>编辑
@@ -783,7 +787,7 @@
     {{/this}}
     {{else}}
     <tr>
-        <td colspan='5' class='text-center'>暂无信息！</td>
+        <td colspan='6' class='text-center'>暂无信息！</td>
     </tr>
     {{/if}}
 </script>

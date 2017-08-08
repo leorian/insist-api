@@ -7,6 +7,7 @@ import com.bozhong.insistapi.entity.InterfaceResultEntity;
 import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.enums.ExampleTypeEnum;
 import com.bozhong.insistapi.enums.InterfaceTypeEnum;
+import com.yx.eweb.main.EWebServletContext;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -275,7 +276,9 @@ public class InterfaceRpcDomain implements Serializable {
         interfaceRpcEntity.setFunctionDescribe(this.getFunctionDescribeInput());
         interfaceRpcEntity.setReturnType(this.getReturnTypeInput());
         interfaceRpcEntity.setMethodParam(this.getMethodParamInput());
+        interfaceRpcEntity.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
         interfaceRpcEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceRpcEntity.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
         interfaceRpcEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
         return interfaceRpcEntity;
     }
@@ -307,7 +310,9 @@ public class InterfaceRpcDomain implements Serializable {
             interfaceParamEntity.setDefaultValue(this.getDefaultValuesInput()[i]);
             interfaceParamEntity.setExampleDetail(this.getExampleDetailsInput()[i]);
             interfaceParamEntity.setDefaultValueDetail(this.getDefaultValueDetailsInput()[i]);
+            interfaceParamEntity.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
             interfaceParamEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamEntity.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
             interfaceParamEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamEntities.add(interfaceParamEntity);
         }
@@ -339,7 +344,9 @@ public class InterfaceRpcDomain implements Serializable {
             interfaceParamResponseEntity.setExampleResponse(this.getExamplesResponseInput()[i]);
             interfaceParamResponseEntity.setExampleDetailResponse(this.getExampleDetailsResponseInput()[i]);
             interfaceParamResponseEntity.setDefaultValueDetailResponse(this.getDefaultValueDetailsResponseInput()[i]);
+            interfaceParamResponseEntity.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
             interfaceParamResponseEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamResponseEntity.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
             interfaceParamResponseEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
             interfaceParamResponseEntities.add(interfaceParamResponseEntity);
         }
@@ -357,7 +364,9 @@ public class InterfaceRpcDomain implements Serializable {
         interfaceResultEntity1.setExampleType(ExampleTypeEnum.NORMAL.name());
         interfaceResultEntity1.setExampleContent(this.getReturnExampleContent());
         interfaceResultEntity1.setAttentionMatters(this.getReturnExampleAttentionMatters());
+        interfaceResultEntity1.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
         interfaceResultEntity1.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceResultEntity1.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
         interfaceResultEntity1.setUpdateDateTime(simpleDateFormat.format(new Date()));
         interfaceResultEntities.add(interfaceResultEntity1);
         try {
@@ -372,7 +381,9 @@ public class InterfaceRpcDomain implements Serializable {
         interfaceResultEntity2.setExampleType(ExampleTypeEnum.EXCEPTION.name());
         interfaceResultEntity2.setExampleContent(this.getExceptionExampleContent());
         interfaceResultEntity2.setAttentionMatters(this.getExceptionAttentionMatters());
+        interfaceResultEntity2.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
         interfaceResultEntity2.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceResultEntity2.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
         interfaceResultEntity2.setUpdateDateTime(simpleDateFormat.format(new Date()));
         interfaceResultEntities.add(interfaceResultEntity2);
         return interfaceResultEntities;
