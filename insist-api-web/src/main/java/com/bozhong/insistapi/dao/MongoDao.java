@@ -89,4 +89,13 @@ public interface MongoDao {
      * @param <T>
      */
     <T> void deleteOneByKey(String interfaceId, Class<T> tClass);
+
+    /**
+     * @param method
+     * @param address
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> T getOneByMethodAndAddress(String method, String address, Class<T> tClass);
 }

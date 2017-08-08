@@ -58,6 +58,11 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> T getOneByMethodAndAddress(String method, String address, Class<T> tClass) {
+        return mongoDao.getOneByMethodAndAddress(method, address, tClass);
+    }
+
+    @Override
     public <T> void updateOneByKey(String interfaceId, T t) {
         mongoDao.updateOneByKey(interfaceId, t);
     }

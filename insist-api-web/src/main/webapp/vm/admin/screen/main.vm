@@ -195,72 +195,72 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="form-group text-right">
-                                <label class="control-label" for="mockAddressInput">mock服务调试地址：</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-10 text-left" style="padding-left: 0px;">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="mockAddressInput" id="mockAddressInput"
-                                       value=""
-                                       placeholder="mock服务调试地址">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="form-group  text-right">
-                                <label class="control-label" for="devAddressInput">开发环境接口地址：</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-10" style="padding-left: 0px;">
-                            <div class="form-group">
-                                <input type="text" name="devAddressInput" id="devAddressInput" class="form-control"
-                                       placeholder="开发环境接口地址">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="form-group text-right">
-                                <label class="control-label" for="sitAddressInput">测试环境接口地址：</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-10" style="padding-left: 0px;">
-                            <div class="form-group">
-                                <input type="text" name="sitAddressInput" id="sitAddressInput" class="form-control"
-                                       placeholder="测试环境接口地址">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="form-group text-right">
-                                <label class="control-label" for="uatAddressInput">UAT环境接口地址：</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-10" style="padding-left: 0px;">
-                            <div class="form-group">
-                                <input type="text" name="uatAddressInput" id="uatAddressInput" class="form-control"
-                                       placeholder="UAT环境接口地址">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="form-group text-right">
-                                <label class="control-label" for="prdAddressInput">线上环境接口地址：</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-10" style="padding-left: 0px;">
-                            <div class="form-group">
-                                <input type="text" name="prdAddressInput" id="prdAddressInput" class="form-control"
-                                       placeholder="线上环境接口地址">
-                            </div>
-                        </div>
-                    </div>
+##                    <div class="row">
+##                        <div class="col-sm-2">
+##                            <div class="form-group text-right">
+##                                <label class="control-label" for="mockAddressInput">mock服务调试地址：</label>
+##                            </div>
+##                        </div>
+##                        <div class="col-sm-10 text-left" style="padding-left: 0px;">
+##                            <div class="form-group">
+##                                <input type="text" class="form-control" name="mockAddressInput" id="mockAddressInput"
+##                                       value=""
+##                                       placeholder="mock服务调试地址">
+##                            </div>
+##                        </div>
+##                    </div>
+##                    <div class="row">
+##                        <div class="col-sm-2">
+##                            <div class="form-group  text-right">
+##                                <label class="control-label" for="devAddressInput">开发环境接口地址：</label>
+##                            </div>
+##                        </div>
+##                        <div class="col-sm-10" style="padding-left: 0px;">
+##                            <div class="form-group">
+##                                <input type="text" name="devAddressInput" id="devAddressInput" class="form-control"
+##                                       placeholder="开发环境接口地址">
+##                            </div>
+##                        </div>
+##                    </div>
+##                    <div class="row">
+##                        <div class="col-sm-2">
+##                            <div class="form-group text-right">
+##                                <label class="control-label" for="sitAddressInput">测试环境接口地址：</label>
+##                            </div>
+##                        </div>
+##                        <div class="col-sm-10" style="padding-left: 0px;">
+##                            <div class="form-group">
+##                                <input type="text" name="sitAddressInput" id="sitAddressInput" class="form-control"
+##                                       placeholder="测试环境接口地址">
+##                            </div>
+##                        </div>
+##                    </div>
+##                    <div class="row">
+##                        <div class="col-sm-2">
+##                            <div class="form-group text-right">
+##                                <label class="control-label" for="uatAddressInput">UAT环境接口地址：</label>
+##                            </div>
+##                        </div>
+##                        <div class="col-sm-10" style="padding-left: 0px;">
+##                            <div class="form-group">
+##                                <input type="text" name="uatAddressInput" id="uatAddressInput" class="form-control"
+##                                       placeholder="UAT环境接口地址">
+##                            </div>
+##                        </div>
+##                    </div>
+##                    <div class="row">
+##                        <div class="col-sm-2">
+##                            <div class="form-group text-right">
+##                                <label class="control-label" for="prdAddressInput">线上环境接口地址：</label>
+##                            </div>
+##                        </div>
+##                        <div class="col-sm-10" style="padding-left: 0px;">
+##                            <div class="form-group">
+##                                <input type="text" name="prdAddressInput" id="prdAddressInput" class="form-control"
+##                                       placeholder="线上环境接口地址">
+##                            </div>
+##                        </div>
+##                    </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
@@ -2048,11 +2048,11 @@
                 $("#myHttpModal").find("input[name='addressInput']").val(data.address);
                 $("#myHttpModal").find("input[name='nameInput']").val(data.name);
                 $("#myHttpModal").find("textarea[name='descriptionInput']").val(data.description);
-                $("#myHttpModal").find("input[name='mockAddressInput']").val(data.mockAddress);
-                $("#myHttpModal").find("input[name='devAddressInput']").val(data.devAddress);
-                $("#myHttpModal").find("input[name='sitAddressInput']").val(data.sitAddress);
-                $("#myHttpModal").find("input[name='uatAddressInput']").val(data.uatAddress);
-                $("#myHttpModal").find("input[name='prdAddressInput']").val(data.prdAddress);
+//                $("#myHttpModal").find("input[name='mockAddressInput']").val(data.mockAddress);
+//                $("#myHttpModal").find("input[name='devAddressInput']").val(data.devAddress);
+//                $("#myHttpModal").find("input[name='sitAddressInput']").val(data.sitAddress);
+//                $("#myHttpModal").find("input[name='uatAddressInput']").val(data.uatAddress);
+//                $("#myHttpModal").find("input[name='prdAddressInput']").val(data.prdAddress);
 
                 //请求参数
                 $("#myHttpModal").find("#requestParamTable > tbody").handlebars($("#httpRequestParamEditTemplate"), data);

@@ -15,6 +15,8 @@ import org.springframework.util.Assert;
 
 import java.util.*;
 
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.regex;
 import static com.mongodb.client.model.Sorts.descending;
 import static com.mongodb.client.model.Filters.eq;
 
@@ -134,8 +136,21 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
-    public <T> void deleteOneByKey(String interfaceId,  Class<T> tClass) {
+    public <T> void deleteOneByKey(String interfaceId, Class<T> tClass) {
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
         mongoCollection.deleteOne(eq("id", interfaceId));
+    }
+
+    @Override
+    public <T> T getOneByMethodAndAddress(String method, String address, Class<T> tClass) {
+        Gson gson = new Gson();
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Document document = mongoCollection.find(and(regex("method", "^.*" + method + ".*$"),
+                eq("address", address))).first();
+        if (document != null) {
+            return gson.fromJson(document.toJson(), tClass);
+        }
+
+        return null;
     }
 }
