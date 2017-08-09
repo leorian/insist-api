@@ -190,6 +190,71 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>请求头部</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                        <th>示例</th>
+                        <th width="6%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{# if interfaceParamHeaderEntities}}
+                    {{#interfaceParamHeaderEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td title="{{paramNameHeader}}" style="word-wrap: break-word">
+                            {{paramNameHeader}}
+                        </td>
+                        <td title="{{paramTypeHeader}}" style="word-wrap: break-word">
+                            {{paramTypeHeader}}
+                        </td>
+                        <td title="{{paramDescribeResponse}}" style="word-wrap: break-word">
+                            {{paramDescribeHeader}}
+                        </td>
+                        <td title="{{exampleHeader}}" style="word-wrap: break-word">
+                            {{exampleHeader}}
+                        </td>
+                        <td class="text-center">
+                            {{#compareParamType paramTypeHeader
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeHeader
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeHeader
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{/compareParamType}}   {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramTypeHeader
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeHeader
+                    'json'}} style="display:table-row" {{else}} {{#compareParamType paramTypeHeader
+                    'array'}} style="display:table-row" {{else}} style="display:none"  {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}} >
+                    <td colspan="5">
+                        <pre>{{exampleDetailHeader}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetailHeader}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamHeaderEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='5'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-bordered" style="table-layout: fixed">
                     <caption>请求参数</caption>
                     <thead>
                     <tr style="background-color: #B0B0B0">
