@@ -177,8 +177,8 @@ public class InterfaceHttpRest {
             if (StringUtil.isBlank(interfaceHttpEntity.getMockAddress())
                     && StringUtil.isNotBlank(httpAddressEntity.getMockAddress()) &&
                     StringUtil.isNotBlank(interfaceHttpEntity.getAddress())) {
-                interfaceHttpEntity.setMockAddress(httpAddressEntity.getMockAddress() + "/"
-                        + httpAddressEntity.getAppId() + interfaceHttpEntity.getAddress());
+                interfaceHttpEntity.setMockAddress(httpAddressEntity.getMockAddress()
+                        + httpAddressEntity.getAppId() + "/" + interfaceHttpEntity.getAddress());
             }
 
             //dev地址

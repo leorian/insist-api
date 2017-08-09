@@ -34,15 +34,30 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            Mock服务正常示例请求地址前缀：$!{normal_url}
+                            Mock服务正常示例请求地址规则：$!{normal_url}<span class="bg-success"><b>appId</b></span><span
+                                class="bg-danger">/接口地址</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            Mock服务异常示例请求地址前缀：$!{exception_url}
+                            Mock服务异常示例请求地址规则：$!{exception_url}<span class="bg-success"><b>appId</b></span><span
+                                class="bg-danger">/接口地址</span>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 style="color: red">注意：</h5>
+                        <p>1、$!{normal_url}和$!{exception_url}为mock服务器固定部分，请在<b>接口管理</b>
+                            每个应用当中的<b>域名地址管理</b>mock服务访问地址输入框中维护起来！</p>
+                        <p>
+                            2、appId是本系统自己维护的，目的是为了区分不同应用拥有相同接口地址的情况!
+                        </p>
+                        <p>
+                            3、应用<b>域名地址管理</b>中所有域名地址必须以正斜杠“/”结尾，而接口地址不要以正斜杠“/”开头!
+                        </p>
                     </div>
                 </div>
             </div>
