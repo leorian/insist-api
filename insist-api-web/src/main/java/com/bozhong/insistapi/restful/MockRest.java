@@ -28,63 +28,50 @@ public class MockRest {
     private MongoService mongoService;
 
 
-    @Path("normal/{mockAddress:[\\w\\W]*$}")
+    @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String mockGetNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
             , @PathParam("mockAddress") String mockAddress) {
-        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.NORMAL);
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
     }
 
-    @Path("normal/{mockAddress:[\\w\\W]*$}")
+    @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String mockPostNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
             , @PathParam("mockAddress") String mockAddress) {
-        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.NORMAL);
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
     }
 
-    @Path("exception/{mockAddress:[\\w\\W]*$}")
+    @Path("exception/{appId}/{mockAddress:[\\w\\W]*$}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String mockGetException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
             , @PathParam("mockAddress") String mockAddress) {
-        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.EXCEPTION);
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.EXCEPTION);
     }
 
-    @Path("exception/{mockAddress:[\\w\\W]*$}")
+    @Path("exception/{appId}/{mockAddress:[\\w\\W]*$}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String mockPostException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
             , @PathParam("mockAddress") String mockAddress) {
-        return mockService(request, uriInfo, httpHeaders, mockAddress, ExampleTypeEnum.EXCEPTION);
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.EXCEPTION);
     }
 
-    private String mockService(Request request, UriInfo uriInfo, HttpHeaders httpHeaders, String mockAddress, ExampleTypeEnum exampleTypeEnum) {
-//        String urlPath = uriInfo.getAbsolutePath().toString();
-//        if (exampleTypeEnum.name().equals(ExampleTypeEnum.EXCEPTION.name())) {
-//            urlPath = urlPath.replace(InsistApiConstants.HTTP_MOCK + "/exception", InsistApiConstants.HTTP_MOCK + "/normal");
-//        }
-
-        //默认请求路径
-//        InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByMockAddress(urlPath,
-//                InterfaceHttpEntity.class);
-
-        //其次，mockAddress短路径
-//        if (interfaceHttpEntity == null) {
-//            interfaceHttpEntity = mongoService.getOneByMockAddress(mockAddress, InterfaceHttpEntity.class);
-//        }
-//
-//        if (interfaceHttpEntity == null && !mockAddress.startsWith("/")) {
-//            interfaceHttpEntity = mongoService.getOneByMockAddress("/" + mockAddress,
-//                    InterfaceHttpEntity.class);
-//        }
-        InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByMethodAndAddress(request.getMethod().toUpperCase(),
-                mockAddress, InterfaceHttpEntity.class);
+    private String mockService(Request request, UriInfo uriInfo, HttpHeaders httpHeaders, String appId,
+                               String mockAddress, ExampleTypeEnum exampleTypeEnum) {
+        InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByMethodAndAddress(appId,
+                request.getMethod().toUpperCase(), mockAddress, InterfaceHttpEntity.class);
 
         if (interfaceHttpEntity == null && !mockAddress.startsWith("/")) {
-            interfaceHttpEntity = mongoService.getOneByMethodAndAddress(request.getMethod().toUpperCase(),
-                    "/" + mockAddress, InterfaceHttpEntity.class);
+            interfaceHttpEntity = mongoService.getOneByMethodAndAddress(appId,
+                    request.getMethod().toUpperCase(), "/" + mockAddress, InterfaceHttpEntity.class);
         }
 
         if (interfaceHttpEntity == null) {

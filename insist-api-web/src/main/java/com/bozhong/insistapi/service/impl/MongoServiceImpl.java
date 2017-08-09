@@ -58,8 +58,8 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
-    public <T> T getOneByMethodAndAddress(String method, String address, Class<T> tClass) {
-        return mongoDao.getOneByMethodAndAddress(method, address, tClass);
+    public <T> T getOneByMethodAndAddress(String appId, String method, String address, Class<T> tClass) {
+        return mongoDao.getOneByMethodAndAddress(appId, method, address, tClass);
     }
 
     @Override

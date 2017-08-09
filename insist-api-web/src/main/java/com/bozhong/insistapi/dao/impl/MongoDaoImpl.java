@@ -142,11 +142,11 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
-    public <T> T getOneByMethodAndAddress(String method, String address, Class<T> tClass) {
+    public <T> T getOneByMethodAndAddress(String appId, String method, String address, Class<T> tClass) {
         Gson gson = new Gson();
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
         Document document = mongoCollection.find(and(regex("method", "^.*" + method + ".*$"),
-                eq("address", address))).first();
+                eq("address", address), eq("appId", appId))).first();
         if (document != null) {
             return gson.fromJson(document.toJson(), tClass);
         }
