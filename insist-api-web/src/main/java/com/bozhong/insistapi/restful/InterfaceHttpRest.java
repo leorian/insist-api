@@ -87,10 +87,16 @@ public class InterfaceHttpRest {
         System.out.println(JSON.toJSONString(httpDomain));
 
         InterfaceHttpEntity interfaceHttpEntity = httpDomain.buildInterfaceHttpEntity();
+        //请求头部
+        interfaceHttpEntity.setInterfaceParamHeaderEntities(httpDomain.
+                buildInterfaceParamHeaderEntities(interfaceHttpEntity.getId()));
+        //请求参数
         interfaceHttpEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceHttpEntity.getId()));
+        //响应参数
         interfaceHttpEntity.setInterfaceParamResponseEntities(httpDomain.
                 buildInterfaceParamResponseEntities(interfaceHttpEntity.getId()));
+        //返回示例和异常示例
         interfaceHttpEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceHttpEntity.getId()));
 
@@ -144,10 +150,16 @@ public class InterfaceHttpRest {
 
         InterfaceHttpEntity interfaceHttpEntity = httpDomain.buildInterfaceHttpEntity();
         interfaceHttpEntity.setId(interfaceId);
+        //请求头部
+        interfaceHttpEntity.setInterfaceParamHeaderEntities(httpDomain.
+                buildInterfaceParamHeaderEntities(interfaceHttpEntity.getId()));
+        //请求参数
         interfaceHttpEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceHttpEntity.getId()));
+        //响应参数
         interfaceHttpEntity.setInterfaceParamResponseEntities(httpDomain.
                 buildInterfaceParamResponseEntities(interfaceHttpEntity.getId()));
+        //返回示例和异常示例
         interfaceHttpEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceHttpEntity.getId()));
 

@@ -1,10 +1,7 @@
 package com.bozhong.insistapi.domain;
 
 import com.alibaba.fastjson.JSON;
-import com.bozhong.insistapi.entity.InterfaceHttpEntity;
-import com.bozhong.insistapi.entity.InterfaceParamEntity;
-import com.bozhong.insistapi.entity.InterfaceParamResponseEntity;
-import com.bozhong.insistapi.entity.InterfaceResultEntity;
+import com.bozhong.insistapi.entity.*;
 import com.bozhong.insistapi.enums.ExampleTypeEnum;
 import com.bozhong.insistapi.enums.InterfaceTypeEnum;
 import com.yx.eweb.main.EWebServletContext;
@@ -28,6 +25,14 @@ public class InterfaceHttpDomain implements Serializable {
     private String addressInput;
     private String nameInput;
     private String descriptionInput;
+
+    /*请求头部*/
+    private String[] paramNamesHeaderInput;
+    private String[] paramTypesHeaderInput;
+    private String[] paramDescribesHeaderInput;
+    private String[] examplesHeaderInput;
+    private String[] exampleDetailsHeaderInput;
+    private String[] defaultValueDetailsHeaderInput;
 
     /*请求参数*/
     private String[] paramNamesInput;
@@ -119,6 +124,54 @@ public class InterfaceHttpDomain implements Serializable {
 
     public void setDescriptionInput(String descriptionInput) {
         this.descriptionInput = descriptionInput;
+    }
+
+    public String[] getParamNamesHeaderInput() {
+        return paramNamesHeaderInput;
+    }
+
+    public void setParamNamesHeaderInput(String[] paramNamesHeaderInput) {
+        this.paramNamesHeaderInput = paramNamesHeaderInput;
+    }
+
+    public String[] getParamTypesHeaderInput() {
+        return paramTypesHeaderInput;
+    }
+
+    public void setParamTypesHeaderInput(String[] paramTypesHeaderInput) {
+        this.paramTypesHeaderInput = paramTypesHeaderInput;
+    }
+
+    public String[] getParamDescribesHeaderInput() {
+        return paramDescribesHeaderInput;
+    }
+
+    public void setParamDescribesHeaderInput(String[] paramDescribesHeaderInput) {
+        this.paramDescribesHeaderInput = paramDescribesHeaderInput;
+    }
+
+    public String[] getExamplesHeaderInput() {
+        return examplesHeaderInput;
+    }
+
+    public void setExamplesHeaderInput(String[] examplesHeaderInput) {
+        this.examplesHeaderInput = examplesHeaderInput;
+    }
+
+    public String[] getExampleDetailsHeaderInput() {
+        return exampleDetailsHeaderInput;
+    }
+
+    public void setExampleDetailsHeaderInput(String[] exampleDetailsHeaderInput) {
+        this.exampleDetailsHeaderInput = exampleDetailsHeaderInput;
+    }
+
+    public String[] getDefaultValueDetailsHeaderInput() {
+        return defaultValueDetailsHeaderInput;
+    }
+
+    public void setDefaultValueDetailsHeaderInput(String[] defaultValueDetailsHeaderInput) {
+        this.defaultValueDetailsHeaderInput = defaultValueDetailsHeaderInput;
     }
 
     public String[] getParamNamesInput() {
@@ -335,6 +388,40 @@ public class InterfaceHttpDomain implements Serializable {
         interfaceHttpEntity.setUatAddress(this.getUatAddressInput());
         interfaceHttpEntity.setPrdAddress(this.getPrdAddressInput());
         return interfaceHttpEntity;
+    }
+
+    public List<InterfaceParamHeaderEntity> buildInterfaceParamHeaderEntities(String interfaceId) {
+        if (this.getParamNamesHeaderInput() == null || this.getParamNamesHeaderInput().length == 0) {
+            return null;
+        }
+
+        List<InterfaceParamHeaderEntity> interfaceParamHeaderEntities = new ArrayList<>(this.getParamNamesHeaderInput().length);
+        for (int i = 0; i < this.getParamNamesHeaderInput().length; i++) {
+            InterfaceParamHeaderEntity interfaceParamHeaderEntity = new InterfaceParamHeaderEntity();
+            try {
+                Thread.sleep(10l);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+            interfaceParamHeaderEntity.setId(simpleDateFormat.format(date));
+            interfaceParamHeaderEntity.setInterfaceId(interfaceId);
+            interfaceParamHeaderEntity.setInterfaceType(InterfaceTypeEnum.HTTP.name());
+            interfaceParamHeaderEntity.setParamNameHeader(this.getParamNamesHeaderInput()[i]);
+            interfaceParamHeaderEntity.setParamTypeHeader(this.getParamTypesHeaderInput()[i]);
+            interfaceParamHeaderEntity.setParamDescribeHeader(this.getParamDescribesHeaderInput()[i]);
+            interfaceParamHeaderEntity.setExampleHeader(this.getExamplesHeaderInput()[i]);
+            interfaceParamHeaderEntity.setExampleDetailHeader(this.getExampleDetailsHeaderInput()[i]);
+            interfaceParamHeaderEntity.setDefaultValueDetailHeader(this.getDefaultValueDetailsHeaderInput()[i]);
+            interfaceParamHeaderEntity.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
+            interfaceParamHeaderEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamHeaderEntity.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
+            interfaceParamHeaderEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
+            interfaceParamHeaderEntities.add(interfaceParamHeaderEntity);
+        }
+
+        return interfaceParamHeaderEntities;
     }
 
     public List<InterfaceParamEntity> buildInterfaceParamEntities(String interfaceId) {
