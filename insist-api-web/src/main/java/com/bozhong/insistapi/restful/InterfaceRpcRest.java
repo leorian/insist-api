@@ -2,6 +2,7 @@ package com.bozhong.insistapi.restful;
 
 import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.ResultMessageBuilder;
+import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.domain.InterfaceRpcDomain;
 import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.service.MongoService;
@@ -64,7 +65,12 @@ public class InterfaceRpcRest {
     public String findInterfaceRpcList(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         String appId = (String) param.get("appId");
-        return JSON.toJSONString(mongoService.getListByAppId(appId, InterfaceRpcEntity.class));
+        String category = (String) param.get("category");
+        if (StringUtil.isNotBlank(category)) {
+            return JSON.toJSONString(mongoService.getListByAppIdAndCategory(appId, category, InterfaceRpcEntity.class));
+        } else {
+            return JSON.toJSONString(mongoService.getListByAppId(appId, InterfaceRpcEntity.class));
+        }
     }
 
     @POST

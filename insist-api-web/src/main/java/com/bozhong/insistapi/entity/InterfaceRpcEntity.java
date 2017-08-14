@@ -36,6 +36,11 @@ public class InterfaceRpcEntity extends BaseEntity {
     private String appId;
 
     /**
+     * 接口分类
+     */
+    private String category;
+
+    /**
      * 接口名称
      */
     private String name;
@@ -93,6 +98,14 @@ public class InterfaceRpcEntity extends BaseEntity {
 
     public void setAppId(String appId) {
         this.appId = appId;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getName() {

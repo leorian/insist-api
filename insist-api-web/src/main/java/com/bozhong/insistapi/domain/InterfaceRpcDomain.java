@@ -21,6 +21,7 @@ import java.util.List;
 public class InterfaceRpcDomain implements Serializable {
     /*接口详情*/
     private String appIdInput;
+    private String categoryInput;
     private String classNameInput;
     private String methodNameInput;
     private String nameInput;
@@ -62,6 +63,14 @@ public class InterfaceRpcDomain implements Serializable {
 
     public void setAppIdInput(String appIdInput) {
         this.appIdInput = appIdInput;
+    }
+
+    public String getCategoryInput() {
+        return categoryInput;
+    }
+
+    public void setCategoryInput(String categoryInput) {
+        this.categoryInput = categoryInput;
     }
 
     public String getClassNameInput() {
@@ -272,6 +281,7 @@ public class InterfaceRpcDomain implements Serializable {
         interfaceRpcEntity.setAppId(this.getAppIdInput());
         interfaceRpcEntity.setClassName(this.getClassNameInput());
         interfaceRpcEntity.setMethodName(this.getMethodNameInput());
+        interfaceRpcEntity.setCategory(this.getCategoryInput());
         interfaceRpcEntity.setName(this.getNameInput());
         interfaceRpcEntity.setFunctionDescribe(this.getFunctionDescribeInput());
         interfaceRpcEntity.setReturnType(this.getReturnTypeInput());

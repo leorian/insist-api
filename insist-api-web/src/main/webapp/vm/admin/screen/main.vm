@@ -533,7 +533,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-5">
+                            <div class="form-inline">
+                                <label class="control-label" for="categoryInput">接口分类：</label>
+                                <select class="form-control" id="categoryInput" name="categoryInput">
+                                    #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
+                                        <option value="$interfaceCategoryEntity.interfaceCategoryId">$interfaceCategoryEntity.interfaceCategoryName</option>
+                                    #end
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="classNameInput" placeholder="类全路径名称">
                             </div>
@@ -2357,6 +2367,7 @@
             $("#interfaceRpcIdInput").val(interfaceId);
             $("#myRpcModal").find("tbody").empty();
             $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
+                $("#myRpcModal").find("input[name='categoryInput']").val(data.category);
                 $("#myRpcModal").find("input[name='classNameInput']").val(data.className);
                 $("#myRpcModal").find("input[name='methodNameInput']").val(data.methodName);
                 $("#myRpcModal").find("input[name='nameInput']").val(data.name);
@@ -2536,6 +2547,12 @@
                     function (data) {
                         $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
                     }, "json");
+            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {
+                "appId": "$!{appDO.appId}",
+                "category": category
+            }, function (data) {
+                $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
+            }, "json");
         });
 
         //分类删除事件
