@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height:100%;">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
@@ -15,23 +15,7 @@
 
 #*分页插件jqgrid*#
     <link rel="stylesheet" href="${ctxPath}/webFrame/jqgrid-5.2.0/jqgrid/css/ui.jqgrid-bootstrap.css"/>
-    <style type="text/css">
 
-
-        @media (min-width: 992px) {
-            #nav-bar-left-list {
-                width: 224px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            #nav-bar-left-list {
-                width: 256px;
-            }
-        }
-
-
-    </style>
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="${ctxPath}/webFrame/bootstrap-3.3.5/jquery-1.11.3.min.js"></script>
 
@@ -50,18 +34,8 @@
 
     <script src="${ctxPath}/webFrame/handlebars-jquery-plugin.js"></script>
 
-    <script type="text/javascript">
-        var ctxPath = '$!{ctxPath}';
-        $(function () {
-            $.jgrid.defaults.width = $("#mainWindowPanel").width();
-        });
-    </script>
-    <script>
-        $(function () {
-        });
-    </script>
 </head>
-<body>
+<body style="height: 100%">
 <!-- 头部 -->
 <header id="header" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -80,115 +54,82 @@
         </div>
     </div>
 </header>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<!-- body -->
-<div class="container">
-    <div class="row" id="ad_common_top" style="display:none;">
-        <div class="col-md-12">
-            <div class="bs-callout bs-callout-danger script"></div>
+<div>
+    <div style="float: left;width:15%;border-right: 1px solid darkgray; height: 100%;
+ box-sizing: border-box;overflow: auto;position: fixed" class="text-center">
+        <div style="height: 55px;">
+
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3" style="min-height: 1024px;">
-            <div id="nav-bar-left-list" class="panel-group" role="tablist"
-                 aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab">
-                        <h4 class="panel-title">
-                            <a href="${ctxPath}/admin/empty.htm">${html_title}</a>
-                        </h4>
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div id="nav-bar-56" class="panel-heading" role="tab">
-                        <h4 class="panel-title">
-                            <a href="#nav-bar-list-56" data-parent="#nav-bar-left-list" data-toggle="collapse"
-                               aria-expanded="true" aria-controls="nav-bar-list-56"
-                               aria-controls="collapseOne">接口管理</a>
-                        </h4>
-                    </div>
-                    <div id="nav-bar-list-56"
-                         class="panel-collapse collapse in" role="tabpanel"
-                         aria-labelledby="nav-bar-56" aria-expanded="false">
-                        <div class="list-group">
-                            #foreach($app in $!appDOList)
-                                <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
-                                    #if($menu=="Main" && ${app.mainSelectType})
-                                   style="color: blue;"
-                                    #end
-                                   data-appid="${app.appId}">${app.appName}</a>
-                            #end
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div id="nav-bar-78" class="panel-heading" role="tab">
-                        <h4 class="panel-title">
-                            <a href="#nav-bar-list-78" data-parent="#nav-bar-left-list" data-toggle="collapse"
-                               aria-expanded="true" aria-controls="nav-bar-list-78"
-                               aria-controls="collapseOne">接口预览</a>
-                        </h4>
-                    </div>
-                    <div id="nav-bar-list-78"
-                         class="panel-collapse collapse in" role="tabpanel"
-                         aria-labelledby="nav-bar-78" aria-expanded="false">
-                        <div class="list-group">
-                            #foreach($app in $!appDOList)
-                                <a href="${ctxPath}/admin/view.htm?appId=${app.appId}" class="list-group-item"
-                                    #if($menu=="View" && ${app.viewSelectType})
-                                   style="color: blue;"
-                                    #end
-                                   data-appid="${app.appId}">${app.appName}</a>
-                            #end
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="row" id="ad_nav_left_bottom" style="display:none;">
-                <div class="col-md-12">
-                    <div class="bs-callout bs-callout-danger script"></div>
-                </div>
-            </div>
-        </div>
-        <!-- 导航 -->
-        <div class="col-md-9">
-
-            <div class="row" id="ad_page_top" style="display:none;">
-                <div class="col-md-12">
-                    <div class="bs-callout bs-callout-danger script"></div>
+        <div id="nav-bar-left-list" style="" class="panel-group" role="tablist"
+             aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a href="${ctxPath}/admin/empty.htm">${html_title}</a>
+                    </h4>
                 </div>
             </div>
 
-            <div class="row" id="mainWindowPanel">
-                #parse("$screen_placeholder")
-            </div>
-
-            <div class="row" id="ad_page_bottom" style="display:none;">
-                <div class="col-md-12">
-                    <div class="bs-callout bs-callout-danger script"></div>
+            <div class="panel panel-default">
+                <div id="nav-bar-56" class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a href="#nav-bar-list-56" data-parent="#nav-bar-left-list" data-toggle="collapse"
+                           aria-expanded="true" aria-controls="nav-bar-list-56"
+                           aria-controls="collapseOne">接口管理</a>
+                    </h4>
+                </div>
+                <div id="nav-bar-list-56"
+                     class="panel-collapse collapse in" role="tabpanel"
+                     aria-labelledby="nav-bar-56" aria-expanded="false">
+                    <div class="list-group">
+                        #foreach($app in $!appDOList)
+                            <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
+                                #if($menu=="Main" && ${app.mainSelectType})
+                               style="color: blue;"
+                                #end
+                               data-appid="${app.appId}">${app.appName}</a>
+                        #end
+                    </div>
                 </div>
             </div>
+
+            <div class="panel panel-default">
+                <div id="nav-bar-78" class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a href="#nav-bar-list-78" data-parent="#nav-bar-left-list" data-toggle="collapse"
+                           aria-expanded="true" aria-controls="nav-bar-list-78"
+                           aria-controls="collapseOne">接口预览</a>
+                    </h4>
+                </div>
+                <div id="nav-bar-list-78"
+                     class="panel-collapse collapse in" role="tabpanel"
+                     aria-labelledby="nav-bar-78" aria-expanded="false">
+                    <div class="list-group">
+                        #foreach($app in $!appDOList)
+                            <a href="${ctxPath}/admin/view.htm?appId=${app.appId}" class="list-group-item"
+                                #if($menu=="View" && ${app.viewSelectType})
+                               style="color: blue;"
+                                #end
+                               data-appid="${app.appId}">${app.appName}</a>
+                        #end
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
         </div>
     </div>
-
-    <div class="row" id="ad_common_bottom" style="display:none;">
-        <div class="col-md-12">
-            <div class="bs-callout bs-callout-danger script"></div>
-        </div>
+    <div style="float: right;width:85%;height: 100%">
+        #parse("$screen_placeholder")
     </div>
+    <div style="height:50px;clear:both">
 
+    </div>
 </div>
+
 <br/>
 <br/>
 <br/>
