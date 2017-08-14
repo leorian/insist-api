@@ -978,17 +978,23 @@
         <td class='text-center' style="word-wrap: break-word">{{methodName}}</td>
 ##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
         <td class='text-center'>
-            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
-                    data-target='#myRpcModal'>编辑
-            </button>
+##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
+##                    data-target='#myRpcModal'>编辑
+##            </button>
+            <span class="glyphicon glyphicon-edit btn-success-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
+                  data-target='#myRpcModal'></span>
             &nbsp;&nbsp;
-            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
-                    data-target='#deleteInterfaceModal'>删除
-            </button>
+##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
+##                    data-target='#deleteInterfaceModal'>删除
+##            </button>
+            <span class="glyphicon glyphicon-trash btn-danger-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
+          data-target='#deleteInterfaceModal'></span>
             &nbsp;&nbsp;
-            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
-                    data-target="#myRpcPreviewModal">预览
-            </button>
+##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
+##                    data-target="#myRpcPreviewModal">预览
+##            </button>
+            <span class="glyphicon glyphicon-fire btn-warning-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
+          data-target='#myRpcPreviewModal'></span>
         </td>
     </tr>
     {{/this}}
@@ -2367,7 +2373,7 @@
         });
 
         //RPC接口编辑事件
-        $("#rpcTableTBody").delegate("button.btn-success", "click", function () {
+        $("#rpcTableTBody").delegate("span.btn-success-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
             $("#myRpcModalLabel").html("编辑RPC接口");
             $("#interfaceRpcIdInput").val(interfaceId);
@@ -2411,7 +2417,7 @@
         });
 
         //RPC接口删除事件
-        $("#rpcTableTBody").delegate("button.btn-danger", "click", function () {
+        $("#rpcTableTBody").delegate("span.btn-danger-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
             $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfaceid", interfaceId);
             $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfacetype", "RPC");
@@ -2491,7 +2497,7 @@
 
 
         //RPC接口预览
-        $("#rpcTableTBody").delegate("button.btn-warning", "click", function () {
+        $("#rpcTableTBody").delegate("span.btn-warning-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
             $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
                 $("#myRpcPreviewModal").find(".modal-body").handlebars($("#myRpcPreviewModalTemplate"), data);
