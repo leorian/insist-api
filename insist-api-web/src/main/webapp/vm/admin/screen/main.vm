@@ -940,17 +940,23 @@
         <td class='text-center' style="word-wrap: break-word">{{address}}</td>
 ##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
         <td class='text-center'>
-            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
-                    data-target='#myHttpModal'>编辑
-            </button>
+##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
+##                    data-target='#myHttpModal'>编辑
+##            </button>
+            <span class="glyphicon glyphicon-edit btn-success-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
+                  data-target='#myHttpModal'></span>
             &nbsp;&nbsp;
-            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
-                    data-target='#deleteInterfaceModal'>删除
-            </button>
+##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
+##                    data-target='#deleteInterfaceModal'>删除
+##            </button>
+            <span class="glyphicon glyphicon-trash btn-danger-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
+          data-target='#deleteInterfaceModal'></span>
             &nbsp;&nbsp;
-            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
-                    data-target="#myHttpPreviewModal">预览
-            </button>
+##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
+##                    data-target="#myHttpPreviewModal">预览
+##            </button>
+            <span class="glyphicon glyphicon-fire btn-warning-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
+          data-target='#myHttpPreviewModal'></span>
         </td>
     </tr>
     {{/each}}
@@ -2322,7 +2328,7 @@
         }, "json");
 
         //HTTP接口编辑事件
-        $("#httpTableTBody").delegate("button.btn-success", "click", function () {
+        $("#httpTableTBody").delegate("span.btn-success-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
             $("#myHttpModalLabel").html("编辑HTTP接口");
             $("#interfaceHttpIdInput").val(interfaceId);
@@ -2397,7 +2403,7 @@
         });
 
         //HTTP接口删除事件
-        $("#httpTableTBody").delegate("button.btn-danger", "click", function () {
+        $("#httpTableTBody").delegate("span.btn-danger-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
             $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfaceid", interfaceId);
             $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfacetype", "HTTP");
@@ -2437,7 +2443,7 @@
         });
 
         //HTTP接口预览
-        $("#httpTableTBody").delegate("button.btn-warning", "click", function () {
+        $("#httpTableTBody").delegate("span.btn-warning-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
             $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
                 $("#myHttpPreviewModal").find(".modal-body").handlebars($("#myHttpPreviewModalTemplate"), data);
