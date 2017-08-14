@@ -126,6 +126,7 @@
                 data-describe="$interfaceCategoryEntity.interfaceCategoryDescribe"
                 data-name="$interfaceCategoryEntity.interfaceCategoryName"
                 title="$interfaceCategoryEntity.interfaceCategoryDescribe"
+                style="word-wrap: break-word;"
             ><a href="javascript:void(0);">
                 $interfaceCategoryEntity.interfaceCategoryName
                 <div style="display:inline;float:right">
@@ -275,6 +276,18 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
+                            <div class="form-inline">
+                                <label class="control-label" for="categoryInput">接口分类：</label>
+                                <select class="form-control" id="categoryInput"  name="categoryInput">
+                                    #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
+                                        <option value="$interfaceCategoryEntity.interfaceCategoryId">$interfaceCategoryEntity.interfaceCategoryName</option>
+                                    #end
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <input type="text" name="addressInput" class="form-control" value=""
                                        placeholder="接口地址"/>
@@ -2308,6 +2321,7 @@
                 $("#myHttpModal").find("select[name='protocolInput']").val(data.protocol);
                 $("#myHttpModal").find("select[name='methodInput']").val(data.method);
                 $("#myHttpModal").find("select[name='transformatInput']").val(data.transformat);
+                $("#myHttpModal").find("select[name='categoryInput']").val(data.category);
                 $("#myHttpModal").find("input[name='addressInput']").val(data.address);
                 $("#myHttpModal").find("input[name='nameInput']").val(data.name);
                 $("#myHttpModal").find("textarea[name='descriptionInput']").val(data.description);

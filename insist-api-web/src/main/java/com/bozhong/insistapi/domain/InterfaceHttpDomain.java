@@ -22,6 +22,7 @@ public class InterfaceHttpDomain implements Serializable {
     private String protocolInput;
     private String methodInput;
     private String transformatInput;
+    private String categoryInput;
     private String addressInput;
     private String nameInput;
     private String descriptionInput;
@@ -100,6 +101,14 @@ public class InterfaceHttpDomain implements Serializable {
 
     public void setTransformatInput(String transformatInput) {
         this.transformatInput = transformatInput;
+    }
+
+    public String getCategoryInput() {
+        return categoryInput;
+    }
+
+    public void setCategoryInput(String categoryInput) {
+        this.categoryInput = categoryInput;
     }
 
     public String getAddressInput() {
@@ -375,6 +384,7 @@ public class InterfaceHttpDomain implements Serializable {
         interfaceHttpEntity.setProtocol(this.getProtocolInput());
         interfaceHttpEntity.setMethod(this.getMethodInput());
         interfaceHttpEntity.setTransformat(this.getTransformatInput());
+        interfaceHttpEntity.setCategory(this.getCategoryInput());
         interfaceHttpEntity.setAddress(this.getAddressInput());
         interfaceHttpEntity.setName(this.getNameInput());
         interfaceHttpEntity.setDescription(this.getDescriptionInput());

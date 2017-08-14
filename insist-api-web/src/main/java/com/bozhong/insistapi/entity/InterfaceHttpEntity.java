@@ -49,6 +49,11 @@ public class InterfaceHttpEntity extends BaseEntity {
     private String transformat;
 
     /**
+     * 接口分类
+     */
+    private String category;
+
+    /**
      * 接口地址
      */
     private String address;
@@ -143,6 +148,14 @@ public class InterfaceHttpEntity extends BaseEntity {
 
     public String getTransformat() {
         return transformat;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public void setTransformat(String transformat) {
