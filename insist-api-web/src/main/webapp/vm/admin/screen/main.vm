@@ -278,7 +278,7 @@
                         <div class="col-sm-6">
                             <div class="form-inline">
                                 <label class="control-label" for="categoryInput">接口分类：</label>
-                                <select class="form-control" id="categoryInput"  name="categoryInput">
+                                <select class="form-control" id="categoryInput" name="categoryInput">
                                     #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
                                         <option value="$interfaceCategoryEntity.interfaceCategoryId">$interfaceCategoryEntity.interfaceCategoryName</option>
                                     #end
@@ -2528,6 +2528,14 @@
         $("#interfaceCategoryUList").delegate("li", "click", function () {
             $(this).siblings().removeClass("active");
             $(this).addClass("active");
+            var category = $(this).attr("data-id");
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {
+                        "appId": "$!{appDO.appId}",
+                        "category": category
+                    },
+                    function (data) {
+                        $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
+                    }, "json");
         });
 
         //分类删除事件
@@ -2561,7 +2569,7 @@
         });
 
         //分类确认编辑事件
-        $("#editInterfaceCategoryModal").delegate(".btn-primary", "click", function(){
+        $("#editInterfaceCategoryModal").delegate(".btn-primary", "click", function () {
             $.post("${ctxPath}/rest/interfaceCategory/updateInterfaceCategory",
                     $("#interfaceCategoryForm2").serialize(), function (data) {
                         console.log(data);
