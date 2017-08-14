@@ -279,6 +279,7 @@
                             <div class="form-inline">
                                 <label class="control-label" for="categoryInput">接口分类：</label>
                                 <select class="form-control" id="categoryInput" name="categoryInput">
+                                    <option value="">--选择分类--</option>
                                     #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
                                         <option value="$interfaceCategoryEntity.interfaceCategoryId">$interfaceCategoryEntity.interfaceCategoryName</option>
                                     #end
@@ -537,6 +538,7 @@
                             <div class="form-inline">
                                 <label class="control-label" for="categoryInput">接口分类：</label>
                                 <select class="form-control" id="categoryInput" name="categoryInput">
+                                    <option value="">--选择分类--</option>
                                     #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
                                         <option value="$interfaceCategoryEntity.interfaceCategoryId">$interfaceCategoryEntity.interfaceCategoryName</option>
                                     #end
