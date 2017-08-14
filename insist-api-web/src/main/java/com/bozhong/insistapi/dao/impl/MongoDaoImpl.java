@@ -13,6 +13,7 @@ import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
+import javax.print.Doc;
 import java.util.*;
 
 import static com.mongodb.client.model.Filters.and;
@@ -53,6 +54,15 @@ public class MongoDaoImpl implements MongoDao {
         Document document = gson.fromJson(t.toString(), Document.class);
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(t.getClass());
         mongoCollection.updateOne(eq("appId", appId), new Document("$set", document));
+    }
+
+    @Override
+    public <T> void updateOneByInterfaceCategoryId(String interfaceCategoryId, T t) {
+        Gson gson = new Gson();
+        Document document = gson.fromJson(t.toString(), Document.class);
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(t.getClass());
+        mongoCollection.updateOne(eq("interfaceCategoryId", interfaceCategoryId),
+                new Document("$set", document));
     }
 
     @Override
@@ -104,6 +114,22 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
+    public <T> List<T> findListByInterfaceAppId(String interfaceAppId, Class<T> tClass) {
+        Assert.notNull(interfaceAppId, "interfaceAppId can't be null!");
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Bson filter = eq("interfaceAppId", interfaceAppId);
+        FindIterable<Document> findIterable = mongoCollection.find(filter);
+        Iterator<Document> iterator = findIterable.iterator();
+        List<T> tList = new ArrayList<>();
+        Gson gson = new Gson();
+        while (iterator.hasNext()) {
+            Document document = iterator.next();
+            tList.add(gson.fromJson(document.toJson(), tClass));
+        }
+        return tList;
+    }
+
+    @Override
     public <T> T getOneByInterfaceId(String interfaceId, Class<T> tClass) {
         Gson gson = new Gson();
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
@@ -139,6 +165,12 @@ public class MongoDaoImpl implements MongoDao {
     public <T> void deleteOneByKey(String interfaceId, Class<T> tClass) {
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
         mongoCollection.deleteOne(eq("id", interfaceId));
+    }
+
+    @Override
+    public <T> void deleteOneByInterfaceCategoryId(String interfaceCategoryId, Class<T> tClass) {
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        mongoCollection.deleteOne(eq("interfaceCategoryId", interfaceCategoryId));
     }
 
     @Override

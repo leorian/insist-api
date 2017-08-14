@@ -28,6 +28,11 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> void updateOneByInterfaceCategoryId(String interfaceCategoryId, T t) {
+        mongoDao.updateOneByInterfaceCategoryId(interfaceCategoryId, t);
+    }
+
+    @Override
     public <T> void insertMany(List<T> list, Class<T> tClass) {
         mongoDao.insertMany(list, tClass);
     }
@@ -45,6 +50,11 @@ public class MongoServiceImpl implements MongoService {
     @Override
     public <T> List<T> getListByAppId(String appId, Class<T> tClass) {
         return mongoDao.getListByAppId(appId, tClass);
+    }
+
+    @Override
+    public <T> List<T> findListByInterfaceAppId(String interfaceAppId, Class<T> tClass) {
+        return mongoDao.findListByInterfaceAppId(interfaceAppId, tClass);
     }
 
     @Override
@@ -70,6 +80,11 @@ public class MongoServiceImpl implements MongoService {
     @Override
     public <T> void deleteOneByKey(String interfaceId, Class<T> tClass) {
         mongoDao.deleteOneByKey(interfaceId, tClass);
+    }
+
+    @Override
+    public <T> void deleteOneByInterfaceCategoryId(String interfaceCategoryId, Class<T> tClass) {
+        mongoDao.deleteOneByInterfaceCategoryId(interfaceCategoryId, tClass);
     }
 
     public void setMongoDao(MongoDao mongoDao) {

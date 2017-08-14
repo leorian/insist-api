@@ -31,6 +31,13 @@ public interface MongoDao {
     <T> void updateOneByAppId(String appId, T t);
 
     /**
+     * @param interfaceCategoryId
+     * @param t
+     * @param <T>
+     */
+    <T> void updateOneByInterfaceCategoryId(String interfaceCategoryId, T t);
+
+    /**
      * @param tList
      * @param tClass
      * @param <T>
@@ -61,6 +68,14 @@ public interface MongoDao {
     <T> List<T> getListByAppId(String appId, Class<T> tClass);
 
     /**
+     * @param interfaceAppId
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> List<T> findListByInterfaceAppId(String interfaceAppId, Class<T> tClass);
+
+    /**
      * @param interfaceId
      * @param tClass
      * @param <T>
@@ -89,6 +104,13 @@ public interface MongoDao {
      * @param <T>
      */
     <T> void deleteOneByKey(String interfaceId, Class<T> tClass);
+
+    /**
+     * @param interfaceCategoryId
+     * @param tClass
+     * @param <T>
+     */
+    <T> void deleteOneByInterfaceCategoryId(String interfaceCategoryId, Class<T> tClass);
 
     /**
      * @param appId
