@@ -114,6 +114,22 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
+    public <T> List<T> getListByAppIdAndCategory(String appId, String category, Class<T> tClass) {
+        Assert.notNull(appId, "appId can't be null!");
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Bson filter = and(eq("appId", appId), eq("category", category));
+        FindIterable<Document> findIterable = mongoCollection.find(filter);
+        Iterator<Document> iterator = findIterable.iterator();
+        List<T> tList = new ArrayList<T>();
+        Gson gson = new Gson();
+        while (iterator.hasNext()) {
+            Document document = iterator.next();
+            tList.add(gson.fromJson(document.toJson(), tClass));
+        }
+        return tList;
+    }
+
+    @Override
     public <T> List<T> findListByInterfaceAppId(String interfaceAppId, Class<T> tClass) {
         Assert.notNull(interfaceAppId, "interfaceAppId can't be null!");
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);

@@ -53,6 +53,11 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> List<T> getListByAppIdAndCategory(String appId, String category, Class<T> tClass) {
+        return null;
+    }
+
+    @Override
     public <T> List<T> findListByInterfaceAppId(String interfaceAppId, Class<T> tClass) {
         return mongoDao.findListByInterfaceAppId(interfaceAppId, tClass);
     }

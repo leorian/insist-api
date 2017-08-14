@@ -110,7 +110,14 @@ public class InterfaceHttpRest {
     public String findInterfaceHttpList(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         String appId = (String) param.get("appId");
-        List<InterfaceHttpEntity> interfaceHttpEntities = mongoService.getListByAppId(appId, InterfaceHttpEntity.class);
+        String category = (String) param.get("category");//分类
+        List<InterfaceHttpEntity> interfaceHttpEntities;
+        if (StringUtil.isNotBlank(category)) {
+            interfaceHttpEntities = mongoService.getListByAppIdAndCategory(appId, category, InterfaceHttpEntity.class);
+        } else {
+            interfaceHttpEntities = mongoService.getListByAppId(appId, InterfaceHttpEntity.class);
+        }
+
         HttpAddressEntity httpAddressEntity = mongoService.findOneByAppId(appId, HttpAddressEntity.class);
         if (!CollectionUtils.isEmpty(interfaceHttpEntities)) {
             for (InterfaceHttpEntity interfaceHttpEntity : interfaceHttpEntities) {
