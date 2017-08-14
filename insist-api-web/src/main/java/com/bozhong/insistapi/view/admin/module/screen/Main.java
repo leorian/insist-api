@@ -2,9 +2,12 @@ package com.bozhong.insistapi.view.admin.module.screen;
 
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.entity.AppDO;
+import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
 import com.bozhong.insistapi.enums.ParamTypeEnum;
+import com.bozhong.insistapi.service.MongoService;
 import com.yx.eweb.main.EWebContext;
 import com.yx.eweb.main.ScreenInter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 
@@ -15,6 +18,10 @@ import java.util.List;
  */
 @Controller
 public class Main implements ScreenInter {
+
+    @Autowired
+    private MongoService mongoService;
+
     @Override
     public void excute(EWebContext eWebContext) {
         String appId = eWebContext.getRequest().getParameter("appId");
@@ -32,6 +39,9 @@ public class Main implements ScreenInter {
 
         eWebContext.getRequest().setAttribute("appDOList", appDOList);
 
+        List<InterfaceCategoryEntity> interfaceCategoryEntities = mongoService.findListByInterfaceAppId(appId,
+                InterfaceCategoryEntity.class);
+        eWebContext.put("interfaceCategoryEntities", interfaceCategoryEntities);
         eWebContext.put("paramTypeEnumList", ParamTypeEnum.LIST);
     }
 }
