@@ -119,13 +119,15 @@
     </ol>
 </div>
 <div class="col-md-2">
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">全部分类</a></li>
-       #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
-           <li><a href="javascript:void(0);" title="$interfaceCategoryEntity.interfaceCategoryDescribe"
-                  data-id="$interfaceCategoryEntity.interfaceCategoryId">
-               $interfaceCategoryEntity.interfaceCategoryName</a></li>
-       #end
+    <ul id="interfaceCategoryUList" class="nav nav-pills nav-stacked">
+        <li class="active"><a href="javascript:void(0);">全部分类</a></li>
+        #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
+            <li data-id="$interfaceCategoryEntity.interfaceCategoryId"
+                title="$interfaceCategoryEntity.interfaceCategoryDescribe"
+            ><a href="javascript:void(0);">
+                $interfaceCategoryEntity.interfaceCategoryName</a>
+            </li>
+        #end
     </ul>
     <br/>
     <form id="interfaceCategoryForm" name="interfaceCategoryForm">
@@ -2499,6 +2501,12 @@
                             window.location.reload();
                         }
                     }, "json");
+        });
+
+        //选择分类事件
+        $("#interfaceCategoryUList").delegate("li", "click", function () {
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
         });
 
     });
