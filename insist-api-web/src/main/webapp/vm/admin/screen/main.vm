@@ -2515,6 +2515,24 @@
             $(this).addClass("active");
         });
 
+        //分类删除事件
+        $("#interfaceCategoryUList").delegate(".glyphicon-trash", "click", function () {
+            var interfaceCategoryId = $(this).parent().parent().parent().attr("data-id");
+            $("#deleteInterfaceCategoryModal").modal("show");
+            $("#deleteInterfaceCategoryModal").find(".btn-primary").attr("data-id", interfaceCategoryId);
+        });
+
+        //分类确认删除事件
+        $("#deleteInterfaceCategoryModal").delegate(".btn-primary", "click", function () {
+            $.post("${ctxPath}/rest/interfaceCategory/deleteInterfaceCategory", {"interfaceCategoryIdInput": $(this).attr("data-id")}, function (data) {
+                console.log(data);
+                if (data.success) {
+                    $("#addInterfaceCategoryModal").modal("hide");
+                    window.location.reload();
+                }
+            }, "json");
+        });
+
     });
 </script>
 <!-- 删除接口模态框（Modal） -->
@@ -2623,3 +2641,30 @@
     </div><!-- /.modal -->
 </div>
 
+<!-- 删除接口分类模态框（Modal） -->
+<div class="modal fade" id="deleteInterfaceCategoryModal" tabindex="-1" role="dialog"
+     aria-labelledby="deleteInterfaceCategoryModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="deleteInterfaceCategoryModalLabel">
+                    删除提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                确定删除该条接口分类信息吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
