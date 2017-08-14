@@ -123,9 +123,15 @@
         <li class="active"><a href="javascript:void(0);">全部分类</a></li>
         #foreach($interfaceCategoryEntity in $!interfaceCategoryEntities)
             <li data-id="$interfaceCategoryEntity.interfaceCategoryId"
+                data-describe="$interfaceCategoryEntity.interfaceCategoryDescribe"
                 title="$interfaceCategoryEntity.interfaceCategoryDescribe"
             ><a href="javascript:void(0);">
-                $interfaceCategoryEntity.interfaceCategoryName</a>
+                $interfaceCategoryEntity.interfaceCategoryName
+                <div style="display:inline;float:right">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    <span class="glyphicon glyphicon-trash"></span>
+                </div>
+            </a>
             </li>
         #end
     </ul>
