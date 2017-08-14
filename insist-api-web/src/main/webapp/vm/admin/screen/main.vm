@@ -118,7 +118,33 @@
                 class="glyphicon glyphicon-home" style="color: rgb(212, 106, 64);"></span></a></div>
     </ol>
 </div>
-<div class="col-md-12">
+<div class="col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">SVN</a></li>
+        <li><a href="#">iOS</a></li>
+        <li><a href="#">VB.Net</a></li>
+        <li><a href="#">Java</a></li>
+        <li><a href="#">PHP</a></li>
+    </ul>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="分类名称" />
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="分类描述" />
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+                <input type="button" class="btn btn-default" value="添加分类" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-10">
     <br/>
     <div class="text-left">
         <button type="button" id="addHttpInterfaceBtn" class="btn btn-info" data-toggle="modal"
