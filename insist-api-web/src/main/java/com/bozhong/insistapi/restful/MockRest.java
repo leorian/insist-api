@@ -31,7 +31,7 @@ public class MockRest {
     @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String mockGetNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+    public String mockGETNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("appId") String appId
             , @PathParam("mockAddress") String mockAddress) {
         return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
@@ -40,7 +40,44 @@ public class MockRest {
     @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public String mockPostNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+    public String mockPOSTNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
+    }
+
+    @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
+    @HEAD
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockHEADNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
+    }
+
+    @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockPUTNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
+    }
+
+
+    @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockDELETENormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
+    }
+
+    @Path("normal/{appId}/{mockAddress:[\\w\\W]*$}")
+    @OPTIONS
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockOPTIONSNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("appId") String appId
             , @PathParam("mockAddress") String mockAddress) {
         return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.NORMAL);
@@ -59,6 +96,42 @@ public class MockRest {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String mockPostException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.EXCEPTION);
+    }
+
+    @Path("exception/{appId}/{mockAddress:[\\w\\W]*$}")
+    @HEAD
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockHEADException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.EXCEPTION);
+    }
+
+    @Path("exception/{appId}/{mockAddress:[\\w\\W]*$}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockPUTException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.EXCEPTION);
+    }
+
+    @Path("exception/{appId}/{mockAddress:[\\w\\W]*$}")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockDELETEException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId
+            , @PathParam("mockAddress") String mockAddress) {
+        return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.EXCEPTION);
+    }
+
+    @Path("exception/{appId}/{mockAddress:[\\w\\W]*$}")
+    @OPTIONS
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockOPTIONSException(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
             , @PathParam("appId") String appId
             , @PathParam("mockAddress") String mockAddress) {
         return mockService(request, uriInfo, httpHeaders, appId, mockAddress, ExampleTypeEnum.EXCEPTION);
