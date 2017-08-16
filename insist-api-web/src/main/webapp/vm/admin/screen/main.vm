@@ -178,12 +178,12 @@
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
         <thead class="bg-primary">
         <tr>
-##            <th class="text-center" width="20%">接口ID</th>
+        ##            <th class="text-center" width="20%">接口ID</th>
             <th class="text-center">接口名称</th>
             <th class="text-center" width="12%">请求协议</th>
             <th class="text-center" width="12%">请求方法</th>
             <th class="text-center">接口地址</th>
-##            <th class="text-center">创建人</th>
+        ##            <th class="text-center">创建人</th>
             <th class="text-center" width="12%">操作</th>
         </tr>
         </thead>
@@ -205,11 +205,11 @@
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
         <thead>
         <tr class="bg-primary">
-##            <th class="text-center">接口ID</th>
+        ##            <th class="text-center">接口ID</th>
             <th class="text-center">接口名称</th>
             <th class="text-center" width="24%">接口类名</th>
             <th class="text-center">方法名称</th>
-##            <th class="text-center">创建人</th>
+        ##            <th class="text-center">创建人</th>
             <th class="text-center" style="width: 12%">操作</th>
         </tr>
         </thead>
@@ -250,7 +250,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <select class="form-control" name="protocolInput">
                                     <option value="HTTP">HTTP</option>
@@ -258,16 +258,16 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <select class="form-control" name="methodInput">
-                                    <option value="GET">GET</option>
-                                    <option value="POST">POST</option>
-                                    <option value="GET/POST">GET/POST</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
+                    ##                        <div class="col-sm-2">
+                    ##                            <div class="form-group">
+                    ##                                <select class="form-control" name="methodInput">
+                    ##                                    <option value="GET">GET</option>
+                    ##                                    <option value="POST">POST</option>
+                    ##                                    <option value="GET/POST">GET/POST</option>
+                    ##                                </select>
+                    ##                            </div>
+                    ##                        </div>
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <select class="form-control" name="transformatInput">
                                     <option value="JSON">JSON</option>
@@ -285,6 +285,67 @@
                                     #end
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            请求方式
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="methodInputCheckBox" value="GET">GET</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="methodInputCheckBox" value="POST">POST</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="methodInputCheckBox" value="HEAD">HEAD</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="methodInputCheckBox" value="PUT">PUT</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="methodInputCheckBox"
+                                                  value="DELETE">DELETE</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="methodInputCheckBox" value="TRACE">TRACE</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="methodInputCheckBox"
+                                                  value="OPTIONS">OPTIONS</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="hidden" name="methodInput" value=""/>
                         </div>
                     </div>
                     <div class="row">
@@ -935,30 +996,30 @@
     {{# if this}}
     {{#each this}}
     <tr>
-##        <td class='text-center'>{{id}}</td>
+    ##        <td class='text-center'>{{id}}</td>
         <td class='text-center' style="word-wrap: break-word">{{name}}</td>
         <td class='text-center'>{{protocol}}</td>
-        <td class='text-center'>{{method}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{method}}</td>
         <td class='text-center' style="word-wrap: break-word">{{address}}</td>
-##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
+    ##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
         <td class='text-center'>
-##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
-##                    data-target='#myHttpModal'>编辑
-##            </button>
+        ##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
+        ##                    data-target='#myHttpModal'>编辑
+        ##            </button>
             <span class="glyphicon glyphicon-edit btn-success-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
                   data-target='#myHttpModal'></span>
             &nbsp;&nbsp;
-##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
-##                    data-target='#deleteInterfaceModal'>删除
-##            </button>
+        ##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
+        ##                    data-target='#deleteInterfaceModal'>删除
+        ##            </button>
             <span class="glyphicon glyphicon-trash btn-danger-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-          data-target='#deleteInterfaceModal'></span>
+                  data-target='#deleteInterfaceModal'></span>
             &nbsp;&nbsp;
-##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
-##                    data-target="#myHttpPreviewModal">预览
-##            </button>
+        ##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
+        ##                    data-target="#myHttpPreviewModal">预览
+        ##            </button>
             <span class="glyphicon glyphicon-fire btn-warning-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-          data-target='#myHttpPreviewModal'></span>
+                  data-target='#myHttpPreviewModal'></span>
         </td>
     </tr>
     {{/each}}
@@ -974,29 +1035,29 @@
     {{# if this}}
     {{#this}}
     <tr>
-##        <td class='text-center'>{{id}}</td>
+    ##        <td class='text-center'>{{id}}</td>
         <td class='text-center' style="word-wrap: break-word">{{name}}</td>
         <td class='text-center' style="word-wrap: break-word">{{className}}</td>
         <td class='text-center' style="word-wrap: break-word">{{methodName}}</td>
-##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
+    ##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
         <td class='text-center'>
-##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
-##                    data-target='#myRpcModal'>编辑
-##            </button>
+        ##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
+        ##                    data-target='#myRpcModal'>编辑
+        ##            </button>
             <span class="glyphicon glyphicon-edit btn-success-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
                   data-target='#myRpcModal'></span>
             &nbsp;&nbsp;
-##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
-##                    data-target='#deleteInterfaceModal'>删除
-##            </button>
+        ##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
+        ##                    data-target='#deleteInterfaceModal'>删除
+        ##            </button>
             <span class="glyphicon glyphicon-trash btn-danger-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-          data-target='#deleteInterfaceModal'></span>
+                  data-target='#deleteInterfaceModal'></span>
             &nbsp;&nbsp;
-##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
-##                    data-target="#myRpcPreviewModal">预览
-##            </button>
+        ##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
+        ##                    data-target="#myRpcPreviewModal">预览
+        ##            </button>
             <span class="glyphicon glyphicon-fire btn-warning-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-          data-target='#myRpcPreviewModal'></span>
+                  data-target='#myRpcPreviewModal'></span>
         </td>
     </tr>
     {{/this}}
@@ -2343,7 +2404,13 @@
             $("#myHttpModal").find("tbody").empty();
             $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
                 $("#myHttpModal").find("select[name='protocolInput']").val(data.protocol);
-                $("#myHttpModal").find("select[name='methodInput']").val(data.method);
+                $("#myHttpModal").find("input[name='methodInput']").val(data.method);
+                var methodCheckboxElements = $("input[name='methodInputCheckBox']");
+                for (var i = 0; i < methodCheckboxElements.length; i++) {
+                    if (data.method.indexOf($(methodCheckboxElements[i]).val()) > -1) {
+                        $(methodCheckboxElements[i]).prop("checked", true);
+                    }
+                }
                 $("#myHttpModal").find("select[name='transformatInput']").val(data.transformat);
                 $("#myHttpModal").find("select[name='categoryInput']").val(data.category);
                 $("#myHttpModal").find("input[name='addressInput']").val(data.address);
@@ -2609,6 +2676,18 @@
                             window.location.reload();
                         }
                     }, "json");
+        });
+
+        //请求方式复选事件
+        $("#myHttpModal").delegate("input[name='methodInputCheckBox']", "change", function () {
+            var elements = $("input[name='methodInputCheckBox']");
+            var checkedValues = "";
+            for (var i = 0; i < elements.length; i++) {
+                if ($(elements[i]).prop("checked")) {
+                    checkedValues = checkedValues + $(elements[i]).val() + "/";
+                }
+            }
+            $("input[name='methodInput']").val(checkedValues.substr(0, checkedValues.length - 1));
         });
 
     });
