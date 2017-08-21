@@ -6,59 +6,6 @@
     #*RPC接口描述文档显示区域*#
     </div>
 </div>
-##<div class="guide">
-##    <hr style="border: solid 1px #fff;"/>
-##    <div class="guide-wrap" id="httpTitleMenu">
-##    </div>
-##    <hr style="border: solid 1px #fff;"/>
-##    <div class="guide-wrap" id="rpcTitleMenu">
-##    </div>
-##    <hr style="border: solid 1px #fff;"/>
-##    <div class="guide-wrap" id="topMenu">
-##        <a href="javascript:window.scrollTo(0,0)" class="edit" style="padding-right: 0px" title="回顶部">回顶部</a>
-##    </div>
-##    <hr style="border: solid 1px #fff;"/>
-##</div>
-##<style type="text/css">
-##    .guide {
-##        width: 250px;
-##        position: fixed;
-##        display: block;
-##        vertical-align: 100%;
-##        right: 10px;
-##        background-color: #EEEEEE;
-##        overflow-y: auto;
-##        overflow-x: hidden;
-##        max-height: 500px;
-##    }
-##
-##    .guide a {
-##        display: block;
-##        width: 250px;
-##        height: 30px;
-##        max-height: 30px;
-##        text-decoration: none;
-##        font: 8px/8px "Microsoft YaHei";
-##        text-align: left;
-##        color: #000;
-##        padding: 8px;
-##        white-space: nowrap;
-##        overflow: hidden;
-##        text-overflow: ellipsis;
-##    }
-##
-##    .guide a:hover {
-##        text-decoration: none;
-##        background-color: #39F;
-##        color: #fff;
-##    }
-##
-##    .menu_select {
-##        text-decoration: none;
-##        background-color: #39F;
-##        color: #fff;
-##    }
-##</style>
 #*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
