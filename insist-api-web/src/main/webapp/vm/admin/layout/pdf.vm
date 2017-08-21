@@ -78,6 +78,8 @@
         }
         $(function () {
             var $tree = $('#treeview12').treeview({
+                expandIcon: 'glyphicon glyphicon-chevron-right',
+                collapseIcon: 'glyphicon glyphicon-chevron-down',
                 enableLinks: true,
                 onNodeSelected: function(event, node) {
                     console.log('<p>' + JSON.stringify(node) + ' was selected</p>');
