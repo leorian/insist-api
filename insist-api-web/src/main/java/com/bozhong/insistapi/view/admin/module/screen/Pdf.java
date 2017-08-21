@@ -7,9 +7,9 @@ import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
 import com.bozhong.insistapi.entity.InterfaceRpcEntity;
+import com.bozhong.insistapi.enums.InterfaceTypeEnum;
 import com.bozhong.insistapi.service.MongoService;
 import com.bozhong.insistapi.task.DocHttpUtil;
-import com.qiniu.util.Json;
 import com.yx.eweb.main.EWebContext;
 import com.yx.eweb.main.ScreenInter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,24 +42,24 @@ public class Pdf implements ScreenInter {
         if (!CollectionUtils.isEmpty(interfaceHttpEntities)) {
             int index = 0;
             for (InterfaceHttpEntity interfaceHttpEntity : interfaceHttpEntities) {
-                if (map.get(interfaceHttpEntity.getCategory())==null) {
-                    map.put(interfaceHttpEntity.getCategory(),new ArrayList<Node>());
+                if (map.get(interfaceHttpEntity.getCategory()) == null) {
+                    map.put(interfaceHttpEntity.getCategory(), new ArrayList<Node>());
                 }
                 Node node = new Node();
-                node.setHref("#httpNav"+(++index));
+                node.setHref("javascript:loadHttpInterfaceContent(" + String.valueOf("\\\"" + interfaceHttpEntity.getId() + "\\\"") + ")");
                 node.setText(interfaceHttpEntity.getName());
                 map.get(interfaceHttpEntity.getCategory()).add(node);
             }
         }
 
-        if (!CollectionUtils.isEmpty(interfaceRpcEntities)){
+        if (!CollectionUtils.isEmpty(interfaceRpcEntities)) {
             int index = 0;
             for (InterfaceRpcEntity interfaceRpcEntity : interfaceRpcEntities) {
-                if (map.get(interfaceRpcEntity.getCategory())==null) {
-                    map.put(interfaceRpcEntity.getCategory(),new ArrayList<Node>());
+                if (map.get(interfaceRpcEntity.getCategory()) == null) {
+                    map.put(interfaceRpcEntity.getCategory(), new ArrayList<Node>());
                 }
                 Node node = new Node();
-                node.setHref("#rpcNav"+(++index));
+                node.setHref("javascript:loadRpcInterfaceContent(" + String.valueOf("\\\"" + interfaceRpcEntity.getId() + "\\\"") + ")");
                 node.setText(interfaceRpcEntity.getName());
                 map.get(interfaceRpcEntity.getCategory()).add(node);
             }

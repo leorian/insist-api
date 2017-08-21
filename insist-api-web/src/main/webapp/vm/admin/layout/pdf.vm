@@ -50,9 +50,31 @@
 
     </style>
     <script>
+        //加载HTTP预览
+        function loadHttpInterfaceContent(interfaceId) {
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
+                var httpArray = new Array();
+                httpArray.push(data);
+                $("#interfaceViewPanel").handlebars($("#interfaceHttpViewTemplate"),httpArray);
+            }, "json");
+
+        }
+
+        //加载RPC预览
+        function loadRpcInterfaceContent(interfaceId) {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
+                var httpArray = new Array();
+                httpArray.push(data);
+                $("#interfaceViewPanel").handlebars($("#interfaceRpcViewTemplate"),httpArray);
+            }, "json");
+        }
         $(function () {
             var $tree = $('#treeview12').treeview({
                 enableLinks: true,
+                onNodeSelected: function(event, node) {
+                    console.log('<p>' + JSON.stringify(node) + ' was selected</p>');
+                },
                 data: '$!{nodes}'
             });
             //增加返回顶部按钮

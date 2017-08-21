@@ -1,10 +1,4 @@
-<div class="col-md-12">
-    <div class="panel-body" id="interfaceHttpViewPanel">
-    #*HTTP接口描述文档显示区域*#
-    </div>
-    <div class="panel-body" id="interfaceRpcViewPanel">
-    #*RPC接口描述文档显示区域*#
-    </div>
+<div class="col-md-12" id="interfaceViewPanel">
 </div>
 #*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
@@ -654,8 +648,6 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        //HTTP接口列表展示
-        $("#interfaceHttpViewPanel").handlebars($("#interfaceHttpViewTemplate"), $!{httpData});
 
         //接口标题导航
         $(".guide").delegate("a.edit", "click", function () {
@@ -686,9 +678,6 @@
             $(this).removeClass("glyphicon-chevron-up");
             $(this).addClass("glyphicon-chevron-down");
         });
-
-        //RPC接口列表展示
-        $("#interfaceRpcViewPanel").handlebars($("#interfaceRpcViewTemplate"), $!{rpcData});
 
         //RPC加减号事件
         $("#interfaceRpcViewPanel").delegate(".glyphicon-minus", "click", function () {
