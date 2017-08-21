@@ -13,6 +13,8 @@
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
     <link rel="stylesheet" href="${ctxPath}/webFrame/bootstrap-3.3.5/bootstrap/css/bootstrap-theme.min.css">
 
+    <link rel="stylesheet" href="${ctxPath}/webFrame/bootstrap-treeview/src/css/bootstrap-treeview.css">
+
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="${ctxPath}/webFrame/bootstrap-3.3.5/jquery-1.11.3.min.js"></script>
 
@@ -27,9 +29,9 @@
 
     <script src="${ctxPath}/webFrame/handlebars-jquery-plugin.js"></script>
 
-    <script src="http://jonmiles.github.io/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+    <script src="${ctxPath}/webFrame/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
 
-    <script src="${ctxPath}/webFrame/jquery.goup.min.js"></script>
+    <script src="${ctxPath}/webFrame/jquery.goup.js"></script>
     <style>
         html, body {
             height: 100%;
