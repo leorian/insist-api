@@ -5,6 +5,7 @@ import com.bozhong.insistapi.dao.MongoDao;
 import com.bozhong.insistapi.service.MongoService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiezg@317hu.com on 2017/4/14 0014.
@@ -90,6 +91,11 @@ public class MongoServiceImpl implements MongoService {
     @Override
     public <T> void deleteOneByInterfaceCategoryId(String interfaceCategoryId, Class<T> tClass) {
         mongoDao.deleteOneByInterfaceCategoryId(interfaceCategoryId, tClass);
+    }
+
+    @Override
+    public <T> Map<String, Integer> categoryCountGroupByAppId(String appId, Class<T> tClass) {
+        return mongoDao.categoryCountGroupByAppId(appId, tClass);
     }
 
     public void setMongoDao(MongoDao mongoDao) {

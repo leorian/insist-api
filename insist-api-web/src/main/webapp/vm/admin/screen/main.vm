@@ -133,6 +133,7 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     <span class="glyphicon glyphicon-trash"></span>
                 </div>
+                <span class="badge">$!interfaceCategoryEntity.interfaceCount</span></a>
             </a>
             </li>
         #end

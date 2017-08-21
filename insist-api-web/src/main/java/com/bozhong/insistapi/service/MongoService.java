@@ -3,6 +3,7 @@ package com.bozhong.insistapi.service;
 import com.bozhong.config.domain.JqPage;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiezg@317hu.com on 2017/4/14 0014.
@@ -133,6 +134,15 @@ public interface MongoService {
      * @param <T>
      */
     <T> void deleteOneByInterfaceCategoryId(String interfaceCategoryId, Class<T> tClass);
+
+    /**
+     * 类别数量统计
+     * @param appId
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> Map<String, Integer> categoryCountGroupByAppId(String appId, Class<T> tClass);
 
 
 }

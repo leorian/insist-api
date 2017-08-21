@@ -3,6 +3,7 @@ package com.bozhong.insistapi.view.admin.module.screen;
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
+import com.bozhong.insistapi.entity.InterfaceHttpEntity;
 import com.bozhong.insistapi.enums.ParamTypeEnum;
 import com.bozhong.insistapi.service.MongoService;
 import com.yx.eweb.main.EWebContext;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiezg@317hu.com on 2017/7/21 0021.
@@ -41,6 +43,12 @@ public class Main implements ScreenInter {
 
         List<InterfaceCategoryEntity> interfaceCategoryEntities = mongoService.findListByInterfaceAppId(appId,
                 InterfaceCategoryEntity.class);
+        Map<String, Integer> map = mongoService.categoryCountGroupByAppId(appId, InterfaceHttpEntity.class);
+        if (!CollectionUtils.isEmpty(interfaceCategoryEntities) && !CollectionUtils.isEmpty(map)) {
+            for (InterfaceCategoryEntity interfaceCategoryEntity : interfaceCategoryEntities) {
+                interfaceCategoryEntity.setInterfaceCount(map.get(interfaceCategoryEntity.getInterfaceCategoryId()));
+            }
+        }
         eWebContext.put("interfaceCategoryEntities", interfaceCategoryEntities);
         eWebContext.put("paramTypeEnumList", ParamTypeEnum.LIST);
     }

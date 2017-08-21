@@ -6,8 +6,10 @@ import com.bozhong.insistapi.dao.MongoDao;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -200,5 +202,24 @@ public class MongoDaoImpl implements MongoDao {
         }
 
         return null;
+    }
+
+    @Override
+    public <T> Map<String, Integer> categoryCountGroupByAppId(String appId, Class<T> tClass) {
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        AggregateIterable<Document> aggregateIterable = mongoCollection.aggregate(Arrays.asList( new Document("$match",
+                        new Document("appId",new Document("$eq",appId))),
+                new Document("$project",
+                        new Document("id", 1).append("_id", 0).append("category", 1)),
+                new Document("$unwind", "$category"),
+                new Document("$group", new Document("_id", "$category").append("count", new Document("$sum", 1)))));
+        MongoCursor<Document> mongoCursor = aggregateIterable.iterator();
+        Map<String, Integer> appCountMap = new HashMap<>();
+        while (mongoCursor.hasNext()) {
+            Document document = mongoCursor.next();
+            appCountMap.put(document.getString("_id"), document.getInteger("count"));
+        }
+
+        return appCountMap;
     }
 }

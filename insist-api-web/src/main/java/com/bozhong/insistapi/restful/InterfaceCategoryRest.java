@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.ResultMessageBuilder;
 import com.bozhong.insistapi.domain.InterfaceCategoryDomain;
 import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
+import com.bozhong.insistapi.entity.InterfaceHttpEntity;
 import com.bozhong.insistapi.service.MongoService;
 import com.sun.jersey.spi.resource.Singleton;
 import com.yx.eweb.main.EWebServletContext;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiezg@317hu.com on 2017/8/14 0014.
@@ -112,6 +114,7 @@ public class InterfaceCategoryRest {
         String interfaceAppId = EWebServletContext.getRequest().getParameter("interfaceAppId");
         List<InterfaceCategoryEntity> interfaceCategoryEntities = mongoService.findListByInterfaceAppId(interfaceAppId,
                 InterfaceCategoryEntity.class);
+
         return ResultMessageBuilder.build(interfaceCategoryEntities).toJSONString();
     }
 }
