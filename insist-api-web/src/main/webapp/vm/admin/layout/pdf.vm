@@ -13,31 +13,8 @@
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
     <link rel="stylesheet" href="${ctxPath}/webFrame/bootstrap-3.3.5/bootstrap/css/bootstrap-theme.min.css">
 
-#*分页插件jqgrid*#
-    <link rel="stylesheet" href="${ctxPath}/webFrame/jqgrid-5.2.0/jqgrid/css/ui.jqgrid-bootstrap.css"/>
-    <style type="text/css">
-
-
-        @media (min-width: 992px) {
-            #nav-bar-left-list {
-                width: 224px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            #nav-bar-left-list {
-                width: 256px;
-            }
-        }
-
-
-    </style>
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="${ctxPath}/webFrame/bootstrap-3.3.5/jquery-1.11.3.min.js"></script>
-
-#*分页插件jqgrid*#
-    <script src="${ctxPath}/webFrame/jqgrid-5.2.0/jqgrid/js/i18n/grid.locale-cn.js"></script>
-    <script src="${ctxPath}/webFrame/jqgrid-5.2.0/jqgrid/js/jquery.jqGrid.min.js"></script>
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="${ctxPath}/webFrame/bootstrap-3.3.5/bootstrap/js/bootstrap.min.js"></script>
@@ -50,62 +27,60 @@
 
     <script src="${ctxPath}/webFrame/handlebars-jquery-plugin.js"></script>
 
-    <script type="text/javascript">
-        var ctxPath = '$!{ctxPath}';
-        $(function () {
-            $.jgrid.defaults.width = $("#mainWindowPanel").width();
-        });
-    </script>
+    <script src="http://jonmiles.github.io/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+
+    <script src="${ctxPath}/webFrame/jquery.goup.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0px auto;
+        }
+        .doc-left{
+            /*width: 240px;*/
+            position: relative;
+            padding-top: 10px;
+            min-height: 100%;
+            border-right-color: rgb(221, 221, 221);
+            border-right-width: 1px;
+            border-right-style: solid;
+            overflow-y: auto;
+            display: block;
+            background: rgb(245, 245, 245);
+        }
+
+    </style>
     <script>
         $(function () {
+            var $tree = $('#treeview12').treeview({
+                enableLinks: true,
+                data: '$!{nodes}'
+            });
+            //增加返回顶部按钮
+            $.goup({
+                trigger: 100,
+                bottomOffset: 150,
+                locationOffset: 100,
+                title: "回到顶部" ,
+                titleAsText: true,
+                containerColor:"#08c",
+            });
         });
     </script>
 </head>
-<body>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<!-- body -->
-<div class="container">
-    <div class="row" id="ad_common_top" style="display:none;">
-        <div class="col-md-12">
-            <div class="bs-callout bs-callout-danger script"></div>
-        </div>
-    </div>
+<body class="container-fluid">
 
-    <div class="row">
-        <div class="col-md-12">
-
-            <div class="row" id="ad_page_top" style="display:none;">
-                <div class="col-md-12">
-                    <div class="bs-callout bs-callout-danger script"></div>
-                </div>
-            </div>
-
-            <div class="row" id="mainWindowPanel">
-                #parse("$screen_placeholder")
-            </div>
-
-            <div class="row" id="ad_page_bottom" style="display:none;">
-                <div class="col-md-12">
-                    <div class="bs-callout bs-callout-danger script"></div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row" id="ad_common_bottom" style="display:none;">
-        <div class="col-md-12">
-            <div class="bs-callout bs-callout-danger script"></div>
-        </div>
-    </div>
-
+<div class="row" style="height: 60px;border-bottom: 1px solid #eee;">
+    <div style="padding-left: 30px;"><h2>$!{appDO.appName}-API接口说明文档</h2></div>
 </div>
-<br/>
-<br/>
-<br/>
+<div class="row" style="height: 100%;">
+    <div class="col-sm-2 doc-left" >
+        <div id="treeview12"></div>
+    </div>
+    <div class="col-sm-10">
+        <div class="container">
+            #parse("$screen_placeholder")
+        </div>
+    </div>
+</div>
 </body>
 </html>
