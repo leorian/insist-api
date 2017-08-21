@@ -457,7 +457,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>请求参数</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -471,7 +471,7 @@
                     <tbody>
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td title="{{paramName}}" style="word-wrap: break-word">
                             {{paramName}}
                         </td>
@@ -522,7 +522,7 @@
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td class='text-center' colspan='8'>暂无信息！</td>
                     </tr>
                     {{/if}}
@@ -535,7 +535,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>响应参数</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -546,7 +546,7 @@
                     <tbody>
                     {{# if interfaceParamResponseEntities}}
                     {{#interfaceParamResponseEntities}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td title="{{paramNameResponse}}" style="word-wrap: break-word">
                             {{paramNameResponse}}
                         </td>
@@ -588,7 +588,7 @@
                     </tr>
                     {{/interfaceParamResponseEntities}}
                     {{else}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td class='text-center' colspan='5'>暂无信息！</td>
                     </tr>
                     {{/if}}
