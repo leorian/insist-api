@@ -30,7 +30,7 @@ public class InterfaceCategoryEntity extends BaseEntity {
     /**
      * 类别分类中接口数量
      */
-    private Integer InterfaceCount;
+    private Integer interfaceCount;
 
     public String getInterfaceAppId() {
         return interfaceAppId;
@@ -65,11 +65,23 @@ public class InterfaceCategoryEntity extends BaseEntity {
     }
 
     public Integer getInterfaceCount() {
-        return InterfaceCount;
+        return interfaceCount;
     }
 
     public void setInterfaceCount(Integer interfaceCount) {
-        InterfaceCount = interfaceCount;
+        this.interfaceCount = interfaceCount;
+    }
+
+    public void setInterfaceCount(Integer interfaceCount, Integer interfaceCount2) {
+        if (interfaceCount == null) {
+            interfaceCount = 0;
+        }
+
+        if (interfaceCount2 == null) {
+            interfaceCount2 = 0;
+        }
+
+        this.interfaceCount = interfaceCount + interfaceCount2;
     }
 
     @Override

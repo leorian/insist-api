@@ -4,6 +4,7 @@ import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
+import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.enums.ParamTypeEnum;
 import com.bozhong.insistapi.service.MongoService;
 import com.yx.eweb.main.EWebContext;
@@ -44,9 +45,11 @@ public class Main implements ScreenInter {
         List<InterfaceCategoryEntity> interfaceCategoryEntities = mongoService.findListByInterfaceAppId(appId,
                 InterfaceCategoryEntity.class);
         Map<String, Integer> map = mongoService.categoryCountGroupByAppId(appId, InterfaceHttpEntity.class);
+        Map<String, Integer> map1 = mongoService.categoryCountGroupByAppId(appId, InterfaceRpcEntity.class);
         if (!CollectionUtils.isEmpty(interfaceCategoryEntities) && !CollectionUtils.isEmpty(map)) {
             for (InterfaceCategoryEntity interfaceCategoryEntity : interfaceCategoryEntities) {
-                interfaceCategoryEntity.setInterfaceCount(map.get(interfaceCategoryEntity.getInterfaceCategoryId()));
+                interfaceCategoryEntity.setInterfaceCount(map.get(interfaceCategoryEntity.getInterfaceCategoryId())
+                        , map1.get(interfaceCategoryEntity.getInterfaceCategoryId()));
             }
         }
         eWebContext.put("interfaceCategoryEntities", interfaceCategoryEntities);
