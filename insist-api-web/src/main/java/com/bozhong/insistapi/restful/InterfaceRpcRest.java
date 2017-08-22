@@ -20,6 +20,8 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -57,6 +59,36 @@ public class InterfaceRpcRest {
 
         mongoService.insertOne(interfaceRpcEntity);
 
+        return ResultMessageBuilder.build().toJSONString();
+    }
+
+    /**
+     * 复制接口文档
+     *
+     * @param request
+     * @param uriInfo
+     * @param httpHeaders
+     * @return
+     */
+    @POST
+    @Path("copyInterfaceRpc")
+    public String copyInterfaceRpc(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
+        String appId = EWebServletContext.getRequest().getParameter("copyAppIdInput");
+        String interfaceId = EWebServletContext.getRequest().getParameter("copyInterfaceIdInput");
+        String interfaceName = EWebServletContext.getRequest().getParameter("copyInterfaceNameInput");
+        String category = EWebServletContext.getRequest().getParameter("copyCategoryInput");
+        InterfaceRpcEntity interfaceRpcEntity = mongoService.getOneByInterfaceId(interfaceId, InterfaceRpcEntity.class);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        Date date = new Date();
+        interfaceRpcEntity.setId(simpleDateFormat.format(date));
+        interfaceRpcEntity.setAppId(appId);
+        interfaceRpcEntity.setCreateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
+        interfaceRpcEntity.setCreateDateTime(simpleDateFormat.format(new Date()));
+        interfaceRpcEntity.setUpdateUserId((String) EWebServletContext.getRequest().getAttribute("uId"));
+        interfaceRpcEntity.setUpdateDateTime(simpleDateFormat.format(new Date()));
+        interfaceRpcEntity.setName(interfaceName);
+        interfaceRpcEntity.setCategory(category);
+        mongoService.insertOne(interfaceRpcEntity);
         return ResultMessageBuilder.build().toJSONString();
     }
 

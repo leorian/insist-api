@@ -33,7 +33,7 @@
     {{/if}}
 </script>
 
-<!-- 模态框（Modal） -->
+<!-- HTTP接口复制模态框（Modal） -->
 <div class="modal fade" id="httpCopyModal" tabindex="-1" role="dialog" aria-labelledby="httpCopyModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -42,7 +42,7 @@
                     &times;
                 </button>
                 <h4 class="modal-title" id="httpCopyModalLabel">
-                    接口文档复制对话框
+                    HTTP接口文档复制对话框
                 </h4>
             </div>
             <div class="modal-body">
