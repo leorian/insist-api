@@ -92,3 +92,86 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+
+<script>
+    $(function () {
+        //添加分类事件
+        $("#addInterfaceCategoryModal").delegate(".btn-primary", "click", function () {
+            if ($("#interfaceCategoryNameInput").val() == "") {
+                alert("分类名称不能为空！");
+                return;
+            }
+
+            $.post("${ctxPath}/rest/interfaceCategory/insertInterfaceCategory",
+                    $("#interfaceCategoryForm").serialize(), function (data) {
+                        console.log(data);
+                        if (data.success) {
+                            $("#addInterfaceCategoryModal").modal("hide");
+                            window.location.reload();
+                        }
+                    }, "json");
+        });
+
+        //选择分类事件
+        $("#interfaceCategoryUList").delegate("li", "click", function () {
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
+            var category = $(this).attr("data-id");
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {
+                        "appId": "$!{appDO.appId}",
+                        "category": category
+                    },
+                    function (data) {
+                        $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
+                    }, "json");
+            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {
+                "appId": "$!{appDO.appId}",
+                "category": category
+            }, function (data) {
+                $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
+            }, "json");
+        });
+
+        //分类删除事件
+        $("#interfaceCategoryUList").delegate(".glyphicon-trash", "click", function () {
+            var interfaceCategoryId = $(this).parent().parent().parent().attr("data-id");
+            $("#deleteInterfaceCategoryModal").modal("show");
+            $("#deleteInterfaceCategoryModal").find(".btn-primary").attr("data-id", interfaceCategoryId);
+        });
+
+        //分类确认删除事件
+        $("#deleteInterfaceCategoryModal").delegate(".btn-primary", "click", function () {
+            $.post("${ctxPath}/rest/interfaceCategory/deleteInterfaceCategory", {"interfaceCategoryIdInput": $(this).attr("data-id")}, function (data) {
+                console.log(data);
+                if (data.success) {
+                    $("#addInterfaceCategoryModal").modal("hide");
+                    window.location.reload();
+                }
+            }, "json");
+        });
+
+        //分类编辑事件
+        $("#interfaceCategoryUList").delegate(".glyphicon-edit", "click", function () {
+            var element = $(this).parent().parent().parent();
+            var interfaceCategoryId = element.attr("data-id");
+            var interfaceCategoryName = element.attr("data-name");
+            var interfaceCategoryDescribe = element.attr("data-describe");
+            $("#interfaceCategoryIdInput2").val(interfaceCategoryId);
+            $("#interfaceCategoryNameInput2").val(interfaceCategoryName);
+            $("#interfaceCategoryDescribeInput2").val(interfaceCategoryDescribe);
+            $("#editInterfaceCategoryModal").modal("show");
+        });
+
+        //分类确认编辑事件
+        $("#editInterfaceCategoryModal").delegate(".btn-primary", "click", function () {
+            $.post("${ctxPath}/rest/interfaceCategory/updateInterfaceCategory",
+                    $("#interfaceCategoryForm2").serialize(), function (data) {
+                        console.log(data);
+                        if (data.success) {
+                            $("#editInterfaceCategoryModal").modal("hide");
+                            window.location.reload();
+                        }
+                    }, "json");
+        });
+    });
+</script>
