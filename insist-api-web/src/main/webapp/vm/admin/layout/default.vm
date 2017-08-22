@@ -91,7 +91,7 @@
                         #foreach($app in $!appDOList)
                             <a href="${ctxPath}/admin/main.htm?appId=${app.appId}" class="list-group-item"
                                 #if($menu=="Main" && ${app.mainSelectType})
-                               style="color: blue;"
+                               style="background-color: #337ab7; color: white;font-weight: bolder;"
                                 #end
                                data-appid="${app.appId}">${app.appName}</a>
                         #end
@@ -114,7 +114,7 @@
                         #foreach($app in $!appDOList)
                             <a href="${ctxPath}/admin/view.htm?appId=${app.appId}" class="list-group-item"
                                 #if($menu=="View" && ${app.viewSelectType})
-                               style="color: blue;"
+                               style="background-color: #337ab7; color: white;font-weight: bolder;"
                                 #end
                                data-appid="${app.appId}">${app.appName}</a>
                         #end
