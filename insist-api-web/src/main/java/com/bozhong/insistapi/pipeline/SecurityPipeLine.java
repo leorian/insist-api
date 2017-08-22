@@ -63,7 +63,12 @@ public class SecurityPipeLine implements PipeLineInter {
         if (StringUtil.isNotBlank(uId)) {
             httpServletRequest.setAttribute("uId", uId);
             try {
-                List<AppDO> appDOList = DocHttpUtil.getAppDOList(uId);
+                List<AppDO> appDOList = null;
+                try {
+                    appDOList = DocHttpUtil.getAppDOList(uId);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 httpServletRequest.setAttribute("appDOList", appDOList);
                 Map<String, String> appDOMap = new HashMap<>();
                 if (!CollectionUtil.isEmpty(appDOList)) {
