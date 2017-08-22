@@ -84,6 +84,14 @@
             $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
         }, "json");
 
+        //RPC接口删除事件
+        $("#rpcTableTBody").delegate("span.btn-danger-glyphicon", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfaceid", interfaceId);
+            $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfacetype", "RPC");
+
+        });
+
         //RPC接口复制按钮
         $("#rpcTableTBody").delegate("span.btn-copy-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");

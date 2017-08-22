@@ -553,21 +553,9 @@
             }, "json");
         });
 
-        //HTTP接口删除事件
-        $("#httpTableTBody").delegate("span.btn-danger-glyphicon", "click", function () {
-            var interfaceId = $(this).attr("data-interfaceid");
-            $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfaceid", interfaceId);
-            $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfacetype", "HTTP");
 
-        });
 
-        //RPC接口删除事件
-        $("#rpcTableTBody").delegate("span.btn-danger-glyphicon", "click", function () {
-            var interfaceId = $(this).attr("data-interfaceid");
-            $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfaceid", interfaceId);
-            $("#deleteInterfaceModal").find("button.btn-primary").attr("data-interfacetype", "RPC");
 
-        });
 
         //HTTP接口删除确定事件事件 | RPC接口删除确定事件事件
         $("#deleteInterfaceModal").delegate("button.btn-primary", "click", function () {
