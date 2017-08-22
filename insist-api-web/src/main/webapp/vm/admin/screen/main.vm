@@ -559,7 +559,7 @@
             $("#interfaceRpcIdInput").val(interfaceId);
             $("#myRpcModal").find("tbody").empty();
             $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
-                $("#myRpcModal").find("input[name='categoryInput']").val(data.category);
+                $("#myRpcModal").find("select[name='categoryInput']").val(data.category);
                 $("#myRpcModal").find("input[name='classNameInput']").val(data.className);
                 $("#myRpcModal").find("input[name='methodNameInput']").val(data.methodName);
                 $("#myRpcModal").find("input[name='nameInput']").val(data.name);
