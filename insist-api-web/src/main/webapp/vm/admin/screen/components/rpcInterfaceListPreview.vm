@@ -112,5 +112,15 @@
                 }
             }, "json");
         });
+
+        //RPC接口预览
+        $("#rpcTableTBody").delegate("span.btn-warning-glyphicon", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
+                $("#myRpcPreviewModal").find(".modal-body").handlebars($("#myRpcPreviewModalTemplate"), data);
+            }, "json");
+        });
+
+
     });
 </script>

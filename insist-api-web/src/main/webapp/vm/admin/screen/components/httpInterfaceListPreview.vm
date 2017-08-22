@@ -111,5 +111,15 @@
                 }
             }, "json");
         });
+
+        //HTTP接口预览
+        $("#httpTableTBody").delegate("span.btn-warning-glyphicon", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
+                $("#myHttpPreviewModal").find(".modal-body").handlebars($("#myHttpPreviewModalTemplate"), data);
+            }, "json");
+        });
+
+
     });
 </script>

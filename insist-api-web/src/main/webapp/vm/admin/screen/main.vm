@@ -553,10 +553,6 @@
             }, "json");
         });
 
-
-
-
-
         //HTTP接口删除确定事件事件 | RPC接口删除确定事件事件
         $("#deleteInterfaceModal").delegate("button.btn-primary", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
@@ -581,13 +577,7 @@
 
         });
 
-        //HTTP接口预览
-        $("#httpTableTBody").delegate("span.btn-warning-glyphicon", "click", function () {
-            var interfaceId = $(this).attr("data-interfaceid");
-            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
-                $("#myHttpPreviewModal").find(".modal-body").handlebars($("#myHttpPreviewModalTemplate"), data);
-            }, "json");
-        });
+
 
         //HTTP请求头部预览复杂类型是否展示详情控制事件
         $("#myHttpPreviewModal").delegate("#myHttpPreviewHeaderTBody .glyphicon-chevron-down", "click", function () {
@@ -626,15 +616,6 @@
             $(this).parent().parent().parent().next().show();
             $(this).removeClass("glyphicon-chevron-up");
             $(this).addClass("glyphicon-chevron-down");
-        });
-
-
-        //RPC接口预览
-        $("#rpcTableTBody").delegate("span.btn-warning-glyphicon", "click", function () {
-            var interfaceId = $(this).attr("data-interfaceid");
-            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
-                $("#myRpcPreviewModal").find(".modal-body").handlebars($("#myRpcPreviewModalTemplate"), data);
-            }, "json");
         });
 
         //RPC请求参数预览复杂类型是否展示详情控制事件
