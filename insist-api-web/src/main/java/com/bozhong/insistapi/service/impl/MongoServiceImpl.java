@@ -98,6 +98,16 @@ public class MongoServiceImpl implements MongoService {
         return mongoDao.categoryCountGroupByAppId(appId, tClass);
     }
 
+    @Override
+    public <T> Map<String, Integer> appCategoryCountGroup(Class<T> tClass) {
+        return mongoDao.appCategoryCountGroup(tClass);
+    }
+
+    @Override
+    public <T> Map<String, Integer> appInterfaceCountGroup(Class<T> tClass) {
+        return mongoDao.appInterfaceCountGroup(tClass);
+    }
+
     public void setMongoDao(MongoDao mongoDao) {
         this.mongoDao = mongoDao;
     }

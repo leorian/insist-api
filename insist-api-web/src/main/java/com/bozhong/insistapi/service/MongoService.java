@@ -137,12 +137,31 @@ public interface MongoService {
 
     /**
      * 类别数量统计
+     *
      * @param appId
      * @param tClass
      * @param <T>
      * @return
      */
     <T> Map<String, Integer> categoryCountGroupByAppId(String appId, Class<T> tClass);
+
+    /**
+     * 应用类别个数统计
+     *
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> Map<String, Integer> appCategoryCountGroup(Class<T> tClass);
+
+    /**
+     * 应用接口个数统计
+     *
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> Map<String, Integer> appInterfaceCountGroup(Class<T> tClass);
 
 
 }

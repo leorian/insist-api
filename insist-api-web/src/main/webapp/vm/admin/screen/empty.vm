@@ -14,6 +14,8 @@
                             <div class="thumbnail text-center">
                                 <h5><a href="${ctxPath}/admin/main.htm?appId=$!{appDO.appId}"> $!{appDO.appName}</a>
                                 </h5>
+                                分类数：<span class="badge">$!{appDO.categoryCount}</span>，接口数：<span
+                                    class="badge">$!{appDO.interfaceCount}</span>
                                 <br/>
                                 <br/>
                                 <a href="${ctxPath}/admin/pdf.htm?appId=$!{appDO.appId}&uId=$!{uId}" target="_blank"

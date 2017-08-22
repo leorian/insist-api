@@ -15,7 +15,6 @@ import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
-import javax.print.Doc;
 import java.util.*;
 
 import static com.mongodb.client.model.Filters.and;
@@ -207,8 +206,8 @@ public class MongoDaoImpl implements MongoDao {
     @Override
     public <T> Map<String, Integer> categoryCountGroupByAppId(String appId, Class<T> tClass) {
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
-        AggregateIterable<Document> aggregateIterable = mongoCollection.aggregate(Arrays.asList( new Document("$match",
-                        new Document("appId",new Document("$eq",appId))),
+        AggregateIterable<Document> aggregateIterable = mongoCollection.aggregate(Arrays.asList(new Document("$match",
+                        new Document("appId", new Document("$eq", appId))),
                 new Document("$project",
                         new Document("id", 1).append("_id", 0).append("category", 1)),
                 new Document("$unwind", "$category"),
@@ -221,5 +220,41 @@ public class MongoDaoImpl implements MongoDao {
         }
 
         return appCountMap;
+    }
+
+    @Override
+    public <T> Map<String, Integer> appCategoryCountGroup(Class<T> tClass) {
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        AggregateIterable<Document> aggregateIterable = mongoCollection.aggregate(Arrays.asList(
+                new Document("$project", new Document("interfaceCategoryId", 1).append("_id", 0).append("interfaceAppId", 1)),
+                new Document("$unwind", "$interfaceAppId"),
+                new Document("$group", new Document("_id", "$interfaceAppId").append("count", new Document("$sum", 1)))
+        ));
+        MongoCursor<Document> mongoCursor = aggregateIterable.iterator();
+        Map<String, Integer> appCategoryCountMap = new HashMap<>();
+        while (mongoCursor.hasNext()) {
+            Document document = mongoCursor.next();
+            appCategoryCountMap.put(document.getString("_id"), document.getInteger("count"));
+        }
+
+        return appCategoryCountMap;
+    }
+
+    @Override
+    public <T> Map<String, Integer> appInterfaceCountGroup(Class<T> tClass) {
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        AggregateIterable<Document> aggregateIterable = mongoCollection.aggregate(Arrays.asList(
+                new Document("$project", new Document("id", 1).append("_id", 0).append("appId", 1)),
+                new Document("$unwind", "$appId"),
+                new Document("$group", new Document("_id", "$appId").append("count", new Document("$sum", 1)))
+        ));
+        MongoCursor<Document> mongoCursor = aggregateIterable.iterator();
+        Map<String, Integer> appInterfaceCountMap = new HashMap<>();
+        while (mongoCursor.hasNext()) {
+            Document document = mongoCursor.next();
+            appInterfaceCountMap.put(document.getString("_id"), document.getInteger("count"));
+        }
+
+        return appInterfaceCountMap;
     }
 }
