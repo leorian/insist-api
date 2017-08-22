@@ -51,10 +51,18 @@ public class Empty implements ScreenInter {
                 appInterfaceCountMap2 = new HashMap<>();
             }
 
+            Map<String, String> map = (Map<String, String>) eWebContext.getRequest().getAttribute("appDOMap");
+            if (map == null) {
+                map = new HashMap<>();
+            }
+
             for (AppDO appDO : appDOList) {
                 appDO.setCategoryCount(appCategoryCountMap.get(appDO.getAppId()));
                 appDO.setInterfaceCount(appInterfaceCountMap.get(appDO.getAppId()),
                         appInterfaceCountMap2.get(appDO.getAppId()));
+                if (map.keySet().contains(appDO.getAppId())) {
+                    appDO.setHasAuth(true);
+                }
             }
         }
 

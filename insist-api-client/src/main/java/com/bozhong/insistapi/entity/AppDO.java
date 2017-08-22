@@ -12,6 +12,7 @@ public class AppDO implements Serializable {
     private String appName;
     private boolean mainSelectType = false;//应用管理选中状态
     private boolean viewSelectType = false;//应用预览选中状态
+    private boolean hasAuth = false;//是否有写权限
 
     /**
      * 应用接口类别总个数
@@ -91,5 +92,13 @@ public class AppDO implements Serializable {
         }
 
         this.interfaceCount = interfaceCount + interfaceCount2;
+    }
+
+    public boolean isHasAuth() {
+        return hasAuth;
+    }
+
+    public void setHasAuth(boolean hasAuth) {
+        this.hasAuth = hasAuth;
     }
 }

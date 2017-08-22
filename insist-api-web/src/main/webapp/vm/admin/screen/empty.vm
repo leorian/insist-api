@@ -12,8 +12,13 @@
                     #foreach($appDO in $!appDOListOpen)
                         <div class="col-sm-3">
                             <div class="thumbnail text-center">
-                                <h5><a href="${ctxPath}/admin/main.htm?appId=$!{appDO.appId}"> $!{appDO.appName}</a>
-                                </h5>
+                                #if($!{appDO.hasAuth})
+                                    <h5><a href="${ctxPath}/admin/main.htm?appId=$!{appDO.appId}"> $!{appDO.appName}</a>
+                                    </h5>
+                                #else
+                                    <h5>$!{appDO.appName}
+                                    </h5>
+                                #end
                                 分类数：<span class="badge">$!{appDO.categoryCount}</span>，接口数：<span
                                     class="badge">$!{appDO.interfaceCount}</span>
                                 <br/>
