@@ -414,3 +414,46 @@
         </div>
     </div>
 </script>
+
+<script>
+    $(function () {
+        //HTTP请求头部预览复杂类型是否展示详情控制事件
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewHeaderTBody .glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewHeaderTBody .glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
+
+        //HTTP请求参数预览复杂类型是否展示详情控制事件
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewTBody .glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewTBody .glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
+
+        //HTTP响应参数预览复杂类型是否展示详情控制事件
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewResponseTBody .glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#myHttpPreviewModal").delegate("#myHttpPreviewResponseTBody .glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
+    });
+</script>

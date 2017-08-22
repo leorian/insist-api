@@ -293,3 +293,33 @@
         </div>
     </div>
 </script>
+
+<script>
+    $(function () {
+        //RPC请求参数预览复杂类型是否展示详情控制事件
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewTBody .glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewTBody .glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
+
+        //RPC响应参数预览复杂类型是否展示详情控制事件
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewResponseTBody .glyphicon-chevron-down", "click", function () {
+            $(this).parent().parent().parent().next().hide();
+            $(this).removeClass("glyphicon-chevron-down");
+            $(this).addClass("glyphicon-chevron-up");
+        });
+
+        $("#myRpcPreviewModal").delegate("#myRpcPreviewResponseTBody .glyphicon-chevron-up", "click", function () {
+            $(this).parent().parent().parent().next().show();
+            $(this).removeClass("glyphicon-chevron-up");
+            $(this).addClass("glyphicon-chevron-down");
+        });
+    });
+</script>
