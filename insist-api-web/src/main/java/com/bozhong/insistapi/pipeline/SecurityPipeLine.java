@@ -10,6 +10,7 @@ import com.bozhong.insistapi.task.DocHttpUtil;
 import com.bozhong.myredis.MyRedisClusterForHessian;
 import com.yx.eweb.main.PipeLineInter;
 import org.apache.log4j.Logger;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -71,6 +72,11 @@ public class SecurityPipeLine implements PipeLineInter {
                     }
                 }
                 httpServletRequest.setAttribute("appDOMap", appDOMap);
+                if (!StringUtils.isEmpty(httpServletRequest.getParameter("appId")) &&
+                        !appDOMap.keySet().contains(httpServletRequest.getParameter("appId"))) {
+                    httpServletResponse.sendRedirect(httpServletRequest.getContextPath() +
+                            "/admin/login.htm");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

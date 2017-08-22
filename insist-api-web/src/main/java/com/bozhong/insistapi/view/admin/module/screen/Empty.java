@@ -5,12 +5,14 @@ import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
 import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.service.MongoService;
+import com.bozhong.insistapi.task.DocHttpUtil;
 import com.yx.eweb.main.EWebContext;
 import com.yx.eweb.main.ScreenInter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +28,13 @@ public class Empty implements ScreenInter {
 
     @Override
     public void excute(EWebContext eWebContext) {
-        List<AppDO> appDOList = (List<AppDO>) eWebContext.getRequest().getAttribute("appDOList");
+        //List<AppDO> appDOList = (List<AppDO>) eWebContext.getRequest().getAttribute("appDOList");
+        List<AppDO> appDOList = null;
+        try {
+            appDOList = DocHttpUtil.getAllAppDOList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if (!CollectionUtils.isEmpty(appDOList)) {
             Map<String, Integer> appCategoryCountMap = mongoService.appCategoryCountGroup(InterfaceCategoryEntity.class);
             Map<String, Integer> appInterfaceCountMap = mongoService.appInterfaceCountGroup(InterfaceHttpEntity.class);
@@ -49,5 +57,7 @@ public class Empty implements ScreenInter {
                         appInterfaceCountMap2.get(appDO.getAppId()));
             }
         }
+
+        eWebContext.put("appDOListOpen", appDOList);
     }
 }

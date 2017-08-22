@@ -9,7 +9,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    #foreach($appDO in $!appDOList)
+                    #foreach($appDO in $!appDOListOpen)
                         <div class="col-sm-3">
                             <div class="thumbnail text-center">
                                 <h5><a href="${ctxPath}/admin/main.htm?appId=$!{appDO.appId}"> $!{appDO.appName}</a>
