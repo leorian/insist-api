@@ -105,3 +105,32 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+
+<script>
+    $(function () {
+        //域名管理
+        $("#addHttpDomainBtn").click(function () {
+            $.post("${ctxPath}/rest/interfaceHttp/findHttpAddressDomain", {"appId": $("#httpAppIdInput").val()}, function (data) {
+                console.log(data);
+                if (data.success) {
+                    $("#httpMockAddressInput").val(data.data.mockAddress);
+                    $("#httpDevAddressInput").val(data.data.devAddress);
+                    $("#httpSitAddressInput").val(data.data.sitAddress);
+                    $("#httpUatAddressInput").val(data.data.uatAddress);
+                    $("#httpPrdAddressInput").val(data.data.prdAddress);
+                }
+            }, "json");
+        });
+
+        //域名保存或者更新
+        $("#myHttpDomainModal").delegate(".btn-primary", "click", function () {
+            $.post("${ctxPath}/rest/interfaceHttp/saveOrUpdateHttpAddressDomain", $("#myHttpDomainForm").serialize(), function (data) {
+                console.log(data);
+                if (data.success) {
+                    $("#myHttpDomainModal").modal("hide");
+                    window.location.reload();
+                }
+            }, "json");
+        });
+    });
+</script>
