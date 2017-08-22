@@ -83,7 +83,8 @@ public class Pdf implements ScreenInter {
         List<AppDO> appDOList = (List<AppDO>) eWebContext.getRequest().getAttribute("appDOList");
         if (CollectionUtils.isEmpty(appDOList)) {
             try {
-                appDOList = DocHttpUtil.getAppDOList(uId);
+                //appDOList = DocHttpUtil.getAppDOList(uId);
+                appDOList = DocHttpUtil.getAllAppDOList();
             } catch (IOException e) {
                 e.printStackTrace();
             }
