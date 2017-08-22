@@ -302,3 +302,127 @@
         </td>
     </tr>
 </script>
+
+#*RPC接口请求参数编辑模板*#
+<script id="rpcRequestParamEditTemplate" type="text/x-handlebars-template">
+    {{# if interfaceParamEntities}}
+    {{#interfaceParamEntities}}
+    <tr class="outerTr">
+        <td><input name='paramNamesInput' type="text" value='{{paramName}}' class="form-control input-sm"
+                   style='height: 25px;'></td>
+        <td>
+            <select name='paramTypesInput' class="form-control input-sm" style='height: 25px;'>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option {{#compareParamType paramType
+                    "$item" }} selected="selected" {{/compareParamType}} value="$item">$item</option>
+                #end
+            </select>
+        </td>
+        <td>
+            <input name='paramDescribesInput' value='{{paramDescribe}}' type="text" class="form-control input-sm"
+                   style='height: 25px;'>
+        </td>
+        {{# if required}}
+        <td>
+            <input name='requiredsInput' type='hidden' value='{{required}}'>
+            <input name='requiredsInputCheckBox' type="checkbox" checked='checked' class="form-control input-sm"
+                   style='height: 18px;'>
+        </td>
+        {{else}}
+        <td>
+            <input name='requiredsInput' type='hidden' value='{{required}}'>
+            <input name='requiredsInputCheckBox' type="checkbox" class="form-control input-sm"
+                   style='height: 18px;'>
+        </td>
+        {{/if}}
+
+        {{# if jsontransformat}}
+        <td>
+            <input name='jsontransformatsInput' type='hidden' value='{{jsontransformat}}'>
+            <input name='jsontransformatsInputCheckBox' checked='checked' type="checkbox"
+                   class="form-control input-sm" style='height: 18px;'>
+        </td>
+        {{else}}
+        <td>
+            <input name='jsontransformatsInput' type='hidden' value='{{jsontransformat}}'>
+            <input name='jsontransformatsInputCheckBox' type="checkbox" class="form-control input-sm"
+                   style='height: 18px;'>
+        </td>
+        {{/if}}
+        <td>
+            <input name='examplesInput' value='{{example}}' type="text"
+                   class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <input name='defaultValuesInput' value='{{defaultValue}}' type="text"
+                   class="form-control input-sm" style='height: 25px;'>
+        </td>
+        <td>
+            <a href="#">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+        </td>
+    </tr>
+    <tr class="innerTr" {{#compareParamType paramType
+    'object'}} style="display:table-row" {{else}}  {{#compareParamType paramType
+    'json'}} style="display:table-row" {{else}} {{#compareParamType paramType
+    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}} {{/compareParamType}}  {{/compareParamType}}>
+    <td colspan="8">
+        <textarea class="form-control" name="exampleDetailsInput" placeholder="示例（格式：application/json）">{{exampleDetail}}</textarea>
+        <br/>
+        <textarea class="form-control" name="defaultValueDetailsInput"
+                  placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）">{{defaultValueDetail}}</textarea>
+    </td>
+    </tr>
+    {{/interfaceParamEntities}}
+    {{/if}}
+</script>
+
+#*RPC接口响应参数编辑模板*#
+<script id="rpcResponseParamEditTemplate" type="text/x-handlebars-template">
+    {{# if interfaceParamResponseEntities}}
+    {{#interfaceParamResponseEntities}}
+    <tr class="outerTr">
+        <td><input name='paramNamesResponseInput' type="text" value='{{paramNameResponse}}'
+                   class="form-control input-sm"
+                   style='height: 25px;'></td>
+        <td>
+            <select name='paramTypesResponseInput' class="form-control input-sm" style='height: 25px;'>
+                #foreach($item in $!{paramTypeEnumList})
+                    <option {{#compareParamType paramTypeResponse
+                    "$item" }} selected="selected" {{/compareParamType}}
+                    value="$item">$item</option>
+                #end
+            </select>
+        </td>
+        <td>
+            <input name='paramDescribesResponseInput' value='{{paramDescribeResponse}}' type="text"
+                   class="form-control input-sm"
+                   style='height: 25px;'>
+        </td>
+        <td>
+            <input name='examplesResponseInput' value='{{exampleResponse}}' type="text" class="form-control input-sm"
+                   style='height: 25px;'>
+        </td>
+        <td>
+            <a href="#">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+        </td>
+    </tr>
+    <tr class="innerTr" {{#compareParamType paramTypeResponse
+    'object'}} style="display:table-row" {{else}}  {{#compareParamType paramTypeResponse
+    'json'}} style="display:table-row" {{else}}
+    {{#compareParamType paramTypeResponse
+    'array'}} style="display:table-row" {{else}}
+    style="display:none"{{/compareParamType}} {{/compareParamType}}  {{/compareParamType}}>
+    <td colspan="5">
+        <textarea class="form-control" name="exampleDetailsResponseInput" placeholder="示例（格式：application/json）">{{exampleDetailResponse}}</textarea>
+        <br/>
+        <textarea class="form-control" name="defaultValueDetailsResponseInput"
+                  placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）">{{defaultValueDetailResponse}}</textarea>
+    </td>
+    </tr>
+    {{/interfaceParamResponseEntities}}
+    {{/if}}
+</script>
