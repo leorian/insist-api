@@ -41,4 +41,25 @@ public class DocHttpUtil {
         String response = new String(IOUtils.toByteArray(method.getResponseBodyAsStream()), "utf-8");
         return JSON.parseArray(response, AppDO.class);
     }
+
+    /**
+     * 从配置中心获取全部的应用ID
+     *
+     * @return
+     */
+    public static List<AppDO> getAllAppDOList() throws IOException {
+        HttpClient client = new HttpClient(new HttpClientParams(),
+                new SimpleHttpConnectionManager(true));
+        PostMethod method = new PostMethod(ConfigSetPropertyHolder.CONFIG_CENTER_URL
+                + "/config/configSet/loadAllAppDOList");
+        NameValuePair appKeyNVP = new NameValuePair("appKey", ConfigSetPropertyHolder.CONFIG_CENTER_ACCESS_KEY);
+        method.setRequestBody(new NameValuePair[]{appKeyNVP});
+        try {
+            client.executeMethod(method);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String response = new String(IOUtils.toByteArray(method.getResponseBodyAsStream()), "utf-8");
+        return JSON.parseArray(response, AppDO.class);
+    }
 }
