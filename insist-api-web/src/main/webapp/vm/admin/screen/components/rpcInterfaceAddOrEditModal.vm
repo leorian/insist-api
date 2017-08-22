@@ -426,3 +426,123 @@
     {{/interfaceParamResponseEntities}}
     {{/if}}
 </script>
+
+<script>
+$(function () {
+
+    //RPC请求参数类型选择事件
+    $("#myRpcModal").find("#rmiParamTable>tbody").delegate("select[name='paramTypesInput']", "change", function () {
+        if ($(this).val() == "object" || $(this).val() == "json" || $(this).val() == "array") {
+            $(this).parent().parent().next().css("display", "table-row");
+        } else {
+            $(this).parent().parent().next().css("display", "none");
+        }
+    });
+
+    //RPC响应参数类型选择事件
+    $("#myRpcModal").find("#rmiResponseParamTable>tbody").delegate("select[name='paramTypesResponseInput']", "change", function () {
+        if ($(this).val() == "object" || $(this).val() == "json" || $(this).val() == "array") {
+            $(this).parent().parent().next().css("display", "table-row");
+        } else {
+            $(this).parent().parent().next().css("display", "none");
+        }
+    });
+
+
+    //Rpc接口添加请求参数
+    $("#rpcAddRequestParam").click(function () {
+        $("#myRpcModal").find("#rmiParamTable>tbody").append($("#rpcAddRequestParamTemplate").html());
+    });
+
+    //RPC接口添加响应参数
+    $("#rpcAddResponseParam").click(function () {
+        $("#myRpcModal").find("#rmiResponseParamTable>tbody").append($("#rpcAddResponseParamTemplate").html());
+    });
+
+    //RPC接口请求参数行选中事件
+    $("#myRpcModal").delegate("#rmiParamTable > tbody > tr.outerTr", "click", function () {
+        $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr").removeClass("bg-success");
+        $(this).addClass("bg-success");
+    });
+
+    //RPC接口响应参数行选中事件
+    $("#myRpcModal").delegate("#rmiResponseParamTable > tbody > tr.outerTr", "click", function () {
+        $("#myRpcModal").find("#rmiResponseParamTable > tbody > tr.outerTr").removeClass("bg-success");
+        $(this).addClass("bg-success");
+    });
+
+
+    //RPC接口请求参数删除行事件
+    $("#myRpcModal").delegate("#rmiParamTable .glyphicon-trash", "click", function () {
+        $(this).parent().parent().parent().next().remove();
+        $(this).parent().parent().parent().remove();
+    });
+
+    //RPC接口响应参数删除行事件
+    $("#myRpcModal").delegate("#rmiResponseParamTable .glyphicon-trash", "click", function () {
+        $(this).parent().parent().parent().next().remove();
+        $(this).parent().parent().parent().remove();
+    });
+
+
+    //RPC接口请求参数上移事件
+    $("#rpcParup").click(function () {
+        var currentElement = $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr.bg-success");
+        var nextElement = currentElement.next();
+        if (currentElement.prev().prev().length > 0) {
+            nextElement.insertBefore(currentElement.prev().prev());
+            currentElement.insertBefore(nextElement);
+        }
+    });
+
+    //RPC接口响应参数上移事件
+    $("#rpcParupResponse").click(function () {
+        var currentElement = $("#myRpcModal").find("#rmiResponseParamTable > tbody > tr.outerTr.bg-success");
+        var nextElement = currentElement.next();
+        if (currentElement.prev().prev().length > 0) {
+            nextElement.insertBefore(currentElement.prev().prev());
+            currentElement.insertBefore(nextElement);
+        }
+    });
+
+
+    //RPC接口请求参数下移事件
+    $("#rpcPardown").click(function () {
+        var currentElement = $("#myRpcModal").find("#rmiParamTable > tbody > tr.outerTr.bg-success");
+        var nextElement = currentElement.next();
+        if (currentElement.next().next().next().length > 0) {
+            currentElement.insertAfter(currentElement.next().next().next());
+            nextElement.insertAfter(currentElement);
+        }
+    });
+
+    //RPC接口响应参数下移事件
+    $("#rpcPardownResponse").click(function () {
+        var currentElement = $("#myRpcModal").find("#rmiResponseParamTable > tbody > tr.outerTr.bg-success");
+        var nextElement = currentElement.next();
+        if (currentElement.next().next().next().length > 0) {
+            currentElement.insertAfter(currentElement.next().next().next());
+            nextElement.insertAfter(currentElement);
+        }
+    });
+
+
+    //RPC接口是否传值改变事件
+    $("#myRpcModal").delegate("input[name='requiredsInputCheckBox']", "click", function () {
+        if ($(this).prop('checked')) {
+            $(this).prev("input[name='requiredsInput']").val("true");
+        } else {
+            $(this).prev("input[name='requiredsInput']").val("false");
+        }
+    });
+
+    //RPC接口是否JSON格式化传输改变事件
+    $("#myRpcModal").delegate("input[name='jsontransformatsInputCheckBox']", "click", function () {
+        if ($(this).prop("checked")) {
+            $(this).prev("input[name='jsontransformatsInput']").val("true");
+        } else {
+            $(this).prev("input[name='jsontransformatsInput']").val("false");
+        }
+    });
+});
+</script>
