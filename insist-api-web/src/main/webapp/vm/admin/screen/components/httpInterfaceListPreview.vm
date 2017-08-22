@@ -78,6 +78,11 @@
 <script>
     $(function () {
 
+        //HTTP接口列表展示
+        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
+            $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
+        }, "json");
+
         //HTTP接口复制按钮
         $("#httpTableTBody").delegate("span.btn-copy-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");

@@ -472,16 +472,6 @@
             }
         });
 
-        //HTTP接口列表展示
-        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
-            $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
-        }, "json");
-
-        //RPC接口列表展示
-        $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
-            $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
-        }, "json");
-
         //HTTP接口编辑事件
         $("#httpTableTBody").delegate("span.btn-success-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
