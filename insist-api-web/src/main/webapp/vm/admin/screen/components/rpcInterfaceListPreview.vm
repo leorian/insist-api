@@ -1,0 +1,29 @@
+#*HTTP接口列表*#
+<script id="rpcInterfaceTemplate" type="text/x-handlebars-template">
+    {{# if this}}
+    {{#this}}
+    <tr>
+        <td class='text-center' style="word-wrap: break-word">{{name}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{className}}</td>
+        <td class='text-center' style="word-wrap: break-word">{{methodName}}</td>
+        <td class='text-center'>
+            <span class="glyphicon glyphicon-edit btn-success-glyphicon" title="编辑" data-interfaceid='{{id}}'
+                  data-toggle='modal'
+                  data-target='#myRpcModal'></span>
+            &nbsp;&nbsp;
+            <span class="glyphicon glyphicon-trash btn-danger-glyphicon" title="删除" data-interfaceid='{{id}}'
+                  data-toggle='modal'
+                  data-target='#deleteInterfaceModal'></span>
+            &nbsp;&nbsp;
+            <span class="glyphicon glyphicon-fire btn-warning-glyphicon" title="预览" data-interfaceid='{{id}}'
+                  data-toggle='modal'
+                  data-target='#myRpcPreviewModal'></span>
+        </td>
+    </tr>
+    {{/this}}
+    {{else}}
+    <tr>
+        <td colspan='4' class='text-center'>暂无信息！</td>
+    </tr>
+    {{/if}}
+</script>

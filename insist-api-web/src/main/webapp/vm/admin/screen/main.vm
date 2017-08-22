@@ -134,7 +134,7 @@
                     <span class="glyphicon glyphicon-trash"></span>
                 </div>
                 <span class="badge">$!interfaceCategoryEntity.interfaceCount</span></a>
-            </a>
+                </a>
             </li>
         #end
     </ul>
@@ -993,81 +993,10 @@
 </script>
 
 <!--HTTP接口列表-->
-<script id="httpInterfaceTemplate" type="text/x-handlebars-template">
-    {{# if this}}
-    {{#each this}}
-    <tr>
-    ##        <td class='text-center'>{{id}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{name}}</td>
-        <td class='text-center'>{{protocol}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{method}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{address}}</td>
-    ##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
-        <td class='text-center'>
-        ##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
-        ##                    data-target='#myHttpModal'>编辑
-        ##            </button>
-            <span class="glyphicon glyphicon-edit btn-success-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-                  data-target='#myHttpModal'></span>
-            &nbsp;&nbsp;
-        ##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
-        ##                    data-target='#deleteInterfaceModal'>删除
-        ##            </button>
-            <span class="glyphicon glyphicon-trash btn-danger-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-                  data-target='#deleteInterfaceModal'></span>
-            &nbsp;&nbsp;
-        ##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
-        ##                    data-target="#myHttpPreviewModal">预览
-        ##            </button>
-            <span class="glyphicon glyphicon-fire btn-warning-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-                  data-target='#myHttpPreviewModal'></span>
-        </td>
-    </tr>
-    {{/each}}
-    {{else}}
-    <tr>
-        <td colspan='5' class='text-center'>暂无信息！</td>
-    </tr>
-    {{/if}}
-</script>
+#parse("admin/screen/components/httpInterfaceListPreview.vm")
 
 <!--RPC接口列表-->
-<script id="rpcInterfaceTemplate" type="text/x-handlebars-template">
-    {{# if this}}
-    {{#this}}
-    <tr>
-    ##        <td class='text-center'>{{id}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{name}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{className}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{methodName}}</td>
-    ##        <td class="text-center" style="word-wrap: break-word">{{createUserId}}</td>
-        <td class='text-center'>
-        ##            <button class="btn btn-xs btn-success" data-interfaceid='{{id}}' data-toggle='modal'
-        ##                    data-target='#myRpcModal'>编辑
-        ##            </button>
-            <span class="glyphicon glyphicon-edit btn-success-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-                  data-target='#myRpcModal'></span>
-            &nbsp;&nbsp;
-        ##            <button class="btn btn-xs btn-danger" data-interfaceid='{{id}}' data-toggle='modal'
-        ##                    data-target='#deleteInterfaceModal'>删除
-        ##            </button>
-            <span class="glyphicon glyphicon-trash btn-danger-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-                  data-target='#deleteInterfaceModal'></span>
-            &nbsp;&nbsp;
-        ##            <button class="btn btn-xs btn-warning" data-interfaceid='{{id}}' data-toggle="modal"
-        ##                    data-target="#myRpcPreviewModal">预览
-        ##            </button>
-            <span class="glyphicon glyphicon-fire btn-warning-glyphicon" data-interfaceid='{{id}}' data-toggle='modal'
-                  data-target='#myRpcPreviewModal'></span>
-        </td>
-    </tr>
-    {{/this}}
-    {{else}}
-    <tr>
-        <td colspan='4' class='text-center'>暂无信息！</td>
-    </tr>
-    {{/if}}
-</script>
+#parse("admin/screen/components/rpcInterfaceListPreview.vm")
 
 <!--HTTP接口请求参数编辑模板-->
 <script id="httpRequestParamEditTemplate" type="text/x-handlebars-template">
