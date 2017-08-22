@@ -1,3 +1,4 @@
+#*HTTP接口列表预览*#
 <script id="httpInterfaceTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{#each this}}

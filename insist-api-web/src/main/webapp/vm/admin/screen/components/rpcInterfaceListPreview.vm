@@ -1,4 +1,4 @@
-#*HTTP接口列表*#
+#*RPC接口列表预览*#
 <script id="rpcInterfaceTemplate" type="text/x-handlebars-template">
     {{# if this}}
     {{#this}}
