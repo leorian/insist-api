@@ -1,0 +1,107 @@
+<div class="modal fade" id="myHttpDomainModal" tabindex="-1" role="dialog" aria-labelledby="myHttpDomainModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myHttpDomainModalLabel">
+                    域名地址管理
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="myHttpDomainForm" name="myHttpDomainForm">
+                    <input type="hidden" name="httpAppIdInput" id="httpAppIdInput" value="$!{appDO.appId}"/>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table" style="margin-bottom: 0px!important;">
+                                <caption>mock服务访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpMockAddressInput"
+                                               name="httpMockAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table" style="margin-bottom: 0px!important;">
+                                <caption>开发环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none;">
+                                        <input type="text" class="form-control" id="httpDevAddressInput"
+                                               name="httpDevAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table" style="margin-bottom: 0px!important;">
+                                <caption>测试环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpSitAddressInput"
+                                               name="httpSitAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table" style="margin-bottom: 0px!important;">
+                                <caption>UAT环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpUatAddressInput"
+                                               name="httpUatAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table" style="margin-bottom: 0px!important;">
+                                <caption>线上环境访问地址：</caption>
+                                <tbody>
+                                <tr>
+                                    <td style="border-top: none">
+                                        <input type="text" class="form-control" id="httpPrdAddressInput"
+                                               name="httpPrdAddressInput"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
