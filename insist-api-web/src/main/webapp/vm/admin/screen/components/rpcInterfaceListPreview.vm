@@ -84,6 +84,42 @@
             $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
         }, "json");
 
+        //RPC接口编辑事件
+        $("#rpcTableTBody").delegate("span.btn-success-glyphicon", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $("#myRpcModalLabel").html("编辑RPC接口");
+            $("#interfaceRpcIdInput").val(interfaceId);
+            $("#myRpcModal").find("tbody").empty();
+            $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
+                $("#myRpcModal").find("select[name='categoryInput']").val(data.category);
+                $("#myRpcModal").find("input[name='classNameInput']").val(data.className);
+                $("#myRpcModal").find("input[name='methodNameInput']").val(data.methodName);
+                $("#myRpcModal").find("input[name='nameInput']").val(data.name);
+                $("#myRpcModal").find("textarea[name='functionDescribeInput']").val(data.functionDescribe);
+                $("#myRpcModal").find("input[name='returnTypeInput']").val(data.returnType);
+                $("#myRpcModal").find("input[name='methodParamInput']").val(data.methodParam);
+
+                //请求参数
+                $("#myRpcModal").find("#rmiParamTable > tbody").handlebars($("#rpcRequestParamEditTemplate"), data);
+
+                //响应参数
+                $("#myRpcModal").find("#rmiResponseParamTable > tbody").handlebars($("#rpcResponseParamEditTemplate"), data);
+
+                //结果示例
+                if (data.interfaceResultEntities != null && data.interfaceResultEntities.length > 0) {
+                    for (var i = 0; i < data.interfaceResultEntities.length; i++) {
+                        if (data.interfaceResultEntities[i].exampleType == "NORMAL") {
+                            $("#myRpcModal").find("textarea[name='returnExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myRpcModal").find("textarea[name='returnExampleAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        } else {
+                            $("#myRpcModal").find("textarea[name='exceptionExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myRpcModal").find("textarea[name='exceptionAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        }
+                    }
+                }
+            }, "json");
+        });
+
         //RPC接口删除事件
         $("#rpcTableTBody").delegate("span.btn-danger-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");

@@ -83,6 +83,51 @@
             $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
         }, "json");
 
+        //HTTP接口编辑事件
+        $("#httpTableTBody").delegate("span.btn-success-glyphicon", "click", function () {
+            var interfaceId = $(this).attr("data-interfaceid");
+            $("#myHttpModalLabel").html("编辑HTTP接口");
+            $("#interfaceHttpIdInput").val(interfaceId);
+            $("#myHttpModal").find("tbody").empty();
+            $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
+                $("#myHttpModal").find("select[name='protocolInput']").val(data.protocol);
+                $("#myHttpModal").find("input[name='methodInput']").val(data.method);
+                var methodCheckboxElements = $("input[name='methodInputCheckBox']");
+                for (var i = 0; i < methodCheckboxElements.length; i++) {
+                    if (data.method.indexOf($(methodCheckboxElements[i]).val()) > -1) {
+                        $(methodCheckboxElements[i]).prop("checked", true);
+                    }
+                }
+                $("#myHttpModal").find("select[name='transformatInput']").val(data.transformat);
+                $("#myHttpModal").find("select[name='categoryInput']").val(data.category);
+                $("#myHttpModal").find("input[name='addressInput']").val(data.address);
+                $("#myHttpModal").find("input[name='nameInput']").val(data.name);
+                $("#myHttpModal").find("textarea[name='descriptionInput']").val(data.description);
+
+                //请求头部
+                $("#myHttpModal").find("#headerParamTable > tbody").handlebars($("#httpHeaderParamEditTemplate"), data);
+
+                //请求参数
+                $("#myHttpModal").find("#requestParamTable > tbody").handlebars($("#httpRequestParamEditTemplate"), data);
+
+                //响应参数
+                $("#myHttpModal").find("#responseParamTable > tbody").handlebars($("#httpResponseParamEditTemplate"), data);
+
+                //结果示例
+                if (data.interfaceResultEntities != null && data.interfaceResultEntities.length > 0) {
+                    for (var i = 0; i < data.interfaceResultEntities.length; i++) {
+                        if (data.interfaceResultEntities[i].exampleType == "NORMAL") {
+                            $("#myHttpModal").find("textarea[name='returnExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myHttpModal").find("textarea[name='returnExampleAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        } else {
+                            $("#myHttpModal").find("textarea[name='exceptionExampleContent']").val(data.interfaceResultEntities[i].exampleContent);
+                            $("#myHttpModal").find("textarea[name='exceptionAttentionMatters']").val(data.interfaceResultEntities[i].attentionMatters);
+                        }
+                    }
+                }
+            }, "json");
+        });
+
         //HTTP接口删除事件
         $("#httpTableTBody").delegate("span.btn-danger-glyphicon", "click", function () {
             var interfaceId = $(this).attr("data-interfaceid");
