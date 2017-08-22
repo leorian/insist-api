@@ -676,7 +676,7 @@
         $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
             var httpArray = new Array();
             httpArray.push(data);
-            $("#interfaceViewPanel").handlebars($("#interfaceHttpViewTemplate"),httpArray);
+            $("#interfaceViewPanel").handlebars($("#interfaceHttpViewTemplate"), httpArray);
         }, "json");
 
     }
@@ -686,27 +686,36 @@
         $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
             var httpArray = new Array();
             httpArray.push(data);
-            $("#interfaceViewPanel").handlebars($("#interfaceRpcViewTemplate"),httpArray);
+            $("#interfaceViewPanel").handlebars($("#interfaceRpcViewTemplate"), httpArray);
         }, "json");
     }
     $(function () {
-        var $tree = $('#treeview12').treeview({
+        var $tree =
+        $('#treeview12').treeview({
             expandIcon: 'glyphicon glyphicon-chevron-right',
             collapseIcon: 'glyphicon glyphicon-chevron-down',
             enableLinks: true,
-            onNodeSelected: function(event, node) {
+            onNodeSelected: function (event, node) {
                 console.log('<p>' + JSON.stringify(node) + ' was selected</p>');
             },
             data: '$!{nodes}'
         });
+        try {
+            $('#treeview12').treeview('selectNode', [1, {silent: false}]);
+            $(".node-selected").find("a")[0].click();
+            $('#treeview12').treeview('selectNode', [1, {silent: false}]);
+        } catch (err) {
+
+        }
+
         //增加返回顶部按钮
         $.goup({
             trigger: 100,
             bottomOffset: 150,
             locationOffset: 100,
-            title: "回到顶部" ,
+            title: "回到顶部",
             titleAsText: true,
-            containerColor:"#08c",
+            containerColor: "#08c",
         });
     });
 </script>
