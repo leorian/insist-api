@@ -1,0 +1,295 @@
+#*RPC接口预览模态框（Modal）*#
+<div class="modal fade" id="myRpcPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myRpcPreviewModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myRpcPreviewModalLabel">
+                    RPC接口预览
+                </h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+#*RPC接口预览模态框模板*#
+<script id="myRpcPreviewModalTemplate" type="text/x-handlebars-template">
+    <h3 id="rpcInterfaceNameView" style="word-wrap: break-word">
+        {{name}}
+    </h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <caption>类全路径名称</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcClassNameView" style="word-wrap: break-word">
+                            {{className}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>方法名称</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcMethodNameView" style="word-wrap: break-word">
+                            {{methodName}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>功能描述</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcFunctionDescribeView" style="word-wrap: break-word">
+                            {{functionDescribe}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>返回值类型</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcReturnTypeView" style="word-wrap: break-word">
+                            {{returnType}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>方法参数</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="rpcMethodParamView" style="word-wrap: break-word">
+                            {{methodParam}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>参数说明</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                        <th>是否必填</th>
+                        <th width="18%">JSON格式化传输</th>
+                        <th>示例</th>
+                        <th>默认值</th>
+                        <th width="6%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myRpcPreviewTBody">
+                    {{# if interfaceParamEntities}}
+                    {{#interfaceParamEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td style="word-wrap: break-word">{{paramName}}</td>
+                        <td>{{paramType}}</td>
+                        <td style="word-wrap: break-word">{{paramDescribe}}</td>
+                        <td>{{required}}</td>
+                        <td>{{jsontransformat}}</td>
+                        <td style="word-wrap: break-word">{{example}}</td>
+                        <td style="word-wrap: break-word">{{defaultValue}}</td>
+                        <td class="text-center">
+                            {{#compareParamType paramType
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramType
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{#compareParamType paramType
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramType
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramType
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}} >
+                    <td colspan="8">
+                        <pre>{{exampleDetail}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetail}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='8'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>响应参数</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th width="150px;">名称</th>
+                        <th width="150px;">类型</th>
+                        <th width="150px;">说明</th>
+                        <th width="150px;">示例</th>
+                        <th width="55px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myRpcPreviewResponseTBody">
+                    {{# if interfaceParamResponseEntities}}
+                    {{#interfaceParamResponseEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td style="word-wrap: break-word">{{paramNameResponse}}</td>
+                        <td>{{paramTypeResponse}}</td>
+                        <td style="word-wrap: break-word">{{paramDescribeResponse}}</td>
+                        <td style="word-wrap: break-word">{{exampleResponse}}</td>
+                        <td class="text-center">
+                            {{#compareParamType paramTypeResponse
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeResponse
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{#compareParamType paramTypeResponse
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramTypeResponse
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramTypeResponse
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}}>
+                    <td colspan="5">
+                        <pre>{{exampleDetailResponse}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetailResponse}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamResponseEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='5'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <ul id="myRpcPreviewTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#returnExampleRpcPreview" data-toggle="tab">
+                            返回示例
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#exceptionExampleRpcPreview" data-toggle="tab">
+                            异常示例
+                        </a>
+                    </li>
+                </ul>
+                <div id="myRpcPreviewTabContent" class="tab-content">
+                    {{# if interfaceResultEntities}}
+                    {{#interfaceResultEntities}}
+                    {{#compareExampleType exampleType "NORMAL" }}
+                    <div class="tab-pane fade in active" id="returnExampleRpcPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>返回示例</h6>
+                            <pre id="rpcReturnExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="rpcReturnAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="tab-pane fade" id="exceptionExampleRpcPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>异常示例</h6>
+                            <pre id="rpcExceptionExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="rpcExceptionAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                        </div>
+                    </div>
+                    {{/compareExampleType}}
+                    {{/interfaceResultEntities}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

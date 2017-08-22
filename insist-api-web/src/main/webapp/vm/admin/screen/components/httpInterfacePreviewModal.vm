@@ -1,0 +1,416 @@
+#*HTTP接口预览模态框（Modal）*#
+<div class="modal fade" id="myHttpPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myHttpPreviewModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myHttpPreviewModalLabel">
+                    HTTP接口预览
+                </h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+#*HTTP接口预览模态框模板*#
+<script id="myHttpPreviewModalTemplate" type="text/x-handlebars-template">
+    <h3 id="interfaceNameView" style="word-wrap: break-word">
+        {{name}}
+    </h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <caption>接口描述</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="interfaceDescribeView" style="word-wrap: break-word">
+                            {{description}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed;">
+                <caption>数据格式</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="dataFormatView">
+                            {{transformat}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>请求方式</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="requestMethodView">
+                            {{protocol}} + {{method}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <caption>接口地址</caption>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group-sm" id="interfaceAddressView" style="word-wrap: break-word">
+                            {{address}}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <table class="table table-bordered" style="table-layout: fixed;">
+        <caption>在线访问地址</caption>
+        <tr>
+            <thead>
+            <tr style="background-color: #B0B0B0">
+                <th width="20%">应用环境</th>
+                <th>URL地址</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="background-color: #F0F0F0">
+                <td>
+                    <div class="form-group-sm text-right">
+                        <b>mock服务调试地址</b>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm" id="mockAddressView" style="word-wrap: break-word">
+                        {{mockAddress}}
+                    </div>
+                </td>
+            </tr>
+            <tr style="background-color: #F0F0F0">
+                <td>
+                    <div class="form-group-sm text-right">
+                        <b>开发环境接口地址</b>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm" id="devAddressView" style="word-wrap:break-word ;">
+                        {{devAddress}}
+                    </div>
+                </td>
+            </tr>
+            <tr style="background-color: #F0F0F0">
+                <td>
+                    <div class="form-group-sm text-right">
+                        <b>测试环境接口地址</b>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm" id="sitAddressView" style="word-wrap:break-word ;">
+                        {{sitAddress}}
+                    </div>
+                </td>
+            </tr>
+            <tr style="background-color: #F0F0F0">
+                <td>
+                    <div class="form-group-sm text-right">
+                        <b>UAT环境接口地址</b>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm" id="uatAddressView" style="word-wrap:break-word ;">
+                        {{uatAddress}}
+                    </div>
+                </td>
+            </tr>
+            <tr style="background-color: #F0F0F0">
+                <td>
+                    <div class="form-group-sm text-right">
+                        <b>线上环境接口地址</b>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm" id="prdAddressView" style="word-wrap:break-word ;">
+                        {{prdAddress}}
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>请求头部</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th width="150px;">名称</th>
+                        <th width="150px;">类型</th>
+                        <th width="150px;">说明</th>
+                        <th width="150px;">示例</th>
+                        <th width="55px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myHttpPreviewHeaderTBody">
+                    {{# if interfaceParamHeaderEntities}}
+                    {{#interfaceParamHeaderEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td style="word-wrap: break-word">{{paramNameHeader}}</td>
+                        <td>{{paramTypeHeader}}</td>
+                        <td style="word-wrap: break-word">{{paramDescribeHeader}}</td>
+                        <td style="word-wrap: break-word">{{exampleHeader}}</td>
+                        <td class="text-center">
+                            {{#compareParamType paramTypeHeader
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeHeader
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{#compareParamType paramTypeHeader
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramTypeHeader
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeHeader
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramTypeHeader
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}}>
+                    <td colspan="5">
+                        <pre>{{exampleDetailHeader}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetailHeader}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamHeaderEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='5'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>请求参数</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                        <th>是否必填</th>
+                        <th width="18%">JSON格式化传输</th>
+                        <th>示例</th>
+                        <th>默认值</th>
+                        <th width="6%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myHttpPreviewTBody">
+                    {{# if interfaceParamEntities}}
+                    {{#interfaceParamEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td style="word-wrap: break-word">{{paramName}}</td>
+                        <td>{{paramType}}</td>
+                        <td style="word-wrap: break-word">{{paramDescribe}}</td>
+                        <td>{{required}}</td>
+                        <td>{{jsontransformat}}</td>
+                        <td style="word-wrap: break-word">{{example}}</td>
+                        <td style="word-wrap: break-word">{{defaultValue}}</td>
+                        <td class="text-center">
+                            {{#compareParamType paramType
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramType
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{#compareParamType paramType
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramType
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramType
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}}>
+                    <td colspan="8">
+                        <pre>{{exampleDetail}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetail}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='8'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <caption>响应参数</caption>
+                    <thead>
+                    <tr style="background-color: #B0B0B0">
+                        <th width="150px;">名称</th>
+                        <th width="150px;">类型</th>
+                        <th width="150px;">说明</th>
+                        <th width="150px;">示例</th>
+                        <th width="55px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myHttpPreviewResponseTBody">
+                    {{# if interfaceParamResponseEntities}}
+                    {{#interfaceParamResponseEntities}}
+                    <tr style="background-color: #F0F0F0">
+                        <td style="word-wrap: break-word">{{paramNameResponse}}</td>
+                        <td>{{paramTypeResponse}}</td>
+                        <td style="word-wrap: break-word">{{paramDescribeResponse}}</td>
+                        <td style="word-wrap: break-word">{{exampleResponse}}</td>
+                        <td class="text-center">
+                            {{#compareParamType paramTypeResponse
+                            'object'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}} {{#compareParamType paramTypeResponse
+                            'json'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{#compareParamType paramTypeResponse
+                            'array'}} <a href="javascript:void(0);">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a> {{else}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+                            {{/compareParamType}}
+
+                        </td>
+                    </tr>
+                    <tr {{#compareParamType paramTypeResponse
+                    'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
+                    'json'}} style="display:table-row" {{else}}
+                    {{#compareParamType paramTypeResponse
+                    'array'}} style="display:table-row" {{else}}
+                    style="display:none" {{/compareParamType}} {{/compareParamType}}
+                    {{/compareParamType}}>
+                    <td colspan="5">
+                        <pre>{{exampleDetailResponse}}</pre>
+                        <br/>
+                        <pre>{{defaultValueDetailResponse}}</pre>
+                    </td>
+                    </tr>
+                    {{/interfaceParamResponseEntities}}
+                    {{else}}
+                    <tr style="background-color: #F0F0F0">
+                        <td class='text-center' colspan='5'>暂无信息！</td>
+                    </tr>
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <ul id="myHttpPreviewTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#returnExampleHttpPreview" data-toggle="tab">
+                            返回示例
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#exceptionExampleHttpPreview" data-toggle="tab">
+                            异常示例
+                        </a>
+                    </li>
+                </ul>
+                <div id="myHttpPreviewTabContent" class="tab-content">
+                    {{# if interfaceResultEntities}}
+                    {{#interfaceResultEntities}}
+                    {{#compareExampleType exampleType "NORMAL" }}
+                    <div class="tab-pane fade in active" id="returnExampleHttpPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>返回示例</h6>
+                            <pre id="httpReturnExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="httpReturnAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="tab-pane fade" id="exceptionExampleHttpPreview">
+                        <br/>
+                        <div class="form-group">
+                            <h6>异常示例</h6>
+                            <pre id="httpExceptionExampleView">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <h6>注意事项</h6>
+                            <pre id="httpExceptionAttentionMattersView">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                        </div>
+                    </div>
+                    {{/compareExampleType}}
+                    {{/interfaceResultEntities}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
