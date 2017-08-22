@@ -1,10 +1,17 @@
+<div style="height: 55px;">
+
+</div>
+<div class="col-md-12">
+    <ol class="breadcrumb">
+        <li class="active">接口管理</li>
+        <li class="active">$!{appDO.appName}</li>
+        <div style="display:inline;float:right"><a href="${ctxPath}/admin/empty.htm"><span
+                class="glyphicon glyphicon-home" style="color: rgb(212, 106, 64);"></span></a></div>
+    </ol>
+</div>
 <div class="col-md-10" id="interfaceViewPanel">
 </div>
 <div class="col-sm-2">
-    <br/>
-    <br/>
-    <br/>
-    <br/>
     <div id="treeview12"></div>
 </div>
 #*HTTP接口描述文档模板*#
@@ -12,10 +19,6 @@
     {{# if this}}
     {{# each this}}
     <div id="httpNav{{addOne @index}}"></div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
     <div class="row">
         <div id="page_title" class="col-sm-12">
             <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
@@ -377,10 +380,6 @@
     {{# if this}}
     {{# each this}}
     <div id="rpcNav{{addOne @index}}"></div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
     <div class="row">
         <div id="page_title" class="col-sm-12">
             <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
