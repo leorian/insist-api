@@ -1,22 +1,22 @@
-#*HTTP接口新增模态框（Modal）*#
-<div class="modal fade" id="myHttpModal" tabindex="-1" role="dialog" aria-labelledby="myHttpModalLabel"
+#*RPC接口新增模态框（Modal）*#
+<div class="modal fade" id="myRpcModal" tabindex="-1" role="dialog" aria-labelledby="myRpcModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog" style="width: 1024px">
+    <div class="modal-dialog" style="width: 1024px;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
-                <h4 class="modal-title" id="myHttpModalLabel">
-                    新增HTTP接口
+                <h4 class="modal-title" id="myRpcModalLabel">
+                    新增RPC接口
                 </h4>
             </div>
             <div class="modal-body">
-                <form id="newInterfaceHttpForm" role="form">
+                <form id="newInterfaceRpcForm" role="form">
                     <!--项目ID-->
                     <input type="hidden" name="appIdInput" value="$!{appDO.appId}">
                     <!--接口ID-->
-                    <input type="hidden" id="interfaceHttpIdInput" name="interfaceHttpIdInput" value="">
+                    <input type="hidden" id="interfaceRpcIdInput" name="interfaceRpcIdInput" value="">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
@@ -25,32 +25,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <select class="form-control" name="protocolInput">
-                                    <option value="HTTP">HTTP</option>
-                                    <option value="HTTPS">HTTPS</option>
-                                </select>
-                            </div>
-                        </div>
-                    ##                        <div class="col-sm-2">
-                    ##                            <div class="form-group">
-                    ##                                <select class="form-control" name="methodInput">
-                    ##                                    <option value="GET">GET</option>
-                    ##                                    <option value="POST">POST</option>
-                    ##                                    <option value="GET/POST">GET/POST</option>
-                    ##                                </select>
-                    ##                            </div>
-                    ##                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <select class="form-control" name="transformatInput">
-                                    <option value="JSON">JSON</option>
-                                    <option value="XML">XML</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <div class="form-inline">
                                 <label class="control-label" for="categoryInput">接口分类：</label>
                                 <select class="form-control" id="categoryInput" name="categoryInput">
@@ -61,137 +36,41 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            请求方式
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-1">
+                        <div class="col-sm-4">
                             <div class="form-group">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="methodInputCheckBox" value="GET">GET</label>
-                                </div>
+                                <input type="text" class="form-control" name="classNameInput" placeholder="类全路径名称">
                             </div>
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-sm-3">
                             <div class="form-group">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="methodInputCheckBox" value="POST">POST</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="methodInputCheckBox" value="HEAD">HEAD</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="methodInputCheckBox" value="PUT">PUT</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="methodInputCheckBox"
-                                                  value="DELETE">DELETE</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="methodInputCheckBox" value="TRACE">TRACE</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="methodInputCheckBox"
-                                                  value="OPTIONS">OPTIONS</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="hidden" name="methodInput" value=""/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <input type="text" name="addressInput" class="form-control" value=""
-                                       placeholder="接口地址"/>
+                                <input type="text" class="form-control" name="methodNameInput" placeholder="方法名称">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input type="text" name="nameInput" class="form-control" value="" placeholder="接口名称"/>
+                                <input type="text" class="form-control" name="nameInput" placeholder="接口名称">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <textarea name="descriptionInput" class="form-control" placeholder="接口描述"
+                                <textarea class="form-control" name="functionDescribeInput" placeholder="功能描述"
                                           rows="3"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-3">
                             <div class="form-group">
-                                <h5>请求头部</h5>
+                                <input type="text" class="form-control" name="returnTypeInput" placeholder="返回值类型">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div>
-                                <table class="table table-bordered" style="table-layout: fixed" id="headerParamTable">
-                                    <thead>
-                                    <tr style="background-color: #888888">
-                                        <th style="width:135px;">
-                                            参数名称
-                                        </th>
-                                        <th style="width:135px;">
-                                            参数类型
-                                        </th>
-                                        <th style="width:135px;">
-                                            参数说明
-                                        </th>
-                                        <th>
-                                            示例
-                                        </th>
-                                        <th style="width:45px;">
-                                            操作
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <!--HTTP接口头部参数详情输入表格-->
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th colspan="5">
-                                            <a href="javascript:;" id="httpAddHeaderParam"><span
-                                                    class="glyphicon glyphicon-plus-sign"></span> 添加属性</a>
-                                            <a href="javascript:;" id="httpParupHeader"
-                                               class="btn btn-sm btn-default glyphicon glyphicon-arrow-up">上移</a>
-                                            <a href="javascript:;" id="httpPardownHeader"
-                                               class="btn btn-sm btn-default glyphicon glyphicon-arrow-down">下移</a>
-                                        </th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="methodParamInput" placeholder="方法参数">
                             </div>
                         </div>
                     </div>
@@ -205,7 +84,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <table class="table table-bordered" style="table-layout: fixed" id="requestParamTable">
+                                <table class="table table-bordered" id="rmiParamTable">
                                     <thead>
                                     <tr style="background-color: #888888">
                                         <th style="width: 120px;">参数名称</th>
@@ -219,16 +98,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <!--HTTP接口参数详情输入表格-->
+                                    <!--RPC接口参数详情输入表格-->
                                     </tbody>
                                     <tfoot>
                                     <tr>
                                         <th colspan="8">
-                                            <a href="javascript:;" id="httpAddRequestParam"><span
+                                            <a href="javascript:;" id="rpcAddRequestParam"><span
                                                     class="glyphicon glyphicon-plus-sign"></span> 添加属性</a>
-                                            <a href="javascript:;" id="httpParup"
+                                            <a href="javascript:;" id="rpcParup"
                                                class="btn btn-sm btn-default glyphicon glyphicon-arrow-up">上移</a>
-                                            <a href="javascript:;" id="httpPardown"
+                                            <a href="javascript:;" id="rpcPardown"
                                                class="btn btn-sm btn-default glyphicon glyphicon-arrow-down">下移</a>
                                         </th>
                                     </tr>
@@ -247,7 +126,8 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div>
-                                <table class="table table-bordered" style="table-layout: fixed" id="responseParamTable">
+                                <table class="table table-bordered" style="table-layout: fixed"
+                                       id="rmiResponseParamTable">
                                     <thead>
                                     <tr style="background-color: #888888">
                                         <th style="width:135px;">
@@ -268,16 +148,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <!--HTTP接口响应参数详情输入表格-->
+                                    <!--RPC接口响应参数详情输入表格-->
                                     </tbody>
                                     <tfoot>
                                     <tr>
                                         <th colspan="5">
-                                            <a href="javascript:;" id="httpAddResponseParam"><span
+                                            <a href="javascript:;" id="rpcAddResponseParam"><span
                                                     class="glyphicon glyphicon-plus-sign"></span> 添加属性</a>
-                                            <a href="javascript:;" id="httpParupResponse"
+                                            <a href="javascript:;" id="rpcParupResponse"
                                                class="btn btn-sm btn-default glyphicon glyphicon-arrow-up">上移</a>
-                                            <a href="javascript:;" id="httpPardownResponse"
+                                            <a href="javascript:;" id="rpcPardownResponse"
                                                class="btn btn-sm btn-default glyphicon glyphicon-arrow-down">下移</a>
                                         </th>
                                     </tr>
@@ -290,38 +170,38 @@
                     <br/>
                     <div class="row">
                         <div class="col-sm-12">
-                            <ul id="myHttpTab" class="nav nav-tabs">
+                            <ul id="myRpcTab" class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#returnExampleHttp" data-toggle="tab">
+                                    <a href="#returnExampleRpc" data-toggle="tab">
                                         返回示例
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#exceptionExampleHttp" data-toggle="tab">
+                                    <a href="#exceptionExampleRpc" data-toggle="tab">
                                         异常示例
                                     </a>
                                 </li>
                             </ul>
-                            <div id="myHttpTabContent" class="tab-content">
-                                <div class="tab-pane fade in active" id="returnExampleHttp">
+                            <div id="myRpcTabContent" class="tab-content">
+                                <div class="tab-pane fade in active" id="returnExampleRpc">
                                     <br/>
                                     <div class="form-group">
-                                        <textarea name="returnExampleContent" class="form-control"
+                                        <textarea class="form-control" name="returnExampleContent"
                                                   placeholder="暂无返回示例"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="returnExampleAttentionMatters" class="form-control"
+                                        <textarea class="form-control" name="returnExampleAttentionMatters"
                                                   placeholder="注意事项"></textarea>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="exceptionExampleHttp">
+                                <div class="tab-pane fade" id="exceptionExampleRpc">
                                     <br/>
                                     <div class="form-group">
-                                        <textarea name="exceptionExampleContent" class="form-control"
+                                        <textarea class="form-control" name="exceptionExampleContent"
                                                   placeholder="暂无异常示例"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="exceptionAttentionMatters" class="form-control"
+                                        <textarea class="form-control" name="exceptionAttentionMatters"
                                                   placeholder="注意事项"></textarea>
                                     </div>
                                 </div>
@@ -330,11 +210,10 @@
                     </div>
                 </form>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button" class="btn btn-primary" id="newInterfaceHttpBtn">
+                <button type="button" class="btn btn-primary" id="newInterfaceRpcBtn">
                     提交更改
                 </button>
             </div>
@@ -342,8 +221,8 @@
     </div><!-- /.modal -->
 </div>
 
-#*HTTP接口参数详情添加一行参数*#
-<script id="httpAddRequestParamTemplate" type="text/x-handlebars-template">
+#*RPC接口参数详情添加一行参数*#
+<script id="rpcAddRequestParamTemplate" type="text/x-handlebars-template">
     <tr class="outerTr">
         <td><input name='paramNamesInput' type="text" class="form-control input-sm" style='height: 25px;'></td>
         <td>
@@ -388,8 +267,8 @@
     </tr>
 </script>
 
-#*HTTP接口响应参数详情添加一行参数*#
-<script id="httpAddResponseParamTemplate" type="text/x-handlebars-template">
+#*RPC接口响应参数详情添加一行参数*#
+<script id="rpcAddResponseParamTemplate" type="text/x-handlebars-template">
     <tr class="outerTr">
         <td>
             <input name='paramNamesResponseInput' type="text" class="form-control input-sm" style='height: 25px;'>
@@ -419,42 +298,6 @@
                       placeholder="示例（格式：application/json）"></textarea>
             <br/>
             <textarea class="form-control" name="defaultValueDetailsResponseInput"
-                      placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）"></textarea>
-        </td>
-    </tr>
-</script>
-
-#*HTTP接口头部参数详情添加一行参数*#
-<script id="httpAddHeaderParamTemplate" type="text/x-handlebars-template">
-    <tr class="outerTr">
-        <td>
-            <input name='paramNamesHeaderInput' type="text" class="form-control input-sm" style='height: 25px;'>
-        </td>
-        <td>
-            <select name='paramTypesHeaderInput' class="form-control input-sm" style='height: 25px;'>
-                #foreach($item in $!{paramTypeEnumList})
-                    <option value="$item">$item</option>
-                #end
-            </select>
-        </td>
-        <td>
-            <input name='paramDescribesHeaderInput' type="text" class="form-control input-sm" style='height: 25px;'>
-        </td>
-        <td>
-            <input name='examplesHeaderInput' type="text" class="form-control input-sm" style='height: 25px;'>
-        </td>
-        <td>
-            <a href="#">
-                <span class="glyphicon glyphicon-trash"></span>
-            </a>
-        </td>
-    </tr>
-    <tr style="display: none" class="innerTr">
-        <td colspan="5">
-            <textarea class="form-control" name="exampleDetailsHeaderInput"
-                      placeholder="示例（格式：application/json）"></textarea>
-            <br/>
-            <textarea class="form-control" name="defaultValueDetailsHeaderInput"
                       placeholder="参数说明（格式：属性名1：属性说明1\n属性名2：参数说明2）"></textarea>
         </td>
     </tr>
