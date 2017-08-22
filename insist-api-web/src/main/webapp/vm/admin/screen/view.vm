@@ -1,79 +1,12 @@
-<div style="height: 55px;">
-
+<div class="col-md-10" id="interfaceViewPanel">
 </div>
-<div class="col-md-12">
-    <ol class="breadcrumb">
-        <li class="active">接口预览</li>
-        <li class="active">$!{appDO.appName}</li>
-        <div style="display:inline;float:right"><a href="${ctxPath}/admin/empty.htm"><span
-                class="glyphicon glyphicon-home" style="color: rgb(212, 106, 64);"></span></a></div>
-    </ol>
+<div class="col-sm-2">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div id="treeview12"></div>
 </div>
-<div class="col-md-12">
-    <div class="panel panel-primary">
-        <div class="panel-body" id="interfaceHttpViewPanel">
-        #*HTTP接口描述文档显示区域*#
-        </div>
-    </div>
-    <div class="panel panel-primary">
-        <div class="panel-body" id="interfaceRpcViewPanel">
-        #*RPC接口描述文档显示区域*#
-        </div>
-    </div>
-</div>
-<div class="guide">
-    <hr style="border: solid 1px #fff;"/>
-    <div class="guide-wrap" id="httpTitleMenu">
-    </div>
-    <hr style="border: solid 1px #fff;"/>
-    <div class="guide-wrap" id="rpcTitleMenu">
-    </div>
-    <hr style="border: solid 1px #fff;"/>
-    <div class="guide-wrap" id="topMenu">
-        <a href="javascript:window.scrollTo(0,0)" class="edit" style="padding-right: 0px" title="回顶部">回顶部</a>
-    </div>
-    <hr style="border: solid 1px #fff;"/>
-</div>
-<style type="text/css">
-    .guide {
-        width: 250px;
-        position: fixed;
-        display: block;
-        vertical-align: 100%;
-        right: 10px;
-        background-color: #EEEEEE;
-        overflow-y: auto;
-        overflow-x: hidden;
-        max-height: 500px;
-    }
-
-    .guide a {
-        display: block;
-        width: 250px;
-        height: 30px;
-        max-height: 30px;
-        text-decoration: none;
-        font: 8px/8px "Microsoft YaHei";
-        text-align: left;
-        color: #000;
-        padding: 8px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .guide a:hover {
-        text-decoration: none;
-        background-color: #39F;
-        color: #fff;
-    }
-
-    .menu_select {
-        text-decoration: none;
-        background-color: #39F;
-        color: #fff;
-    }
-</style>
 #*HTTP接口描述文档模板*#
 <script id="interfaceHttpViewTemplate" type="text/x-handlebars-template">
     {{# if this}}
@@ -84,16 +17,11 @@
     <br/>
     <br/>
     <div class="row">
-        <div class="col-sm-12">
-            <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1; padding-bottom: 3px;">
-                <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
-                <div style="display:inline;float:right"><a href="javascript:void(0);"><span
-                        class="glyphicon glyphicon-minus" style="color: dodgerblue;"></span></a></div>
-            </div>
-
+        <div id="page_title" class="col-sm-12">
+            <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
         </div>
     </div>
-    <div class="httpContentPanel">
+    <div id="httpContentPanel">
         <div class="row" style="margin-top: 5px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
@@ -108,7 +36,6 @@
                 </table>
             </div>
         </div>
-
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
@@ -154,36 +81,32 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed;">
-                    <caption>访问地址</caption>
+                    <caption>在线访问地址</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
-                        <th width="20%">
-                            应用环境
-                        </th>
-                        <th>
-                            URL地址
-                        </th>
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
+                        <th width="20%">应用环境</th>
+                        <th>URL地址</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr style="background-color: #F0F0F0">
-                        <th width="20%" class="text-right">mock服务调试地址</th>
+                    <tr>
+                        <td width="20%" class="text-right">mock服务调试地址</td>
                         <td width="80%" style="word-wrap: break-word">{{mockAddress}}</td>
                     </tr>
-                    <tr style="background-color: #F0F0F0">
-                        <th width="20%" class="text-right">开发环境访问地址</th>
+                    <tr>
+                        <td width="20%" class="text-right">开发环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{devAddress}}</td>
                     </tr>
-                    <tr style="background-color: #F0F0F0">
-                        <th width="20%" class="text-right">测试环境访问地址</th>
+                    <tr>
+                        <td width="20%" class="text-right">测试环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{sitAddress}}</td>
                     </tr>
-                    <tr style="background-color: #F0F0F0">
-                        <th width="20%" class="text-right">UAT环境访问地址</th>
+                    <tr>
+                        <td width="20%" class="text-right">UAT环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{uatAddress}}</td>
                     </tr>
-                    <tr style="background-color: #F0F0F0">
-                        <th width="20%" class="text-right">线上环境访问地址</th>
+                    <tr>
+                        <td width="20%" class="text-right">线上环境访问地址</td>
                         <td width="80%" style="word-wrap: break-word">{{prdAddress}}</td>
                     </tr>
                     </tbody>
@@ -195,7 +118,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>请求头部</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -206,14 +129,14 @@
                     <tbody>
                     {{# if interfaceParamHeaderEntities}}
                     {{#interfaceParamHeaderEntities}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td title="{{paramNameHeader}}" style="word-wrap: break-word">
                             {{paramNameHeader}}
                         </td>
                         <td title="{{paramTypeHeader}}" style="word-wrap: break-word">
                             {{paramTypeHeader}}
                         </td>
-                        <td title="{{paramDescribeResponse}}" style="word-wrap: break-word">
+                        <td title="{{paramDescribeHeader}}" style="word-wrap: break-word">
                             {{paramDescribeHeader}}
                         </td>
                         <td title="{{exampleHeader}}" style="word-wrap: break-word">
@@ -229,15 +152,16 @@
                         </a> {{else}} {{#compareParamType paramTypeHeader
                             'array'}} <a href="javascript:void(0);">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a> {{else}} {{/compareParamType}}   {{/compareParamType}}
+                        </a> {{else}} {{/compareParamType}} {{/compareParamType}}
                             {{/compareParamType}}
 
                         </td>
                     </tr>
-                    <tr {{#compareParamType paramTypeHeader
+                    <tr {{#compareParamType paramTypeResponse
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeHeader
                     'json'}} style="display:table-row" {{else}} {{#compareParamType paramTypeHeader
-                    'array'}} style="display:table-row" {{else}} style="display:none"  {{/compareParamType}} {{/compareParamType}}
+                    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
                         <pre>{{exampleDetailHeader}}</pre>
@@ -247,7 +171,7 @@
                     </tr>
                     {{/interfaceParamHeaderEntities}}
                     {{else}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td class='text-center' colspan='5'>暂无信息！</td>
                     </tr>
                     {{/if}}
@@ -260,7 +184,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>请求参数</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -274,7 +198,7 @@
                     <tbody>
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td title="{{paramName}}" style="word-wrap: break-word">
                             {{paramName}}
                         </td>
@@ -306,7 +230,7 @@
                         </a> {{else}} {{#compareParamType paramType
                             'array'}} <a href="javascript:void(0);">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a> {{else}} {{/compareParamType}}   {{/compareParamType}}
+                        </a> {{else}} {{/compareParamType}} {{/compareParamType}}
                             {{/compareParamType}}
 
                         </td>
@@ -314,7 +238,8 @@
                     <tr {{#compareParamType paramType
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
                     'json'}} style="display:table-row" {{else}} {{#compareParamType paramType
-                    'array'}} style="display:table-row" {{else}} style="display:none"  {{/compareParamType}} {{/compareParamType}}
+                    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="8">
                         <pre>{{exampleDetail}}</pre>
@@ -324,7 +249,7 @@
                     </tr>
                     {{/interfaceParamEntities}}
                     {{else}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td class='text-center' colspan='8'>暂无信息！</td>
                     </tr>
                     {{/if}}
@@ -337,7 +262,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>响应参数</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -348,7 +273,7 @@
                     <tbody>
                     {{# if interfaceParamResponseEntities}}
                     {{#interfaceParamResponseEntities}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td title="{{paramNameResponse}}" style="word-wrap: break-word">
                             {{paramNameResponse}}
                         </td>
@@ -371,7 +296,7 @@
                         </a> {{else}} {{#compareParamType paramTypeResponse
                             'array'}} <a href="javascript:void(0);">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a> {{else}} {{/compareParamType}}   {{/compareParamType}}
+                        </a> {{else}} {{/compareParamType}} {{/compareParamType}}
                             {{/compareParamType}}
 
                         </td>
@@ -379,7 +304,8 @@
                     <tr {{#compareParamType paramTypeResponse
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
                     'json'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
-                    'array'}} style="display:table-row" {{else}} style="display:none"  {{/compareParamType}} {{/compareParamType}}
+                    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
                         <pre>{{exampleDetailResponse}}</pre>
@@ -389,7 +315,7 @@
                     </tr>
                     {{/interfaceParamResponseEntities}}
                     {{else}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td class='text-center' colspan='5'>暂无信息！</td>
                     </tr>
                     {{/if}}
@@ -420,11 +346,11 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <table class="table" style="table-layout: fixed;">
+                <table class="table" style="table-layout: fixed">
                     <caption>异常示例及注意事项</caption>
                     <tbody>
                     <tr>
-                        <td style="border-top: none;">
+                        <td style="border-top: none">
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "EXCEPTION" }}
@@ -456,16 +382,12 @@
     <br/>
     <br/>
     <div class="row">
-        <div class="col-sm-12">
-            <div class="col-sm-12" style="border-bottom: 2px solid #b2dba1">
-                <h4 style="display:inline;word-wrap: break-word">{{addOne @index}}.{{name}}</h4>
-                <div style="display:inline;float:right"><a href="javascript:void(0);"><span
-                        class="glyphicon glyphicon-minus" style="color: dodgerblue;"></span></a></div>
-            </div>
+        <div id="page_title" class="col-sm-12">
+            <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
         </div>
     </div>
-    <div class="rpcContentPanel">
-        <div class="row">
+    <div id="rpcContentPanel">
+        <div class="row" style="margin-top: 5px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>类全路径名称</caption>
@@ -479,7 +401,7 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>方法名称</caption>
@@ -493,10 +415,12 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>返回值类型</caption>
+                    <caption>
+                        返回值类型
+                    </caption>
                     <tbody>
                     <tr>
                         <td>
@@ -507,7 +431,7 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>方法参数</caption>
@@ -521,7 +445,7 @@
                 </table>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>功能描述</caption>
@@ -540,7 +464,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>请求参数</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -554,7 +478,7 @@
                     <tbody>
                     {{# if interfaceParamEntities}}
                     {{#interfaceParamEntities}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td title="{{paramName}}" style="word-wrap: break-word">
                             {{paramName}}
                         </td>
@@ -564,7 +488,7 @@
                         <td title="{{paramDescribe}}" style="word-wrap: break-word">
                             {{paramDescribe}}
                         </td>
-                        <td title="{{required}}" style="word-wrap: break-word">
+                        <td title="{{required}}" style="word-warp:break-word">
                             {{required}}
                         </td>
                         <td title="{{jsontransformat}}"
@@ -573,7 +497,7 @@
                         <td title="{{example}}" style="word-wrap: break-word">
                             {{example}}
                         </td>
-                        <td title="{{defaultValue}}" style="word-wrap: break-word;">
+                        <td title="{{defaultValue}}" style="word-wrap: break-word">
                             {{defaultValue}}
                         </td>
                         <td class="text-center">
@@ -586,15 +510,16 @@
                         </a> {{else}} {{#compareParamType paramType
                             'array'}} <a href="javascript:void(0);">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a> {{else}} {{/compareParamType}}  {{/compareParamType}}
+                        </a> {{else}} {{/compareParamType}} {{/compareParamType}}
                             {{/compareParamType}}
 
                         </td>
                     </tr>
                     <tr {{#compareParamType paramType
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramType
-                    'json'}} style="display:table-row" {{else}} {{#compareParamType paramType
-                    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}} {{/compareParamType}}
+                    'json'}} style="display:table-row" {{else}}{{#compareParamType paramType
+                    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="8">
                         <pre>{{exampleDetail}}</pre>
@@ -617,7 +542,7 @@
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>响应参数</caption>
                     <thead>
-                    <tr style="background-color: #B0B0B0">
+                    <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
                         <th>类型</th>
                         <th>说明</th>
@@ -628,7 +553,7 @@
                     <tbody>
                     {{# if interfaceParamResponseEntities}}
                     {{#interfaceParamResponseEntities}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td title="{{paramNameResponse}}" style="word-wrap: break-word">
                             {{paramNameResponse}}
                         </td>
@@ -651,7 +576,7 @@
                         </a> {{else}} {{#compareParamType paramTypeResponse
                             'array'}} <a href="javascript:void(0);">
                             <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a> {{else}} {{/compareParamType}}   {{/compareParamType}}
+                        </a> {{else}} {{/compareParamType}} {{/compareParamType}}
                             {{/compareParamType}}
 
                         </td>
@@ -659,7 +584,8 @@
                     <tr {{#compareParamType paramTypeResponse
                     'object'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
                     'json'}} style="display:table-row" {{else}} {{#compareParamType paramTypeResponse
-                    'array'}} style="display:table-row" {{else}} style="display:none"  {{/compareParamType}} {{/compareParamType}}
+                    'array'}} style="display:table-row" {{else}} style="display:none" {{/compareParamType}}
+                    {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
                         <pre>{{exampleDetailResponse}}</pre>
@@ -669,7 +595,7 @@
                     </tr>
                     {{/interfaceParamResponseEntities}}
                     {{else}}
-                    <tr style="background-color: #F0F0F0">
+                    <tr>
                         <td class='text-center' colspan='5'>暂无信息！</td>
                     </tr>
                     {{/if}}
@@ -680,9 +606,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
-                    <caption>
-                        返回示例及注意事项
-                    </caption>
+                    <caption>返回示例及注意事项</caption>
                     <tbody>
                     <tr>
                         <td style="border-top: none">
@@ -698,13 +622,14 @@
                     </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <table class="table" style="table-layout: fixed">
-                    <caption>异常示例及注意事项</caption>
+                <table class="table" style="border-top: none">
+                    <caption>
+                        异常示例及注意事项
+                    </caption>
                     <tbody>
                     <tr>
                         <td style="border-top: none">
@@ -731,83 +656,58 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        //HTTP接口列表展示
-        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
-            $("#interfaceHttpViewPanel").handlebars($("#interfaceHttpViewTemplate"), data);
-            if (data != null && data.length > 0) {
-                for (var i = 0; i < data.length; i++) {
-                    $("#httpTitleMenu").append('<a href="#httpNav' + (i + 1)
-                            + '" class="edit" title="' + data[i].name + '">'
-                            + (i + 1) + '、' + data[i].name + '</a>');
-                }
-            }
-        }, "json");
-
-        //HTTP加减号事件
-        $("#interfaceHttpViewPanel").delegate(".glyphicon-minus", "click", function () {
-            $(this).parent().parent().parent().parent().parent().next().hide();
-            $(this).removeClass("glyphicon-minus");
-            $(this).addClass("glyphicon-plus");
-        });
-        $("#interfaceHttpViewPanel").delegate(".glyphicon-plus", "click", function () {
-            $(this).parent().parent().parent().parent().parent().next().show();
-            $(this).removeClass("glyphicon-plus");
-            $(this).addClass("glyphicon-minus");
-        });
-
-        //接口标题导航
-        $(".guide").delegate("a.edit", "click", function () {
-            $(".guide").find("a.edit").removeClass("menu_select");
-            $(this).addClass("menu_select");
-        });
-
-        $("#interfaceHttpViewPanel").delegate(".glyphicon-chevron-down", "click", function () {
+        //加减号事件
+        $("#interfaceViewPanel").delegate(".glyphicon-chevron-down", "click", function () {
             $(this).parent().parent().parent().next().hide();
             $(this).removeClass("glyphicon-chevron-down");
             $(this).addClass("glyphicon-chevron-up");
         });
 
-        $("#interfaceHttpViewPanel").delegate(".glyphicon-chevron-up", "click", function () {
-            $(this).parent().parent().parent().next().show();
-            $(this).removeClass("glyphicon-chevron-up");
-            $(this).addClass("glyphicon-chevron-down");
-        });
-
-        //RPC接口列表展示
-        $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
-            $("#interfaceRpcViewPanel").handlebars($("#interfaceRpcViewTemplate"), data);
-            if (data != null && data.length > 0) {
-                for (var i = 0; i < data.length; i++) {
-                    $("#rpcTitleMenu").append('<a href="#rpcNav' + (i + 1)
-                            + '" class="edit" title="' + data[i].name + '">'
-                            + (i + 1) + '、' + data[i].name + '</a>');
-                }
-            }
-        }, "json");
-
-        //RPC加减号事件
-        $("#interfaceRpcViewPanel").delegate(".glyphicon-minus", "click", function () {
-            $(this).parent().parent().parent().parent().parent().next().hide();
-            $(this).removeClass("glyphicon-minus");
-            $(this).addClass("glyphicon-plus");
-        });
-
-        $("#interfaceRpcViewPanel").delegate(".glyphicon-plus", "click", function () {
-            $(this).parent().parent().parent().parent().parent().next().show();
-            $(this).removeClass("glyphicon-plus");
-            $(this).addClass("glyphicon-minus");
-        });
-
-        $("#interfaceRpcViewPanel").delegate(".glyphicon-chevron-down", "click", function () {
-            $(this).parent().parent().parent().next().hide();
-            $(this).removeClass("glyphicon-chevron-down");
-            $(this).addClass("glyphicon-chevron-up");
-        });
-
-        $("#interfaceRpcViewPanel").delegate(".glyphicon-chevron-up", "click", function () {
+        $("#interfaceViewPanel").delegate(".glyphicon-chevron-up", "click", function () {
             $(this).parent().parent().parent().next().show();
             $(this).removeClass("glyphicon-chevron-up");
             $(this).addClass("glyphicon-chevron-down");
         });
     });
 </script>
+<script>
+    //加载HTTP预览
+    function loadHttpInterfaceContent(interfaceId) {
+        $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttp", {"interfaceId": interfaceId}, function (data) {
+            var httpArray = new Array();
+            httpArray.push(data);
+            $("#interfaceViewPanel").handlebars($("#interfaceHttpViewTemplate"),httpArray);
+        }, "json");
+
+    }
+
+    //加载RPC预览
+    function loadRpcInterfaceContent(interfaceId) {
+        $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpc", {"interfaceId": interfaceId}, function (data) {
+            var httpArray = new Array();
+            httpArray.push(data);
+            $("#interfaceViewPanel").handlebars($("#interfaceRpcViewTemplate"),httpArray);
+        }, "json");
+    }
+    $(function () {
+        var $tree = $('#treeview12').treeview({
+            expandIcon: 'glyphicon glyphicon-chevron-right',
+            collapseIcon: 'glyphicon glyphicon-chevron-down',
+            enableLinks: true,
+            onNodeSelected: function(event, node) {
+                console.log('<p>' + JSON.stringify(node) + ' was selected</p>');
+            },
+            data: '$!{nodes}'
+        });
+        //增加返回顶部按钮
+        $.goup({
+            trigger: 100,
+            bottomOffset: 150,
+            locationOffset: 100,
+            title: "回到顶部" ,
+            titleAsText: true,
+            containerColor:"#08c",
+        });
+    });
+</script>
+

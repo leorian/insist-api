@@ -16,6 +16,8 @@
 #*分页插件jqgrid*#
     <link rel="stylesheet" href="${ctxPath}/webFrame/jqgrid-5.2.0/jqgrid/css/ui.jqgrid-bootstrap.css"/>
 
+    <link rel="stylesheet" href="${ctxPath}/webFrame/bootstrap-treeview/src/css/bootstrap-treeview.css">
+
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="${ctxPath}/webFrame/bootstrap-3.3.5/jquery-1.11.3.min.js"></script>
 
@@ -33,6 +35,10 @@
     <script src="${ctxPath}/webFrame/handlebars-v4.0.10.js"></script>
 
     <script src="${ctxPath}/webFrame/handlebars-jquery-plugin.js"></script>
+
+    <script src="${ctxPath}/webFrame/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
+
+    <script src="${ctxPath}/webFrame/jquery.goup.js"></script>
 
 </head>
 <body style="height: 100%">
