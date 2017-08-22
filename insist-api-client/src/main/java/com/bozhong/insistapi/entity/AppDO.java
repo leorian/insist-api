@@ -80,4 +80,16 @@ public class AppDO implements Serializable {
             this.interfaceCount = interfaceCount;
         }
     }
+
+    public void setInterfaceCount(Integer interfaceCount, Integer interfaceCount2) {
+        if (interfaceCount == null) {
+            interfaceCount = 0;
+        }
+
+        if (interfaceCount2 == null) {
+            interfaceCount2 = 0;
+        }
+
+        this.interfaceCount = interfaceCount + interfaceCount2;
+    }
 }

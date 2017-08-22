@@ -3,6 +3,7 @@ package com.bozhong.insistapi.view.admin.module.screen;
 import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
+import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.service.MongoService;
 import com.yx.eweb.main.EWebContext;
 import com.yx.eweb.main.ScreenInter;
@@ -29,6 +30,7 @@ public class Empty implements ScreenInter {
         if (!CollectionUtils.isEmpty(appDOList)) {
             Map<String, Integer> appCategoryCountMap = mongoService.appCategoryCountGroup(InterfaceCategoryEntity.class);
             Map<String, Integer> appInterfaceCountMap = mongoService.appInterfaceCountGroup(InterfaceHttpEntity.class);
+            Map<String, Integer> appInterfaceCountMap2 = mongoService.appInterfaceCountGroup(InterfaceRpcEntity.class);
             if (appCategoryCountMap == null) {
                 appCategoryCountMap = new HashMap<>();
             }
@@ -36,9 +38,15 @@ public class Empty implements ScreenInter {
             if (appInterfaceCountMap == null) {
                 appInterfaceCountMap = new HashMap<>();
             }
+
+            if (appInterfaceCountMap2 == null) {
+                appInterfaceCountMap2 = new HashMap<>();
+            }
+
             for (AppDO appDO : appDOList) {
                 appDO.setCategoryCount(appCategoryCountMap.get(appDO.getAppId()));
-                appDO.setInterfaceCount(appInterfaceCountMap.get(appDO.getAppId()));
+                appDO.setInterfaceCount(appInterfaceCountMap.get(appDO.getAppId()),
+                        appInterfaceCountMap2.get(appDO.getAppId()));
             }
         }
     }
