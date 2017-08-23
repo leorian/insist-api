@@ -9,19 +9,19 @@
         <td class='text-center' style="word-wrap: break-word">{{address}}</td>
         <td class='text-center'>
             <span class="glyphicon glyphicon-edit btn-success-glyphicon" title="编辑" data-interfaceid='{{id}}'
-                  data-toggle='modal'
+                  data-toggle='modal' style="color: #00aaee"
                   data-target='#myHttpModal'></span>
             &nbsp;&nbsp;
             <span class="glyphicon glyphicon-trash btn-danger-glyphicon" title="删除" data-interfaceid='{{id}}'
-                  data-toggle='modal'
+                  data-toggle='modal' style="color: #00aaee"
                   data-target='#deleteInterfaceModal'></span>
             &nbsp;&nbsp;
             <span class="glyphicon glyphicon-copy btn-copy-glyphicon" title="复制" data-interfaceid='{{id}}'
-                  data-toggle='modal'
+                  data-toggle='modal' style="color: #00aaee"
                   data-target='#httpCopyModal'></span>
             &nbsp;&nbsp;
             <span class="glyphicon glyphicon-fire btn-warning-glyphicon" title="预览" data-interfaceid='{{id}}'
-                  data-toggle='modal'
+                  data-toggle='modal' style="color: #00aaee"
                   data-target='#myHttpPreviewModal'></span>
         </td>
     </tr>
