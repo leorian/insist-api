@@ -59,6 +59,11 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
+                        应用接口文档信息列表查询接口请求地址规则：$!{interface_url}<span class="bg-success"><b>appId</b></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
                         <h5 style="color: red">注意：</h5>
                         <p>1、$!{normal_url}和$!{exception_url}为mock服务器固定部分，请在<b>接口管理</b>
                             每个应用当中的<b>域名地址管理</b>mock服务访问地址输入框中维护起来！</p>

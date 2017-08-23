@@ -40,6 +40,7 @@ public class SecurityPipeLine implements PipeLineInter {
         httpServletRequest.setAttribute("insist_api_department", WebSettingParam.DEPARTMENT);
         httpServletRequest.setAttribute("normal_url", WebSettingParam.NORMAL_URL);
         httpServletRequest.setAttribute("exception_url", WebSettingParam.EXCEPTION_URL);
+        httpServletRequest.setAttribute("interface_url", WebSettingParam.INTERFACE_URL);
         Cookie tokenCookie = CookiesUtil.getCookieByName(httpServletRequest, "insist_api_token");
         if (tokenCookie == null) {
             try {

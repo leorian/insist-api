@@ -250,6 +250,8 @@ public class MockRest {
             interfaceCategoryEntity.setInterfaceHttpEntities(httpMap.get(interfaceCategoryEntity.getInterfaceCategoryId()));
             interfaceCategoryEntity.setInterfaceRpcEntities(rpcMap.get(interfaceCategoryEntity.getInterfaceCategoryId()));
         }
-        return JSON.toJSONString(interfaceCategoryEntities);
+
+        appInterfaceInfoDomain.setInterfaceCategoryEntities(interfaceCategoryEntities);
+        return JSON.toJSONString(appInterfaceInfoDomain);
     }
 }
