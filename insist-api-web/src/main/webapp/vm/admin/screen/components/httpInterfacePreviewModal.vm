@@ -33,7 +33,7 @@
                 <caption>接口描述</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="interfaceDescribeView" style="word-wrap: break-word">
                             {{description}}
                         </div>
@@ -49,7 +49,7 @@
                 <caption>数据格式</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="dataFormatView">
                             {{transformat}}
                         </div>
@@ -65,7 +65,7 @@
                 <caption>请求方式</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="requestMethodView">
                             {{protocol}} + {{method}}
                         </div>
@@ -81,7 +81,7 @@
                 <caption>接口地址</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="interfaceAddressView" style="word-wrap: break-word">
                             {{address}}
                         </div>

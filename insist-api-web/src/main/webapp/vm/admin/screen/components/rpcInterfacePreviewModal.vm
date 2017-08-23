@@ -33,7 +33,7 @@
                 <caption>类全路径名称</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="rpcClassNameView" style="word-wrap: break-word">
                             {{className}}
                         </div>
@@ -49,7 +49,7 @@
                 <caption>方法名称</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="rpcMethodNameView" style="word-wrap: break-word">
                             {{methodName}}
                         </div>
@@ -65,7 +65,7 @@
                 <caption>功能描述</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="rpcFunctionDescribeView" style="word-wrap: break-word">
                             {{functionDescribe}}
                         </div>
@@ -81,7 +81,7 @@
                 <caption>返回值类型</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="rpcReturnTypeView" style="word-wrap: break-word">
                             {{returnType}}
                         </div>
@@ -97,7 +97,7 @@
                 <caption>方法参数</caption>
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="height: 36px;">
                         <div class="form-group-sm" id="rpcMethodParamView" style="word-wrap: break-word">
                             {{methodParam}}
                         </div>
