@@ -20,5 +20,5 @@ public class WebSettingParam {
     public static String EXCEPTION_URL = "http://api.317hu.com/rest/httpMock/exception/";
 
     @AppSwitch(type = "string", desc = "查询应用接口列表文档信息")
-    public static String INTERFACE_URL = "http://api.317hu.com/rest/httpMock/";
+    public static String INTERFACE_URL = "http://api.317hu.com/rest/httpMock/interface/";
 }
