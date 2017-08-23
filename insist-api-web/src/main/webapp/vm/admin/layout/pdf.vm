@@ -119,18 +119,17 @@
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header" style="position: fixed;width: 100%;color: #009688;">
-        <div style="padding-left: 30px;padding-top: 10px;"><h2 class="h4" style="font-size: 30px;">$!{appDO.appName}-API接口说明文档</h2></div>
+        <div style="padding-left: 30px;padding-top: 10px;"><h2 class="h4" style="font-size: 30px;">$!{appDO.appName}
+            -API接口说明文档</h2></div>
     </div>
     <div class="layui-side" style="width:300px;">
         <div class="layui-side-scroll" style="width: 300px; height: 100%;overflow-y: auto;">
             <div id="treeview12"></div>
         </div>
     </div>
-    <div class="layui-body" style="left: 300px; padding-left: 300px; position: static; height: 100%">
+    <div class="layui-body" style="left: 0px; padding-left: 300px; position: relative; height: 100%">
         <!-- 内容主体区域 -->
-        <div class="container">
-            #parse("$screen_placeholder")
-        </div>
+        #parse("$screen_placeholder")
     </div>
 </div>
 </body>
