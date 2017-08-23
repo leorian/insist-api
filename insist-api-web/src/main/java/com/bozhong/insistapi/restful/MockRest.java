@@ -1,12 +1,15 @@
 package com.bozhong.insistapi.restful;
 
+import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.ResultMessageBuilder;
+import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.common.InsistApiConstants;
 import com.bozhong.insistapi.common.InsistApiErrorEnum;
-import com.bozhong.insistapi.entity.InterfaceHttpEntity;
-import com.bozhong.insistapi.entity.InterfaceResultEntity;
+import com.bozhong.insistapi.domain.AppInterfaceInfoDomain;
+import com.bozhong.insistapi.entity.*;
 import com.bozhong.insistapi.enums.ExampleTypeEnum;
 import com.bozhong.insistapi.service.MongoService;
+import com.bozhong.insistapi.task.DocHttpUtil;
 import com.sun.jersey.spi.resource.Singleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +17,11 @@ import org.springframework.util.CollectionUtils;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by xiezg@317hu.com on 2017/8/2 0002.
@@ -167,5 +174,82 @@ public class MockRest {
 
         //没有正常的返回示例，默认返回第一条
         return interfaceResultEntities.get(0).getExampleContent();
+    }
+
+    /**
+     * 根据应用ID查询应用下所有接口文档信息
+     *
+     * @param request
+     * @param uriInfo
+     * @param httpHeaders
+     * @param appId
+     * @return
+     */
+    @Path("interface/{appId}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String mockGETNormal(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders
+            , @PathParam("appId") String appId) {
+        if (StringUtil.isBlank(appId)) {
+            return ResultMessageBuilder.build(false, InsistApiErrorEnum.E10004.getError(),
+                    InsistApiErrorEnum.E10004.getMsg()).toJSONString();
+        }
+        AppInterfaceInfoDomain appInterfaceInfoDomain = null;
+        try {
+            List<AppDO> appDOList = DocHttpUtil.getAllAppDOList();
+            if (!CollectionUtils.isEmpty(appDOList)) {
+                for (AppDO appDO : appDOList) {
+                    if (appId.equals(appDO.getAppId())) {
+                        appInterfaceInfoDomain = new AppInterfaceInfoDomain();
+                        appInterfaceInfoDomain.setAppId(appDO.getAppId());
+                        appInterfaceInfoDomain.setAppName(appDO.getAppName());
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResultMessageBuilder.build(false, InsistApiErrorEnum.E10003.getError(),
+                    InsistApiErrorEnum.E10003.getMsg()).toJSONString();
+        }
+
+        if (appInterfaceInfoDomain == null) {
+            return ResultMessageBuilder.build(false, InsistApiErrorEnum.E10005.getError(),
+                    InsistApiErrorEnum.E10005.getMsg()).toJSONString();
+        }
+
+        List<InterfaceCategoryEntity> interfaceCategoryEntities = mongoService.findListByInterfaceAppId(appId, InterfaceCategoryEntity.class);
+        if (CollectionUtils.isEmpty(interfaceCategoryEntities)) {
+            return ResultMessageBuilder.build(false, InsistApiErrorEnum.E10006.getError(),
+                    InsistApiErrorEnum.E10006.getMsg()).toJSONString();
+        }
+
+        List<InterfaceHttpEntity> interfaceHttpEntities = mongoService.getListByAppId(appId, InterfaceHttpEntity.class);
+        List<InterfaceRpcEntity> interfaceRpcEntities = mongoService.getListByAppId(appId, InterfaceRpcEntity.class);
+        Map<String, List<InterfaceHttpEntity>> httpMap = new HashMap<>();
+        Map<String, List<InterfaceRpcEntity>> rpcMap = new HashMap<>();
+        if (!CollectionUtils.isEmpty(interfaceHttpEntities)) {
+            for (InterfaceHttpEntity interfaceHttpEntity : interfaceHttpEntities) {
+                if (httpMap.get(interfaceHttpEntity.getCategory()) == null) {
+                    httpMap.put(interfaceHttpEntity.getCategory(), new ArrayList<InterfaceHttpEntity>());
+                }
+                httpMap.get(interfaceHttpEntity.getCategory()).add(interfaceHttpEntity);
+            }
+        }
+
+        if (!CollectionUtils.isEmpty(interfaceRpcEntities)) {
+            for (InterfaceRpcEntity interfaceRpcEntity : interfaceRpcEntities) {
+                if (rpcMap.get(interfaceRpcEntity.getCategory()) == null) {
+                    rpcMap.put(interfaceRpcEntity.getCategory(), new ArrayList<InterfaceRpcEntity>());
+                }
+                rpcMap.get(interfaceRpcEntity.getCategory()).add(interfaceRpcEntity);
+            }
+        }
+
+        for (InterfaceCategoryEntity interfaceCategoryEntity : interfaceCategoryEntities) {
+            interfaceCategoryEntity.setInterfaceHttpEntities(httpMap.get(interfaceCategoryEntity.getInterfaceCategoryId()));
+            interfaceCategoryEntity.setInterfaceRpcEntities(rpcMap.get(interfaceCategoryEntity.getInterfaceCategoryId()));
+        }
+        return JSON.toJSONString(interfaceCategoryEntities);
     }
 }

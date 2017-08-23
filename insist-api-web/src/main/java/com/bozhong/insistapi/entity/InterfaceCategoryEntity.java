@@ -2,6 +2,8 @@ package com.bozhong.insistapi.entity;
 
 import com.alibaba.fastjson.JSON;
 
+import java.util.List;
+
 /**
  * Created by xiezg@317hu.com on 2017/8/14 0014.
  */
@@ -31,6 +33,17 @@ public class InterfaceCategoryEntity extends BaseEntity {
      * 类别分类中接口数量
      */
     private Integer interfaceCount;
+
+    /**
+     * 该分类下HTTP接口列表
+     */
+    private List<InterfaceHttpEntity> interfaceHttpEntities;
+
+    /**
+     * 改分类下RPC接口列表
+     */
+    private List<InterfaceRpcEntity> interfaceRpcEntities;
+
 
     public String getInterfaceAppId() {
         return interfaceAppId;
@@ -82,6 +95,22 @@ public class InterfaceCategoryEntity extends BaseEntity {
         }
 
         this.interfaceCount = interfaceCount + interfaceCount2;
+    }
+
+    public List<InterfaceHttpEntity> getInterfaceHttpEntities() {
+        return interfaceHttpEntities;
+    }
+
+    public void setInterfaceHttpEntities(List<InterfaceHttpEntity> interfaceHttpEntities) {
+        this.interfaceHttpEntities = interfaceHttpEntities;
+    }
+
+    public List<InterfaceRpcEntity> getInterfaceRpcEntities() {
+        return interfaceRpcEntities;
+    }
+
+    public void setInterfaceRpcEntities(List<InterfaceRpcEntity> interfaceRpcEntities) {
+        this.interfaceRpcEntities = interfaceRpcEntities;
     }
 
     @Override

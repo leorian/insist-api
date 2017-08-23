@@ -12,7 +12,11 @@ public enum InsistApiErrorEnum {
             "未找到接口定义信息，请联系相关后台开发！"),
     E10002("E10002", "Interface Definition Information Has Found, But Not Find Return Example Data, " +
             "Please Call Relation Background Developer!",
-            "接口定义信息已找到，但是未找到关联的返回示例数据, 请联系相关后台开发！");
+            "接口定义信息已找到，但是未找到关联的返回示例数据, 请联系相关后台开发！"),
+    E10003("E10003", "Search All App Information Error!", "查询全部应用信息出错!"),
+    E10004("E10004", "AppId Can't Be Empty", "应用ID不能为空！"),
+    E10005("E10005", "Can't Found Relation App", "未找到关联应用！"),
+    E10006("E10006", "Can't Found App Interface Category，Interface Must Be Inner Interface Category！", "未找到应用接口类别，接口必须挂载在接口类别下！");
 
 
     private String error;
