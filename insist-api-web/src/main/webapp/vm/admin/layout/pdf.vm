@@ -63,6 +63,9 @@
             padding-top: 30px;
             padding-bottom: 20px
         }
+        h3.layui-code-h3{
+            display: none;
+        }
     </style>
     <script>
         //加载HTTP预览
@@ -71,6 +74,10 @@
                 var httpArray = new Array();
                 httpArray.push(data);
                 $("#interfaceViewPanel").handlebars($("#interfaceHttpViewTemplate"), httpArray);
+                layui.use('code', function(){
+
+                    layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
+                });
             }, "json");
 
         }
@@ -82,6 +89,10 @@
                 httpArray.push(data);
                 $("#interfaceViewPanel").handlebars($("#interfaceRpcViewTemplate"), httpArray);
             }, "json");
+            layui.use('code', function(){
+
+                layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
+            });
         }
         $(function () {
             var $tree =
@@ -121,6 +132,11 @@
 //                    title: 'NotePad++的风格'
 //                    ,skin: 'notepad' //如果要默认风格，不用设定该key。
 //                });
+            });
+
+            layui.use('code', function(){
+
+                layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
             });
         });
     </script>
