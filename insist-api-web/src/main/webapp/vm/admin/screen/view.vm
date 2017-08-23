@@ -27,11 +27,11 @@
     <div id="httpContentPanel">
         <div class="row" style="margin-top: 5px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>接口地址</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none; height: 36px;">
                             <span style="word-wrap: break-word">{{address}}</span>
                         </td>
                     </tr>
@@ -41,11 +41,11 @@
         </div>
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>接口描述</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none;height: 36px;">
                             <span style="word-wrap: break-word">{{description}}</span>
                         </td>
                     </tr>
@@ -55,11 +55,11 @@
         </div>
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>数据格式</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none; height: 36px;">
                             <span>{{transformat}}</span>
                         </td>
                     </tr>
@@ -69,11 +69,11 @@
         </div>
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>请求方式</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none; height: 36px;">
                             <span>{{protocol}} + {{method}}</span>
                         </td>
                     </tr>
@@ -388,11 +388,11 @@
     <div id="rpcContentPanel">
         <div class="row" style="margin-top: 5px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>类全路径名称</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none;height: 36px;">
                             <span style="word-wrap: break-word">{{className}}</span>
                         </td>
                     </tr>
@@ -402,11 +402,11 @@
         </div>
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>方法名称</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none;height: 36px;">
                             <span style="word-wrap: break-word">{{methodName}}</span>
                         </td>
                     </tr>
@@ -416,13 +416,13 @@
         </div>
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption>
                         <b>返回值类型</b>
                     </caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none;height: 36px;">
                             <span style="word-wrap: break-word">{{returnType}}</span>
                         </td>
                     </tr>
@@ -432,11 +432,11 @@
         </div>
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>方法参数</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none;height: 36px;">
                             <span style="word-wrap: break-word">{{methodParam}}</span>
                         </td>
                     </tr>
@@ -446,11 +446,11 @@
         </div>
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
-                <table class="table table-bordered" style="table-layout: fixed">
+                <table class="table" style="table-layout: fixed">
                     <caption><b>功能描述</b></caption>
                     <tbody>
-                    <tr>
-                        <td>
+                    <tr style="border-left: solid 5px lightseagreen; background-color: lavender">
+                        <td style="border: none;height: 36px;">
                             <span style="word-wrap: break-word">{{functionDescribe}}</span>
                         </td>
                     </tr>
