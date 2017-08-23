@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.ResultMessageBuilder;
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.domain.InterfaceRpcDomain;
+import com.bozhong.insistapi.entity.InterfaceParamEntity;
+import com.bozhong.insistapi.entity.InterfaceParamResponseEntity;
 import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.service.MongoService;
 import com.sun.jersey.spi.resource.Singleton;
@@ -21,6 +23,7 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
@@ -133,8 +136,16 @@ public class InterfaceRpcRest {
         interfaceRpcEntity.setId(interfaceId);
         interfaceRpcEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceRpcEntity.getId()));
+        if (interfaceRpcEntity.getInterfaceParamEntities() == null) {
+            interfaceRpcEntity.setInterfaceParamEntities(new ArrayList<InterfaceParamEntity>());
+        }
+
         interfaceRpcEntity.setInterfaceParamResponseEntities(httpDomain.
                 buildInterfaceParamResponseEntities(interfaceRpcEntity.getId()));
+        if (interfaceRpcEntity.getInterfaceParamResponseEntities() == null) {
+            interfaceRpcEntity.setInterfaceParamResponseEntities(new ArrayList<InterfaceParamResponseEntity>());
+        }
+
         interfaceRpcEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceRpcEntity.getId()));
 

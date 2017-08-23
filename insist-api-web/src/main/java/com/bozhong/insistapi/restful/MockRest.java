@@ -224,12 +224,14 @@ public class MockRest {
                     InsistApiErrorEnum.E10006.getMsg()).toJSONString();
         }
 
+        HttpAddressEntity httpAddressEntity = mongoService.findOneByAppId(appId, HttpAddressEntity.class);
         List<InterfaceHttpEntity> interfaceHttpEntities = mongoService.getListByAppId(appId, InterfaceHttpEntity.class);
         List<InterfaceRpcEntity> interfaceRpcEntities = mongoService.getListByAppId(appId, InterfaceRpcEntity.class);
         Map<String, List<InterfaceHttpEntity>> httpMap = new HashMap<>();
         Map<String, List<InterfaceRpcEntity>> rpcMap = new HashMap<>();
         if (!CollectionUtils.isEmpty(interfaceHttpEntities)) {
             for (InterfaceHttpEntity interfaceHttpEntity : interfaceHttpEntities) {
+                InterfaceHttpRest.addressTranslate(interfaceHttpEntity, httpAddressEntity);
                 if (httpMap.get(interfaceHttpEntity.getCategory()) == null) {
                     httpMap.put(interfaceHttpEntity.getCategory(), new ArrayList<InterfaceHttpEntity>());
                 }

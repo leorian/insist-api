@@ -5,8 +5,7 @@ import com.bozhong.common.util.ResultMessageBuilder;
 import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.domain.HttpAddressDomain;
 import com.bozhong.insistapi.domain.InterfaceHttpDomain;
-import com.bozhong.insistapi.entity.HttpAddressEntity;
-import com.bozhong.insistapi.entity.InterfaceHttpEntity;
+import com.bozhong.insistapi.entity.*;
 import com.bozhong.insistapi.service.MongoService;
 import com.sun.jersey.spi.resource.Singleton;
 import com.yx.eweb.main.EWebRequestDTO;
@@ -24,6 +23,7 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -192,12 +192,24 @@ public class InterfaceHttpRest {
         //请求头部
         interfaceHttpEntity.setInterfaceParamHeaderEntities(httpDomain.
                 buildInterfaceParamHeaderEntities(interfaceHttpEntity.getId()));
+        if (interfaceHttpEntity.getInterfaceParamHeaderEntities() == null) {
+            interfaceHttpEntity.setInterfaceParamHeaderEntities(new ArrayList<InterfaceParamHeaderEntity>());
+        }
+
         //请求参数
         interfaceHttpEntity.setInterfaceParamEntities(httpDomain.
                 buildInterfaceParamEntities(interfaceHttpEntity.getId()));
+        if (interfaceHttpEntity.getInterfaceParamEntities() == null) {
+            interfaceHttpEntity.setInterfaceParamEntities(new ArrayList<InterfaceParamEntity>());
+        }
+
         //响应参数
         interfaceHttpEntity.setInterfaceParamResponseEntities(httpDomain.
                 buildInterfaceParamResponseEntities(interfaceHttpEntity.getId()));
+        if (interfaceHttpEntity.getInterfaceParamResponseEntities() == null) {
+            interfaceHttpEntity.setInterfaceParamResponseEntities(new ArrayList<InterfaceParamResponseEntity>());
+        }
+
         //返回示例和异常示例
         interfaceHttpEntity.setInterfaceResultEntities(httpDomain.
                 buildInterfaceResultEntities(interfaceHttpEntity.getId()));
@@ -221,7 +233,7 @@ public class InterfaceHttpRest {
      *
      * @param interfaceHttpEntity
      */
-    private void addressTranslate(InterfaceHttpEntity interfaceHttpEntity, HttpAddressEntity httpAddressEntity) {
+    public static void addressTranslate(InterfaceHttpEntity interfaceHttpEntity, HttpAddressEntity httpAddressEntity) {
         if (interfaceHttpEntity != null && httpAddressEntity != null) {
 
             //mock地址
