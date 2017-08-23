@@ -167,9 +167,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
-                        <pre>{{exampleDetailHeader}}</pre>
+                        <pre class="layui-code">{{exampleDetailHeader}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetailHeader}}</pre>
+                        <pre class="layui-code">{{defaultValueDetailHeader}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamHeaderEntities}}
@@ -245,9 +245,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="8">
-                        <pre>{{exampleDetail}}</pre>
+                        <pre class="layui-code">{{exampleDetail}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetail}}</pre>
+                        <pre class="layui-code">{{defaultValueDetail}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamEntities}}
@@ -311,9 +311,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
-                        <pre>{{exampleDetailResponse}}</pre>
+                        <pre class="layui-code">{{exampleDetailResponse}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetailResponse}}</pre>
+                        <pre class="layui-code">{{defaultValueDetailResponse}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamResponseEntities}}
@@ -336,8 +336,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "NORMAL" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
@@ -357,8 +357,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "EXCEPTION" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
@@ -521,9 +521,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="8">
-                        <pre>{{exampleDetail}}</pre>
+                        <pre class="layui-code">{{exampleDetail}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetail}}</pre>
+                        <pre class="layui-code">{{defaultValueDetail}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamEntities}}
@@ -587,9 +587,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
-                        <pre>{{exampleDetailResponse}}</pre>
+                        <pre class="layui-code">{{exampleDetailResponse}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetailResponse}}</pre>
+                        <pre class="layui-code">{{defaultValueDetailResponse}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamResponseEntities}}
@@ -612,8 +612,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "NORMAL" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
@@ -635,8 +635,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "EXCEPTION" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
@@ -676,6 +676,10 @@
             var httpArray = new Array();
             httpArray.push(data);
             $("#interfaceViewPanel").handlebars($("#interfaceHttpViewTemplate"), httpArray);
+            layui.use('code', function(){
+
+                layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
+            });
         }, "json");
 
     }
@@ -686,6 +690,10 @@
             var httpArray = new Array();
             httpArray.push(data);
             $("#interfaceViewPanel").handlebars($("#interfaceRpcViewTemplate"), httpArray);
+            layui.use('code', function(){
+
+                layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
+            });
         }, "json");
     }
     $(function () {
@@ -715,6 +723,11 @@
             title: "回到顶部",
             titleAsText: true,
             containerColor: "#08c",
+        });
+
+        layui.use('code', function(){
+
+            layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
         });
     });
 </script>
