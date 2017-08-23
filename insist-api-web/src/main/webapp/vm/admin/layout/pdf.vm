@@ -113,6 +113,15 @@
                 titleAsText: true,
                 containerColor: "#08c",
             });
+
+            //JavaScript代码区域
+            layui.use('element', function(){
+                var element = layui.element;
+//                layui.code({
+//                    title: 'NotePad++的风格'
+//                    ,skin: 'notepad' //如果要默认风格，不用设定该key。
+//                });
+            });
         });
     </script>
 </head>
@@ -127,7 +136,7 @@
             <div id="treeview12"></div>
         </div>
     </div>
-    <div class="layui-body" style="left: 0px; padding-left: 300px; position: relative; height: 100%">
+    <div class="layui-body" style="left: 0px; padding-left: 300px; position: relative; height: 100%;z-index: 1">
         <!-- 内容主体区域 -->
         #parse("$screen_placeholder")
     </div>
