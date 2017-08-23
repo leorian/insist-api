@@ -21,14 +21,14 @@
     <div id="httpNav{{addOne @index}}"></div>
     <div class="row">
         <div id="page_title" class="col-sm-12">
-            <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
+            <h3 class="h3" style="display:inline;word-wrap: break-word">{{name}}</h3>
         </div>
     </div>
     <div id="httpContentPanel">
         <div class="row" style="margin-top: 5px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>接口地址</caption>
+                    <caption><b>接口地址</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -42,7 +42,7 @@
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>接口描述</caption>
+                    <caption><b>接口描述</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -56,7 +56,7 @@
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>数据格式</caption>
+                    <caption><b>数据格式</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -70,7 +70,7 @@
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>请求方式</caption>
+                    <caption><b>请求方式</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -84,7 +84,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed;">
-                    <caption>在线访问地址</caption>
+                    <caption><b>在线访问地址</b></caption>
                     <thead>
                     <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th width="20%">应用环境</th>
@@ -119,7 +119,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>请求头部</caption>
+                    <caption><b>请求头部</b></caption>
                     <thead>
                     <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
@@ -185,7 +185,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>请求参数</caption>
+                    <caption><b>请求参数</b></caption>
                     <thead>
                     <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
@@ -263,7 +263,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>响应参数</caption>
+                    <caption><b>响应参数</b></caption>
                     <thead>
                     <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
@@ -329,7 +329,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
-                    <caption>返回示例及注意事项</caption>
+                    <caption><b>返回示例及注意事项</b></caption>
                     <tbody>
                     <tr>
                         <td style="border-top: none;">
@@ -350,7 +350,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
-                    <caption>异常示例及注意事项</caption>
+                    <caption><b>异常示例及注意事项</b></caption>
                     <tbody>
                     <tr>
                         <td style="border-top: none">
@@ -382,14 +382,14 @@
     <div id="rpcNav{{addOne @index}}"></div>
     <div class="row">
         <div id="page_title" class="col-sm-12">
-            <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
+            <h3 class="h3" style="display:inline;word-wrap: break-word">{{name}}</h3>
         </div>
     </div>
     <div id="rpcContentPanel">
         <div class="row" style="margin-top: 5px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>类全路径名称</caption>
+                    <caption><b>类全路径名称</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -403,7 +403,7 @@
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>方法名称</caption>
+                    <caption><b>方法名称</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -418,7 +418,7 @@
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
                     <caption>
-                        返回值类型
+                        <b>返回值类型</b>
                     </caption>
                     <tbody>
                     <tr>
@@ -433,7 +433,7 @@
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>方法参数</caption>
+                    <caption><b>方法参数</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -447,7 +447,7 @@
         <div class="row" style="margin-top: 3px;">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>功能描述</caption>
+                    <caption><b>功能描述</b></caption>
                     <tbody>
                     <tr>
                         <td>
@@ -461,7 +461,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>请求参数</caption>
+                    <caption><b>请求参数</b></caption>
                     <thead>
                     <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
@@ -539,7 +539,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table table-bordered" style="table-layout: fixed">
-                    <caption>响应参数</caption>
+                    <caption><b>响应参数</b></caption>
                     <thead>
                     <tr style="background-color: rgb(0, 136, 204);color: rgb(255, 255, 255);">
                         <th>名称</th>
@@ -605,7 +605,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <table class="table" style="table-layout: fixed">
-                    <caption>返回示例及注意事项</caption>
+                    <caption><b>返回示例及注意事项</b></caption>
                     <tbody>
                     <tr>
                         <td style="border-top: none">
@@ -627,7 +627,7 @@
             <div class="col-sm-12">
                 <table class="table" style="border-top: none">
                     <caption>
-                        异常示例及注意事项
+                        <b>异常示例及注意事项</b>
                     </caption>
                     <tbody>
                     <tr>
