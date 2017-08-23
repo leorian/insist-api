@@ -11,7 +11,7 @@
     <br/>
     <div class="row">
         <div id="page_title" class="col-sm-12">
-            <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
+            <h3 class="h3" style="display:inline;word-wrap: break-word">{{name}}</h3>
         </div>
     </div>
     <div id="httpContentPanel">
@@ -157,9 +157,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
-                        <pre>{{exampleDetailHeader}}</pre>
+                        <pre class="layui-code">{{exampleDetailHeader}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetailHeader}}</pre>
+                        <pre class="layui-code">{{defaultValueDetailHeader}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamHeaderEntities}}
@@ -235,9 +235,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="8">
-                        <pre>{{exampleDetail}}</pre>
+                        <pre class="layui-code">{{exampleDetail}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetail}}</pre>
+                        <pre class="layui-code">{{defaultValueDetail}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamEntities}}
@@ -301,9 +301,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
-                        <pre>{{exampleDetailResponse}}</pre>
+                        <pre class="layui-code">{{exampleDetailResponse}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetailResponse}}</pre>
+                        <pre class="layui-code">{{defaultValueDetailResponse}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamResponseEntities}}
@@ -326,8 +326,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "NORMAL" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code" >{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
@@ -347,8 +347,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "EXCEPTION" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
@@ -376,7 +376,7 @@
     <br/>
     <div class="row">
         <div id="page_title" class="col-sm-12">
-            <h3 style="display:inline;word-wrap: break-word">{{name}}</h3>
+            <h3 class="h3" style="display:inline;word-wrap: break-word">{{name}}</h3>
         </div>
     </div>
     <div id="rpcContentPanel">
@@ -515,9 +515,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="8">
-                        <pre>{{exampleDetail}}</pre>
+                        <pre class="layui-code">{{exampleDetail}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetail}}</pre>
+                        <pre class="layui-code">{{defaultValueDetail}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamEntities}}
@@ -581,9 +581,9 @@
                     {{/compareParamType}}
                     {{/compareParamType}} >
                     <td colspan="5">
-                        <pre>{{exampleDetailResponse}}</pre>
+                        <pre class="layui-code">{{exampleDetailResponse}}</pre>
                         <br/>
-                        <pre>{{defaultValueDetailResponse}}</pre>
+                        <pre class="layui-code">{{defaultValueDetailResponse}}</pre>
                     </td>
                     </tr>
                     {{/interfaceParamResponseEntities}}
@@ -606,8 +606,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "NORMAL" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
@@ -629,8 +629,8 @@
                             {{# if interfaceResultEntities}}
                             {{#interfaceResultEntities}}
                             {{#compareExampleType exampleType "EXCEPTION" }}
-                            <pre>{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
-                            <pre>{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
+                            <pre class="layui-code">{{# if exampleContent}}{{exampleContent}}{{else}}暂无返回示例！{{/if}}</pre>
+                            <pre class="layui-code">{{# if attentionMatters}}{{attentionMatters}}{{else}}暂无注意事项！{{/if}}</pre>
                             {{/compareExampleType}}
                             {{/interfaceResultEntities}}
                             {{/if}}
