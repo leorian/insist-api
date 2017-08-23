@@ -15,6 +15,9 @@
 
     <link rel="stylesheet" href="${ctxPath}/webFrame/bootstrap-treeview/src/css/bootstrap-treeview.css">
 
+    <link rel="stylesheet" href="http://res.layui.com/layui/dist/css/layui.css?t=1503377030666"/>
+    <link rel="stylesheet" href="http://res.layui.com/css/global.css?t=1503377030666" />
+
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="${ctxPath}/webFrame/bootstrap-3.3.5/jquery-1.11.3.min.js"></script>
 
@@ -32,6 +35,9 @@
     <script src="${ctxPath}/webFrame/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
 
     <script src="${ctxPath}/webFrame/jquery.goup.js"></script>
+
+    <script src="http://res.layui.com/layui/src/layui.js?t=1503377030666"></script>
+
     <style>
         html, body {
             height: 100%;
