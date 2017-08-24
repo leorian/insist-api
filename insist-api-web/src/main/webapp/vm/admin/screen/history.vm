@@ -121,5 +121,13 @@
 
             layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
         });
+
+        $("#operationLoggerForm").delegate(".btn-success","click", function () {
+            $("#jqGrid").jqGrid('setGridParam', {
+                postData: {'appIdInput': $("#appIdInput").val()
+                    , "loggerContentInput": $("#loggerContentInput").val()}, //发送数据
+                page: 1
+            }).trigger("reloadGrid"); //重新载入
+        });
     });
 </script>
