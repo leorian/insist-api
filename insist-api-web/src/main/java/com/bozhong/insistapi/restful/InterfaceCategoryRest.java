@@ -130,7 +130,7 @@ public class InterfaceCategoryRest {
         try {
             InterfaceCategoryEntity interfaceCategoryEntity = mongoService.findOneByInterfaceCategoryId(interfaceCategoryId,
                     InterfaceCategoryEntity.class);
-            //记录接口类别新增操作日志
+            //记录接口类别删除操作日志
             InsistApiOperationEntity operationEntity = new InsistApiOperationEntity();
             operationEntity.buildOperationEntity(interfaceCategoryEntity.getInterfaceAppId(),
                     getAppName(interfaceCategoryEntity.getInterfaceAppId()), OperationType.DELETE.name(),
