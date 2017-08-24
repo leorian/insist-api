@@ -9,3 +9,66 @@
                 class="glyphicon glyphicon-home" style="color: rgb(212, 106, 64);"></span></a></div>
     </ol>
 </div>
+<div class="col-md-12">
+    <div style="margin:20px">
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.jgrid.defaults.width = $("#jqGrid").parent().width();
+        $("#jqGrid").jqGrid({
+            url: '${ctxPath}/rest/logger/loggerPager',
+            mtype: "POST",
+            styleUI: 'Bootstrap',
+            datatype: "jsonp",
+            colModel: [
+                {
+                    label: '应用ID', name: 'appId', sortable: false
+                }
+                ,
+                {
+                    label: '应用名称', name: 'appName', sortable: false
+                }
+                ,
+                {
+                    label: '操作类型', name: 'operationType', sortable: false
+                }
+                ,
+                {
+                    label: '操作类别', name: 'operationCategory', sortable: false
+                }
+                ,
+                {
+                    label: '操作时间', name: 'operationTime', sortable: false
+                }
+                ,
+                {
+                    label: '操作人', name: 'operator', sortable: false
+                },
+                {
+                    label: '操作',
+                    name: 'uuid',
+                    sortable: false,
+                    formatter: function (cellvalue, options, rowObject) {
+                        return "<button type='button' data-uuid='" + cellvalue + "' class='btn btn-info btn-xs btn-detail' >详情</button>";;
+                    }
+                }
+            ],
+            viewrecords: true,
+            height: "auto",
+            rowNum: 20,
+            rownumbers: true,
+            autowidth: true,
+            shrinkToFit: true,
+            pager: "#jqGridPager"
+        });
+
+        $("#jqGrid").closest(".ui-jqgrid-bdiv").css({'overflow-x': 'hidden'});
+
+        $(window).resize(function () {          //当浏览器大小变化时
+            $("#jqGrid").setGridWidth($("ol.breadcrumb").width());
+        });
+    });
+</script>

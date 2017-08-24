@@ -96,7 +96,7 @@ public class MongoDaoImpl implements MongoDao {
     @Override
     public <T> JqPage<T> getJqPage(JqPage<T> jqPage, Class<T> tClass) {
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
-        FindIterable<Document> findIterable = mongoCollection.find().sort(descending("createTimeStamp"))
+        FindIterable<Document> findIterable = mongoCollection.find().sort(descending("createDateTime"))
                 .skip(jqPage.getFromIndex()).limit(jqPage.getPageSize());
         Iterator<Document> iterator = findIterable.iterator();
         List<T> rows = new ArrayList<>(jqPage.getPageSize());

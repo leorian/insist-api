@@ -7,6 +7,7 @@ import com.yx.eweb.main.EWebServletContext;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by xiezg@317hu.com on 2017/8/24 0024.
@@ -14,6 +15,10 @@ import java.util.Date;
 public class InsistApiOperationEntity extends BaseEntity {
 
 
+    /**
+     * UUID
+     */
+    private String uuid = UUID.randomUUID().toString();
 
     /**
      * 应用ID
@@ -104,6 +109,14 @@ public class InsistApiOperationEntity extends BaseEntity {
 
     public void setOperationContent(String operationContent) {
         this.operationContent = operationContent;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     @Override
