@@ -48,6 +48,9 @@
         h3.layui-code-h3{
             display: none;
         }
+        .footer{
+            padding: 0 0;
+        }
     </style>
 </head>
 <body style="height: 100%">
