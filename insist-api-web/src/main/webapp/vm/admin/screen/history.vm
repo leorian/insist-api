@@ -22,7 +22,7 @@
                 </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <label class="control-label" for="loggerContentInput">
-                    操作日志记录全局检索：
+                    操作日志记录全文检索：
                 </label>
                 <input type="text" class="form-control" name="loggerContentInput" id="loggerContentInput"/>
                 &nbsp;&nbsp;&nbsp;&nbsp;
