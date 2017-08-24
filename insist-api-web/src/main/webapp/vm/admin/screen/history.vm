@@ -15,6 +15,20 @@
         <div id="jqGridPager"></div>
     </div>
 </div>
+<div class="col-sm-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                操作记录详情
+            </h3>
+        </div>
+        <div class="panel-body">
+            <pre id="loggerPre">
+
+            </pre>
+        </div>
+    </div>
+</div>
 <script>
     $(function () {
         $.jgrid.defaults.width = $("#jqGrid").parent().width();
@@ -52,7 +66,8 @@
                     name: 'uuid',
                     sortable: false,
                     formatter: function (cellvalue, options, rowObject) {
-                        return "<button type='button' data-uuid='" + cellvalue + "' class='btn btn-info btn-xs btn-detail' >详情</button>";;
+                        return "<button type='button' data-uuid='" + cellvalue + "' class='btn btn-info btn-xs btn-detail' >详情</button>";
+                        ;
                     }
                 }
             ],
@@ -69,6 +84,15 @@
 
         $(window).resize(function () {          //当浏览器大小变化时
             $("#jqGrid").setGridWidth($("ol.breadcrumb").width());
+        });
+
+        $("#jqGrid").delegate(".btn-detail", "click", function () {
+            var loggerId = $(this).attr("data-uuid");
+            $.post("${ctxPath}/rest/logger/findOneLogger", {"loggerId": loggerId}, function (data) {
+                if (data.success) {
+                    $("#loggerPre").html(data.data.operationContent);
+                }
+            }, "json");
         });
     });
 </script>

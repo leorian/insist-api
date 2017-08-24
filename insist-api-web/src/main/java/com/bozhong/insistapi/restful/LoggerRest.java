@@ -1,5 +1,6 @@
 package com.bozhong.insistapi.restful;
 
+import com.bozhong.common.util.ResultMessageBuilder;
 import com.bozhong.config.domain.JqPage;
 import com.bozhong.insistapi.entity.InsistApiOperationEntity;
 import com.bozhong.insistapi.service.MongoService;
@@ -50,5 +51,19 @@ public class LoggerRest {
         jqPage.setPageSize(rows);
         jqPage = mongoService.getJqPage(jqPage, InsistApiOperationEntity.class);
         return callBack + "(" + gson.toJson(jqPage) + ")";
+    }
+
+    /**
+     * 查询日志
+     *
+     * @return
+     */
+    @POST
+    @Path("findOneLogger")
+    public String findOneLogger() {
+        Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
+        String loggerId = (String) param.get("loggerId");
+        InsistApiOperationEntity insistApiOperationEntity = mongoService.findOneByLoggerId(loggerId, InsistApiOperationEntity.class);
+        return ResultMessageBuilder.build(insistApiOperationEntity).toJSONString();
     }
 }
