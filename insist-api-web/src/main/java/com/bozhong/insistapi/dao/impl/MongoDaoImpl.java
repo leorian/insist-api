@@ -1,5 +1,6 @@
 package com.bozhong.insistapi.dao.impl;
 
+import com.bozhong.common.util.StringUtil;
 import com.bozhong.config.common.MongoDBConfig;
 import com.bozhong.config.domain.JqPage;
 import com.bozhong.insistapi.dao.MongoDao;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.regex;
@@ -118,6 +120,47 @@ public class MongoDaoImpl implements MongoDao {
             rows.add(gson.fromJson(document.toJson(), tClass));
         }
         jqPage.setRecords((int) mongoCollection.count());
+        jqPage.setRows(rows);
+        return jqPage;
+    }
+
+    @Override
+    public <T> JqPage<T> getJqPageByCondition(String appId, String loggerContent, JqPage<T> jqPage, Class<T> tClass) {
+        Bson bson = null;
+        if (StringUtil.isNotBlank(appId)) {
+            bson = eq("appId", appId);
+        }
+
+        if (StringUtil.isNotBlank(loggerContent)) {
+            if (bson != null) {
+                bson = and(bson, regex("operationContent", Pattern.compile(loggerContent, Pattern.CASE_INSENSITIVE)));
+            } else {
+                bson = regex("operationContent", Pattern.compile(loggerContent, Pattern.CASE_INSENSITIVE));
+            }
+        }
+
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        FindIterable<Document> findIterable = null;
+        if (bson != null) {
+            findIterable = mongoCollection.find(bson).sort(descending("createDateTime"))
+                    .skip(jqPage.getFromIndex()).limit(jqPage.getPageSize());
+        } else {
+            findIterable = mongoCollection.find().sort(descending("createDateTime"))
+                    .skip(jqPage.getFromIndex()).limit(jqPage.getPageSize());
+        }
+
+        Iterator<Document> iterator = findIterable.iterator();
+        List<T> rows = new ArrayList<>(jqPage.getPageSize());
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+        while (iterator.hasNext()) {
+            Document document = iterator.next();
+            rows.add(gson.fromJson(document.toJson(), tClass));
+        }
+        if (bson != null) {
+            jqPage.setRecords((int) mongoCollection.count(bson));
+        } else {
+            jqPage.setRecords((int) mongoCollection.count());
+        }
         jqPage.setRows(rows);
         return jqPage;
     }

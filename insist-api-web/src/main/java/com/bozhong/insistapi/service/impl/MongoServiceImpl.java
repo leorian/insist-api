@@ -59,6 +59,11 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> JqPage<T> getJqPageByCondition(String appId, String loggerContent, JqPage<T> jqPage, Class<T> tClass) {
+        return mongoDao.getJqPageByCondition(appId, loggerContent, jqPage, tClass);
+    }
+
+    @Override
     public <T> List<T> getListByAppId(String appId, Class<T> tClass) {
         return mongoDao.getListByAppId(appId, tClass);
     }

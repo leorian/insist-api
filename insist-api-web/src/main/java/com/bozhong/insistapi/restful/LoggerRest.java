@@ -42,6 +42,8 @@ public class LoggerRest {
     @Path("loggerPager")
     public String loggerPager(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
+        String appIdInput = (String) param.get("appIdInput");
+        String loggerContentInput = (String) param.get("loggerContentInput");
         String callBack = param.get("callback").toString();
         Integer page = Integer.valueOf(param.get("page").toString());
         Integer rows = Integer.valueOf(param.get("rows").toString());
@@ -49,7 +51,7 @@ public class LoggerRest {
         JqPage<InsistApiOperationEntity> jqPage = new JqPage<InsistApiOperationEntity>();
         jqPage.setPage(page);
         jqPage.setPageSize(rows);
-        jqPage = mongoService.getJqPage(jqPage, InsistApiOperationEntity.class);
+        jqPage = mongoService.getJqPageByCondition(appIdInput, loggerContentInput, jqPage, InsistApiOperationEntity.class);
         return callBack + "(" + gson.toJson(jqPage) + ")";
     }
 

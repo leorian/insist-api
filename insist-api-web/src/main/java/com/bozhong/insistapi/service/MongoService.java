@@ -80,6 +80,16 @@ public interface MongoService {
 
     /**
      * @param appId
+     * @param loggerContent
+     * @param jqPage
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> JqPage<T> getJqPageByCondition(String appId, String loggerContent, JqPage<T> jqPage, Class<T> tClass);
+
+    /**
+     * @param appId
      * @param tClass
      * @param <T>
      * @return
