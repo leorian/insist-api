@@ -25,6 +25,14 @@ public interface MongoService {
     <T> T findOneByAppId(String appId, Class<T> tClass);
 
     /**
+     * @param interfaceCategoryId
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> T findOneByInterfaceCategoryId(String interfaceCategoryId, Class<T> tClass);
+
+    /**
      * @param appId
      * @param t
      * @param <T>

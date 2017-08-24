@@ -24,6 +24,11 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> T findOneByInterfaceCategoryId(String interfaceCategoryId, Class<T> tClass) {
+        return mongoDao.findOneByInterfaceCategoryId(interfaceCategoryId, tClass);
+    }
+
+    @Override
     public <T> void updateOneByAppId(String appId, T t) {
         mongoDao.updateOneByAppId(appId, t);
     }
