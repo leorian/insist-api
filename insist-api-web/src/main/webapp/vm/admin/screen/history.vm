@@ -10,6 +10,24 @@
     </ol>
 </div>
 <div class="col-md-12">
+    <div class="container">
+        <form id="operationLoggerForm" role="form">
+            <div class="form-inline">
+                <label class="control-label" for="appIdInput">所在应用：</label>
+                <select id="appIdInput" class="form-control" name="appIdInput">
+                    <option value="">全部应用</option>
+                    #foreach($app in $!allAppList)
+                        <option value="$app.appId">$app.appName</option>
+                    #end
+                </select>
+                <label class="control-label" for="loggerContentInput">
+                    操作内容：
+                </label>
+                <input type="text" class="form-control" name="loggerContentInput" id="loggerContentInput"/>
+                <input type="button" class="btn btn-success" value="搜索" />
+            </div>
+        </form>
+    </div>
     <div style="margin:20px">
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
@@ -91,7 +109,7 @@
             $.post("${ctxPath}/rest/logger/findOneLogger", {"loggerId": loggerId}, function (data) {
                 if (data.success) {
                     $("#loggerPre").html(data.data.operationContent);
-                    layui.use('code', function(){
+                    layui.use('code', function () {
 
                         layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
                     });
@@ -99,7 +117,7 @@
             }, "json");
         });
 
-        layui.use('code', function(){
+        layui.use('code', function () {
 
             layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
         });
