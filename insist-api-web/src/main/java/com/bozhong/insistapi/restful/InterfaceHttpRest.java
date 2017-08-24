@@ -6,7 +6,10 @@ import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.domain.HttpAddressDomain;
 import com.bozhong.insistapi.domain.InterfaceHttpDomain;
 import com.bozhong.insistapi.entity.*;
+import com.bozhong.insistapi.enums.OperationCategoryEnum;
+import com.bozhong.insistapi.enums.OperationTypeEnum;
 import com.bozhong.insistapi.service.MongoService;
+import com.bozhong.insistapi.task.DocHttpUtil;
 import com.sun.jersey.spi.resource.Singleton;
 import com.yx.eweb.main.EWebRequestDTO;
 import com.yx.eweb.main.EWebServletContext;
@@ -21,12 +24,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by xiezg@317hu.com on 2017/7/21 0021.
@@ -103,6 +104,17 @@ public class InterfaceHttpRest {
                 buildInterfaceResultEntities(interfaceHttpEntity.getId()));
 
         mongoService.insertOne(interfaceHttpEntity);
+
+        try {
+            //新增HTTP接口记录操作日志
+            InsistApiOperationEntity insistApiOperationEntity = new InsistApiOperationEntity();
+            insistApiOperationEntity.buildOperationEntity(interfaceHttpEntity.getAppId(),
+                    getAppName(interfaceHttpEntity.getName()), OperationTypeEnum.ADD.name(),
+                    OperationCategoryEnum.HTTP.name(), interfaceHttpEntity);
+            mongoService.insertOne(insistApiOperationEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return ResultMessageBuilder.build().toJSONString();
     }
@@ -216,6 +228,17 @@ public class InterfaceHttpRest {
 
         mongoService.updateOneByKey(interfaceId, interfaceHttpEntity);
 
+        try {
+            //更新HTTP接口记录操作日志
+            InsistApiOperationEntity insistApiOperationEntity = new InsistApiOperationEntity();
+            insistApiOperationEntity.buildOperationEntity(interfaceHttpEntity.getAppId()
+                    , getAppName(interfaceHttpEntity.getAppId()), OperationTypeEnum.UPDATE.name(),
+                    OperationCategoryEnum.HTTP.name(), interfaceHttpEntity);
+            mongoService.insertOne(insistApiOperationEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return ResultMessageBuilder.build().toJSONString();
     }
 
@@ -224,6 +247,17 @@ public class InterfaceHttpRest {
     public String deleteInterfaceHttp(@Context Request request, @Context UriInfo uriInfo, @Context HttpHeaders httpHeaders) {
         Map<String, Object> param = ((EWebRequestDTO) EWebServletContext.getEWebContext().getParam()).getRequestParam();
         String interfaceId = (String) param.get("interfaceId");
+        try {
+            //删除HTTP接口记录操作日志
+            InterfaceHttpEntity interfaceHttpEntity = mongoService.getOneByInterfaceId(interfaceId, InterfaceHttpEntity.class);
+            InsistApiOperationEntity insistApiOperationEntity = new InsistApiOperationEntity();
+            insistApiOperationEntity.buildOperationEntity(interfaceHttpEntity.getAppId(),
+                    getAppName(interfaceHttpEntity.getAppId()), OperationTypeEnum.DELETE.name(),
+                    OperationCategoryEnum.HTTP.name(), interfaceHttpEntity);
+            mongoService.insertOne(insistApiOperationEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         mongoService.deleteOneByKey(interfaceId, InterfaceHttpEntity.class);
         return ResultMessageBuilder.build().toJSONString();
     }
@@ -274,5 +308,22 @@ public class InterfaceHttpRest {
 
 
         }
+    }
+
+    /**
+     * 获取哦应用名称
+     *
+     * @param appId
+     * @return
+     */
+    private String getAppName(String appId) throws IOException {
+        List<AppDO> appDOList = DocHttpUtil.getAllAppDOList();
+        Map<String, String> map = new HashMap<>();
+        if (!CollectionUtils.isEmpty(appDOList)) {
+            for (AppDO appDO : appDOList) {
+                map.put(appDO.getAppId(), appDO.getAppName());
+            }
+        }
+        return map.get(appId);
     }
 }

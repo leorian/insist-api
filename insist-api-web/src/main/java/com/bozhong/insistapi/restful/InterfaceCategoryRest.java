@@ -2,12 +2,12 @@ package com.bozhong.insistapi.restful;
 
 import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.ResultMessageBuilder;
-import com.bozhong.config.enums.OperationType;
 import com.bozhong.insistapi.domain.InterfaceCategoryDomain;
 import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.entity.InsistApiOperationEntity;
 import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
 import com.bozhong.insistapi.enums.OperationCategoryEnum;
+import com.bozhong.insistapi.enums.OperationTypeEnum;
 import com.bozhong.insistapi.service.MongoService;
 import com.bozhong.insistapi.task.DocHttpUtil;
 import com.sun.jersey.spi.resource.Singleton;
@@ -66,7 +66,7 @@ public class InterfaceCategoryRest {
             //记录接口类别新增操作日志
             InsistApiOperationEntity operationEntity = new InsistApiOperationEntity();
             operationEntity.buildOperationEntity(interfaceCategoryEntity.getInterfaceAppId(),
-                    getAppName(interfaceCategoryEntity.getInterfaceAppId()), OperationType.ADD.name(),
+                    getAppName(interfaceCategoryEntity.getInterfaceAppId()), OperationTypeEnum.ADD.name(),
                     OperationCategoryEnum.CATEGORY.name(), interfaceCategoryEntity);
             mongoService.insertOne(operationEntity);
         } catch (Exception e) {
@@ -104,7 +104,7 @@ public class InterfaceCategoryRest {
             //记录接口类别更新操作日志
             InsistApiOperationEntity operationEntity = new InsistApiOperationEntity();
             operationEntity.buildOperationEntity(interfaceCategoryEntity.getInterfaceAppId(),
-                    getAppName(interfaceCategoryEntity.getInterfaceAppId()), OperationType.UPDATE.name(),
+                    getAppName(interfaceCategoryEntity.getInterfaceAppId()), OperationTypeEnum.UPDATE.name(),
                     OperationCategoryEnum.CATEGORY.name(), interfaceCategoryEntity);
             mongoService.insertOne(operationEntity);
         } catch (Exception e) {
@@ -133,7 +133,7 @@ public class InterfaceCategoryRest {
             //记录接口类别删除操作日志
             InsistApiOperationEntity operationEntity = new InsistApiOperationEntity();
             operationEntity.buildOperationEntity(interfaceCategoryEntity.getInterfaceAppId(),
-                    getAppName(interfaceCategoryEntity.getInterfaceAppId()), OperationType.DELETE.name(),
+                    getAppName(interfaceCategoryEntity.getInterfaceAppId()), OperationTypeEnum.DELETE.name(),
                     OperationCategoryEnum.CATEGORY.name(), interfaceCategoryEntity);
             mongoService.insertOne(operationEntity);
         } catch (Exception e) {
