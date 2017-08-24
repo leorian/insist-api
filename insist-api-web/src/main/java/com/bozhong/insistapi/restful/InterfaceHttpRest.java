@@ -109,7 +109,7 @@ public class InterfaceHttpRest {
             //新增HTTP接口记录操作日志
             InsistApiOperationEntity insistApiOperationEntity = new InsistApiOperationEntity();
             insistApiOperationEntity.buildOperationEntity(interfaceHttpEntity.getAppId(),
-                    getAppName(interfaceHttpEntity.getName()), OperationTypeEnum.ADD.name(),
+                    getAppName(interfaceHttpEntity.getAppId()), OperationTypeEnum.ADD.name(),
                     OperationCategoryEnum.HTTP.name(), interfaceHttpEntity);
             mongoService.insertOne(insistApiOperationEntity);
         } catch (Exception e) {
