@@ -109,7 +109,7 @@ public class LoginRest {
         if (flag) {
 
             String token = MD5.sign(userName + password);
-            int expireTimeSecond = 2 * 60 * 60;
+            int expireTimeSecond = 12 * 60 * 60;
             long expireTimeMilSecond = expireTimeSecond * 1000;
             myRedisClusterForHessian.putForStr(InsistApiConstants.INSIST_CENTER_USERNAME_PREFIX + token,
                     userName, expireTimeMilSecond);

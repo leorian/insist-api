@@ -73,7 +73,7 @@
             ],
             viewrecords: true,
             height: "auto",
-            rowNum: 20,
+            rowNum: 10,
             rownumbers: true,
             autowidth: true,
             shrinkToFit: true,
