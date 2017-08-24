@@ -1,0 +1,11 @@
+<div style="height: 55px;">
+
+</div>
+<div class="col-md-12">
+    <ol class="breadcrumb">
+        <li class="active">日志管理</li>
+        <li class="active">操作记录</li>
+        <div style="display:inline;float:right"><a href="${ctxPath}/admin/empty.htm"><span
+                class="glyphicon glyphicon-home" style="color: rgb(212, 106, 64);"></span></a></div>
+    </ol>
+</div>

@@ -121,6 +121,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="panel panel-default">
+                <div id="nav-bar-96" class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a href="#nav-bar-list-96" data-parent="#nav-bar-left-list" data-toggle="collapse"
+                           aria-expanded="true" aria-controls="nav-bar-list-96"
+                           aria-controls="collapseOne">日志管理</a>
+                    </h4>
+                </div>
+                <div id="nav-bar-list-96"
+                     class="panel-collapse collapse in" role="tabpanel"
+                     aria-labelledby="nav-bar-96" aria-expanded="false">
+                    <div class="list-group">
+                        <a href="${ctxPath}/admin/history.htm" class="list-group-item"
+                            #if($menu=="History")
+                           style="background-color: #337ab7; color: white;font-weight: bolder;"
+                            #end>操作记录</a>
+                    </div>
+                </div>
+            </div>
             <br/>
             <br/>
             <br/>
