@@ -1,5 +1,7 @@
 package com.bozhong.insistapi.view.admin.module.screen;
 
+import com.alibaba.fastjson.JSON;
+import com.bozhong.common.util.StringUtil;
 import com.bozhong.insistapi.domain.Node;
 import com.bozhong.insistapi.entity.InterfaceCategoryEntity;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
@@ -25,6 +27,8 @@ public abstract class AbstractPreview implements ScreenInter {
     @Override
     public void excute(EWebContext eWebContext) {
         String appId = eWebContext.getRequest().getParameter("appId");
+        String searchContent = eWebContext.getRequest().getParameter("searchContent");
+        eWebContext.put("searchContent", searchContent);
         List<InterfaceHttpEntity> interfaceHttpEntities = mongoService.getListByAppId(appId, InterfaceHttpEntity.class);
         List<InterfaceRpcEntity> interfaceRpcEntities = mongoService.getListByAppId(appId, InterfaceRpcEntity.class);
         Map<String, List<Node>> map = new HashMap<>();
@@ -34,6 +38,11 @@ public abstract class AbstractPreview implements ScreenInter {
                 if (map.get(interfaceHttpEntity.getCategory()) == null) {
                     map.put(interfaceHttpEntity.getCategory(), new ArrayList<Node>());
                 }
+
+                if (StringUtil.isNotBlank(searchContent) && !JSON.toJSONString(interfaceHttpEntity).contains(searchContent)) {
+                    continue;
+                }
+
                 Node node = new Node();
                 node.setHref("javascript:loadHttpInterfaceContent(" + String.valueOf("\\\"" + interfaceHttpEntity.getId() + "\\\"") + ")");
                 node.setText(interfaceHttpEntity.getName());
@@ -47,6 +56,11 @@ public abstract class AbstractPreview implements ScreenInter {
                 if (map.get(interfaceRpcEntity.getCategory()) == null) {
                     map.put(interfaceRpcEntity.getCategory(), new ArrayList<Node>());
                 }
+
+                if (StringUtil.isNotBlank(searchContent) && !JSON.toJSONString(interfaceRpcEntity).contains(searchContent)) {
+                    continue;
+                }
+
                 Node node = new Node();
                 node.setHref("javascript:loadRpcInterfaceContent(" + String.valueOf("\\\"" + interfaceRpcEntity.getId() + "\\\"") + ")");
                 node.setText(interfaceRpcEntity.getName());
@@ -68,7 +82,7 @@ public abstract class AbstractPreview implements ScreenInter {
         if (!CollectionUtils.isEmpty(nodes)) {
             List<Node> nodeList = new ArrayList<>();
             for (Node node : nodes) {
-                if (!CollectionUtils.isEmpty(node.getNodes())){
+                if (!CollectionUtils.isEmpty(node.getNodes())) {
                     nodeList.add(node);
                 }
             }

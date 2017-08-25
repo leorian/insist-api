@@ -63,7 +63,8 @@
             padding-top: 30px;
             padding-bottom: 20px
         }
-        h3.layui-code-h3{
+
+        h3.layui-code-h3 {
             display: none;
         }
     </style>
@@ -74,7 +75,7 @@
                 var httpArray = new Array();
                 httpArray.push(data);
                 $("#interfaceViewPanel").handlebars($("#interfaceHttpViewTemplate"), httpArray);
-                layui.use('code', function(){
+                layui.use('code', function () {
 
                     layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
                 });
@@ -89,7 +90,7 @@
                 httpArray.push(data);
                 $("#interfaceViewPanel").handlebars($("#interfaceRpcViewTemplate"), httpArray);
             }, "json");
-            layui.use('code', function(){
+            layui.use('code', function () {
 
                 layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
             });
@@ -126,7 +127,7 @@
             });
 
             //JavaScript代码区域
-            layui.use('element', function(){
+            layui.use('element', function () {
                 var element = layui.element;
 //                layui.code({
 //                    title: 'NotePad++的风格'
@@ -134,9 +135,14 @@
 //                });
             });
 
-            layui.use('code', function(){
+            layui.use('code', function () {
 
                 layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
+            });
+
+            $("#searchContentBtn").click(function () {
+                // alert(window.location.href);
+                window.location.href = "${ctxPath}" + "/admin/pdf.htm?" + "&appId=$!{appDO.appId}&uId=$!{uId}&searchContent=" + $("#searchContentInput").val();
             });
         });
     </script>
@@ -144,8 +150,17 @@
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header" style="position: fixed;width: 100%;color: #009688;">
-        <div style="padding-left: 30px;padding-top: 10px;"><h2 class="h4" style="font-size: 30px;">$!{appDO.appName}
-            -API接口说明文档</h2></div>
+        <div style="padding-left: 30px;padding-top: 10px;">
+            <h2 class="h4" style="font-size: 30px;">$!{appDO.appName}
+                -API接口说明文档
+                <div class="pull-right" style="padding-right: 30px;">
+                    <div class="form-inline">
+                        <input type="text" id="searchContentInput" name="searchContentInput"
+                               style="width: 500px;" class="form-control" value="$!{searchContent}">
+                        <input type="button" id="searchContentBtn" class="btn btn-success" value="全文检索"></div>
+                </div>
+            </h2>
+        </div>
     </div>
     <div class="layui-side" style="width:300px;">
         <div class="layui-side-scroll" style="width: 300px; height: 100%;overflow-y: auto;">
