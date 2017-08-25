@@ -65,6 +65,15 @@ public abstract class AbstractPreview implements ScreenInter {
             }
         }
 
+        if (!CollectionUtils.isEmpty(nodes)) {
+            List<Node> nodeList = new ArrayList<>();
+            for (Node node : nodes) {
+                if (!CollectionUtils.isEmpty(node.getNodes())){
+                    nodeList.add(node);
+                }
+            }
+            nodes = nodeList;
+        }
 
         eWebContext.put("nodes", nodes);
     }
