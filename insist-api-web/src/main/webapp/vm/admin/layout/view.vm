@@ -46,13 +46,21 @@
 
     <script src="${ctxPath}/webFrame/layui/layui.js"></script>
     <style>
-        h3.layui-code-h3{
+        h3.layui-code-h3 {
             display: none;
         }
-        .footer{
+
+        .footer {
             padding: 0 0;
         }
     </style>
+    <script>
+        $(function () {
+            $("#treeview12").css("overflow", "hidden").css("position", "fixed").
+            css("overflow-y", "auto").css("margin-right","10px").css("height", $(document.body).height() -
+                    $("#header").height() - $(".footer").height()-$("ol.breadcrumb").height()-55);
+        });
+    </script>
 </head>
 <body style="height: 100%">
 <!-- 头部 -->
