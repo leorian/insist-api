@@ -152,7 +152,8 @@
                 console.log(data);
                 if (data.success) {
                     $("#httpCopyModal").modal("hide");
-                    window.location.reload();
+//                    window.location.reload();
+                    $("#interfaceCategoryUList").find("li.active").trigger("click");
                 }
             }, "json");
         });
