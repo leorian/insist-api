@@ -1,5 +1,5 @@
 #*HTTP接口新增模态框（Modal）*#
-<div class="modal fade" id="myHttpModal" tabindex="-1" role="dialog" aria-labelledby="myHttpModalLabel"
+<div class="modal fade" data-backdrop="static"	 id="myHttpModal" tabindex="-1" role="dialog" aria-labelledby="myHttpModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" style="width: 1024px">
         <div class="modal-content">
