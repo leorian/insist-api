@@ -155,6 +155,7 @@
             $("#myHttpModal").find("tbody").empty();
             $("#interfaceHttpIdInput").val("");
             document.getElementById('newInterfaceHttpForm').reset();
+            $("#myHttpModal").find("select[name='categoryInput']").val($("#interfaceCategoryUList").find("li.active").attr("data-id"));
         });
 
         //新增RPC接口
@@ -163,6 +164,7 @@
             $("#myRpcModal").find("tbody").empty();
             $("#interfaceRpcIdInput").val("");
             document.getElementById('newInterfaceRpcForm').reset();
+            $("#myRpcModal").find("select[name='categoryInput']").val($("#interfaceCategoryUList").find("li.active").attr("data-id"));
         });
 
         //新增HTTP接口
@@ -172,7 +174,8 @@
                     console.log(data);
                     if (data.success) {
                         $("#myHttpModal").modal("hide");
-                        window.location.reload();
+//                        window.location.reload();
+                        $("#interfaceCategoryUList").find("li.active").trigger("click");
                     }
                 }, "json");
             } else {
@@ -180,7 +183,8 @@
                     console.log(data);
                     if (data.success) {
                         $("#myHttpModal").modal("hide");
-                        window.location.reload();
+//                        window.location.reload();
+                        $("#interfaceCategoryUList").find("li.active").trigger("click");
                     }
                 }, "json");
             }
@@ -193,7 +197,8 @@
                     console.log(data);
                     if (data.success) {
                         $("#myRpcModal").modal("hide");
-                        window.location.reload();
+//                        window.location.reload();
+                        $("#interfaceCategoryUList").find("li.active").trigger("click");
                     }
                 }, "json");
             } else {
@@ -201,7 +206,8 @@
                     console.log(data);
                     if (data.success) {
                         $("#myRpcModal").modal("hide");
-                        window.location.reload();
+//                        window.location.reload();
+                        $("#interfaceCategoryUList").find("li.active").trigger("click");
                     }
                 }, "json");
             }
