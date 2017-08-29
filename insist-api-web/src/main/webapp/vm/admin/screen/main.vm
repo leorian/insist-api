@@ -92,10 +92,13 @@
         </tbody>
     </table>
     <br/>
-    <div class="text-left">
+    <div class="text-left form-inline">
         <button type="button" id="addRpcInterfaceBtn" class="btn btn-info" data-toggle="modal"
                 data-target="#myRpcModal">新增 RPC 接口
         </button>
+        <input type="text" class="form-control" style="width: 565px;" id="rpcSearchContentInput"
+               placeholder="接口名称/接口类名/方法名称">
+        <input type="button" class="btn btn-primary" id="rpcSearchBtn" value="搜索">
     </div>
     <br/>
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
@@ -246,7 +249,7 @@
         $("#httpSearchBtn").click(function () {
             var data = JSON.parse(window.localStorage.getItem("httpData"));
             var httpSearchContent = $("#httpSearchContentInput").val().trim();
-            if (data != null & httpSearchContent != "") {
+            if (data != null && httpSearchContent != "") {
                 var tempData = [];
                 for (var i = 0; i < data.length; i++) {
                     console.log(data[i].name)
@@ -260,6 +263,25 @@
                 $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
             }
             //console.log(data);
+        });
+
+        //RPC接口搜索
+        $("#rpcSearchBtn").click(function () {
+            var data = JSON.parse(window.localStorage.getItem("rpcData"));
+            var rpcSearchContent = $("#rpcSearchContentInput").val().trim();
+            if (data != null && rpcSearchContent != "") {
+                var tempData = [];
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i].name)
+                    if (data[i].name.indexOf(rpcSearchContent) > -1 || data[i].className.indexOf(rpcSearchContent) > -1
+                            || data[i].methodName.indexOf(rpcSearchContent) > -1) {
+                        tempData.push(data[i]);
+                    }
+                }
+                $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), tempData);
+            } else {
+                $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
+            }
         });
 
     });
