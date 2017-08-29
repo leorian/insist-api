@@ -3,10 +3,10 @@
     {{# if this}}
     {{#each this}}
     <tr>
-        <td class='text-center' title="{{name}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{name}}</td>
+        <td class='text-center' title="{{name}}" style="text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{name}}</td>
         <td class='text-center'>{{protocol}}</td>
         <td class='text-center' title="{{method}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{method}}</td>
-        <td class='text-center' title="{{address}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{address}}</td>
+        <td class='text-center' title="{{address}}" style="text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{address}}</td>
         <td class='text-center'>
             <span class="glyphicon glyphicon-edit btn-success-glyphicon" title="编辑" data-interfaceid='{{id}}'
                   data-toggle='modal' style="color: #00aaee"
