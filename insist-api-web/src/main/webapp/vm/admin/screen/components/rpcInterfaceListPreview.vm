@@ -3,6 +3,7 @@
     {{# if this}}
     {{#this}}
     <tr>
+        <td class="text-center" style="color: #00aaee">{{@index}}</td>
         <td class='text-center' title="{{name}}" style="text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{name}}</td>
         <td class='text-center' title="{{className}}" style="text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{className}}</td>
         <td class='text-center' title="{{methodName}}" style="text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{methodName}}</td>
@@ -27,7 +28,7 @@
     {{/this}}
     {{else}}
     <tr>
-        <td colspan='4' class='text-center'>暂无信息！</td>
+        <td colspan='5' class='text-center'>暂无信息！</td>
     </tr>
     {{/if}}
 </script>

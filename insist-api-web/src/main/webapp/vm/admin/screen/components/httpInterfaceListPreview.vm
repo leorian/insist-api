@@ -3,6 +3,7 @@
     {{# if this}}
     {{#each this}}
     <tr>
+        <td class="text-center" style="color: #00aaee">{{@index}}</td>
         <td class='text-center' title="{{name}}" style="text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{name}}</td>
         <td class='text-center'>{{protocol}}</td>
         <td class='text-center' title="{{method}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{method}}</td>
@@ -28,7 +29,7 @@
     {{/each}}
     {{else}}
     <tr>
-        <td colspan='5' class='text-center'>暂无信息！</td>
+        <td colspan='6' class='text-center'>暂无信息！</td>
     </tr>
     {{/if}}
 </script>

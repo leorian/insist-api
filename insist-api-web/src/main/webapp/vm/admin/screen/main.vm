@@ -76,6 +76,7 @@
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
         <thead class="bg-primary">
         <tr>
+            <th class="text-center" style="width: 45px;">序号</th>
             <th class="text-center">接口名称</th>
             <th class="text-center" width="12%">请求协议</th>
             <th class="text-center" width="12%">请求方法</th>
@@ -104,6 +105,7 @@
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
         <thead>
         <tr class="bg-primary">
+            <th class="text-center" style="width: 45px;">序号</th>
             <th class="text-center">接口名称</th>
             <th class="text-center" width="24%">接口类名</th>
             <th class="text-center">方法名称</th>
