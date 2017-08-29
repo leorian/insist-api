@@ -3,9 +3,9 @@
     {{# if this}}
     {{#this}}
     <tr>
-        <td class='text-center' style="word-wrap: break-word">{{name}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{className}}</td>
-        <td class='text-center' style="word-wrap: break-word">{{methodName}}</td>
+        <td class='text-center' title="{{name}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{name}}</td>
+        <td class='text-center' title="{{className}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{className}}</td>
+        <td class='text-center' title="{{methodName}}" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{methodName}}</td>
         <td class='text-center'>
             <span class="glyphicon glyphicon-edit btn-success-glyphicon" title="编辑" data-interfaceid='{{id}}'
                   data-toggle='modal' style="color: #00aaee"
