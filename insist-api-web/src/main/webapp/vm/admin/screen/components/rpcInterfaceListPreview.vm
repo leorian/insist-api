@@ -81,6 +81,7 @@
 
         //RPC接口列表展示
         $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {"appId": "$!{appDO.appId}"}, function (data) {
+            window.localStorage.setItem("rpcData", JSON.stringify(data));
             $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
         }, "json");
 

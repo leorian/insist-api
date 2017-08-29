@@ -122,12 +122,14 @@
                         "category": category
                     },
                     function (data) {
+                        window.localStorage.setItem("httpData", JSON.stringify(data));
                         $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
                     }, "json");
             $.post("${ctxPath}/rest/interfaceRpc/findInterfaceRpcList", {
                 "appId": "$!{appDO.appId}",
                 "category": category
             }, function (data) {
+                window.localStorage.setItem("rpcData", JSON.stringify(data));
                 $("#rpcTableTBody").handlebars($("#rpcInterfaceTemplate"), data);
             }, "json");
         });

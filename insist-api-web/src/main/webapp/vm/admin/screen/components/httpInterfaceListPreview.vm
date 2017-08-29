@@ -80,6 +80,7 @@
 
         //HTTP接口列表展示
         $.post("${ctxPath}/rest/interfaceHttp/findInterfaceHttpList", {"appId": "$!{appDO.appId}"}, function (data) {
+            window.localStorage.setItem("httpData", JSON.stringify(data));
             $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
         }, "json");
 

@@ -60,7 +60,7 @@
 </div>
 <div class="col-md-9">
     <br/>
-    <div class="text-left">
+    <div class="text-left form-inline">
         <button type="button" id="addHttpInterfaceBtn" class="btn btn-info" data-toggle="modal"
                 data-target="#myHttpModal">新增HTTP接口
         </button>
@@ -68,6 +68,9 @@
                 data-target="#myHttpDomainModal">
             域名地址管理
         </button>
+        <input type="text" class="form-control" style="width: 450px;" id="httpSearchContentInput"
+               placeholder="接口名称/接口地址">
+        <input type="button" class="btn btn-primary" id="httpSearchBtn" value="搜索">
     </div>
     <br/>
     <table class="table table-bordered table-hover table-condensed" style="table-layout: fixed">
@@ -237,6 +240,26 @@
                 }, "json");
             }
 
+        });
+
+        //HTTP接口搜索
+        $("#httpSearchBtn").click(function () {
+            var data = JSON.parse(window.localStorage.getItem("httpData"));
+            var httpSearchContent = $("#httpSearchContentInput").val().trim();
+            if (data != null & httpSearchContent != "") {
+                var tempData = [];
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i].name)
+                    if (data[i].name.indexOf(httpSearchContent) > -1 || data[i].address.indexOf(httpSearchContent) > -1) {
+                        tempData.push(data[i]);
+                    }
+                }
+
+                $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), tempData);
+            } else {
+                $("#httpTableTBody").handlebars($("#httpInterfaceTemplate"), data);
+            }
+            //console.log(data);
         });
 
     });
