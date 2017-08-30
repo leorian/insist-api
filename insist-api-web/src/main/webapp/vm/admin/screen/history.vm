@@ -89,7 +89,11 @@
                     data: ['操作数']
                 },
                 xAxis: {
-                    data: labelArray
+                    data: labelArray,
+                    axisLabel :{
+                        interval:0,
+                        rotate:40
+                    }
                 },
                 yAxis: {},
                 series: [{
