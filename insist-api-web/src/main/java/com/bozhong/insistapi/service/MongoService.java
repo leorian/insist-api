@@ -25,6 +25,13 @@ public interface MongoService {
     <T> T findOneByAppId(String appId, Class<T> tClass);
 
     /**
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> List<T> getAllRecord(Class<T> tClass);
+
+    /**
      * 查询某个人的访问量
      *
      * @param accessName

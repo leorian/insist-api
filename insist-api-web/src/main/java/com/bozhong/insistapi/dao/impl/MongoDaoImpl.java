@@ -52,6 +52,20 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
+    public <T> List<T> getAllRecord(Class<T> tClass) {
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        FindIterable<Document> findIterable = mongoCollection.find();
+        Iterator<Document> iterator = findIterable.iterator();
+        List<T> tList = new ArrayList<T>();
+        Gson gson = new Gson();
+        while (iterator.hasNext()) {
+            Document document = iterator.next();
+            tList.add(gson.fromJson(document.toJson(), tClass));
+        }
+        return tList;
+    }
+
+    @Override
     public <T> T findOneByAccessName(String accessName, Class<T> tClass) {
         Gson gson = new Gson();
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);

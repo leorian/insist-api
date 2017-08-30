@@ -24,6 +24,11 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> List<T> getAllRecord(Class<T> tClass) {
+        return mongoDao.getAllRecord(tClass);
+    }
+
+    @Override
     public <T> T findOneByAccessName(String accessName, Class<T> tClass) {
         return mongoDao.findOneByAccessName(accessName, tClass);
     }

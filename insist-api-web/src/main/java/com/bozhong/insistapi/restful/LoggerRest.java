@@ -2,10 +2,7 @@ package com.bozhong.insistapi.restful;
 
 import com.bozhong.common.util.ResultMessageBuilder;
 import com.bozhong.config.domain.JqPage;
-import com.bozhong.insistapi.entity.AppDO;
-import com.bozhong.insistapi.entity.InsistApiOperationEntity;
-import com.bozhong.insistapi.entity.InterfaceHttpEntity;
-import com.bozhong.insistapi.entity.InterfaceRpcEntity;
+import com.bozhong.insistapi.entity.*;
 import com.bozhong.insistapi.service.MongoService;
 import com.bozhong.insistapi.task.DocHttpUtil;
 import com.google.gson.Gson;
@@ -86,6 +83,24 @@ public class LoggerRest {
     @Path("operatorCountMap")
     public String operatorCountMap() {
         Map<String, Integer> map = mongoService.operatorCountMap(InsistApiOperationEntity.class);
+        return ResultMessageBuilder.build(map).toJSONString();
+    }
+
+    /**
+     * 访问量统计
+     *
+     * @return
+     */
+    @POST
+    @Path("accessCountMap")
+    public String accessCountMap() {
+        List<AccessEntity> accessEntities = mongoService.getAllRecord(AccessEntity.class);
+        Map<String, Long> map = new HashMap<>();
+        if (!CollectionUtils.isEmpty(accessEntities)) {
+            for (AccessEntity accessEntity : accessEntities) {
+                map.put(accessEntity.getAccessName(), accessEntity.getAccessCount());
+            }
+        }
         return ResultMessageBuilder.build(map).toJSONString();
     }
 
