@@ -63,6 +63,20 @@
         </div>
     </div>
 </div>
+<div class="col-sm-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                应用接口统计折线图
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div id="appCountPicturePanel" style="width: 100%;height:500px;margin:25px auto;">
+
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(function () {
         function opTionBuilder(title, labelArray, valueLabelArray) {
@@ -180,6 +194,7 @@
             }).trigger("reloadGrid"); //重新载入
         });
 
+        //操作人统计图表
         (function () {
             var operatorCountPicturePanel = echarts.init(document.getElementById("operatorCountPicturePanel"));
             $.post("${ctxPath}/rest/logger/operatorCountMap", null, function (result) {
@@ -193,6 +208,24 @@
                     }
 
                     operatorCountPicturePanel.setOption(opTionBuilder('', labelArray, valueLabelArray));
+                }
+            }, "json");
+        })();
+
+        //应用接口书统计图表
+        (function () {
+            var appCountPicturePanel = echarts.init(document.getElementById("appCountPicturePanel"));
+            $.post("${ctxPath}/rest/logger/appCountMap", null, function (result) {
+                if (result.success) {
+                    var data = result.data;
+                    var labelArray = [];
+                    var valueLabelArray = [];
+                    for (var key in data) {
+                        labelArray.push(key);
+                        valueLabelArray.push({value: data[key], name: key});
+                    }
+
+                    appCountPicturePanel.setOption(opTionBuilder('', labelArray, valueLabelArray));
                 }
             }, "json");
         })();

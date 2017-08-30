@@ -2,14 +2,18 @@ package com.bozhong.insistapi.restful;
 
 import com.bozhong.common.util.ResultMessageBuilder;
 import com.bozhong.config.domain.JqPage;
+import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.entity.InsistApiOperationEntity;
+import com.bozhong.insistapi.entity.InterfaceHttpEntity;
 import com.bozhong.insistapi.service.MongoService;
+import com.bozhong.insistapi.task.DocHttpUtil;
 import com.google.gson.Gson;
 import com.sun.jersey.spi.resource.Singleton;
 import com.yx.eweb.main.EWebRequestDTO;
 import com.yx.eweb.main.EWebServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,6 +21,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -79,5 +86,29 @@ public class LoggerRest {
     public String operatorCountMap() {
         Map<String, Integer> map = mongoService.operatorCountMap(InsistApiOperationEntity.class);
         return ResultMessageBuilder.build(map).toJSONString();
+    }
+
+    /**
+     * 应用接口数统计
+     *
+     * @return
+     */
+    @POST
+    @Path("appCountMap")
+    public String appCountMap() {
+        Map<String, Integer> map = mongoService.appInterfaceCountGroup(InterfaceHttpEntity.class);
+        Map<String, Integer> appCountMap = new HashMap<>();
+        try {
+            List<AppDO> list = DocHttpUtil.getAllAppDOList();
+            if (!CollectionUtils.isEmpty(list)) {
+                for (AppDO appDO : list) {
+                    appCountMap.put(appDO.getAppName(), map.get(appDO.getAppId()) == null ? 0 : map.get(appDO.getAppId()));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ResultMessageBuilder.build(appCountMap).toJSONString();
     }
 }
