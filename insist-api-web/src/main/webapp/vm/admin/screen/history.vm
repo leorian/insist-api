@@ -104,6 +104,15 @@
                             color: function (params) {
                                 var colorList = ['#337ab7', '#5bc0de', '#f0ad4e', '#5cb85c', '#d9534f'];
                                 return colorList[params.dataIndex];
+                            },
+                            label: {
+                                show: true,//是否展示
+                                textStyle: {
+                                    fontWeight:'bolder',
+                                    fontSize : '12',
+                                    fontFamily : '微软雅黑',
+                                    color:"#00f"
+                                }
                             }
                         }
                     },
