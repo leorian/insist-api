@@ -82,22 +82,22 @@
         function opTionBuilder(title, labelArray, valueLabelArray) {
             var option = {
                 title: {
-                    text: title
+                    text: ""
                 },
                 tooltip: {},
                 legend: {
-                    data: ['操作数']
+                    data: [title]
                 },
                 xAxis: {
                     data: labelArray,
-                    axisLabel :{
-                        interval:0,
-                        rotate:40
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 40
                     }
                 },
                 yAxis: {},
                 series: [{
-                    name: '操作数',
+                    name: title,
                     type: 'line',
                     itemStyle: {
                         normal: {
@@ -211,7 +211,7 @@
                         valueLabelArray.push({value: data[key], name: key});
                     }
 
-                    operatorCountPicturePanel.setOption(opTionBuilder('', labelArray, valueLabelArray));
+                    operatorCountPicturePanel.setOption(opTionBuilder('操作数', labelArray, valueLabelArray));
                 }
             }, "json");
         })();
@@ -229,7 +229,7 @@
                         valueLabelArray.push({value: data[key], name: key});
                     }
 
-                    appCountPicturePanel.setOption(opTionBuilder('', labelArray, valueLabelArray));
+                    appCountPicturePanel.setOption(opTionBuilder('接口数', labelArray, valueLabelArray));
                 }
             }, "json");
         })();
