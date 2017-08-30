@@ -9,6 +9,20 @@
                 class="glyphicon glyphicon-home" style="color: rgb(212, 106, 64);"></span></a></div>
     </ol>
 </div>
+<div class="col-sm-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                操作人统计折线图
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div id="operatorCountPicturePanel" style="width: 100%;height:500px;margin:25px auto;">
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="col-md-12">
     <div class="container">
         <form id="operationLoggerForm" role="form">
@@ -26,7 +40,7 @@
                 </label>
                 <input type="text" class="form-control" name="loggerContentInput" id="loggerContentInput"/>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="button" class="btn btn-success" value="搜索" />
+                <input type="button" class="btn btn-success" value="搜索"/>
             </div>
         </form>
     </div>
@@ -51,6 +65,37 @@
 </div>
 <script>
     $(function () {
+        function opTionBuilder(title, labelArray, valueLabelArray) {
+            var option = {
+                title: {
+                    text: title
+                },
+                tooltip: {},
+                legend: {
+                    data: ['操作数']
+                },
+                xAxis: {
+                    data: labelArray
+                },
+                yAxis: {},
+                series: [{
+                    name: '操作数',
+                    type: 'line',
+                    itemStyle: {
+                        normal: {
+                            color: function (params) {
+                                var colorList = ['#337ab7', '#5bc0de', '#f0ad4e', '#5cb85c', '#d9534f'];
+                                return colorList[params.dataIndex];
+                            }
+                        }
+                    },
+                    data: valueLabelArray
+                }]
+            };
+            return option;
+        }
+
+
         $.jgrid.defaults.width = $("#jqGrid").parent().width();
         $("#jqGrid").jqGrid({
             url: '${ctxPath}/rest/logger/loggerPager',
@@ -124,12 +169,32 @@
             layui.code(); //实际使用时，执行该方法即可。而此处注释是因为修饰器在别的js中已经执行过了
         });
 
-        $("#operationLoggerForm").delegate(".btn-success","click", function () {
+        //搜索按钮事件
+        $("#operationLoggerForm").delegate(".btn-success", "click", function () {
             $("#jqGrid").jqGrid('setGridParam', {
-                postData: {'appIdInput': $("#appIdInput").val()
-                    , "loggerContentInput": $("#loggerContentInput").val()}, //发送数据
+                postData: {
+                    'appIdInput': $("#appIdInput").val()
+                    , "loggerContentInput": $("#loggerContentInput").val()
+                }, //发送数据
                 page: 1
             }).trigger("reloadGrid"); //重新载入
         });
+
+        (function () {
+            var operatorCountPicturePanel = echarts.init(document.getElementById("operatorCountPicturePanel"));
+            $.post("${ctxPath}/rest/logger/operatorCountMap", null, function (result) {
+                if (result.success) {
+                    var data = result.data;
+                    var labelArray = [];
+                    var valueLabelArray = [];
+                    for (var key in data) {
+                        labelArray.push(key);
+                        valueLabelArray.push({value: data[key], name: key});
+                    }
+
+                    operatorCountPicturePanel.setOption(opTionBuilder('', labelArray, valueLabelArray));
+                }
+            }, "json");
+        })();
     });
 </script>
