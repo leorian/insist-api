@@ -5,6 +5,7 @@ import com.bozhong.config.domain.JqPage;
 import com.bozhong.insistapi.entity.AppDO;
 import com.bozhong.insistapi.entity.InsistApiOperationEntity;
 import com.bozhong.insistapi.entity.InterfaceHttpEntity;
+import com.bozhong.insistapi.entity.InterfaceRpcEntity;
 import com.bozhong.insistapi.service.MongoService;
 import com.bozhong.insistapi.task.DocHttpUtil;
 import com.google.gson.Gson;
@@ -97,12 +98,21 @@ public class LoggerRest {
     @Path("appCountMap")
     public String appCountMap() {
         Map<String, Integer> map = mongoService.appInterfaceCountGroup(InterfaceHttpEntity.class);
+        if (map == null) {
+            map = new HashMap<>();
+        }
+        Map<String, Integer> map1 = mongoService.appCategoryCountGroup(InterfaceRpcEntity.class);
+        if (map1 == null) {
+            map1 = new HashMap<>();
+        }
         Map<String, Integer> appCountMap = new HashMap<>();
         try {
             List<AppDO> list = DocHttpUtil.getAllAppDOList();
             if (!CollectionUtils.isEmpty(list)) {
                 for (AppDO appDO : list) {
-                    appCountMap.put(appDO.getAppName(), map.get(appDO.getAppId()) == null ? 0 : map.get(appDO.getAppId()));
+                    appCountMap.put(appDO.getAppName(),
+                            (map.get(appDO.getAppId()) == null ? 0 : map.get(appDO.getAppId())) +
+                                    (map1.get(appDO.getAppId()) == null ? 0 : map1.get(appDO.getAppId())));
                 }
             }
         } catch (IOException e) {
