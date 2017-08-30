@@ -24,6 +24,16 @@ public class MongoServiceImpl implements MongoService {
     }
 
     @Override
+    public <T> T findOneByAccessName(String accessName, Class<T> tClass) {
+        return mongoDao.findOneByAccessName(accessName, tClass);
+    }
+
+    @Override
+    public <T> void findOneAndUpdateByAccessName(String accessName, Class<T> tClass) {
+        mongoDao.findOneAndUpdateByAccessName(accessName, tClass);
+    }
+
+    @Override
     public <T> T findOneByLoggerId(String loggerId, Class<T> tClass) {
         return mongoDao.findOneByLoggerId(loggerId, tClass);
     }

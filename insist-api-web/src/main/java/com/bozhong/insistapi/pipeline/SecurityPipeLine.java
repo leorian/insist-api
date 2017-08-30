@@ -5,11 +5,14 @@ import com.bozhong.common.util.StringUtil;
 import com.bozhong.config.util.CookiesUtil;
 import com.bozhong.insistapi.common.InsistApiConstants;
 import com.bozhong.insistapi.common.WebSettingParam;
+import com.bozhong.insistapi.entity.AccessEntity;
 import com.bozhong.insistapi.entity.AppDO;
+import com.bozhong.insistapi.service.MongoService;
 import com.bozhong.insistapi.task.DocHttpUtil;
 import com.bozhong.myredis.MyRedisClusterForHessian;
 import com.yx.eweb.main.PipeLineInter;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.Cookie;
@@ -29,6 +32,9 @@ public class SecurityPipeLine implements PipeLineInter {
     public static final String pattern = "^[\\w\\W]*/rest/httpMock/[\\w\\W]*$";
 
     private MyRedisClusterForHessian myRedisClusterForHessian;
+
+    @Autowired
+    private MongoService mongoService;
 
     private static final Logger logger = Logger.getLogger(SecurityPipeLine.class);
 
@@ -62,6 +68,21 @@ public class SecurityPipeLine implements PipeLineInter {
         String token = tokenCookie.getValue();
         String uId = myRedisClusterForHessian.getForStr(InsistApiConstants.INSIST_CENTER_USERNAME_PREFIX + token);
         if (StringUtil.isNotBlank(uId)) {
+            try {
+                synchronized (uId) {
+                    if (mongoService.findOneByAccessName(uId, AccessEntity.class) == null) {
+                        AccessEntity accessEntity = new AccessEntity();
+                        accessEntity.setAccessName(uId);
+                        accessEntity.setAccessCount(1l);
+                        mongoService.insertOne(accessEntity);
+                    } else {
+                        mongoService.findOneAndUpdateByAccessName(uId, AccessEntity.class);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             httpServletRequest.setAttribute("uId", uId);
             try {
                 List<AppDO> appDOList = null;

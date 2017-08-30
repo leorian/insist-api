@@ -25,6 +25,23 @@ public interface MongoDao {
     <T> T findOneByAppId(String appId, Class<T> tClass);
 
     /**
+     * 查询某个人的访问量
+     *
+     * @param accessName
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> T findOneByAccessName(String accessName, Class<T> tClass);
+
+    /**
+     * @param accessName
+     * @param <T>
+     * @return
+     */
+    <T> void findOneAndUpdateByAccessName(String accessName, Class<T> tClass);
+
+    /**
      * @param loggerId
      * @param tClass
      * @param <T>

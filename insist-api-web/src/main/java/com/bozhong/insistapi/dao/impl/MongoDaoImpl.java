@@ -52,6 +52,25 @@ public class MongoDaoImpl implements MongoDao {
     }
 
     @Override
+    public <T> T findOneByAccessName(String accessName, Class<T> tClass) {
+        Gson gson = new Gson();
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        Document document = mongoCollection.find(eq("accessName", accessName)).first();
+        if (document != null) {
+            return gson.fromJson(document.toJson(), tClass);
+        }
+
+        return null;
+    }
+
+    @Override
+    public <T> void findOneAndUpdateByAccessName(String accessName, Class<T> tClass) {
+        Gson gson = new Gson();
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        mongoCollection.findOneAndUpdate(eq("accessName", accessName), new Document("$inc", new Document("accessCount", 1)));
+    }
+
+    @Override
     public <T> T findOneByLoggerId(String loggerId, Class<T> tClass) {
         Gson gson = new Gson();
         MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
