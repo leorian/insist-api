@@ -123,6 +123,11 @@ public class MongoServiceImpl implements MongoService {
         return mongoDao.appInterfaceCountGroup(tClass);
     }
 
+    @Override
+    public <T> Map<String, Integer> operatorCountMap(Class<T> tClass) {
+        return mongoDao.operatorCountMap(tClass);
+    }
+
     public void setMongoDao(MongoDao mongoDao) {
         this.mongoDao = mongoDao;
     }

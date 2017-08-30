@@ -189,5 +189,14 @@ public interface MongoService {
      */
     <T> Map<String, Integer> appInterfaceCountGroup(Class<T> tClass);
 
+    /**
+     * 操作记录统计
+     *
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    <T> Map<String, Integer> operatorCountMap(Class<T> tClass);
+
 
 }

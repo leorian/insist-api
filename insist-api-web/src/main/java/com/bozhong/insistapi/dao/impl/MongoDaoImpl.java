@@ -324,4 +324,21 @@ public class MongoDaoImpl implements MongoDao {
 
         return appInterfaceCountMap;
     }
+
+    @Override
+    public <T> Map<String, Integer> operatorCountMap(Class<T> tClass) {
+        MongoCollection<Document> mongoCollection = mongoDBConfig.getCollection(tClass);
+        AggregateIterable<Document> aggregateIterable = mongoCollection.aggregate(Arrays.asList(
+                new Document("$project", new Document("uuid", 1).append("_id", 0).append("operator", 1)),
+                new Document("$unwind", "$operator"),
+                new Document("$group", new Document("_id", "$operator").append("count", new Document("$sum", 1)))
+        ));
+        MongoCursor<Document> mongoCursor = aggregateIterable.iterator();
+        Map<String, Integer> operatorCountMap = new HashMap<>();
+        while (mongoCursor.hasNext()) {
+            Document document = mongoCursor.next();
+            operatorCountMap.put(document.getString("_id"), document.getInteger("count"));
+        }
+        return operatorCountMap;
+    }
 }

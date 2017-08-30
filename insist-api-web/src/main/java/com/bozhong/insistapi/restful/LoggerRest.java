@@ -68,4 +68,16 @@ public class LoggerRest {
         InsistApiOperationEntity insistApiOperationEntity = mongoService.findOneByLoggerId(loggerId, InsistApiOperationEntity.class);
         return ResultMessageBuilder.build(insistApiOperationEntity).toJSONString();
     }
+
+    /**
+     * 操作记录统计
+     *
+     * @return
+     */
+    @POST
+    @Path("operatorCountMap")
+    public String operatorCountMap() {
+        Map<String, Integer> map = mongoService.operatorCountMap(InsistApiOperationEntity.class);
+        return ResultMessageBuilder.build(map).toJSONString();
+    }
 }
